@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.ProjectEndinspection" table="T_PROJECT_ENDINSPECTION">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="certificate" type="java.lang.String">
+            <column name="C_CERTIFICATE" length="40" unique="true" />
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE" length="100" />
+        </property>
+        <property name="applicantSubmitDate" type="java.util.Date">
+            <column name="C_APPLICANT_SUBMIT_DATE" length="7" />
+        </property>
+        <property name="isApplyNoevaluation" type="java.lang.Integer">
+            <column name="C_IS_APPLY_NOEVALU" precision="1" scale="0" />
+        </property>
+        <property name="isApplyExcellent" type="java.lang.Integer">
+            <column name="C_IS_APPLY_EXCELLE" precision="1" scale="0" />
+        </property>
+        <property name="finalProductType" type="java.lang.Integer">
+            <column name="C_FINAL_PRODUCT_TYPE" precision="1" scale="0" />
+        </property>
+        <property name="memberName" type="java.lang.String">
+            <column name="C_MEMBER_NAME" length="800" />
+        </property>
+        <property name="ministryAuditorName" type="java.lang.String">
+            <column name="C_MINISTRY_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="ministryAuditDate" type="java.util.Date">
+            <column name="C_MINISTRY_AUDIT_DATE" length="7" />
+        </property>
+        <property name="ministryAuditOpinion" type="java.lang.String">
+            <column name="C_MINISTRY_AUDIT_OPINION" length="800" />
+        </property>
+        <property name="ministryResultEnd" type="java.lang.Integer">
+            <column name="C_MINISTRY_RESULT_END" precision="1" scale="0" />
+        </property>
+        <property name="ministryResultNoevaluation" type="java.lang.Integer">
+            <column name="C_MINISTRY_RESULT_NOEVALU" precision="1" scale="0" />
+        </property>
+        <property name="ministryResultExcellent" type="java.lang.Integer">
+            <column name="C_MINISTRY_RESULT_EXCELLE" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditDate" type="java.util.Date">
+            <column name="C_FINAL_AUDIT_DATE" length="7" />
+        </property>
+        <property name="finalAuditOpinion" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION" length="800" />
+        </property>
+        <property name="finalAuditOpinionFeedback" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION_FEEDBACK" length="800" />
+        </property>
+        <property name="finalAuditResultEnd" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT_END" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditResultNoevaluation" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT_NOEVALU" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditResultExcellent" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT_EXCELLE" precision="1" scale="0" />
+        </property>
+        <property name="reviewerName" type="java.lang.String">
+            <column name="C_REVIEWER_NAME" length="200" />
+        </property>
+        <property name="reviewDate" type="java.util.Date">
+            <column name="C_REVIEW_DATE" length="7" />
+        </property>
+        <property name="reviewTotalScore" type="java.lang.Double">
+            <column name="C_REVIEW_TOTAL_SCORE" precision="6" scale="2" />
+        </property>
+        <property name="reviewAverageScore" type="java.lang.Double">
+            <column name="C_review_AVERAGE_SCORE" precision="5" scale="2" />
+        </property>
+        <property name="reviewWay" type="java.lang.Integer">
+            <column name="C_REVIEW_WAY" precision="1" scale="0" />
+        </property>
+        <property name="reviewResult" type="java.lang.Integer">
+            <column name="C_REVIEW_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="reviewOpinion" type="java.lang.String">
+            <column name="C_REVIEW_OPINION" length="800" />
+        </property>        
+        <property name="reviewGrade" type="java.lang.String">
+            <column name="C_REVIEW_GRADE" length="10" />
+        </property>        
+        <property name="reviewOpinionQualitative" type="java.lang.String">
+            <column name="C_REVIEW_OPINION_QUALITATIVE" length="80" />
+        </property>
+        <property name="type" type="java.lang.String">
+			<column name="C_TYPE" length="40" />
+		</property>
+		<property name="finalAuditorName" type="java.lang.String">
+            <column name="C_FINAL_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="importedDate" type="java.util.Date">
+            <column name="C_IMPORTED_DATE" length="7" />
+        </property>
+        <property name="importedProductInfo" type="java.lang.String">
+            <column name="C_IMPORTED_PRODUCT_INFO" length="400" />
+        </property>
+        <property name="importedProductTypeOther" type="java.lang.String">
+            <column name="C_IMPORTED_PRODUCT_TYPE_OTHER" length="200" />
+        </property>
+        <many-to-one name="projectFee" class="csdc.bean.ProjectFee" fetch="select">
+            <column name="C_PROJECT_FEE_ID" length="40" />
+        </many-to-one>       
+	    <many-to-one name="granted" class="csdc.bean.ProjectGranted" fetch="join">
+            <column name="C_GRANTED_ID" length="40" not-null="true" />
+        </many-to-one>	
+	</class>
+</hibernate-mapping>

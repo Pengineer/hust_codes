@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="Paper" extends="main" namespace="/product/paper">
+	
+		<action name="toList" class="PaperAction" method="toList">
+			<result>/product/paper/list.jsp</result>
+		</action>
+
+		<action name="list" class="PaperAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="PaperAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="PaperAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="PaperAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="PaperAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="PaperAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+      	<action name="toAdd" class="PaperAction" method="toAdd">
+       		<result>/product/paper/add.jsp</result>
+      	</action>
+      	
+     	<action name="add" class="PaperAction" method="add"> 
+	    	<param name="savePath">/upload/product/paper</param>
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="actionName">toView</param>
+	      	</result>
+	      	<result name="finish" type="json"><param name="root">jsonMap</param></result>
+	        <result name="input">${inputView}</result>
+     	</action>
+     	
+		<action name="toModify" class="PaperAction" method="toModify">
+			<result>/product/paper/modify.jsp</result>
+			<result name="finish">/product/extIf/popModifyPaper.jsp</result>
+	    </action>
+	    
+		<action name="modify" class="PaperAction" method="modify">
+	 		<param name="savePath">/upload/product/paper</param>
+	 		<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="projectId">${projectId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="update">1</param>
+				<param name="actionName">toView</param>	
+      		</result>
+      		<result name="finish" type="json"><param name="root">jsonMap</param></result>
+			<result name="input">/product/paper/modify.jsp</result>
+		</action>
+	   		
+		<action name="delete" class="PaperAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toView" class="PaperAction" method="toView">
+			<result>/product/paper/view.jsp</result>
+			<result name="popView">/product/extIf/popViewPaper.jsp</result>
+		</action>
+		
+		<action name="view" class="PaperAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="PaperAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="PaperAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="PaperAction" method="toAudit">
+			<result>/product/popAudit.jsp</result>
+		</action>
+		
+		<action name="audit" class="PaperAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewAudit" class="PaperAction" method="viewAudit">
+			<result>/product/popViewAudit.jsp</result>
+		</action>
+
+	    <action name="download" class="PaperAction" method="download">
+			<result type="stream">
+	 	    	<param name="inputName">targetFile</param> 
+	 	    	<param name="bufferSize">4096</param>
+	 	    	<param name="contentType">application/octet-stream</param>
+	 	    	<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>  
+	 	  	</result>
+ 	  		<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	
+	   	<action name="validateFile" class="PaperAction" method="validateFile">
+   			<result type="json"><param name="root">jsonMap</param></result>
+   			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+		</action>
+	 
+		<action name="toAddApply" class="PaperAction" method="toAddApply">
+			<result>/product/popAddApply.jsp</result>
+		</action>
+		
+		<action name="toModifyApply" class="PaperAction" method="toModifyApply">
+			<result>/product/popModifyApply.jsp</result>
+		</action>
+		
+   		<action name="exAdd" class="PaperAction" method="exAdd">
+			<result type="json"><param name="root">jsonMap</param></result>
+   			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+   		</action>
+   		
+	</package>
+</struts>

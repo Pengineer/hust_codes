@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="eoas.dao.ResumeDao">
+	<resultMap id="detailedResumeResultMap" type="Resume">
+		<id property = "id" column = "C_ID"/>
+		<result property = "type" column = "C_TYPE"/>
+		<result property = "resumeName" column = "C_RESUME_NAME"/>
+		<result property = "name" column = "C_NAME"/>
+		<result property = "gender" column ="C_GENDER"/>
+		<result property = "birthday" column="C_BIRTHDAY"/>
+		<result property = "mobilephone" column = "C_MOBILEPHONE"/>
+		<result property = "hometown" column = "C_HOMETOWN"/>
+		<result property = "idcardType" column = "C_IDCARDTYPE"/>
+		<result property = "idcardNumber" column = "C_IDCARDNUMBER"/>
+		<result property = "photo" column = "C_PHOTO"/>
+		<result property = "scholarship" column = "C_SCHOLARSHIP"/>
+		<result property = "award" column = "C_AWARD"/>
+		<result property = "leaderExperience" column = "C_LEADER_EXPERIENCE"/>
+		<result property = "note" column = "C_NOTE"/>
+		<result property = "eleresume" column = "C_ELERESUME"/>
+		<result property = "production" column = "C_PRODUCTION"/>
+		<result property = "otherAttachment" column = "C_OTHER_ATTACHMENT"/>
+		
+		<result property = "isTalent" column = "C_IS_TALENT"/>
+		<result property = "eleresumeName" column = "C_ELERESUME_NAME"/>
+		<result property = "otherAttachmentName" column = "C_OTHER_ATTACHMENT_NAME"/>
+		<result property = "productionName" column = "C_PRODUCTION_NAME"/>		
+		<association property = "account" column = "C_ACCOUNT_ID" javaType = "Account">
+			<id property = "id" column = "C_ID"/>
+			<result property = "email" column = "C_EMAIL" />
+		</association>
+		<collection property="education">
+			<id property = "id" column = "C_ID"/>
+			<result property = "degree" column = "C_DEGREE"/>
+			<result property = "school" column = "C_SCHOOL"/>
+			<result property = "stime" column = "C_STIME"/>
+			<result property = "etime" column = "C_ETIME"/>
+			<result property = "specialty" column = "C_SPECIALTY"/>
+			<result property = "description" column = "C_DESCRIPTION"/>
+		</collection>
+		<collection property="experience">
+			<id property = "id" column = "C_ID"/>
+			<result property = "company" column = "C_COMPANY"/>
+			<result property = "companyStime" column = "C_COMPANY_STIME"/>
+			<result property = "companyEtime" column = "C_COMPANY_ETIME"/>
+			<result property = "position" column = "C_POSITION"/>
+			<result property = "positionDescription" column = "C_POSITION_DESCRIPTION"/>
+			<result property = "project" column = "C_PROJECT"/>
+			<result property = "projectStime" column = "C_PROJECT_STIME"/>
+			<result property = "projectEtime" column = "C_PROJECT_ETIME"/>
+			<result property = "dutyDescription" column = "C_DUTY_DESCRIPTION"/>		
+		</collection>
+		
+	</resultMap>
+
+	<insert id="insert"  parameterType="Resume"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_RESUME 
+	   		(
+	   		 C_ID,
+	   		 C_NAME,
+	   		 C_GENDER,
+	   		 C_BIRTHDAY, 
+	   		 C_MOBILE_PHONE, 
+	   		 C_HOMETOWN, 
+	   		 C_IDCARD_TYPE, 
+	   		 C_IDCARD_NUMBER,
+	   		 C_PHOTO, 
+	   		 C_SCHOLARSHIP, 
+	   		 C_AWARD, 
+	   		 C_LEADER_EXPERIENCE, 
+	   		 C_NOTE, 
+	   		 C_ELERESUME, 
+	   		 C_PRODUCTION, 
+	   		 C_OTHER_ATTACHMENT,
+	   		 C_TYPE,
+	   		 C_IS_TALENT, 
+	   		 C_RESUME_NAME, 
+	   		 C_ELERESUME_NAME, 
+	   		 C_OTHER_ATTACHMENT_NAME, 
+	   		 C_PRODUCTION_NAME
+	   		 )
+        	values 
+            (
+             #{id,jdbcType=VARCHAR},
+             #{name,jdbcType=VARCHAR},
+             #{gender,jdbcType=NUMERIC},
+             #{birthday,jdbcType=DATE},
+             #{mobilephone,jdbcType=NUMERIC},
+             #{hometown,jdbcType=NUMERIC},
+             #{idcardType,jdbcType=VARCHAR},
+             #{idcardNumber,jdbcType=VARCHAR},
+             #{photo,jdbcType=VARCHAR},
+        	 #{scholarship,jdbcType=VARCHAR},
+        	 #{award,jdbcType=VARCHAR},
+        	 #{leaderExperience,jdbcType=VARCHAR},
+        	 #{note,jdbcType=VARCHAR},
+        	 #{eleresume,jdbcType=VARCHAR},
+        	 #{production,jdbcType=VARCHAR},
+        	 #{otherAttachment,jdbcType=VARCHAR},
+        	 #{type,jdbcType=VARCHAR},
+        	 #{isTalent,jdbcType=VARCHAR},
+        	 #{resumeName,jdbcType=VARCHAR},
+        	 #{eleresumeName,jdbcType=VARCHAR},
+        	 #{otherAttachmentName,jdbcType=VARCHAR},
+        	 #{productionName,jdbcType=VARCHAR}
+        	)
+     </insert>
+</mapper> 

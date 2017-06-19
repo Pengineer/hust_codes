@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Solution">
+	<resultMap id="solutionResult" type="Solution">
+		<id property="id" column="solution_id"/>
+		<result property="category" column="solution_category"/>
+		<result property="title" column="solution_title"/>
+		<result property="content" column="solution_content"/>
+		<result property="createDate" column="solution_createDate"/>
+		<result property="viewCount" column="solution_viewCount"/>
+		<association property="account" javaType="Account">
+			<id property="id" column="solution_accountId"/>
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="Solution" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_SOLUTION (
+			C_ID,
+			C_CATEGORY,
+			C_TITLE,
+			C_CONTENT,
+			C_CREATE_DATE,
+			C_VIEW_COUNT,
+			C_ACCOUNT_ID
+		) values (
+			#{id,jdbcType=VARCHAR},
+			#{category,jdbcType=VARCHAR},
+			#{title,jdbcType=VARCHAR},
+			#{content,jdbcType=VARCHAR},
+			#{createDate,jdbcType=DATE},
+			#{viewCount,jdbcType=NUMERIC},
+			#{account.id,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="update" parameterType="string">
+		update T_SOLUTION set
+			C_CATEGORY = #{category},
+			C_TITLE = #{title},
+			C_CONTENT = #{content}
+		where C_ID = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from T_SOLUTION where C_ID = #{id}
+	</delete>
+	
+	<select id = "load" parameterType="string" resultMap="solutionResult">
+		select
+			solution.C_ID as solution_id,
+			solution.C_CATEGORY as solution_category,
+			solution.C_TITLE as solution_title,
+			solution.C_CONTENT as solution_content,
+			solution.C_CREATE_DATE as solution_createDate,
+			solution.C_VIEW_COUNT as solution_viewCount,
+			solution.C_ACCOUNT_ID as solution_accountId
+		from T_SOLUTION solution
+		where C_ID = #{solutionId}
+	</select>
+	
+	<select id = "list" parameterType = "map" resultMap = "solutionResult">
+		select
+			solution.C_ID as solution_id,
+			solution.C_CATEGORY as solution_category,
+			solution.C_TITLE as solution_title,
+			solution.C_CONTENT as solution_content,
+			solution.C_CREATE_DATE as solution_createDate,
+			solution.C_VIEW_COUNT as solution_viewCount,
+			solution.C_ACCOUNT_ID as solution_accountId
+		from T_SOLUTION solution
+	</select>
+</mapper>

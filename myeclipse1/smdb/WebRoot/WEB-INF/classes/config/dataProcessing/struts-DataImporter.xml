@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="dataImporter" extends="main" namespace="/dataProcessing/dataImporter">
+		
+		<!-- 开始导入数据/进度查询 -->
+		<action name="startImport" class="dataImporterAction" method="startImport">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消导入-->
+		<action name="cancelImport" class="dataImporterAction" method="cancelImport">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+		<!-- 导入统计结果 -->
+		<action name="resultDetail" class="dataImporterAction" method="resultDetail">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<action name="toApplicationView" class="dataImporterAction" method="toApplicationView">
+			<result>/dataProcessing/fromMidToDB/application/view.jsp</result>
+		</action>
+		
+		<action name="toMidinspectionView" class="dataImporterAction" method="toMidinspectionView">
+			<result>/dataProcessing/fromMidToDB/midinspection/view.jsp</result>
+		</action>
+			
+		<action name="toVariationView" class="dataImporterAction" method="toVariationView">
+			<result>/dataProcessing/fromMidToDB/variation/view.jsp</result>
+		</action>	
+		
+		<action name="toEndinspectionView" class="dataImporterAction" method="toApplicationView">
+			<result>/dataProcessing/fromMidToDB/endinspection/view.jsp</result>
+		</action>
+		<action name="toProgress" class="dataImporterAction" method="toProgress">
+			<result>/dataProcessing/fromMidToDB/progress.jsp</result>
+		</action>
+	</package>
+
+</struts>

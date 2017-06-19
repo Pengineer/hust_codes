@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.Expert" table="T_EXPERT">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="100" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="C_NAME" length="100" />
+		</property>
+		<property name="universityCode" type="java.lang.String">
+			<column name="C_UNIVERSITY_CODE" length="100" />
+		</property>
+		<property name="idCardType" type="java.lang.String">
+			<column name="C_IDCARD_TYPE" length="40" />
+		</property>
+		<property name="idCardNumber" type="java.lang.String">
+			<column name="C_ID_CARD" length="100" />
+		</property>
+		<property name="gender" type="java.lang.String">
+			<column name="C_GENDER" length="20" />
+		</property>
+		<property name="birthday" type="java.util.Date">
+			<column name="C_BIRTHDAY" length="7" />
+		</property>
+		<property name="specialityTitle" type="java.lang.String">
+			<column name="C_SPECIALITY_TITLE" length="100" />
+		</property>
+		<property name="discipline" type="java.lang.String">
+			<column name="C_DISCIPLINE" length="500" />
+		</property>
+		<property name="homePhone" type="java.lang.String">
+			<column name="C_HOME_PHONE" length="100" />
+		</property>
+		<property name="mobilePhone" type="java.lang.String">
+			<column name="C_MOBILE_PHONE" length="200" />
+		</property>
+		<property name="officePhone" type="java.lang.String">
+			<column name="C_OFFICE_PHONE" length="400" />
+		</property>
+		<property name="officeFax" type="java.lang.String">
+			<column name="C_OFFICE_FAX" length="400" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="C_EMAIL" length="200" />
+		</property>
+		<property name="moeProject" type="java.lang.String">
+			<column name="C_MOE_PROJECT" length="4000" />
+		</property>
+		<property name="nationalProject" type="java.lang.String">
+			<column name="C_NATIONAL_PROJECT" length="4000" />
+		</property>
+		<property name="job" type="java.lang.String">
+			<column name="C_JOB" length="100" />
+		</property>
+		<property name="isDoctorTutor" type="java.lang.String">
+			<column name="C_IS_DOCTOR_TUTOR" length="100" />
+		</property>
+		<property name="department" type="java.lang.String">
+			<column name="C_DEPARTMENT" length="100" />
+		</property>
+		<property name="degree" type="java.lang.String">
+			<column name="C_DEGREE" length="40" />
+		</property>
+		<property name="lastEducation" type="java.lang.String">
+			<column name="C_LAST_EDUCATION" length="40" />
+		</property>
+		<property name="computerLevel" type="java.lang.String">
+			<column name="C_COMPUTER_LEVEL" length="40" />
+		</property>
+		<property name="language" type="java.lang.String">
+			<column name="C_LANGUAGE_1" length="100" />
+		</property>
+		<property name="ethnicLanguage" type="java.lang.String">
+			<column name="C_ETHNIC_LANGUAGE" length="400" />
+		</property>
+		<property name="postDoctor" type="java.lang.String">
+			<column name="C_POSTDOCTOR" />
+		</property>
+		<property name="abroad" type="java.lang.String">
+			<column name="C_ABROAD"/>
+		</property>
+		<property name="introduction" type="java.lang.String">
+			<column name="C_INTRODUCTION" />
+		</property>
+		<property name="positionLevel" type="java.lang.String">
+			<column name="C_POSITION_LEVEL" length="100" />
+		</property>
+		<property name="award" type="java.lang.String">
+			<column name="C_AWARD" length="4000" />
+		</property>
+		<property name="researchField" type="java.lang.String">
+			<column name="C_RESEARCH_FIELD" length="4000" />
+		</property>
+		<property name="partTime" type="java.lang.String">
+			<column name="C_PARTTIME" length="4000" />
+		</property>
+		<property name="officeAddress" type="java.lang.String">
+			<column name="C_OFFICE_ADDRESS" length="100" />
+		</property>
+		<property name="officePostcode" type="java.lang.String">
+			<column name="C_OFFICE_POSTCODE" length="100" />
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="C_REMARK" length="500" />
+		</property>
+		<property name="warning" type="java.lang.String">
+			<column name="C_WARNING" length="500" />
+		</property>
+		<property name="isReviewer" type="java.lang.Integer">
+			<column name="C_IS_REVIEWER"  precision="1" scale="0" />
+		</property>
+		<property name="expertType" type="java.lang.Integer">
+			<column name="C_EXPERT_TYPE"  precision="1" scale="0" />
+		</property>
+		<property name="number" type="java.lang.Integer">
+			<column name="C_NUMBER"  precision="10" scale="0" />
+		</property>
+		<property name="rating" type="java.lang.String">
+			<column name="C_RATING" />
+		</property>
+		<property name="generalReviewYears" type="java.lang.String">
+			<column name="C_GENERAL_REVIEW_YEARS" />
+		</property>
+		<property name="generalApplyYears" type="java.lang.String">
+			<column name="C_GENERAL_APPLY_YEARS" />
+		</property>
+		<property name="instpApplyYears" type="java.lang.String">
+			<column name="C_INSTP_APPLY_YEARS" />
+		</property>
+		<property name="awardApplyYears" type="java.lang.String">
+			<column name="C_AWARD_APPLY_YEARS" />
+		</property>
+		<property name="reason" type="java.lang.String">
+			<column name="C_REASON" /><!-- C_NOT_REVIEWER_REASON -->
+		</property>
+		<property name="isKey" type="java.lang.Integer">
+			<column name="C_IS_KEY"  precision="1" scale="0" />
+		</property>
+		<property name="importedDate" type="java.util.Date">
+			<column name="C_IMPORTED_DATE" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="C_TYPE" />
+		</property>
+		<property name="appointmentType" type="java.lang.String">
+			<column name="C_APPOINTMENT_TYPE" length="40" />
+		</property>
+		<property name="batch" type="java.lang.String">
+			<column name="C_BATCH" length="200" />
+		</property>
+		<property name="isKeyProjectDirector" type="java.lang.Integer">
+			<column name="C_IS_KEY_PROJECT_DIRECTOR"  precision="1" scale="0" />
+		</property>
+		<property name="isYangtzeScholar" type="java.lang.Integer">
+			<column name="C_IS_YANGTZE_SCHOLAR"  precision="1" scale="0" />
+		</property>
+		<property name="awardMoeYangtse" type="java.lang.String">
+			<column name="C_AWARD_MOE_YANGTSE" length="800" />
+		</property>
+		<property name="awardNsfcYoung" type="java.lang.String">
+			<column name="C_AWARD_NSFC_YOUNG" length="800" />
+		</property>
+		<property name="awardNationalContribution" type="java.lang.String">
+			<column name="C_AWARD_NATIONAL_CONTRIBUTION" length="800" />
+		</property>
+		<property name="awardGlobalThousand" type="java.lang.String">
+			<column name="C_AWARD_GLOBAL_THOUSAND" length="800" />
+		</property>
+		<property name="awardNationalNcentury" type="java.lang.String">
+			<column name="C_AWARD_NATIONAL_NCENTURY" length="800" />
+		</property>
+		<property name="awardMoeTcentury" type="java.lang.String">
+			<column name="C_AWARD_MOE_TCENTURY" length="800" />
+		</property>
+		<property name="awardMoeNcentury" type="java.lang.String">
+			<column name="C_AWARD_MOE_NCENTURY" length="800" />
+		</property>
+		<property name="awardNationalDoctor" type="java.lang.String">
+			<column name="C_AWARD_NATIONAL_DOCTOR" length="800" />
+		</property>
+		<property name="awardMoeTeacher" type="java.lang.String">
+			<column name="C_AWARD_MOE_TEACHER" length="800" />
+		</property>
+		<property name="awardLocalContribution" type="java.lang.String">
+			<column name="C_AWARD_LOCAL_CONTRIBUTION" length="800" />
+		</property>
+		<property name="awardMoeSocial" type="java.lang.String">
+			<column name="C_AWARD_MOE_SOCIAL" length="800" />
+		</property>
+		<property name="awardStateDegree" type="java.lang.String">
+			<column name="C_AWARD_STATE_DEGREE" length="800" />
+		</property>
+		<set name="applicationReview" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="C_REVIEWER_ID" length="40" not-null="true" />
+			</key>
+			<one-to-many class="csdc.bean.ProjectApplicationReview" />
+		</set>
+		<set name="applicationReviewUpdate" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="C_REVIEWER_ID" length="40" not-null="true" />
+			</key>
+			<one-to-many class="csdc.bean.ProjectApplicationReviewUpdate" />
+		</set>
+		
+		<set name="awardApplicationReview" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="C_REVIEWER_ID" length="40" not-null="true" />
+			</key>
+			<one-to-many class="csdc.bean.AwardApplicationReview" />
+		</set>
+		<set name="awardApplicationReviewUpdate" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="C_REVIEWER_ID" length="40" not-null="true" />
+			</key>
+			<one-to-many class="csdc.bean.AwardApplicationReviewUpdate" />
+		</set>
+	</class>
+</hibernate-mapping>

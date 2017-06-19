@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.SmdbProjectVariation" table="T_SMDB_PROJECT_VARIATION">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+         
+        <property name="smdbVariationID" type="java.lang.String">
+          <column name="C_SMDB_VARIATION_ID" length="40"/>
+        </property>
+        <property name="smasVariationID" type="java.lang.String">
+          <column name="C_SMAS_VARIATION_ID" length="40"/>
+        </property>
+           <property name="isAdded" type="java.lang.Integer">
+            <column name="C_IS_ADDED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="importedDate" type="java.util.Date">
+            <column name="C_IMPORTED_DATE" />
+        </property>
+         <property name="importPerson" type="java.lang.String">
+            <column name="C_IMPORT_PERSON" length="40" />
+        </property>
+        <many-to-one name="smdbGranted" class="csdc.bean.SmdbProjectGranted" fetch="join">
+            <column name="C_SMDB_GRANTED_ID" length="40" not-null="true" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>

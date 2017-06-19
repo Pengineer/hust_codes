@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+  
+<struts>
+	<package name="memo" extends="main" namespace="/selfspace/memo">
+		
+		<action name="toList" class="memoAction" method="toList">
+			<result>/selfspace/memo/list.jsp</result>
+		</action>
+
+		<action name="list" class="memoAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="memoAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+        
+        <action name="toAdvSearch" class="memoAction" method="toAdvSearch">
+			<result>/selfspace/memo/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="memoAction" method="advSearch">
+			<result type="chain">toList</result>
+		</action>
+		
+        <action name="toAdd" class="memoAction" method="toAdd">
+	    	<result>/selfspace/memo/add.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="memoAction" method="add">
+	   		<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/selfspace/memo/add.jsp</result>
+			
+<!--			<result type="redirectAction">-->
+<!--				<param name="actionName">toList</param>-->
+<!--				<param name="update">1</param>-->
+<!--			</result>-->
+<!--			<result name="input">/selfspace/memo/add.jsp</result>-->
+	    </action>
+		<action name="delete" class="memoAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toPage" class="memoAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	 	
+	 	<action name="prev" class="memoAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="memoAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="sort" class="memoAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toModify" class="memoAction" method="toModify ">
+		  <result>/selfspace/memo/modify.jsp</result>
+	    </action>
+	 	
+	 	<action name="modify" class="memoAction" method="modify ">
+	 		<result type="redirectAction">
+			  <param name="entityId">${entityId}</param>
+			  <param name="actionName">toView</param>	
+	   		</result>
+	   		<result name="mFlag" type="json"><param name="root">jsonMap</param></result>
+	      	<result name="input">/selfspace/memo/modify.jsp</result>
+	   </action>
+	   
+	   <action name="toView" class="memoAction" method="toView">
+			<result>/selfspace/memo/view.jsp</result>
+	    </action>
+	    
+	    <action name="view" class="memoAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="changePageSize" class="memoAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="flag" class="memoAction" method="flag">
+			<result type="json"><param name="root">jsonMap</param></result>
+	 		<result type="redirectAction">
+			  <param name="actionName">viewMemo</param>	
+	   		</result>
+	    </action>
+	    </package>
+</struts>

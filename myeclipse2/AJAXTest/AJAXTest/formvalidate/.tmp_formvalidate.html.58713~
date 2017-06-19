@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>表格信息实时校验</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="../js/ripple.js"></script>
+    <script type="text/javascript" src="../js/jquery.validate.js"></script>
+   
+   
+  </head>
+  
+  <body>
+	  <form name="empForm" id="signupForm" method="post" >
+	     <table border=1 cellspacing=0 width="50%" align="center">
+	        <tr>
+	     		<td>realname:</td>
+	     		<td width="80%"><input type="text" name="realname" id="realname" /></td>
+	     	</tr> 
+	     	<tr>
+	     		<td>username:</td>
+	     		<td width="80%"><input type="text" name="username" id="username" /></td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td>password:</td>
+	     		<td><input type="password" name="psw" id="psw" /></td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td>confirm password:</td>
+	     		<td><input type="password" name="confpsw" id="confpsw" /></td>
+	     	</tr>
+	     	
+	     	<!-- jquery验证执行的底层原理，以<label style="display:none" for="gender" class="error">请选择您的性别</label>为例，
+	     	     *必須要有的屬性：for="gender" 该标签的唯一标识符（指示依附的标签对象）     、     class="error"错误信息样式  
+	     	     
+	     	     *jquery执行时先以组建中name属性的值为标识去查找lable标签，如果找到了就直接使用，如果没有找到就会创建一个，但是默认的创建位置是input标签的后面，但是在radio标签中，显然是不符合
+	     	                    要求的，因此我们需要自定义lable标签，放在合适的位置。	     	
+	     	 -->
+	     	<tr>
+	     		<td>gender</td>
+	     		<td>
+	     			<input type="radio" name="gender" id="male" value="male"/>男
+	     			<input type="radio" name="gender" id="female" value="female"/>女
+	     			<label style="display:none" for="gender" class="error"></label>
+	     		</td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td>education:</td>
+	     		<td>
+                	<select name="edu" id="edu">
+                	    <option value="">--请选择您的学历--</option>   <!-- 必须为每个option增加一个value属性值，以示区分 value=""表示不在验证范围内 -->
+                		<option value="low">本科</option>
+                		<option value="average">硕士</option>
+                		<option value="high">博士</option>
+                	</select>
+                </td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td>birthday:</td>
+	     		<td><input type="text" name="birthday" id="birthday" value="格式：xxxx/xx/xx"/></td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td>email:</td>
+	     		<td><input type="text" name="email" id="email" /></td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td>IDCard:</td>
+	     		<td><input type="text" name="IDCard" id="IDCard" value="15or18"/></td>
+	     	</tr>
+	     	
+	     	<tr>
+	     		<td colspan=2 align="center" ><input type="submit" value="提交" id="submit" /></td>
+	     	</tr>
+	     	
+	     </table>
+	  </form>
+	  
+	  <script type="text/javascript">
+	  	/* 自定义校验规则:
+	  	   1,创建一个方法来描述规则
+	  	   2,第一个参数，"IDCard"是规则名称；第二个参数是一个规则描述函数，value是元素的值（比如文本框的值），element是元素本身，params是默认值
+	  	 */
+	  	$.validator.addMethod("IDCard",function(value,element,params){
+	  		var len = value.length;
+	  		if(len!=15 && len!=18){
+	  			return false;
+	  		}
+	  		if(len == 15){
+	  			var pattern = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;
+	  			if(!pattern.test(value)){
+	  				return false;
+	  			}
+	  		}
+	  		if(len == 18){
+	  			var pattern = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+	  			if(!pattern.test(value)){
+	  				return false;
+	  			}
+	  		}
+	  		return true;
+	  	});
+	  	
+	  </script>
+	  
+	<script type="text/javascript">    
+    $(document).ready(function(){   //$(document)，将document对象包装成jquery对象，jquery.ready == document里面的window.onload()
+	    //调用jquery.validate.js里面的验证方法
+	    $("#signupForm").validate({
+	        /*验证规则:(具体参看ppt)
+	            require:表示该组件的输入不能为空，底层是一个函数	            
+	        */
+		    rules:{
+		    		realname:"required",    //该realname使用的是组件中的name属性，而不是id
+		    		username:{
+		    		       required:true,
+		    		       minlength:5,
+		    		       maxlength:8
+		    		},
+		    		psw:{
+		    			required:true,
+		    			minlength:6,
+		    			maxlength:12
+		    		},
+		    		confpsw:{
+		    			required:true,
+		    			equalTo:"#psw"
+		    		},
+		    		gender:"required",
+		    		edu:"required",
+		    		birthday:{
+		    			required:true,
+		    			date:true
+		    		},
+		    		email:{
+		    			required:true,
+		    			email:true
+		    		},
+		    		IDCard:{
+		    			required:true,
+		    			IDCard:true
+		    		}	
+ 
+		    },
+		    //显示验证出错的提示信息
+		    messages:{
+		    		realname:"<font color='red'>&nbsp;&nbsp;&nbsp;*真实姓名不能为空</font>",
+		    		username:{
+		    		       required:"<font color='red'>&nbsp;&nbsp;&nbsp;*登录名不能为空</font>",
+		    		       minlength:"<font color='red'>&nbsp;&nbsp;&nbsp;*用户名长度不能小于5个字符</font>",
+		    		       maxlength:"<font color='red'>&nbsp;&nbsp;&nbsp;*用户名的长度不能超过8个字符</font>"
+		    		},
+		    		psw:{
+		    			required:"<font color='red'>&nbsp;&nbsp;&nbsp;*登录密码不能为空</font>",
+		    			minlength:"<font color='red'>&nbsp;&nbsp;&nbsp;*密码不能少于6个字符</font>",
+		    			maxlength:"<font color='red'>&nbsp;&nbsp;&nbsp;*密码不能超过12个字符</font>"
+		    		},
+		    		confpsw:{
+		    			required:"<font color='red'>&nbsp;&nbsp;&nbsp;*确认密码不能为空</font>",
+		    			equalTo:"<font color='red'>&nbsp;&nbsp;&nbsp;*两次输入的密码不相同</font>"
+		    		},
+		    		gender:"<font color='red'>&nbsp;&nbsp;&nbsp;*请选择性别</font>",
+		    		edu:"<font color='red'>&nbsp;&nbsp;&nbsp;*请选择学历</font>",
+		    		birthday:{
+		    			required:"<font color='red'>&nbsp;&nbsp;&nbsp;*请输入出生日期</font>",
+		    			date:"<font color='red'>&nbsp;&nbsp;&nbsp;*日期格式无效</font>"
+		    		},
+		    		email:{
+		    			required:"<font color='red'>&nbsp;&nbsp;&nbsp;*电子邮箱不能为空</font>",
+		    			email:"<font color='red'>&nbsp;&nbsp;&nbsp;*邮箱格式不对</font>"
+		    		},
+		    		IDCard:{
+		    			required:"<font color='red'>&nbsp;&nbsp;&nbsp;*身份证号不能为空</font>",
+		    			IDCard:"<font color='red'>&nbsp;&nbsp;&nbsp;*身份证号输入有误</font>"
+		    		}			    		
+		    }
+	    });
+    });
+    </script>
+	     
+    <script type="text/javascript">
+    $("#birthday").one("click",function(){   	
+    		$(this).val(null);
+    });
+    
+    $("#IDCard").one("click",function(){   	
+    		$(this).val(null);
+    });
+    
+    /* $("#IDCard").focus(function(){   	
+    		$(this).val(null);
+    }); */
+    </script>
+  </body>
+</html>

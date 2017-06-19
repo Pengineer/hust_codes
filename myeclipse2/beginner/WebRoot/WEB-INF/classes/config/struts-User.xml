@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" extends="global" namespace="/user">
+	    <!-- 登入系统 -->
+	    <action name="login" class="userAction" method="login">
+	        <result>/main/main.jsp</result>
+	        <result name="input">/index.jsp</result>
+	    </action>
+	    
+	    <!-- 退出系统 -->
+	    <action name="logout" class="userAction" method="logout">
+	     	<result>/user/logout.jsp</result>
+	     </action>
+	    
+	    <!-- 准备 -->
+        <action name="toRegister" class="userAction" method="toRegister">
+	        <result>/user/register.jsp</result>
+	    </action>
+	    
+	    <!-- 注册 -->
+	    <action name="register" class="userAction" method="register">
+	        <result>/user/registerSuccess.jsp</result>
+	        <result name="input">/user/register.jsp</result>
+	        <interceptor-ref name="fileUpload">
+	            <param name="allowedTypes">image/gif,image/bmp,image/jpg,image/pjpg,image/png,image/x-png,image/jpeg,image/pjpeg</param>
+	            <param name="maximumSize">102400</param>
+	        </interceptor-ref>
+	        <interceptor-ref name="defaultStack" />
+	    </action>
+	    
+	    <!--检测用户名是否可用--> 
+		<action name="checkUsername" class="userAction" method="checkUsername">  
+            <result type="stream">  
+                <param name="contentType">text/html</param>  
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+		
+	    <!-- 检测用户状态 -->
+	    <action name="checkUserStatus" class="userAction" method="checkUserStatus">
+	        <result name="first">/user/activeUser.jsp</result>
+	        <result name="second">/user/inactiveUser.jsp</result>
+	        <result name="third">/user/unapprovedUser.jsp</result>
+	    </action>
+	    
+	    <!-- 找密码跳转 -->
+		<action name="toRetrievePassword" class="userAction" method="toRetrievePassword">
+			<result>/user/retrievePassword.jsp</result>
+		</action>
+		
+	    <!-- 找回密码 -->
+	    <action name="retrievePassword" class="userAction" method="retrievePassword">
+	        <result>/user/retrievePasswordSuccess.jsp</result>
+	        <result name="input">/user/retrievePassword.jsp</result>
+	    </action>
+	    
+	    <!-- 查看用户列表 -->
+	    <action name="listUser" class="userAction" method="listUser">
+	        <result type="chain">
+	            <param name="actionName">listRole</param>
+	        </result>
+	    </action>
+	    
+	    <!-- 获取用户角色 -->
+	    <action name="listRole" class="userAction" method="listRole">
+	    	<result name="success" type="chain">
+	    		<param name="actionName">checkUserStatus</param>
+	    	</result>
+	    </action>
+	    
+	    <!-- 检索 -->
+	    <action name="simpleSearch" class="userAction" method="simpleSearch">
+	    	<result name="success" type="chain">
+	    		<param name="actionName">listRole</param>
+	    	</result>
+	    </action>
+	    
+	    <!-- 上一条 -->
+		<action name="prevUser" class="userAction" method="prevUser">
+			<result type="redirectAction">
+	           <param name="actionName">viewUser</param>
+	           <param name="userid">${userid}</param>
+	           <param name="userstatus">${userstatus}</param>
+	        </result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="nextUser" class="userAction" method="nextUser">
+			<result type="redirectAction">
+	           <param name="actionName">viewUser</param>
+	           <param name="userid">${userid}</param>
+	           <param name="userstatus">${userstatus}</param>
+	        </result>
+		</action>
+		
+	    <!-- 排序 -->
+	    <action name="sortUser" class="userAction" method="sortUser">
+	        <result type="chain">
+	            <param name="actionName">listRole</param>
+	        </result>
+	    </action>
+	    
+	    <!-- 查看个人信息 -->
+	    <action name="viewUser" class="userAction" method="viewUser">
+	        <result>/user/viewUser.jsp</result>
+	    </action>
+	    
+	    <!-- 修改个人信息 -->
+	    <action name="loadUser" class="userAction" method="loadUser">
+			<result>/user/modifyUser.jsp</result>
+	    </action>
+		
+		<action name="modifyUser" class="userAction" method="modifyUser">
+			<result type="redirectAction">
+				<param name="actionName">viewUser</param>
+				<param name="userid">${userid}</param>
+				<param name="selflabel">${selflabel}</param>
+				<param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input">/user/modifyUser.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/gif,image/bmp,image/jpg,image/pjpg,image/png,image/x-png,image/jpeg,image/pjpeg</param>
+				<param name="maximumSize">10240</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+	    
+	    <!-- 删除用户 -->
+	    <action name="deleteUser" class="userAction" method="deleteUser">
+	        <result type="redirectAction">
+	            <param name="actionName">listUser</param>
+	            <param name="userstatus">${userstatus}</param>
+	        </result>
+	    </action>
+	    
+	    <!-- 群删用户 -->
+	    <action name="groupDeleteUser" class="userAction" method="groupDeleteUser">
+	    	<result type="redirectAction">
+	    		<param name="actionName">listUser</param>
+	            <param name="userstatus">${userstatus}</param>
+	    	</result>
+	    </action>
+	    
+	    <!-- 审批、启用准备 -->
+	    <action name="toGroupOperationP" class="userAction" method="toGroupOperationP">
+	    	<result>/user/groupOperation.jsp</result>
+	    </action>
+	    
+	   <!-- 审批、启用 -->
+	   <action name="groupOperation" class="userAction" method="groupOperation">
+	        <result type="redirectAction">
+	            <param name="actionName">listUser</param>
+	            <param name="userstatus">${userstatus}</param>
+	        </result>
+	        <result name="input">/user/groupOperation.jsp</result>
+	    </action>
+	    
+	    <!-- 账号停用 -->
+	    <action name="groupDisableAccount" class="userAction" method="groupDisableAccount">
+	    	<result type="redirectAction">
+	    		<param name="actionName">listUser</param>
+	            <param name="userstatus">1</param>
+	    	</result>
+	    </action>
+	</package>
+</struts>

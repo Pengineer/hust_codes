@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="resume" extends="default" namespace="/resume">
+		<action name="listMyResume" class="resumeAction" method="listMyResume">
+			<result>/jsp/recruitment/resume/listMyResume.jsp</result>
+		</action>
+		<action name="toAddResume" class="resumeAction" method="toAddResume">
+			<result>/jsp/recruitment/resume/addResume.jsp</result>
+		</action>
+		<action name="add" class="resumeAction" method="add">
+			<result>/jsp/recruitment/resume/addResume.jsp</result>
+		</action>
+		<action name="listAllResume" class="resumeAction" method="listAllResume">
+			<result>/jsp/recruitment/resume/listAllResume.jsp</result>
+		</action>
+		<action name="listPositionResume" class="positionResumeAction" method="listPositionResume">
+			<result>/jsp/recruitment/resume/listPositionResume.jsp</result>
+		</action>
+		<action name="listInnerTalent" class="resumeAction" method="listInnerTalent">
+			<result>/jsp/recruitment/resume/listInnerTalent.jsp</result>
+		</action>
+		<action name="listOuterTalent" class="resumeAction" method="listOuterTalent">
+			<result>/jsp/recruitment/resume/listOuterTalent.jsp</result>
+		</action>
+	</package>
+</struts>

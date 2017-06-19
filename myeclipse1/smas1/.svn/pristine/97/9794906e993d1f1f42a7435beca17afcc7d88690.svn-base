@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="selectExpert" extends="global" namespace="/expert/select">
+		<!-- 进入列表 -->
+		<action name="toList" class="selectExpertAction" method="toList">
+			<result>/expert/select/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="selectExpertAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="selectExpertAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="selectExpertAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="selectExpertAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="selectExpertAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toPopAdd" class="selectExpertAction" method="toPopAdd">
+			<result>/expert/select/popAdd.jsp</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 添加 -->
+		<action name="popAdd" class="selectExpertAction" method="popAdd">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+</struts>

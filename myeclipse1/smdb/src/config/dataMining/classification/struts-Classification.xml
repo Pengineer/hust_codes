@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="classfication" extends="main" namespace="/dataMining/classification">
+		
+		<!-- 模型训练 -->
+		<action name="trainModel" class="classificationAction" method="trainModel">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 检测并获取模型名 -->
+		<action name="fetchModelName" class="classificationAction" method="fetchModelName">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 项目预测配置 -->
+		<action name="toPredictConfig" class="classificationAction" method="toPredict">
+			<result>/dataMining/classification/toPredict.jsp</result>
+		</action>
+		
+		<!-- 进入一般项目预测 -->
+		<action name="toPredict" class="classificationAction" method="toPredict">
+			<result>/dataMining/classification/predict.jsp</result>
+		</action>
+		
+		<!-- 一般项目预测 -->
+		<action name="predict" class="classificationAction" method="predict">
+ 			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="list" class="classificationAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="classificationAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="classificationAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="classificationAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	</package>
+
+</struts>

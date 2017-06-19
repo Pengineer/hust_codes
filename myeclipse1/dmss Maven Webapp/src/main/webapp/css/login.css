@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：dmss.css
+ *
+ * 文件说明：登录页面、注册页面的样式等。
+ *
+ *************************************************************************/
+
+/*******************--页面布局--***************/
+
+/*login-page*/
+.header{background: url("../images/header_bg_old.jpg");border-bottom: 1px solid #E5E5E5;height: 71px;overflow: hidden;}
+.index-content{width:1050px;height:500px;margin:0 auto;}
+.content-left{float:left;margin:10px; width:680px;}
+.content-right{float:left;margin: 10px;width:320px;}
+.content-bottom{float:left;width:100%;}
+.footer{border-top: 1px solid #EBEBEB;bottom: 0;height: 60px;overflow: hidden;width: 100%;clear:both;}
+.footer-bar{width:450px;margin: 20px auto 0 auto;}
+/*end*/
+
+/*注册*/
+
+
+/*end*/
+
+/*******************--基本公用--***************/
+/*字体*/
+.size16{font-size:16px;}
+.warning{color:red;font-size:14px;}
+.text-right{text-align:right;padding-right:10px;}
+.text-center{text-align:center;}
+/*end*/
+
+/*输入框*/
+.msg-input{background: none repeat scroll 0 0 #FFFFFF;border-color: #C0C0C0 #D9D9D9 #D9D9D9;border-radius: 1px;border-style: solid;border-width: 1px;padding: 0 8px;direction: ltr;font-size: 15px;height: 32px;width: 90%;}
+/*end*/
+
+/*******************--模块--***************/
+
+/*登录模块*/
+.signin-box {background: #F1F1F1;border: 1px solid #E5E5E5;	height:300px;padding: 20px 25px 15px;}
+.signin-box label {display: block;}
+.signin-box input[type="submit"] {font-size: 13px;height: 32px;margin: 0 1.5em 1.2em 0;}
+.signin-box h2 {font-size: 16px;height: 16px;line-height: 17px;position: relative;}
+.signin-box div {margin: 0 0 15px;}
+.signin-box input[type="submit"] {font-size: 13px;height: 32px;margin: 0 1.5em 0 0;}
+/*end*/
+
+/*产品信息*/
+.product-about-col-left {float:left;width:300px;padding:10px 25px;}
+.ic_cloud,
+.ic_search,
+.ic_download {float: left;width:72px;height: 72px;margin-bottom: -2em;padding: 0 45px;}
+.product-about-heading {color: #565656;font-size: 18px;font-weight: bold;}
+.product-about-text {padding: 5px 20px;}
+/*end*/
+
+/*注册页面*/
+.register-content {width:1050px; margin:0 auto; background:#f1f1f1;padding:10px;}
+.register-title {font-size:20px;font-weight:bold;margin:10px 150px 10px;}
+#register-form {margin:5px 150px;}
+/*end*/
+

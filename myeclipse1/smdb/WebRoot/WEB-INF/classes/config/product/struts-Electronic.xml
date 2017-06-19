@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="Electronic" extends="main" namespace="/product/electronic">
+	
+		<action name="toList" class="ElectronicAction" method="toList">
+			<result>/product/electronic/list.jsp</result>
+		</action>
+
+		<action name="list" class="ElectronicAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="ElectronicAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="ElectronicAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="ElectronicAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="ElectronicAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="ElectronicAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdd" class="ElectronicAction" method="toAdd">
+			<result>/product/electronic/add.jsp</result>
+		</action>
+		
+		<action name="add" class="ElectronicAction" method="add"> 
+			<param name="savePath">/upload/product/electronic</param>
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="actionName">toView</param>	
+	        </result>
+	        <result name="finish" type="json"><param name="root">jsonMap</param></result>
+<!--			<result name="finish">/product/extIf/popAdd.jsp</result>-->
+			<result name="input">${inputView}</result>
+		</action>
+		
+	 	<action name="toModify" class="ElectronicAction" method="toModify">
+			<result>/product/electronic/modify.jsp</result>
+			<result name="finish">/product/extIf/popModifyElectronic.jsp</result>
+	  	</action>
+	  	
+	 	<action name="modify" class="ElectronicAction" method="modify">
+ 			<param name="savePath">/upload/product/electronic</param>
+ 	    	<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="update">1</param>
+				<param name="actionName">toView</param>	
+	        </result>
+	        <result name="finish" type="json"><param name="root">jsonMap</param></result>
+	        <result name="input">/product/electronic/modify.jsp</result>
+		</action>
+		
+		<action name="delete" class="ElectronicAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	   	
+		<action name="toView" class="ElectronicAction" method="toView">
+			<result>/product/electronic/view.jsp</result>
+			<result name="popView">/product/extIf/popViewElectronic.jsp</result>
+		</action>
+		
+		<action name="view" class="ElectronicAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="ElectronicAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="ElectronicAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="ElectronicAction" method="toAudit">
+			<result>/product/popAudit.jsp</result>
+		</action>
+		
+		<action name="audit" class="ElectronicAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewAudit" class="ElectronicAction" method="viewAudit">
+			<result>/product/popViewAudit.jsp</result>
+		</action>
+		
+		<action name="toAddApply" class="ElectronicAction" method="toAddApply">
+			<result>/product/popAddApply.jsp</result>
+		</action>
+		
+		<action name="toModifyApply" class="ElectronicAction" method="toModifyApply">
+			<result>/product/popModifyApply.jsp</result>
+		</action>
+		
+	    <action name="download" class="ElectronicAction" method="download">
+  			<result type="stream">
+ 	    		<param name="inputName">targetFile</param>
+	 	   		<param name="bufferSize">4096</param>
+	 	   		<param name="contentType">application/octet-stream</param>
+	 	   		<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>   
+	 		</result>
+	 	</action>
+	 	
+	   	<action name="validateFile" class="ElectronicAction" method="validateFile">
+   			<result type="json"><param name="root">jsonMap</param></result>
+   			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+  		</action>
+	  	 	
+	   	<action name="exAdd" class="ElectronicAction" method="exAdd">
+   			<result type="json"><param name="root">jsonMap</param></result>
+   			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	   	</action>
+	   	
+	</package>
+</struts>

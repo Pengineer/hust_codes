@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="main" extends="global" namespace="/main">
+		<!-- right帧，主页面 -->
+		<action name="right" class="mainAction" method="right">
+			<result name="success">/main/right.jsp</result>
+		</action>
+	
+		<!-- 获取页面显示的相关信息 -->
+		<action name="toIndex" class="mainAction" method="toIndex">
+			<result>/index.jsp</result>
+		</action>
+		
+		<!-- 生成验证码 -->
+		<action name="rand" class="mainAction" method="rand">
+			<result type="stream"> 
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>	  
+			</result>   
+		</action>
+		
+		<!-- 更改查看的年份 -->
+		<action name="changeYear" class="mainAction" method="changeYear">
+			<result></result>
+		</action>
+		
+		<!-- 进入系统配置页面 -->
+		<action name="toConfig" class="mainAction" method="toConfig">
+			<result>/sysconfig/config.jsp</result>
+		</action>
+		
+		<!-- 进入配置上传路径页面 -->
+		<!-- 
+		<action name="toConfigUpload" class="mainAction" method="toConfigUpload">
+			<result>/sysconfig/uploadConfig.jsp</result>
+		</action>
+		 -->
+		<!-- 配置上传路径 -->
+		<!--  
+		<action name="configUpload" class="mainAction" method="configUpload">
+			<result type="redirectAction">toConfig</result>
+		</action>
+		-->
+		<!-- 进入配置页面大小页面 -->
+		<action name="toConfigPageSize" class="mainAction" method="toConfigPageSize">
+			<result>/sysconfig/pageConfig.jsp</result>
+		</action>
+		
+		<!-- 配置页面大小 -->
+		<action name="configPageSize" class="mainAction" method="configPageSize">
+			<result type="redirectAction">toConfig</result>
+		</action>
+		
+		<!-- 进入配置系统状态 -->
+		<action name="toConfigSystemStatus" class="mainAction" method="toConfigSystemStatus">
+			<result>/sysconfig/systemStatusConfig.jsp</result>
+		</action>
+		
+		<!-- 配置系统状态 -->
+		<action name="configSystemStatus" class="mainAction" method="configSystemStatus">
+			<result type="redirectAction">toConfig</result>
+		</action>
+		
+		<!-- 2进入查看评审参数页面 -->
+		<action name="viewConfigGeneral" class="mainAction" method="viewConfigGeneral">
+			<result>/reviewconfig/viewGeneral.jsp</result>
+		</action>
+		
+		<!-- 3进入配置评审参数页面 -->
+		<action name="toConfigGeneral" class="mainAction" method="toConfigGeneral">
+			<result>/reviewconfig/configGeneral.jsp</result>
+		</action>
+		
+		<!-- 2进入查看评审参数页面 -->
+		<action name="viewConfigInstp" class="mainAction" method="viewConfigInstp">
+			<result>/reviewconfig/viewInstp.jsp</result>
+		</action>
+		
+		<!-- 3进入配置评审参数页面 -->
+		<action name="toConfigInstp" class="mainAction" method="toConfigInstp">
+			<result>/reviewconfig/configInstp.jsp</result>
+		</action>
+		
+		<!--1配置评审参数 -->
+		<action name="configGeneral" class="mainAction" method="configGeneral">
+			<result type="redirectAction">viewConfigGeneral</result>
+		</action>
+		
+		<!--1配置评审参数 -->
+		<action name="configInstp" class="mainAction" method="configInstp">
+			<result type="redirectAction">viewConfigInstp</result>
+		</action>
+		
+		<!-- 进入配置年份页面 -->
+		<action name="toConfigYear" class="mainAction" method="toConfigYear">
+			<result>/sysconfig/yearConfig.jsp</result>
+		</action>
+		
+		<!-- 配置年份 -->
+		<action name="configYear" class="mainAction" method="configYear">
+			<result type="redirectAction">toConfig</result>
+		</action>
+		
+		<!-- 配置同步数据 -->
+		<action name="dataManage" class="mainAction" method="toSynData">
+			<result>/sysconfig/dataManage.jsp</result>
+		</action>
+		
+		<!-- 进入配置邮件页面 -->
+		<action name="toConfigMail" class="mainAction" method="toConfigMail">
+			<result>/sysconfig/mailConfig.jsp</result>
+		</action>
+		
+		<!-- 配置邮件 -->
+		<action name="configMail" class="mainAction" method="configMail">
+			<result type="redirectAction">toConfig</result>
+		</action>
+		
+		<!-- 进入查看评审参数页面 -->
+		<action name="viewConfigAward" class="mainAction" method="viewConfigAward">
+			<result>/reviewconfig/viewAward.jsp</result>
+		</action>
+		
+		<!-- 进入配置评审参数页面 -->
+		<action name="toConfigAward" class="mainAction" method="toConfigAward">
+			<result>/reviewconfig/configAward.jsp</result>
+		</action>
+		
+		<!--配置评审参数 -->
+		<action name="configAward" class="mainAction" method="configAward">
+			<result type="redirectAction">viewConfigAward</result>
+		</action>
+		
+	</package>
+</struts>

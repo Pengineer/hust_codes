@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="attendance" extends="default" namespace="/attendance">
+
+		
+		<action name="toList" class="attendanceAction" method="toList">
+			<result name="onetwo">/jsp/oa/attendance/listOneTwo.jsp</result>
+			<result name="three">/jsp/oa/attendance/listThree.jsp</result>
+			<result name="four">/jsp/oa/attendance/listFour.jsp</result>
+			<result name="five">/jsp/oa/attendance/listFive.jsp</result>
+		</action>
+		
+		<action name="list" class="attendanceAction" method="list">
+			<result name="onetwo" type="json"><param name="root">jsonMap</param></result>
+			<result name="three" type="json"><param name="root">jsonMap</param></result>
+			<result name="four" type="json"><param name="root">jsonMap</param></result>
+			<result name="five" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="attendanceAction" method="toAdd">
+			<result name="one">/jsp/oa/attendance/addOne.jsp</result>
+			<result name="two">/jsp/oa/attendance/addTwo.jsp</result>
+			<result name="three">/jsp/oa/attendance/addThree.jsp</result>
+			<result name="four">/jsp/oa/attendance/addFour.jsp</result>
+			<result name="five">/jsp/oa/attendance/addFive.jsp</result>
+		</action>
+		
+		<action name="add" class="attendanceAction" method="add">
+			<result name="one">/jsp/oa/attendance/addOne.jsp</result>
+			<result name="two">/jsp/oa/attendance/addTwo.jsp</result>
+			
+			<result name="three" type = "redirectAction">
+				<param name="actionName">toList</param> 
+				<param name="namespace">/attendance</param>
+				<param name="tag">3</param> 
+			</result>
+			
+			<result name="four" type = "redirectAction">
+				<param name="actionName">toList</param> 
+				<param name="namespace">/attendance</param>
+				<param name="tag">4</param> 
+			</result>
+			
+			<result name="five" type = "redirectAction">
+				<param name="actionName">toList</param> 
+				<param name="namespace">/attendance</param>
+				<param name="tag">5</param> 
+			</result>
+		</action>
+		
+		<action name="toAudit" class="attendanceAction" method="toAudit">
+			<result name = "three">/jsp/oa/attendance/auditThree.jsp</result>
+			<result name = "four">/jsp/oa/attendance/auditFour.jsp</result>
+			<result name = "five">/jsp/oa/attendance/auditFive.jsp</result>
+		</action>
+		
+		<action name="audit" class="attendanceAction" method="audit">
+			<result name = "three">/jsp/oa/attendance/auditThree.jsp</result>
+			<result name = "four">/jsp/oa/attendance/auditFour.jsp</result>
+			<result name = "five">/jsp/oa/attendance/auditFive.jsp</result>
+		</action>
+		
+		<action name="delete" class="attendanceAction" method="delete">
+			<result>/jsp/oa/attendance/list.jsp</result>
+		</action>
+	</package>
+</struts>

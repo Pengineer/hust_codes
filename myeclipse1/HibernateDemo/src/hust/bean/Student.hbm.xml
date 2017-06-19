@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="hust.bean">
+	<class name="hust.bean.Student" table="t_student">   <!-- 表名大小写敏感 -->
+		<id name="id" column="c_id"></id>
+		
+		<property name="name" column="c_name"></property>
+		<property name="age" column="c_age"></property>
+	</class>
+</hibernate-mapping>

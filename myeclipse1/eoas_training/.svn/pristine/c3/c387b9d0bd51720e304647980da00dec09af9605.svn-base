@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.AccountPosition">
+	<resultMap type="AccountPosition" id="accountPositionResult">
+		<id property="id" column="C_ID"/>
+		<result property="collectDate" column="C_COLLECT_DATE" />
+		<result property="collectStatus" column="C_COLLECT_STATUS" />
+		<association property="account" column="C_ACCOUNT_ID" resultMap="accountMap"/>
+		<association property="position" column="C_POSITION_ID" resultMap="positionMap" />
+	</resultMap>
+
+	<resultMap id="accountMap" type="Account">
+		<id property="id" column="C_ACCOUNT_ID" />
+		<result property="accountType" column="C_ACCOUNT_TYPE" />
+		<result property="email" column="C_EMAIL" />
+		<result property="password" column="C_PASSWORD" />
+		<result property="belongId" column="C_BELONG_ID"/>
+	</resultMap>
+	
+	<resultMap id="positionMap" type="Position" >
+		<id property = "id" column="C_POSITION_ID" />
+		<result property="place" column="C_PLACE" />
+		<result property="name" column="C_NAME" />
+		<result property="releaseTime" column="C_RELEASE_TIME" />
+		<result property="number" column="C_NUMBER" />
+		<result property="responsibility" column="C_RESPONSIBILITY" />
+		<result property="requirement" column="C_REQUIREMENT" />
+		<result property="type" column="C_TYPE"/>
+		<result property="expireDate" column="C_EXPIRE_TIME"/>
+		<result property="viewCount" column="C_VIEW_COUNT"/>
+	</resultMap>
+	
+		<!-- 创建简历 -->
+	<insert id="insert" parameterType="AccountPosition" useGeneratedKeys="true"
+		keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"
+			order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ACCOUNT_POSITION
+		(
+		C_ID,
+		C_ACCOUNT_ID,
+		C_POSITION_ID,
+		C_COLLECT_DATE,
+		C_COLLECT_STATUS
+		)
+		values
+		(
+		#{id,jdbcType=VARCHAR},
+		#{account.id,jdbcType=VARCHAR},
+		#{position.id,jdbcType=VARCHAR},
+		#{collectDate,jdbcType=VARCHAR},
+		#{collectStatus,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+<!-- 	<update id="insert" parameterType="java.lang.String">
+		update T_ACCOUNT_POSITION set
+			C_ACCOUNT_ID = {account.id,jdbcType=VARCHAR},
+			C_POSITION_ID = {position.id,jdbcType=VARCHAR},
+			C_COLLECT_DATE = {collectDate,jdbcType=DATE},
+			C_COLLECT_STATUS = {collectStatus,jdbcType=NUMERIC}
+	</update> -->
+
+	<select id="list" parameterType="java.lang.String" resultMap="accountPositionResult">
+		SELECT * FROM T_ACCOUNT_POSITION 
+		<where>
+			<if test="accountId != null">
+				C_ACCOUNT_ID = #{accountId}
+			</if>
+			<if test="positionId != null">
+				and C_POSITION_ID = #{positionId}
+			</if>
+		</where>
+	</select>
+		
+		<!-- 职位收藏列表 -->
+	<select id="listMyCollect" parameterType="map" resultMap="accountPositionResult">
+		select * from T_ACCOUNT_POSITION 
+     		join T_POSITION on  T_POSITION.C_ID = T_ACCOUNT_POSITION.C_POSITION_ID 
+     		join T_ACCOUNT on T_ACCOUNT.C_ID = T_ACCOUNT_POSITION.C_ACCOUNT_ID
+			where  T_ACCOUNT_POSITION.C_COLLECT_STATUS = 1 and T_ACCOUNT.C_ID = #{accountId}
+	</select>
+	
+	<!-- 所有收藏 -->
+	<select id="listAllCollect" resultMap="accountPositionResult">
+		select t_position.C_NAME,t_position.C_PLACE,T_ACCOUNT_POSITION.C_COLLECT_DATE,t_account.c_email
+		 from t_position join T_ACCOUNT_POSITION on t_position.c_id = T_ACCOUNT_POSITION.C_POSITION_ID join t_account on t_account.c_id = T_ACCOUNT_POSITION.c_account_id
+			where T_ACCOUNT_POSITION.C_COLLECT_STATUS = 1
+	</select>
+	
+	<!-- 根据帐号职位选择中间表 -->
+<!-- 	<select id="selectAccountPositionByAccountAndPosition" parameterType="java.lang.String" resultMap="accountPositionResult">
+		SELECT * FROM T_ACCOUNT_POSITION WHERE C_ACCOUNT_ID = #{0} AND C_POSITION_ID = #{1}
+	</select> -->
+</mapper> 

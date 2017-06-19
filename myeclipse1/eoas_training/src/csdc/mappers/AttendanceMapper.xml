@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Attendance">
+	<resultMap id="attendanceMap" type="Attendance">
+		<id property="id" column="atd_id" />
+		<result property="logoutTime" column="atd_logoutTime" />
+		<result property="signupTime" column="atd_signupTime" />
+		<result property="note" column="atd_note" />	
+		<result property="type" column="atd_type" />
+		<result property="applyTime" column="atd_applyTime" />
+		<result property="days" column="atd_days" />
+		<result property="startTime" column="atd_startTime" />
+		<result property="endTime" column="atd_endTime" />
+		<result property="status" column="atd_status" />
+		<result property="flag" column ="atd_flag" />
+		<result property="auditDateTime" column ="atd_auditDateTime" />
+		<result property="auditOpinion" column ="atd_auditOpinion" />
+		<result property="auditResult" column ="atd_auditResult" />
+		
+		<association property="account" javaType="Account" column = "atd_accountId">
+			<id property="id" column="a_id" />
+			<result property="email" column="a_email" />
+			<result property="password" column="a_password" />
+			<result property="accountType" column="a_accountType" />
+			<result property="belongId" column="a_belongId" />
+		</association>
+		
+		<association property="auditAccount" column="atd_auditAccountId" javaType="Account" >
+		
+		</association>
+	</resultMap>
+
+	
+	<sql id="depColumns">
+        <![CDATA[C_ID,C_NAME,C_PARENT_ID ]]>
+	</sql>
+
+	<!-- id:sql的唯一标示 parameterType:参数类型 resultType:结果类型 -->
+	<!-- 插入一条数据 ById -->
+	<insert id="insert" parameterType="Attendance" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ATTENDANCE (
+		C_ID,
+		C_ACCOUNT_ID,
+		C_LOGOUT_TIME,
+		C_SIGNUP_TIME,
+		C_NOTE,
+		C_TYPE,
+		C_APPLY_TIME,
+		C_DAYS,
+		C_START_TIME,
+		C_END_TIME,
+		C_STATUS,
+		C_AUDIT_ACCOUNT_ID,
+		C_FLAG,
+		C_AUDIT_DATETIME,
+		C_AUDIT_OPINION,
+		C_AUDIT_RESULT
+		) values (
+		#{id,jdbcType=VARCHAR},
+		#{account.id,jdbcType=VARCHAR},
+		#{logoutTime,jdbcType=DATE},
+		#{signupTime,jdbcType=DATE},
+		#{note,jdbcType=VARCHAR},
+		#{type,jdbcType=NUMERIC},
+		#{applyTime,jdbcType=DATE},
+		#{days,jdbcType=NUMERIC},
+		#{startTime,jdbcType=DATE},
+		#{endTime,jdbcType=DATE},
+		#{status,jdbcType=NUMERIC},
+		#{auditAccount.id,jdbcType=VARCHAR},
+		#{flag,jdbcType=NUMERIC},
+		#{auditDateTime,jdbcType=DATE},
+		#{auditOpinion,jdbcType=VARCHAR},
+		#{auditResult,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="update" parameterType="string">
+		update T_ATTENDANCE set
+			C_LOGOUT_TIME = #{logoutTime,jdbcType=DATE},
+			C_STATUS = #{status,jdbcType=NUMERIC},
+			C_AUDIT_ACCOUNT_ID = #{auditAccount.id,jdbcType=VARCHAR},
+			C_AUDIT_DATETIME = #{auditDateTime,jdbcType=DATE},
+			C_AUDIT_OPINION = #{auditOpinion,jdbcType=VARCHAR},
+			C_AUDIT_RESULT = #{auditResult,jdbcType=NUMERIC}
+		where C_ID = #{id}	
+	</update>
+
+	<delete id="delete" parameterType="string">
+		delete from T_ATTENDANCE where C_ID = #{id}
+	</delete>
+	
+	<select id = "load" parameterType = "string" resultMap = "attendanceMap">
+		select
+			atd.C_ID as atd_id,
+			atd.C_ACCOUNT_ID as atd_accountId,
+			atd.C_LOGOUT_TIME as atd_logoutTime,
+			atd.C_SIGNUP_TIME as atd_signupTime,
+			atd.C_NOTE as atd_note,
+			atd.C_TYPE as atd_type,
+			atd.C_APPLY_TIME as atd_applyTime,
+			atd.C_DAYS as atd_days,
+			atd.C_START_TIME as atd_startTime,
+			atd.C_END_TIME as atd_endTime,
+			atd.C_STATUS as atd_status,
+			atd.C_AUDIT_ACCOUNT_ID as atd_auditAccountId,
+			atd.C_FLAG as atd_flag,
+			atd.C_AUDIT_DATETIME as atd_auditDateTime,
+			atd.C_AUDIT_OPINION as atd_auditOpinion,
+			atd.C_AUDIT_RESULT as atd_auditResult,
+			a.C_ID as a_id,
+			a.C_EMAIL as a_email,
+			a.C_PASSWORD as a_password,	
+			a.C_ACCOUNT_TYPE as a_accountType,	
+			a.C_BELONG_ID as a_belongId
+		from T_ATTENDANCE atd 
+			left outer join T_ACCOUNT a on atd.C_ACCOUNT_ID = a.c_id
+		where
+			atd.C_ID = #{id}
+	</select>
+	
+	<select id = "loadTodaySignup" parameterType = "map" resultMap = "attendanceMap">
+		select
+			atd.C_ID as atd_id,
+			atd.C_ACCOUNT_ID as atd_accountId,
+			atd.C_LOGOUT_TIME as atd_logoutTime,
+			atd.C_SIGNUP_TIME as atd_signupTime,
+			atd.C_NOTE as atd_note,
+			atd.C_TYPE as atd_type,
+			atd.C_APPLY_TIME as atd_applyTime,
+			atd.C_DAYS as atd_days,
+			atd.C_START_TIME as atd_startTime,
+			atd.C_END_TIME as atd_endTime,
+			atd.C_STATUS as atd_status,
+			atd.C_AUDIT_ACCOUNT_ID as atd_auditAccountId,
+			atd.C_FLAG as atd_flag,
+			atd.C_AUDIT_DATETIME as atd_auditDateTime,
+			atd.C_AUDIT_OPINION as atd_auditOpinion,
+			atd.C_AUDIT_RESULT as atd_auditResult,
+			a.C_ID as a_id,
+			a.C_EMAIL as a_email,
+			a.C_PASSWORD as a_password,	
+			a.C_ACCOUNT_TYPE as a_accountType,	
+			a.C_BELONG_ID as a_belongId
+		from T_ATTENDANCE atd
+			left outer join T_ACCOUNT a on atd.C_ACCOUNT_ID = a.c_id
+		<where>
+			<if test = "flag != null">
+				a.c_id = #{accountId}
+			</if>
+			<if test = "date1 != null and date2 != null">
+				atd.C_SIGNUP_TIME between to_date(#{date1},'YYYY-MM-DD') and to_date(#{date2},'YYYY-MM-DD')
+			</if>
+		</where>
+	</select>
+	
+	<select id = "list" parameterType = "map" resultMap = "attendanceMap">
+		select
+			atd.C_ID as atd_id,		
+			atd.C_LOGOUT_TIME as atd_logoutTime,
+			atd.C_SIGNUP_TIME as atd_signupTime,
+			atd.C_NOTE as atd_note,
+			atd.C_TYPE as atd_type,
+			atd.C_APPLY_TIME as atd_applyTime,
+			atd.C_DAYS as atd_days,
+			atd.C_START_TIME as atd_startTime,
+			atd.C_END_TIME as atd_endTime,
+			atd.C_STATUS as atd_status,
+			atd.C_AUDIT_ACCOUNT_ID as atd_auditAccountId,
+			atd.C_FLAG as atd_flag,
+			atd.C_AUDIT_DATETIME as atd_auditDateTime,
+			atd.C_AUDIT_OPINION as atd_auditOpinion,
+			atd.C_AUDIT_RESULT as atd_auditResult,
+			a.C_ID as a_id,
+			a.C_EMAIL as a_email,
+			a.C_PASSWORD as a_password,	
+			a.C_ACCOUNT_TYPE as a_accountType,	
+			a.C_BELONG_ID as a_belongId 
+		from T_ATTENDANCE atd 
+			left outer join T_ACCOUNT a on atd.C_ACCOUNT_ID = a.c_id 
+		<where>
+			<if test = "flag != null">
+				atd.C_FLAG = #{flag} 
+			</if>
+			<choose>
+				<when test = "accountId != null and accountId != '10000000001'">
+					AND a.C_ID = #{accountId}
+				</when>
+				<otherwise>
+					AND 1=1
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	
+</mapper>

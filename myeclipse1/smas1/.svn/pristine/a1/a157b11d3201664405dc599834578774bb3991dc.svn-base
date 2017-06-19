@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：validate.css
+
+ * 文件说明：
+ * 本文件主要修饰用户管理模块验证信息的显示，包括注册、修改用户信息、
+ * 高级检索和找回密码。使用方法：在需要验证的jsp页面直接引用。
+ * 
+ * 历史记录：
+ * 2010-02-24  周中坚：整合修改并添加注释
+ * 2010-03-17  周中坚：修改文件使验证信息出现在文本框下方且无撑开的动作。
+ *************************************************************************/
+
+/****************************************************************
+ * 注册第一第二步修改学生教师信息
+ * 指明form id，再分别定义error和checked的格式（若需要）。
+ * 格式主要有颜色、图片、对齐方式、高度、字体等
+ * 以下的定义类似
+ ***************************************************************/
+#form_user div.error {
+	background: url("../../image/stop.gif") no-repeat 0px 0px;
+	padding-top: 1px;
+	padding-left: 12px;
+	font-size: 12px;
+	color: rgb(255, 66, 66);
+}
+#form_user div.checked {
+	background: url("../../image/pass.gif") no-repeat 0px 0px;
+}
+
+/* 修改用户信息 */
+#form_user_modifyUser div.error {
+	background: url("../../image/stop.gif") no-repeat 0px 0px;
+	padding-top: 1px;
+	padding-left: 12px;
+	font-size: 12px;
+	color: rgb(255, 66, 66);
+}
+#form_user_modifyUser div.checked {
+	background: url("../../image/pass.gif") no-repeat 0px 0px;
+}
+
+/* 找回密码 */
+#form_user_retrievePassword div.error {
+	background: url("../../image/stop.gif") no-repeat 0px 0px;
+	padding-top: 1px;
+	padding-left: 12px;
+	font-size: 12px;
+	color: rgb(255, 66, 66);
+}
+#form_user_retrievePassword div.checked {
+	background: url("../../image/pass.gif") no-repeat 0px 0px;
+}
+
+/* 高级检索和启用审批用户 */
+#form_user_label label.error {
+	padding-left: 2px;
+	padding-bottom: 0px;
+	color: rgb(255, 116, 0);
+}
+
+/* 登录 */
+#form_login label.error {
+	background: url("../../image/stop.gif") no-repeat 0px 0px;
+	padding-left: 16px;
+	font-size: 12px;
+	color: rgb(255, 66, 66);
+}
+#form_login label.checked {
+	background: url("../../image/pass.gif") no-repeat 0px 0px;
+}
+
+/* 修改密码 */
+#form_modify_password label.error {
+	background: url("../../image/stop.gif") no-repeat 0px 0px;
+	padding-left: 16px;
+	font-size: 12px;
+	color: rgb(255, 66, 66);
+}
+#form_modify_password label.checked {
+	background: url("../../image/pass.gif") no-repeat 0px 0px;
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.SinossProjectVariation" table="T_SINOSS_PROJECT_VARIATION">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="sinossProjectId" type="java.lang.String">
+			<column name="C_SINOSS_PROJECT_ID" />
+		</property>		
+		<property name="code" type="java.lang.String">
+			<column name="C_CODE" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="C_NAME" />
+		</property>
+		<property name="checkStatus" type="java.lang.Integer">
+            <column name="C_CHECK_STATUS" precision="1" scale="0" not-null="true" />
+        </property>
+		<property name="checkDate" type="java.util.Date">
+			<column name="C_CHECK_DATE" />
+		</property>
+		<property name="checker" type="java.lang.String">
+			<column name="C_CHECKER" />
+		</property>
+		<property name="checkInfo" type="java.lang.String">
+			<column name="C_CHECK_INFO" />
+		</property>
+		<property name="modifyReason" type="java.lang.String">
+			<column name="C_MODIFY_REASON" />
+		</property>
+		<property name="applyDate" type="java.util.Date">
+			<column name="C_APPLY_DATE" />
+		</property>
+		<property name="projectModifyType" type="java.lang.String">
+			<column name="C_PROJECT_MODIFY_TYPE" />
+		</property>
+		<property name="importedDate" type="java.util.Date">
+			<column name="C_IMPORTED_DATE" />
+		</property>
+		<property name="dumpDate" type="java.util.Date">
+			<column name="C_DUMP_DATE" />
+		</property>
+		<property name="dumpPerson" type="java.lang.String">
+			<column name="C_DUMP_PERSON" />
+		</property>
+		<property name="importedPerson" type="java.lang.String">
+			<column name="C_IMPORTED_PERSON" />
+		</property>
+		<property name="from" type="java.lang.String">
+			<column name="C_FROM" />
+		</property>
+		<property name="sinossId" type="java.lang.String">
+			<column name="C_SINOSS_ID" />
+		</property>
+		<property name="typeCode" type="java.lang.String">
+			<column name="C_TYPE_CODE" />
+		</property>	
+		<property name="isAdded" type="java.lang.Integer">
+            <column name="C_IS_ADDED" precision="1" scale="0" not-null="true" />
+        </property>	
+        <property name="note" type="java.lang.String">
+            <column name="C_NOTE"/>
+        </property>
+		<many-to-one name="projectApplication" class="csdc.bean.ProjectApplication" fetch="join">
+            <column name="C_PROJECT_ID"/>
+        </many-to-one>
+        <many-to-one name ="projectGranted" class="csdc.bean.ProjectGranted" fetch="join">
+        	<column name="C_GRANTED_ID"/>
+        </many-to-one>
+        <many-to-one name="projectVariation" class="csdc.bean.ProjectVariation" fetch="join">
+        	<column name="C_VARIATION_ID"/>
+        </many-to-one>
+	</class>
+
+</hibernate-mapping>

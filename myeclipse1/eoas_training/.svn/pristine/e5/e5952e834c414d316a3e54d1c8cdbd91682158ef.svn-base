@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Staff">
+	<resultMap id="staffMap" type="Staff">
+		<id property="id" column="C_ID" />
+		<result property="intime" column="C_INTIME" />
+		<result property="banknum" column="C_BANKNUM" />
+		<result property="staffnum" column="C_STAFFNUM" />
+		<result property="personid" column="C_PERSON_ID" />
+	</resultMap>
+
+	<insert id="insert" parameterType="Staff" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_STAFF (
+		C_ID,
+		c_person_id,
+		c_banknum,
+		c_staffnum)
+		C_intime,
+		values (
+		#{id,jdbcType=VARCHAR},
+		#{personid,jdbcType=VARCHAR},
+		#{banknum},
+		#{staffnum},
+		#{intime}
+		)
+	</insert>
+
+
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="hust.bean">
+	<class name="hust.bean.Teacher" table="t_teacher">
+		<id name="id" column="c_id">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="name" column="c_name" />
+		
+		<set name="students" table="t_teacher_student" cascade="all">   <!-- 多对多的时候，要指定中间表表名 -->
+			<key>
+				<column name="c_teacher_id" length="2" />   <!-- 中间表指向本类的外键列名 -->
+			</key>
+			<many-to-many class="hust.bean.Student" column="c_student_id" />
+		</set>
+	</class>
+</hibernate-mapping>

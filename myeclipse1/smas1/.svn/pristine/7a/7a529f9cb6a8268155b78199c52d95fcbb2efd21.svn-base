@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 配置Action部分 -->
+	<!-- 主配置文件struts.xml -->
+	<bean id="mainAction" class="csdc.action.MainAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 异步文件上传 -->
+	<bean id="uploadAction" class="csdc.action.UploadAction" scope="prototype" />
+	
+	<!-- 子配置struts-Expert.xml  -->
+	<bean id="expertAction" class="csdc.action.expert.ExpertAction" scope="prototype">
+		<property name="generalService" ref="generalService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置struts-SelectExpert.xml  -->
+	<bean id="selectExpertAction" class="csdc.action.expert.SelectExpertAction" scope="prototype">
+		<property name="generalService" ref="generalService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置struts-Role.xml -->
+	<bean id="roleAction" class="csdc.action.security.RoleAction" scope="prototype">
+		<property name="rolerightservice" ref="roleRightService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置struts-Right.xml -->
+	<bean id="rightAction" class="csdc.action.security.RightAction" scope="prototype">
+		<property name="rolerightservice" ref="roleRightService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置struts-User.xml -->
+	<bean id="userAction" class="csdc.action.UserAction" scope="prototype">
+		<property name="userservice" ref="userService" />
+		<property name="rolerightservice" ref="roleRightService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置struts-Mail.xml -->
+	<bean id="mailAction" class="csdc.action.mail.MailAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置高校统计 -->
+	<bean id="universityStatisticAction" class="csdc.action.statistic.review.UniversityStatisticAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<!-- 子配置，高校专家跨类信息统计 -->
+	<bean id="univReviewerStatisticAction" class="csdc.action.statistic.review.UnivReviewerStatisticAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 子配置专家统计 -->
+	<bean id="expertStatisticAction" class="csdc.action.statistic.review.ExpertStatisticAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="generalService" ref="generalService" />
+	</bean>
+	
+	<!-- 子配置，专家跨类评审信息统计 -->
+	<bean id="expertReviewerSticAction" class="csdc.action.statistic.review.ExpertReviewerStatisticAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="projectService" ref="projectService" />
+	</bean>
+
+	<!-- 子配置学科退避统计 -->
+	<bean id="disciplineStatisticAction" class="csdc.action.statistic.review.DisciplineStatisticAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+
+	<!-- 子配置警告统计 -->
+	<bean id="warnStatisticAction" class="csdc.action.statistic.review.WarnStatisticAction" scope="prototype">
+	</bean>
+	
+	<!-- 子配置高校使用情况 -->
+	<bean id="universityUseStatisticAction" class="csdc.action.statistic.review.UniversityUseStatisticAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>	
+	
+	<!-- 子配置struts-Selfspace.xml -->
+	<bean id="selfSpaceAction" class="csdc.action.SelfspaceAction" scope="prototype">
+		<property name="userservice" ref="userService" />
+	</bean>
+	
+	<!-- 子配置一般项目 -->
+	<bean id="generalAction" class="csdc.action.project.general.GeneralAction" scope="prototype">
+		<property name="generalService" ref="generalService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置一般项目 -->
+	<bean id="generalSpecialAction" class="csdc.action.project.general.SpecialAction" scope="prototype">
+		<property name="generalService" ref="generalService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置一般项目公示  -->
+	<bean id="generalPublicityAction" class="csdc.action.project.general.PublicityAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="generalService" ref="generalService" />
+		<property name="expertService" ref="expertService" />
+	</bean>
+	
+	<!-- 子配置一般项目立项  -->
+	<bean id="generalGrantedAction" class="csdc.action.project.general.GrantedAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="generalService" ref="generalService" />
+	</bean>
+	
+	<!-- 子配置一般项目初审  -->
+	<bean id="generalFirstAuditAction" class="csdc.action.project.general.FirstAuditAction" scope="prototype">
+		<property name="generalService" ref="generalService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置一般项目中检 -->
+	<bean id="generalMidinspectionAction" class="csdc.action.project.general.MidinspectionAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="generalService" ref="generalService" />	
+	</bean>
+	
+	<!-- 子配置一般项目变更 -->
+	<bean id="generalVariationAction" class="csdc.action.project.general.VariationAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="generalService" ref="generalService" />	
+	</bean>
+	
+	<!-- 子配置一般项目结项 -->
+	<bean id="generalEndinspectionAction" class="csdc.action.project.general.EndinspectionAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="generalService" ref="generalService" />	
+	</bean>
+			
+	<!-- 子配置基地项目 -->
+	<bean id="instpAction" class="csdc.action.project.instp.InstpAction" scope="prototype">
+		<property name="instpService" ref="instpService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+
+	<!-- 子配置基地项目初审  -->
+	<bean id="instpFirstAuditAction" class="csdc.action.project.instp.FirstAuditAction" scope="prototype">
+		<property name="instpService" ref="instpService" />
+		<property name="expertService" ref="expertService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置基地项目立项  -->
+	<bean id="instpGrantedAction" class="csdc.action.project.instp.GrantedAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="instpService" ref="instpService" />
+	</bean>
+	
+		<!-- 子配置一般项目中检 -->
+	<bean id="instpMidinspectionAction" class="csdc.action.project.instp.MidinspectionAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="instpService" ref="instpService" />	
+	</bean>
+	
+	<!-- 子配置一般项目变更 -->
+	<bean id="instpVariationAction" class="csdc.action.project.instp.VariationAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="instpService" ref="instpService" />	
+	</bean>
+	
+	<!-- 子配置一般项目结项 -->
+	<bean id="instpEndinspectionAction" class="csdc.action.project.instp.EndinspectionAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="instpService" ref="instpService" />	
+	</bean>
+	
+	<!-- 子配置struts-Finance.xml  -->
+	<bean id="financeAction" class="csdc.action.finance.FinanceAction" scope="prototype">
+		<property name="financeService" ref="financeService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="disciplineTreeAction" class="csdc.action.pop.select.DisciplineTreeAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- Execution相关 -->
+	<bean id="executionAction" class="csdc.action.system.ExecutionAction" scope="prototype" />
+	<!-- smdb 数据同步客户端 -->
+	<bean id="smdbClientAction" class="csdc.action.system.interfaces.SmdbClientAction" scope="prototype" />
+
+	<!-- 子配置struts-Log.xml -->
+	<bean id="logAction" class="csdc.action.system.LogAction" scope="prototype">
+		<property name="logService" ref="logService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 子配置人文社科奖励  -->
+	<bean id="moeSocialAction" class="csdc.action.award.MoeSocialAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="projectService" ref="projectService"/>
+		<property name="awardService" ref="awardService" />
+		<property name="expertService" ref="expertService" />
+	</bean>
+</beans>

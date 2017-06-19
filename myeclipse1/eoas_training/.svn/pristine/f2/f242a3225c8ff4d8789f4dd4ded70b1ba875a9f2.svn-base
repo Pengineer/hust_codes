@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="project" extends="default" namespace="/project">
+		<action name = "toList" class = "projectAction" method = "toList">
+			<result>/jsp/oa/project/list.jsp</result>
+		</action>
+	
+		<action name = "list" class = "projectAction" method = "list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name = "toTaskList" class = "projectAction" method = "toTaskList">
+			<result>/jsp/oa/project/taskList.jsp</result>
+		</action>
+	
+		<action name = "taskList" class = "projectAction" method = "taskList">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name = "toApply" class = "projectAction" method = "toApply">
+			<result>/jsp/oa/project/apply.jsp</result>
+		</action>
+		
+		<action name  = "apply" class = "projectAction" method = "apply">
+			<result>/jsp/oa/project/apply.jsp</result>
+		</action>
+		
+		<action name  = "claim" class = "projectAction" method = "claim">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name  = "load" class = "projectAction" method = "load">
+			<result>/jsp/oa/project/view-form.jsp</result>
+		</action>
+		
+		<action name  = "view" class = "projectAction" method = "view">
+			<result>/jsp/oa/project/view.jsp</result>
+		</action>
+		
+		<action name  = "confirm" class = "projectAction" method = "confirm">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name  = "refuse" class = "projectAction" method = "refuse">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name  = "complete" class = "projectAction" method = "complete">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

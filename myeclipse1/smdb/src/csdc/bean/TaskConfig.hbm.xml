@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.TaskConfig" table="T_TASK_CONFIG" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="400" not-null="true" />
+        </property>
+        <property name="executeTime" type="java.lang.String">
+            <column name="C_EXECUTE_TIME" length="100" />
+        </property>
+        
+        <property name="isAuto" type="java.lang.Integer">
+            <column name="C_IS_AUTO" precision="1" scale="0" not-null="true" />
+        </property>
+        
+        <property name="interval" type="java.lang.Integer">
+            <column name="C_INTERVAL" precision="3" scale="0" />
+        </property>
+        
+        <set name="taskTaskConfig" inverse="true" cascade="all">
+            <key>
+                <column name="C_TASK_CONFIG_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.TaskTaskConfig" />
+        </set>
+    </class>
+</hibernate-mapping>

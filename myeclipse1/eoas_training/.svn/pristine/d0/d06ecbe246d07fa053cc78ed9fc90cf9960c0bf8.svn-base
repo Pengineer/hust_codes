@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name = "document" extends = "default" namespace = "/document">
+
+		<action name = "toList" class = "documentAction" method = "toList">
+			 <result>/jsp/oa/document/listOne.jsp</result>
+		</action>
+		
+		<action name = "list" class = "documentAction" method = "list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name = "toAdd" class = "documentAction" method = "toAdd">
+			 <result>/jsp/oa/document/add.jsp</result>
+		</action>
+
+		<action name = "add" class = "documentAction" method = "add">
+			 <result>/jsp/oa/document/view.jsp</result>
+		</action>
+		
+		<action name = "toModify" class = "documentAction" method = "toModify">
+			 <result>/jsp/oa/document/modify.jsp</result>
+		</action>
+		
+		<action name = "modify" class = "documentAction" method = "modify">
+			 <result>/jsp/oa/document/view.jsp</result>
+		</action>
+		
+		<action name = "delete" class = "documentAction" method = "delete">
+			 <result>/jsp/oa/document/listOne.jsp</result>
+		</action>
+		
+		<action name = "view" class = "documentAction" method = "view">
+			 <result>/jsp/oa/document/view.jsp</result>
+		</action>
+		
+		<action name = "toAudit" class = "documentAction" method = "toAudit">
+			 <result>/jsp/oa/document/audit.jsp</result>
+		</action>
+		
+		<action name = "audit" class = "documentAction" method = "audit">
+			 <result>/jsp/oa/document/viewAudit.jsp</result>
+		</action>
+	</package>
+</struts>

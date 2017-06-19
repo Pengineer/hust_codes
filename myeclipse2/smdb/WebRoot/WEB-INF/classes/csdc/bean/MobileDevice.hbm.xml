@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.MobileDevice" table="T_MOBILE_DEVICE" >
+	    <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="deviceToken" type="java.lang.String">
+            <column name="C_DEVICE_TOKEN" length="400"/>
+        </property>        
+        <property name="mobileTag" type="java.lang.String">
+            <column name="C_MOBILE_TAG" length="40"/>
+        </property>
+        <property name="registerDate" type="java.util.Date">
+            <column name="C_REGISTER_DATE"/>
+        </property>
+    </class>               
+</hibernate-mapping>

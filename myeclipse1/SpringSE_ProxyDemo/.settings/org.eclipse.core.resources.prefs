@@ -1,0 +1,9 @@
+#Fri Feb 19 09:12:04 CST 2016
+eclipse.preferences.version=1
+encoding//src/AOP\u4E2D\u7684\u4E00\u4E9B\u6982\u5FF5=GBK
+encoding//src/edu/hust/jdkproxy/InvokeClass.java=GBK
+encoding//src/edu/hust/jdkproxy/JDKProxyFactory.java=GBK
+encoding//src/edu/hust/service/impl/PersonServiceBean.java=GBK
+encoding//src/edu/hust/springproxy/CGlibProxyFactory.java=GBK
+encoding//src/junit/test/JDKProxyTest.java=GBK
+encoding//src/junit/test/SpringEnhancerTest.java=GBK

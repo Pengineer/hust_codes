@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="extIf" location="10,10" size="280,245">
+    <action name="toAdd" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="65,162" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/security/account/extIf/add.jsp" location="356,30" size="150,55" />
+</Struts2Diagram>
+

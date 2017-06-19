@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Account">
+	<resultMap id="accountResultMap1" type="Account">
+		<id property="id" column="account_id" />
+		<result property="email" column="account_email"/>
+		<result property="password" column="account_password"/>
+		<result property="belongId" column="account_belongId"/>
+		<result property="name" column="account_name"/>
+		<result property="registerDate" column="account_registerDate"/>
+		<result property="lastLoginDate" column="account_lastLoginDate"/>
+		<result property="lastLoginIp" column="account_lastLoginIp"/>
+		<result property="loginCount" column="account_loginCount"/>
+		<result property="mailboxVerified" column="account_mailboxVerified"/>
+		<result property="mailboxVerifyCode" column="account_mailboxVerifyCode"/>
+		<result property="isSuperUser" column="account_isSuperUser"/>	
+	</resultMap>
+
+	<insert id="insert" parameterType="Account" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ACCOUNT 
+			(C_ID, C_NAME, C_EMAIL, C_PASSWORD, C_REGISTER_DATE, C_LAST_LOGIN_DATE, C_LAST_LOGIN_IP, C_LOGIN_COUNT, C_MAILBOX_VERIFIED, C_MAILBOX_VERYFY_CODE, C_IS_SUPERUSER, C_BELONG_ID) 
+		values 
+			(#{id, jdbcType=VARCHAR},
+			#{name, jdbcType=VARCHAR},
+			#{email, jdbcType=VARCHAR},
+			#{password, jdbcType=VARCHAR},
+			#{registerDate, jdbcType=DATE},
+			#{lastLoginDate, jdbcType=DATE},
+			#{lastLoginIp, jdbcType=VARCHAR},
+			#{loginCount, jdbcType=INTEGER},
+			#{mailboxVerified, jdbcType=BOOLEAN},
+			#{mailboxVerifyCode, jdbcType=VARCHAR},
+			#{isSuperUser, jdbcType=INTEGER},
+			#{belongId, jdbcType=VARCHAR}
+			)
+	</insert>
+
+    <update id="update" parameterType="Account">
+    	update T_ACCOUNT set
+			<if test="email != null">C_EMAIL=#{email},</if>
+			<if test="password != null">"C_PASSWORD"=#{password},</if>
+			<if test="belongId != null">C_BELONG_ID=#{belongId},</if>
+			<if test="lastLoginDate != null">C_LAST_LOGIN_DATE=#{lastLoginDate},</if>
+    		<if test="lastLoginIp != null">C_LAST_LOGIN_IP=#{lastLoginIp},</if>
+    		<if test="loginCount != null">C_LOGIN_COUNT=#{loginCount}</if>
+		where C_ID = #{id}
+    </update>
+    
+    <delete id = "delete" parameterType = "string">
+    	delete from T_ACCOUNT where C_ID = #{id}
+    </delete>
+    
+    <select id="load" parameterType="java.lang.String" resultMap="accountResultMap1">
+    	select
+    	    account.C_ID as account_id,
+    		account.C_EMAIL as account_email,
+    		account.C_PASSWORD as account_password,
+    		account.C_BELONG_ID as account_belongId,
+    		account.C_NAME as account_name,
+    		account.C_REGISTER_DATE as account_registerDate,
+    		account.C_LAST_LOGIN_DATE as account_lastLoginDate,
+    		account.C_LAST_LOGIN_IP as account_lastLoginIp,
+    		account.C_LOGIN_COUNT as account_loginCount,
+    		account.C_MAILBOX_VERIFIED as account_mailboxVerified,
+    		account.C_MAILBOX_VERYFY_CODE as account_mailboxVerifyCode,
+    		account.C_IS_SUPERUSER as account_isSuperUser
+    	from T_ACCOUNT account where  C_ID = #{id,jdbcType=VARCHAR}
+    </select>
+    
+    <select id="find" parameterType="map" resultMap="accountResultMap1">
+    	select
+    		account.C_ID as account_id,
+    		account.C_EMAIL as account_email,
+    		account.C_PASSWORD as account_password,
+    		account.C_BELONG_ID as account_belongId,
+    		account.C_NAME as account_name,
+    		account.C_REGISTER_DATE as account_registerDate,
+    		account.C_LAST_LOGIN_DATE as account_lastLoginDate,
+    		account.C_LAST_LOGIN_IP as account_lastLoginIp,
+    		account.C_LOGIN_COUNT as account_loginCount,
+    		account.C_MAILBOX_VERIFIED as account_mailboxVerified,
+    		account.C_MAILBOX_VERYFY_CODE as account_mailboxVerifyCode,
+    		account.C_IS_SUPERUSER as account_isSuperUser
+    	from T_ACCOUNT account
+    	where C_EMAIL = #{email} or C_NAME = #{email}
+    </select>
+    
+	<select id="find_count" parameterType="map" resultType="int">
+        select count(*) from t_account 
+         <where>
+            <if test="email!=null">
+                email like #{email} 
+             </if>
+        </where>
+        limit #{pageOffset},#{pageSize}
+	</select>
+	
+    <select id="list" parameterType="map" resultMap="accountResultMap1">
+        select 
+            account.C_ID as account_id,
+    		account.C_EMAIL as account_email,
+    		account.C_PASSWORD as account_password,
+    		account.C_BELONG_ID as account_belongId,
+    		account.C_NAME as account_name,
+    		account.C_REGISTER_DATE as account_registerDate,
+    		account.C_LAST_LOGIN_DATE as account_lastLoginDate,
+    		account.C_LAST_LOGIN_IP as account_lastLoginIp,
+    		account.C_LOGIN_COUNT as account_loginCount,
+    		account.C_MAILBOX_VERIFIED as account_mailboxVerified,
+    		account.C_MAILBOX_VERYFY_CODE as account_mailboxVerifyCode,
+    		account.C_IS_SUPERUSER as account_isSuperUser
+        from T_ACCOUNT account
+        <where>
+            <if test="email != null">
+                c_email = #{email} 
+             </if>
+             <if test="belongId != null">
+                C_BELONG_ID = #{belongId} 
+             </if>
+        </where>
+         <if test="sort!=null">
+             order by ${sort}
+             <if test="order!=null">
+                 ${order}
+             </if>
+         </if>
+    </select>
+    
+    <!-- 查询帐号的权限 -->
+	<select id="listRightCodeByAccountId" parameterType="java.util.Map" resultMap="rightResultMap">
+		select  T_RIGHT.C_CODE from T_RIGHT, T_ROLE_RIGHT, T_ACCOUNT_ROLE
+		  where T_ACCOUNT_ROLE.C_ACCOUNT_ID = #{accountId}
+		  and T_ACCOUNT_ROLE.C_ROLE_ID = T_ROLE_RIGHT.C_ROLE_ID 
+		  and T_ROLE_RIGHT.C_RIGHT_ID = T_RIGHT.C_ID
+	</select>
+	
+	<select id="checkByEmailAndPassword" parameterType="java.lang.String" resultMap="accountResultMap">
+		SELECT * FROM T_ACCOUNT WHERE C_EMAIL = #{0} AND C_PASSWORD = #{1}
+	</select>
+	
+	
+	<resultMap id="accountResultMap" type="Account">
+		<id property="id" column="C_ID" />
+		<result property="accountType" column="C_ACCOUNT_TYPE" />
+		<result property="email" column="C_EMAIL" />
+		<result property="password" column="C_PASSWORD" />
+		<result property="belongId" column="C_BELONG_ID"/>
+	</resultMap>
+	
+	<resultMap id="rightResultMap" type="string" >
+		<result property="code" column="C_CODE"/>
+	</resultMap>
+</mapper> 

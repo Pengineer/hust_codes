@@ -1,0 +1,53 @@
+h1.title {
+	padding-left:20px;
+    color: #7FD0F6;
+    
+}
+
+.footer {
+    border-top: 1px solid #EBEBEB;
+    bottom: 0;
+    height: 60px;
+    overflow: hidden;
+    width: 100%;
+    padding-top : 20px;
+}
+
+.footer .inner{
+    margin: auto;
+    width: 450px;
+    text-align: center;
+}
+/**/
+.x-grid-td {
+    border-width: 0;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.x-grid-cell {
+    background-color: #FFFFFF;
+    border-color: #EDEDED;
+    border-style: solid;
+    font: 14px/15px helvetica,arial,verdana,sans-serif;
+}
+
+.thumb-wrap {
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+
+.thumb {
+background: #dddddd;
+padding: 3px;
+padding-bottom: 0;
+}
+
+.thumb-wrap span {
+display: block;
+overflow: hidden;
+text-align: center;
+width: 86px;
+}

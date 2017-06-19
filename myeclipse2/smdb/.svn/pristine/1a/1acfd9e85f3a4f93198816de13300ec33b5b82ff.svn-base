@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="instpMidinspectionAudit" extends="main" namespace="/project/instp/midinspection/applyAudit">
+	
+		<action name="toAdd" class="instpMidinspectionApplyAuditAction" method="toAdd">
+	        <result>/project/instp/midinspection/applyAudit/popAdd.jsp</result>
+	    </action> 
+	    <action name="add" class="instpMidinspectionApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="toModify" class="instpMidinspectionApplyAuditAction" method="toModify">
+	        <result>/project/instp/midinspection/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="modify" class="instpMidinspectionApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="instpMidinspectionApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="instpMidinspectionApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	    <action name="view" class="instpMidinspectionApplyAuditAction" method="view">
+	        <result>/project/instp/midinspection/applyAudit/popView.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="instpMidinspectionApply" extends="main" namespace="/project/instp/midinspection/apply">
+		
+		<action name="toList" class="instpMidinspectionApplyAction" method="toList">
+			<result>/project/instp/midinspection/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="instpMidinspectionApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="instpMidinspectionApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+
+		<action name="simpleSearch" class="instpMidinspectionApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="instpMidinspectionApplyAction" method="toAdvSearch">
+			<result>/project/instp/midinspection/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="instpMidinspectionApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpMidinspectionApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="instpMidinspectionApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="instpMidinspectionApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="downloadTemplate" class="instpMidinspectionApplyAction" method="downloadTemplate">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetTemplate</param>
+				<param name="contentDisposition">attachment;filename="${filepath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="validateTemplate" class="instpMidinspectionApplyAction" method="validateTemplate">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	    
+		<action name="downloadApply" class="instpMidinspectionApplyAction" method="downloadApply">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filepath}"</param>  
+	 	  	</result>
+	 	  	<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	
+		<action name="validateFile" class="instpMidinspectionApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  	
+	  	<action name="toAdd" class="instpMidinspectionApplyAction" method="toAdd">
+		 	 <result>/project/instp/midinspection/apply/popAdd.jsp</result>
+		 	 <result name="input">/project/instp/midinspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="add" class="instpMidinspectionApplyAction" method="add">
+			<result>/project/instp/midinspection/apply/popAdd.jsp</result>
+			<result name="input">/project/instp/midinspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="toAddMidFee" class="instpMidinspectionApplyAction" method="toAddMidFee">
+			 <result>/project/popAddMidFee.jsp</result>
+		</action>
+		
+		<action name="toModify" class="instpMidinspectionApplyAction" method="toModify">
+		 	 <result>/project/instp/midinspection/apply/popModify.jsp</result>
+		 	 <result name="input">/project/instp/midinspection/apply/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="instpMidinspectionApplyAction" method="modify">
+			<result>/project/instp/midinspection/apply/popModify.jsp</result>
+			<result name="input">/project/instp/midinspection/apply/popModify.jsp</result>
+		</action>
+
+	   	<action name="submit" class="instpMidinspectionApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   			
+	   	<action name="delete" class="instpMidinspectionApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   	
+	   	<action name="toAddResult" class="instpMidinspectionApplyAction" method="toAddResult">
+		  <result>/project/instp/midinspection/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="instpMidinspectionApplyAction" method="toModifyResult">
+		  <result>/project/instp/midinspection/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="instpMidinspectionApplyAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="instpMidinspectionApplyAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="instpMidinspectionApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="toUploadFileResult" class="instpMidinspectionApplyAction" method="toUploadFileResult">
+		  <result>/project/instp/midinspection/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="instpMidinspectionApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="toView" class="instpMidinspectionApplyAction" method="toView">
+	        <result>/project/instp/view.jsp</result>
+	    </action>
+	    
+	    <action name="view" class="instpMidinspectionApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	   
+		<action name="prev" class="instpMidinspectionApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="instpMidinspectionApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 发布 -->
+		<action name="publish" class="instpMidinspectionApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="instpMidinspectionApplyAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 导出列表 -->
+		<action name="confirmExportOverView" class="instpMidinspectionApplyAction" method="confirmExportOverView">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	</package>
+</struts>

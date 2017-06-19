@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="accountInstituteMain" extends="main" namespace="/account/institute/main">
+		
+		<action name="toAdd" class="accountInstituteMainAction" method="toAdd">
+			<result>/security/account/institute/main/add.jsp</result>
+		</action>
+
+		<action name="add" class="accountInstituteMainAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageInfo">${pageInfo}</param>
+			</result>
+			<result name="input">/security/account/institute/main/add.jsp</result>
+			
+		</action>
+		
+		<action name="toView" class="accountInstituteMainAction" method="toView">
+			<result>/security/account/institute/main/view.jsp</result>
+		</action>
+		
+		<action name="view" class="accountInstituteMainAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="accountInstituteMainAction" method="toModify">
+			<result>/security/account/institute/main/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="accountInstituteMainAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/security/account/institute/main/modify.jsp</result>
+		</action>
+
+		<action name="delete" class="accountInstituteMainAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="accountInstituteMainAction" method="toList">
+			<result>/security/account/institute/main/list.jsp</result>
+		</action>
+		
+		<action name="list" class="accountInstituteMainAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="accountInstituteMainAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="accountInstituteMainAction" method="toAdvSearch">
+			<result>/security/account/institute/main/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="accountInstituteMainAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="accountInstituteMainAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="accountInstituteMainAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="accountInstituteMainAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="accountInstituteMainAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="accountInstituteMainAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toEnable" class="accountInstituteMainAction" method="toEnable">
+			<result>/security/account/popEnable.jsp</result>
+		</action>
+
+		<action name="enable" class="accountInstituteMainAction" method="enable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="disable" class="accountInstituteMainAction" method="disable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAssignRole" class="accountInstituteMainAction" method="toAssignRole">
+			<result>/security/account/popAssignRole.jsp</result>
+		</action>
+
+		<action name="assignRole" class="accountInstituteMainAction" method="assignRole">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="retrieveCode" class="accountInstituteMainAction" method="retrieveCode">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModifyPassword" class="accountInstituteMainAction" method="toModifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<action name="modifyPassword" class="accountInstituteMainAction" method="modifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+			<result name="input">/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<!-- 对外接口 -->
+		<action name="extIfToAdd" class="accountInstituteMainAction" method="extIfToAdd">
+			<result>/security/account/extIf/popAdd.jsp</result>
+		</action>
+		
+		<action name="extIfAdd" class="accountInstituteMainAction" method="extIfAdd">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+	</package>
+
+</struts>

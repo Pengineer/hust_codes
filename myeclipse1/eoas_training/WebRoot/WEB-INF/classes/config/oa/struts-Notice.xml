@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="notice" extends="default" namespace="/notice">
+		<action name="toList" class="noticeAction" method="toList">
+			<result name="success">/jsp/oa/notice/list.jsp</result>
+		</action>
+		
+		<action name="list" class="noticeAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toAdd" class="noticeAction" method="toAdd">
+			<result>/jsp/oa/notice/add.jsp</result>
+		</action>
+		
+		<action name="add" class="noticeAction" method="add">
+			<result>/jsp/oa/notice/view.jsp</result>
+		</action>
+		
+		<action name="delete" class="noticeAction" method="delete">
+			<result>/jsp/oa/notice/list.jsp</result>
+		</action>
+		
+		<action name="toModify" class="noticeAction" method="toModify">
+			<result>/jsp/oa/notice/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="noticeAction" method="modify">
+			<result>/jsp/oa/notice/view.jsp</result>
+		</action>		
+		
+		<action name="view" class="noticeAction" method="view">
+			<result>/jsp/oa/notice/view.jsp</result>
+		</action>
+	</package>
+</struts>

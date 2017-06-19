@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Education" table="T_EDUCATION" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="degree" type="java.lang.String">
+            <column name="C_DEGREE" length="40" />
+        </property>
+        <property name="countryRegion" type="java.lang.String">
+            <column name="C_COUNTRY_REGION" length="80" />
+        </property>
+        <many-to-one name="person" class="csdc.bean.Person" fetch="select">
+        	<column name="C_PERSON_ID" length="40" not-null="true" />
+        </many-to-one>
+        <property name="education" type="java.lang.String">
+            <column name="C_EDUCATION" length="40" />
+        </property>
+        <property name="university" type="java.lang.String">
+            <column name="C_UNIVERSITY" length="200" />
+        </property>
+        <property name="department" type="java.lang.String">
+            <column name="C_DEPARTMENT" length="200" />
+        </property>
+        <property name="major" type="java.lang.String">
+            <column name="C_MAJOR" length="200" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="C_START_DATE" length="7" />
+        </property>
+        <property name="endDate" type="java.util.Date">
+            <column name="C_END_DATE" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

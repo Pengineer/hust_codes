@@ -1,0 +1,273 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：expert.css
+ *
+ * 文件说明：
+ *     主要用于expert模块中页面样式的定义。
+ *
+ * 历史记录：
+ * 2010-06-18  龚凡：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 列表字段宽度
+ ***************************************************************/
+
+.wd11 {
+	width: 190px;
+}
+
+.wd12 {
+	width: 120px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd13 {
+	padding-left: 5px;
+}
+
+.wd14 {
+	width: 110px;
+}
+
+.wd15 {
+	width: 60px;
+}
+
+.wd16 {
+	width: 80px;
+}
+
+.wd17 {
+	width: 199px;
+	text-align: right;
+	padding-right: 10px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd18 {
+	width: 300px;
+	padding-left: 10px;
+}
+
+.wd19 {
+	background-color: rgb(230, 230, 230);
+}
+
+.wd20 {
+	text-align:left;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd21 {
+	padding-left: 10px;
+}
+
+.wd22 {
+	color: green;
+}
+
+.wd22 a:link {
+    text-decoration: none;
+    color: green;
+}
+
+.wd22 a:active {
+    text-decoration: blink;
+    color: green;
+}
+
+.wd22 a:visited {
+    text-decoration: none;
+    color: green;
+}
+
+.wd22 a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}
+
+.wd23 {
+	width: 75px;
+}
+.td_input{
+	width: 180px;
+	background-color: rgb(255, 255, 255);
+}
+
+#form_project label.error {
+	padding-left: 6px;
+	padding-bottom: 2px;
+	color: rgb(255, 116, 0);
+}
+
+.table_view {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table_pview {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table_pview tr {
+	height: 31px;
+}
+
+.table_pview td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.table_view tr {
+	height: 31px;
+}
+
+.table_view td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.textarea {
+	width: 99%;
+	background-color: #FFFFFF;
+	border: none;
+}
+
+.img_dis {
+	background-image:url("../../image/project/plusimg.gif");
+	float:left;
+	height:9px;
+	margin-right:10px;
+	margin-top:8px;
+	width:9px;
+	display:inline;
+	font-size:8px;
+}
+
+.img_undis {
+	background-image:url("../../image/project/addimg.gif");
+	float:left;
+	height:9px;
+	margin-right:10px;
+	margin-top:8px;
+	width:9px;
+	display:inline;
+	font-size:8px;
+}
+
+.table_eview {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+.table_eview tr {
+	height: 31px;
+}
+.table_eview td {
+	border: solid #999;
+    border-width: 1px;
+}
+.table_eview th {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.table_xview {
+	border-collapse: collapse;
+	width: 99%;
+	text-align: center;
+	vertical-align: middle;
+}
+.table_xview tr {
+	height: auto;
+}
+.table_xview td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+#loading {
+	padding-top:100px;
+	border: solid #999;
+	border-width: 0 0 1px 1px;
+}
+
+#treeId {
+	border: solid #999;
+	border-width: 0 0 1px 1px;
+	overflow:auto;
+}
+
+#expList {
+	border: solid #999;
+	border-width: 0 1px 1px 1px;
+	overflow:auto;
+}
+
+.granted {
+	background-color: #F5FBFF;
+	border: 1px solid #7AC4EA;
+	color: #333333;
+	font-weight: normal;
+	height: 17px;
+	width: 45px;
+}
+
+.leftbg {
+	text-align:left;
+	padding-left: 5px;
+	background-color: rgb(230, 230, 230);
+}
+.centerbg {
+	text-align:center;
+	background-color: rgb(230, 230, 230);
+}
+.rightbg {
+	text-align:right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.left {
+	text-align:left;
+	padding-left: 5px;
+}
+
+.center {
+	text-align:center;
+}
+
+.right {
+	text-align:right;
+	padding-right: 5px;
+}
+
+.wdFinance {
+	background-color: rgb(230, 230, 230);
+}
+
+.fixed {
+	background-color: #E7EAEF;
+}
+
+.base_info_content {
+	margin-top: 5px;
+	margin-left: 20px;
+}
+
+
+/*
+*弹出层span标签，用以将文字内容居左10px 
+ */
+ .pop_span {
+	margin-left: 10px;
+}

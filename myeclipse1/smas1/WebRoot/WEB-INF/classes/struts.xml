@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<include file="config/struts-Main.xml" />
+	<include file="config/struts-Upload.xml" />
+	<include file="config/struts-User.xml" />
+	<include file="config/struts-Selfspace.xml" />
+	<include file="config/expert/struts-Expert.xml" />
+	<include file="config/expert/struts-SelectExpert.xml" />
+	<include file="config/finance/struts-Finance.xml" />
+	<include file="config/project/general/struts-General.xml" />
+	<include file="config/project/general/struts-Publicity.xml" />
+	<include file="config/project/general/struts-Granted.xml" />
+	<include file="config/project/general/struts-FirstAudit.xml" />
+	<include file="config/project/general/struts-Special.xml" />
+	<include file="config/project/general/struts-Midinspection.xml" />
+	<include file="config/project/general/struts-Variation.xml" />
+	<include file="config/project/general/struts-Endinspection.xml" />
+	<include file="config/project/instp/struts-Instp.xml" />
+	<include file="config/project/instp/struts-FirstAudit.xml" />
+	<include file="config/project/instp/struts-Granted.xml" />
+	<include file="config/project/instp/struts-Midinspection.xml" />
+	<include file="config/project/instp/struts-Variation.xml" />
+	<include file="config/project/instp/struts-Endinspection.xml" />
+	
+	<include file="config/award/struts-MoeSocial.xml" />
+	
+	<include file="config/security/struts-Role.xml" />
+	<include file="config/security/struts-Right.xml" />
+	<include file="config/statistic/review/struts-University.xml" />
+	<include file="config/statistic/review/struts-UniversityReviewer.xml" />
+	<include file="config/statistic/review/struts-ReviewStatistic.xml" />
+	<include file="config/statistic/review/struts-ExpertReviewer.xml" />
+	<include file="config/statistic/review/struts-Expert.xml" />
+	<include file="config/mail/struts-Mail.xml" />
+	
+	<include file="config/pop/select/struts-DisciplineTree.xml" />
+	<include file="config/system/struts-Execution.xml" />
+	<include file="config/system/interfaces/struts-SmdbClient.xml"/>
+	<include file="config/system/struts-Log.xml"/>
+	
+	<package name="global" extends="json-default">
+		<interceptors>
+			<interceptor name="logInterceptor" class="logInterceptor" />
+			<interceptor name="conditionsInterceptor" class="conditionsInterceptor" />
+			<interceptor name="rightAuto" class="csdc.interceptor.RightAuthorizationInterceptor" />
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="conditionsInterceptor" />
+				<interceptor-ref name="rightAuto" />
+				<interceptor-ref name="logInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myInterceptorStack" />
+		<global-results>
+			<result name="reminder" type="json"><param name="root">jsonMap</param></result>
+			<result name="error">/error.jsp</result>
+			<result name="sqlError">/error.jsp</result>
+			<result name="input">/error.jsp</result>
+			<result name="login">/index.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="sqlError" exception="java.sql.SQLException" />
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+	</package>
+</struts>

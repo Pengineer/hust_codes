@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!--***********关于struts2中常量的设置************
+	
+	            更改URL请求中的.后缀（默认是.action）,如果需要处理多个后缀，还可以用逗号分隔
+		<constant name="struts.action.extension" value="html,do,action"></constant>
+		指定默认编码集,作用于HttpServletRequest的setCharacterEncoding方法 和freemarker 、velocity的输出 
+        <constant name="struts.i18n.encoding" value="UTF-8"/>
+		与spring集成时，指定由spring负责action对象的创建
+        <constant name="struts.objectFactory" value="spring" />
+		上传文件的总大小限制（非单个）
+        <constant name="struts.multipart.maxSize" value=“10701096"/>		
+	 -->
+	 
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+	 
+
+	<!-- 
+		此文件是struts2框架的核心配置文件。
+		package：package里面包含一组有共同路径的action。name是包名，namespace是action的名称空间，struts-default是最
+		                         原始的package，里面是struts2的核心功能，因此自定义包都会继承该包（我们一般继承json-default）
+		action：name即URL地址中要请求的action，class是action对应的处理类，method是要执行处理类的具体方法。
+		result：指定业务逻辑处理完后要跳转的jsp页面
+	 -->
+
+	<package name="hust" namespace="/test" extends="struts-default">
+		<action name="helloworld" class="edu.hust.action.HelloWorldAction" method="execute">
+			<result name="success">/WEB-INF/page/hello.jsp</result>
+		</action>
+		
+		<!-- 依赖注入 -->
+		<action name="dependencyinjection" class="edu.hust.action.DependencyInjectionAction" method="execute">
+			<param name="savepath">hehe</param>
+			<result name="success">/WEB-INF/page/dependencyInjection.jsp</result>
+		</action>
+	</package>
+	
+	
+	<!-- 
+	一个struts配置文件中可以有多个package，关于action配置中的各项默认值如下：
+		1,如果没有为action指定class，默认是ActionSupport。
+        2,如果没有为action指定method，默认执行action中的execute() 方法。
+        3,如果没有指定result的name属性，默认值为success.
+	 -->
+	<package name="people" namespace="/control/employee" extends="json-default">
+		<action name="addUI">
+			<result>/WEB-INF/page/employeeAdd.jsp</result> <!-- 默认是服务器内部转发实现跳转，因此jsp可以来自WEB-INF -->  
+		</action>
+		
+		<action name="redirect">
+		    <result type="redirect">/index.jsp</result>  <!--浏览器重定向方式实现跳转,注意重定向是浏览器再次发出请求，因此不能是WEB-INF下的jsp（不允许外界直接访问）  -->
+		</action>
+	</package>
+	
+</struts>

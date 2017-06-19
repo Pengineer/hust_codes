@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="selfspace" extends="main" namespace="/selfspace">
+		
+		<action name="toBindEmail" class="selfspaceAction" method="toBindEmail">
+			<result>/selfspace/bindEmail.jsp</result>
+		</action>
+		
+		<action name="toBindPhone" class="selfspaceAction" method="toBindPhone">
+			<result>/selfspace/bindPhone.jsp</result>
+		</action>
+		
+		<action name="bindEmail" class="selfspaceAction" method="bindEmail">
+			<result type="redirectAction">viewSelfAccount</result>
+			<result name="input">/selfspace/bindEmail.jsp</result>
+		</action>
+		
+		<action name="verifyEmail" class="selfspaceAction" method="verifyEmail">
+			<result>/selfspace/verifyEmail.jsp</result>
+		</action>
+		
+		<action name="bindPhone" class="selfspaceAction" method="bindPhone">
+			<result type="redirectAction">viewSelfAccount</result>
+			<result name="input">/selfspace/bindPhone.jsp</result>
+		</action>
+		
+		<action name="toRetrievePassword" class="selfspaceAction" method="toRetrievePassword">
+			<result>/selfspace/retrievePassword.jsp</result>
+		</action>
+		
+		<action name="retrievePassword" class="selfspaceAction" method="retrievePassword">
+			<result>/selfspace/retrievePasswordSuccess.jsp</result>
+			<result name="input">/selfspace/retrievePassword.jsp</result>
+		</action>
+		
+		<action name="toResetPassword" class="selfspaceAction" method="toResetPassword">
+			<result>/selfspace/resetPassword.jsp</result>
+		</action>
+		
+		<action name="resetPassword" class="selfspaceAction" method="resetPassword">
+			<result>/selfspace/resetPasswordSuccess.jsp</result>
+			<result name="input">/selfspace/resetPassword.jsp</result>
+		</action>
+		
+		<action name="viewSelfAccount" class="selfspaceAction" method="viewSelfAccount">
+			<result>/selfspace/viewSelfAccount.jsp</result>
+		</action>
+		
+		<action name="toModifySelfAccount" class="selfspaceAction" method="toModifySelfAccount">
+			<result>/selfspace/modifySelfAccount.jsp</result>
+		</action>
+		
+		<action name="modifySelfAccount" class="selfspaceAction" method="modifySelfAccount">
+			<result type="redirectAction">viewSelfAccount</result>
+			<result name="input">/selfspace/modifySelfAccount.jsp</result>
+		</action>
+		
+		<action name="checkIfNeedModifyPassword" class="selfspaceAction" method="checkIfNeedModifyPassword">
+			<result type="redirectAction">toModifyPassword</result>
+			<result name="account" type="redirectAction">
+				<param name="actionName">toSelectAccount</param>
+				<param name="namespace">/login</param>
+			</result>
+			<result name="system" type="redirectAction">
+				<param name="actionName">toSelectServer</param>
+				<param name="namespace">/login</param>
+			</result>
+		</action>
+		
+		<action name="toModifyPassword" class="selfspaceAction" method="toModifyPassword">
+			<result>/selfspace/modifyPassword.jsp</result>
+		</action>
+		
+		<action name="modifyPassword" class="selfspaceAction" method="modifyPassword">
+			<result name="account" type="redirectAction">
+				<param name="actionName">toSelectAccount</param>
+				<param name="namespace">/login</param>
+			</result>
+			<result name="system" type="redirectAction">
+				<param name="actionName">toSelectServer</param>
+				<param name="namespace">/login</param>
+			</result>
+			<result name="input">/selfspace/modifyPassword.jsp</result>
+		</action>
+	</package>
+</struts>

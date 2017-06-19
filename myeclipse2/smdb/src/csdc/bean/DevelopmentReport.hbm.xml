@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.DevelopmentReport" table="T_DEVELOPMENT_REPORT">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		
+		<property name="name" type="java.lang.String">
+			<column name="C_NAME" length="200" not-null="true"/>
+		</property>
+		<property name="applicant" type="java.lang.String">
+			<column name="C_APPLICANT" length="200"/>
+		</property>
+		<property name="year" type="java.lang.Integer">
+            <column name="C_YEAR" precision="4" scale="0" not-null="true" />
+        </property>
+		<property name="number" type="java.lang.String">
+          <column name="C_NUMBER" length="40"/>
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="C_TYPE" length="40"/>
+        </property>
+        <property name="topic" type="java.lang.String">
+            <column name="C_TOPIC" length="40"/>
+        </property>
+        <property name="university" type="java.lang.String">
+			<column name="C_UNIVERSITY" length="200"/>
+		</property>
+		<property name="universityId" type="java.lang.String">
+			<column name="C_UNIVERSITY_ID" length="40"/>
+		</property>
+		<property name="guide" type="java.lang.String">
+			<column name="C_GUIDE" length="40"/>
+		</property>
+		<property name="importDate" type="java.util.Date">
+			<column name="C_IMPORT_DATE"/>
+		</property>
+        <property name="isDupCheckGeneral" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_GENERAL" precision="1" scale="0" not-null="true" />
+        </property>
+	</class>
+</hibernate-mapping>
+		
+        
+       

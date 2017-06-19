@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="sinossServer" extends="main" namespace="/system/interfaces/sinossServer">
+		<!-- 进入申请审核结果接口配置  -->
+		<action name="toApplicationResultConfig" class="sinossServerAction" method="toApplicationResultConfig">
+			<result>/system/interfaces/sinossServer/appResultConfig.jsp</result>
+		</action>
+		<!-- 修改申请审核结果接口配置 -->
+		<action name="applicationResultConfig" class="sinossServerAction" method="applicationResultConfig">
+			<result type="redirectAction">toApplicationResultConfig</result>
+		</action>		
+		<!-- 进入中检审核结果接口配置  -->
+		<action name="toMidinspectionResultConfig" class="sinossServerAction" method="toMidinspectionResultConfig">
+			<result>/system/interfaces/sinossServer/midResultConfig.jsp</result>
+		</action>
+		<!-- 修改中检审核结果接口配置 -->
+		<action name="midinspectionResultConfig" class="sinossServerAction" method="midinspectionResultConfig">
+			<result type="redirectAction">toMidinspectionResultConfig</result>
+		</action>
+		<!-- 进入变更审核结果接口配置  -->
+		<action name="toVariationResultConfig" class="sinossServerAction" method="toVariationResultConfig">
+			<result>/system/interfaces/sinossServer/varResultConfig.jsp</result>
+		</action>
+		<!-- 修改变更审核结果接口配置 -->
+		<action name="variationResultConfig" class="sinossServerAction" method="variationResultConfig">
+			<result type="redirectAction">toVariationResultConfig</result>
+		</action>
+		<!-- 进入结项审核结果接口配置  -->
+		<action name="toEndinspectionResultConfig" class="sinossServerAction" method="toEndinspectionResultConfig">
+			<result>/system/interfaces/sinossServer/endResultConfig.jsp</result>
+		</action>
+		<!-- 修改结项审核结果接口配置 -->
+		<action name="endinspectionResultConfig" class="sinossServerAction" method="endinspectionResultConfig">
+			<result type="redirectAction">toEndinspectionResultConfig</result>
+		</action>
+		<!-- 进入中检数据接口配置  -->
+		<action name="toMidinspectionRequiredConfig" class="sinossServerAction" method="toMidinspectionRequiredConfig">
+			<result>/system/interfaces/sinossServer/midRequiredConfig.jsp</result>
+		</action>
+		<!-- 修改中检数据接口配置 -->
+		<action name="midinspectionRequiredConfig" class="sinossServerAction" method="midinspectionRequiredConfig">
+			<result type="redirectAction">toMidinspectionRequiredConfig</result>
+		</action>
+		<!-- 进入导出接口 -->
+		<action name="toExport" class="sinossServerAction" method="toExport">
+			<result>/system/interfaces/sinossServer/export.jsp</result>
+		</action>
+		<!-- 导出 -->
+		<action name="export" class="sinossServerAction" method="export">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>					
+</struts>

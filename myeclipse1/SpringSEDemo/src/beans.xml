@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+		   http://www.springframework.org/schema/context/spring-context.xsd">
+		   
+	   <context:annotation-config/>
+	   
+	   <!-- 自动扫描该包，并为有相关注解的类生成spring bean：用于解决bean过多而导致的配置文件体积过大的问题.
+	                        有了这个后，  <context:annotation-config/>就可以不要了。
+	      <context:component-scan base-package="csdc.tool,edu.hust" />
+       -->
+       
+       <!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 .   
+                                    有了这个后，  <context:annotation-config/>就可以不要了。
+	      <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />  
+       -->
+           
+       <bean id="personDao" class="edu.hust.dao.impl.PersonDaoBean"></bean>  
+       
+       <!-- id是用来唯一标识一个bean，之所有还要有name，是因为id中不能有特殊字符，如/ -->  
+       <bean id="personService" class="edu.hust.service.impl.PersonServiceBean" scope="prototype">         
+       	 <!--ref属性用来指向一个bean， Spring容器实例化时，会实例化所有的bean，那么当实例化本bean时，就会将id="personDao"
+       	               的bean注入给本bean的name="personDao"的属性。 
+       	 -->
+       	 <property name="personDao" ref="personDao"></property>  
+       </bean>
+       
+       <!-- 通过构造函数来给属性注入值：当构造函数有多个参数时，使用index来顺序区分，不使用constructor-arg时，会使用无参构造方法创建实例 -->
+       <bean id="personService2" class="edu.hust.service.impl.PersonServiceBean2">
+       	 <constructor-arg index="0" type="edu.hust.dao.PersonDao" ref="personDao"/>
+       	 <constructor-arg index="1" value="hehe"/>  <!-- 一般数据类型可不指定类型 -->
+       </bean>
+       
+       <!-- 使用注解的方式进行属性值的注入:简化Xml配置文件因属性值过多带来的臃肿问题 -->
+       <bean id="personService3" class="edu.hust.service.impl.PersonServiceBean3"/>
+       
+       <bean id="group" class="edu.hust.service.impl.Group" />
+
+</beans>

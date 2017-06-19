@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name = "csdc.bean.ProjectMidinspection" table = "T_PROJECT_MIDINSPECTION">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE" length="100" />
+        </property>
+        <property name="applicantSubmitDate" type="java.util.Date">
+            <column name="C_APPLICANT_SUBMIT_DATE" length="7" />
+        </property>
+        <property name="progress" type="java.lang.String">
+            <column name="C_PROGRESS" length="800" />
+        </property>
+        <property name="productIntroduction" type="java.lang.String">
+            <column name="C_PRODUCT_INTRODUCTION" length="800" />
+        </property>
+        <property name="finalAuditResult" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditDate" type="java.util.Date">
+            <column name="C_FINAL_AUDIT_DATE" length="7" />
+        </property>
+        <property name="finalAuditOpinion" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION" length="800" />
+        </property>
+        <property name="finalAuditOpinionFeedback" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION_FEEDBACK" length="800" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="C_TYPE" length="40" />
+        </property>
+        <property name="finalAuditorName" type="java.lang.String">
+            <column name="C_FINAL_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="importedDate" type="java.util.Date">
+            <column name="C_IMPORTED_DATE" length="7" />
+        </property>
+        <many-to-one name="projectFee" class="csdc.bean.ProjectFee" fetch="select">
+            <column name="C_PROJECT_FEE_ID" length="40" />
+        </many-to-one>
+	    <many-to-one name="granted" class="csdc.bean.ProjectGranted" fetch="join">
+            <column name="C_GRANTED_ID" length="40" not-null="true" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>

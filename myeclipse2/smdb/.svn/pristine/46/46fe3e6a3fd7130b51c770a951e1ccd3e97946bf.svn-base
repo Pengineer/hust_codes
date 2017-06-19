@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mobileMain" extends="main">
+	     <global-results>
+			<result name="error" type="chain">
+				<param name="namespace">/mobile/login</param>
+				<param name="actionName">toError</param>
+			</result>
+			<result name="input" type="chain">
+				<param name="namespace">/mobile/login</param>
+				<param name="actionName">toError</param>
+			</result>
+		</global-results>
+	</package>
+</struts>

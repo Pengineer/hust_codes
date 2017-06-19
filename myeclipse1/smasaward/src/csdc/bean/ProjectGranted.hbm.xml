@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.ProjectGranted" table="T_PROJECT_GRANTED">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="number" type="java.lang.String">
+          <column name="C_NUMBER" length="40"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" />
+        </property>
+		<property name="researchType" type="java.lang.String">
+			<column name="C_RESEARCH_TYPE" length="20" />
+		</property>
+        <property name="universityName" type="java.lang.String">
+            <column name="C_UNIVERSITY_NAME" length="200" />
+        </property>
+        <property name="universityCode" type="java.lang.String">
+            <column name="C_UNIVERSITY_CODE" length="40" />
+        </property>
+        <property name="approveDate" type="java.util.Date">
+            <column name="C_APPROVE_DATE" length="7" />
+        </property>
+        <property name="approveFee" type="java.lang.Double">
+            <column name="C_APPROVE_FEE" />
+        </property>
+        <property name="planEndDate" type="java.util.Date">
+            <column name="C_PLAN_END_DATE" length="7" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="C_STATUS" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="subtype" type="java.lang.String">
+            <column name="C_SUBTYPE" length="100" />
+        </property>
+        <property name="endStopWithdrawDate" type="java.util.Date">
+            <column name="C_END_STOP_WITHDRAW_DATE" length="7" />
+        </property>
+        <property name="endStopWithdrawPerson" type="java.lang.String">
+            <column name="C_END_STOP_WITHDRAW_PERSON" length="200" />
+        </property>
+        <property name="endStopWithdrawOpinion" type="java.lang.String">
+            <column name="C_END_STOP_WITHDRAW_Opinion" length="800" />
+        </property>
+        <property name="endStopWithdrawOpinionFeedback" type="java.lang.String">
+            <column name="C_OPINION_FEEDBACK" length="800" />
+        </property>
+        <property name="productType" type="java.lang.String">
+            <column name="C_PRODUCT_TYPE" length="400" />
+        </property>
+        <property name="productTypeOther" type="java.lang.String">
+            <column name="C_PRODUCT_TYPE_OTHER" length="200" />
+        </property>
+        <property name="applicantName" type="java.lang.String">
+            <column name="C_APPLICANT_NAME" length="200" />
+        </property>
+        <property name="applicantSubmitDate" type="java.util.Date">
+            <column name="C_APPLICANT_SUBMIT_DATE" length="7" />
+        </property>
+        <property name="agencyName" type="java.lang.String">
+            <column name="C_AGENCY_NAME" length="200"  />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+            <column name="C_DIVISION_NAME" length="200" />
+        </property>
+        <property name="finalAuditResult" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditDate" type="java.util.Date">
+            <column name="C_FINAL_AUDIT_DATE" length="7" />
+        </property>
+        <property name="finalAuditOpinion" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION" length="800" />
+        </property>
+        <property name="finalAuditOpinionFeedback" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION_FEEDBACK" length="800" />
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE" length="100" />
+        </property>
+        <property name="finalAuditorName" type="java.lang.String">
+            <column name="C_FINAL_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="importedDate" type="java.util.Date">
+            <column name="C_IMPORTED_DATE" length="7" />
+        </property>
+        <many-to-one name="projectFee" class="csdc.bean.ProjectFee" fetch="select">
+            <column name="C_PROJECT_FEE_ID" length="40" />
+        </many-to-one>
+        <property name="type" type="java.lang.String">
+            <column name="C_TYPE" length="40" />
+        </property>
+        <many-to-one name="application" class="csdc.bean.ProjectApplication" fetch="join">
+            <column name="C_APPLICATION_ID" length="40" not-null="true"/>
+        </many-to-one>
+        <set name="midinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.ProjectMidinspection" />
+        </set>
+        <set name="variation" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="endinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.ProjectEndinspection" />
+        </set>
+        <set name="projectFunding" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.ProjectFunding" />
+        </set>
+	</class>
+</hibernate-mapping>

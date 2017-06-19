@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.SinossConsultation" table="T_SINOSS_CONSULTATION">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+	    <property name="projectName" type="java.lang.String">
+            <column name="C_PROJECT_NAME"/>
+        </property>        
+	    <property name="name" type="java.lang.String">
+            <column name="C_NAME"/>
+        </property> 
+ 	    <property name="firstAuthor" type="java.lang.String">
+            <column name="C_FIRST_AUTHOR"/>
+        </property>
+ 	    <property name="otherAuthor" type="java.lang.String">
+            <column name="C_OTHER_AUTHOR"/>
+        </property>
+ 	    <property name="subject" type="java.lang.String">
+            <column name="C_SUBJECT"/>
+        </property>	
+ 	    <property name="disciplineType" type="java.lang.String">
+            <column name="C_DISCIPLINE_TYPE"/>
+        </property>	
+        <property name="isMark" type="java.lang.String">
+            <column name="C_IS_MARK" />
+        </property>	
+ 	    <property name="commitUnit" type="java.lang.String">
+            <column name="C_COMMIT_UNIT"/>
+        </property>	
+        <property name="commitDate" type="java.util.Date">
+            <column name="C_COMMIT_DATE" />
+        </property>	  
+        <property name="isAccept" type="java.lang.String">
+            <column name="C_IS_ACCEPT" />
+        </property>	 
+ 	    <property name="acceptObj" type="java.lang.String">
+            <column name="C_ACCEPT_OBJ"/>
+        </property>	
+ 	    <property name="note" type="java.lang.String">
+            <column name="C_NOTE"/>
+        </property>	
+ 	    <property name="projectId" type="java.lang.String">
+            <column name="C_PROJECT_ID"/>
+        </property>
+        <many-to-one name="projectMidinspection" class="csdc.bean.SinossProjectMidinspection" fetch="join">
+            <column name="C_project_Midinspection_ID"/>
+        </many-to-one>	                          
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,5 @@
+Student[zhouqi,99,99,100]	298
+Student[wangwu,99,100,98]	297
+Student[zhangsan,98,97,99]	294
+Student[laoliu,97,98,99]	294
+Student[lisisi,99,98,88]	285

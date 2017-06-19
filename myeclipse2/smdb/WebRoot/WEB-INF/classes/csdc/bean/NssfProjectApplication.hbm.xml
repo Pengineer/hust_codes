@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.NssfProjectApplication" table="T_NSSF_PROJECT_APPLICATION">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="discipline" type="java.lang.String">
+			<column name="c_discipline" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="c_name" />
+		</property>
+		<property name="applicant" type="java.lang.String">
+			<column name="c_applicant" />
+		</property>
+		<property name="unit" type="java.lang.String">
+			<column name="c_unit" />
+		</property>
+		<property name="province" type="java.lang.String">
+			<column name="c_province" />
+		</property>
+		<property name="importDate" type="java.util.Date">
+			<column name="c_import_Date" />
+		</property>
+		<property name="university" type="java.lang.String">
+			<column name="c_UNIVERSITY" />
+		</property>
+		<property name="universityId" type="java.lang.String">
+			<column name="c_UNIVERSITY_ID" />
+		</property>
+		<property name="gender" type="java.lang.String">
+			<column name="c_gender" />
+		</property>
+		<property name="national" type="java.lang.String">
+			<column name="c_national" />
+		</property>
+		<property name="birthday" type="java.util.Date">
+			<column name="c_birthday" />
+		</property>
+		<property name="year" type="java.lang.Integer">
+            <column name="c_year"/>
+        </property>
+        <property name="firstAuditResult" type="java.lang.String">
+			<column name="c_first_audit_result" />
+		</property>
+		<property name="firstAuditDate" type="java.util.Date">
+			<column name="c_first_audit_date" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="c_type" />
+		</property>
+		<property name="productName" type="java.lang.String">
+			<column name="c_product_name" />
+		</property>
+		<property name="isDupCheckGeneral" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_GENERAL" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="isDupCheckInstp" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_INSTP" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="djh" type="java.lang.String">
+			<column name="c_djh" />
+		</property>
+		<property name="sjsbbm" type="java.lang.String">
+			<column name="c_sjsbbm" />
+		</property>
+		<property name="ztc" type="java.lang.String">
+			<column name="c_ztc" />
+		</property>
+		<property name="ktlzty" type="java.lang.String">
+			<column name="c_ktlzty" />
+		</property>
+		<property name="xmlb" type="java.lang.String">
+			<column name="c_xmlb" />
+		</property>
+		<property name="xkfl" type="java.lang.String">
+			<column name="c_xkfl" />
+		</property>
+		<property name="yjlx" type="java.lang.String">
+			<column name="c_yjlx" />
+		</property>
+		<property name="sfzh" type="java.lang.String">
+			<column name="c_sfzh" />
+		</property>
+		<property name="xzzw" type="java.lang.String">
+			<column name="c_xzzw" />
+		</property>
+		<property name="zyzw" type="java.lang.String">
+			<column name="c_zyzw" />
+		</property>
+		<property name="yjzc" type="java.lang.String">
+			<column name="c_yjzc" />
+		</property>
+		<property name="xl" type="java.lang.String">
+			<column name="c_xl" />
+		</property>
+		<property name="xw" type="java.lang.String">
+			<column name="c_xw" />
+		</property>
+		<property name="drds" type="java.lang.String">
+			<column name="c_drds" />
+		</property>
+		<property name="ssx" type="java.lang.String">
+			<column name="c_ssx" />
+		</property>
+		<property name="ssxt" type="java.lang.String">
+			<column name="c_ssxt" />
+		</property>
+		<property name="txdz" type="java.lang.String">
+			<column name="c_txdz" />
+		</property>
+		<property name="yb" type="java.lang.String">
+			<column name="c_yb" />
+		</property>
+		<property name="jtdh" type="java.lang.String">
+			<column name="c_jtdh" />
+		</property>
+		<property name="bgdh" type="java.lang.String">
+			<column name="c_bgdh" />
+		</property>
+		<property name="yqcg" type="java.lang.String">
+			<column name="c_yqcg" />
+		</property>
+		<property name="sqjf" type="java.lang.String">
+			<column name="c_sqjf" />
+		</property>
+		<property name="jyzze" type="java.lang.String">
+			<column name="c_jyzze" />
+		</property>
+		<property name="pzcze" type="java.lang.String">
+			<column name="c_pzcze" />
+		</property>
+		<property name="dwyj" type="java.lang.String">
+			<column name="c_dwyj" />
+		</property>
+		<property name="dfskghbyj" type="java.lang.String">
+			<column name="c_dfskghbyj" />
+		</property>
+		<property name="qgbyj" type="java.lang.String">
+			<column name="c_qgbyj" />
+		</property>
+		<property name="txpf" type="java.lang.String">
+			<column name="c_txpf" />
+		</property>
+		<property name="csyj" type="java.lang.String">
+			<column name="c_csyj" />
+		</property>
+		<property name="psjg" type="java.lang.String">
+			<column name="c_psjg" />
+		</property>
+		<property name="wtgyy" type="java.lang.String">
+			<column name="c_wtgyy" />
+		</property>
+		<property name="pzzze" type="java.lang.String">
+			<column name="c_pzzze" />
+		</property>
+		<property name="yjbs" type="java.lang.String">
+			<column name="c_yjbs" />
+		</property>
+		<property name="psbs" type="java.lang.String">
+			<column name="c_psbs" />
+		</property>
+		<property name="zishu" type="java.lang.String">
+			<column name="c_zishu" />
+		</property>
+		<property name="jhwcsj" type="java.util.Date">
+			<column name="c_jhwcsj" />
+		</property>
+	</class>
+
+</hibernate-mapping>

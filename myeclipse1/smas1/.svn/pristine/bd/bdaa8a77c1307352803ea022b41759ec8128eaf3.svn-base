@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="generalGranted" extends="global" namespace="/project/general/granted">
+	
+		<!-- 进入列表 -->
+		<action name="toList" class="generalGrantedAction" method="toList">
+			<result>/project/general/granted/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="generalGrantedAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalGrantedAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="generalGrantedAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalGrantedAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalGrantedAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalGrantedAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="generalGrantedAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="generalGrantedAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="generalGrantedAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="delete" class="generalGrantedAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 选择立项通知打印类型 -->
+		<action name="toPrint" class="generalGrantedAction" method="toPrint">
+        	<result>/project/print/popPrint.jsp</result>
+	   	</action>
+		
+		<!-- 打印立项通知 -->
+		<action name="printNotice" class="generalGrantedAction" method="printNotice">
+			<result>/project/print/grantedNotice.jsp</result>
+		</action>
+		
+		<!-- 打印立项清单 -->
+		<action name="printGrantedList" class="generalGrantedAction" method="printGrantedList">
+			<result name="success">/project/print/grantedList.jsp</result>
+			<result name="exportGrantedList" type="chain">exportGrantedList</result>
+		</action>
+		
+		<!-- 获取立项清单打印范围选择框信息 -->
+		<action name="getSelectBoxData" class="generalGrantedAction" method="getSelectBoxData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 导出立项清单 -->
+		<action name="exportGrantedList" class="generalGrantedAction" method="exportGrantedList">
+		</action>
+		
+	</package>
+</struts>

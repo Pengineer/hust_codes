@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="toIndex" location="10,165" size="525,245">
+    <action name="toIndex" location="310,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="rand" location="310,162" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="timeout" location="65,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="timeout.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.jsp" path="/index.jsp" location="345,10" size="150,55" />
+  <webResource name="timeout.jsp" path="/timeout.jsp" location="98,465" size="150,55" />
+</Struts2Diagram>
+

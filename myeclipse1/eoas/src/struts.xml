@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<include file="config/recruitment/struts-Account.xml" />
+	<include file="config/recruitment/struts-Resume.xml" />
+	<include file="config/recruitment/struts-Position.xml" />
+	<include file="config/recruitment/struts-PositionResume.xml" />
+	<include file="config/recruitment/struts-Record.xml" />
+	<include file="config/recruitment/struts-Swfupload.xml" />
+	<include file="config/recruitment/struts-Upload.xml" />
+	<package name="default" extends="struts-default">
+		 <global-exception-mappings>
+	        <exception-mapping result="error" exception="java.lang.Exception" />
+	        <exception-mapping result="sqlError" exception="java.sql.SQLException" />
+	    </global-exception-mappings>
+	</package>
+</struts>

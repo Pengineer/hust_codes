@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Project">
+<Cube name="Project">
+  <Table name="S_S_PROJECT"/>
+  <Dimension name="项目维度" foreignKey="C_D_PROJECT_ID">
+ 	<Hierarchy hasAll="true" name="学科门类" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="学科门类" column="C_DISCIPLINE_TYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="负责人年龄段" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="负责人年龄段" column="C_DIRECTOR_AGEGROUP" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="项目年度" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="项目年度" column="C_YEAR" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="项目类型" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="项目类型" column="C_PROJECT_TYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="项目子类" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="项目子类" column="C_SUBTYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="研究类型" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="研究类型" column="C_RESEARCH_TYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="中检年度" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="中检年度" column="C_MID_YEAR" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="结项年度" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="结项年度" column="C_END_YEAR" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="项目区域" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="项目区域" column="C_AREA_TYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="评审类型" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="评审类型" column="C_EVALUATION_TYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="申请优秀成果" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="申请优秀成果" column="C_APPLY_EXCELLE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="结项年限" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="结项年限" column="C_END_YEARS" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="成果形式" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="成果形式" column="C_PRODUCT_TYPE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="批准经费" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="批准经费" column="C_FEE" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="是否立项" primaryKey="C_ID">
+      <Table name="S_D_PROJECT"/>
+      <Level name="是否立项" column="C_IS_GRANTED" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="是否通过中检" primaryKey="C_ID">
+      <Table name="S_D_PROJECT"/>
+      <Level name="是否通过中检" column="C_IS_PASSMID" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="中检次数" primaryKey="C_ID">
+      <Table name="S_D_PROJECT"/>
+      <Level name="中检次数" column="C_MID_TIMES" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="是否结项" primaryKey="C_ID">
+      <Table name="S_D_PROJECT"/>
+      <Level name="是否结项" column="C_IS_FINISHED" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="项目名称" primaryKey="C_ID" allMemberName="所有">
+      <Table name="S_D_PROJECT"/>
+      <Level name="项目名称" column="C_NAME" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="负责人性别" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="负责人性别" column="C_DIRECTOR_GENDER" uniqueMembers="true"/>
+    </Hierarchy>
+    <Hierarchy hasAll="true" name="负责人学位" primaryKey="C_ID" allMemberName="总计">
+      <Table name="S_D_PROJECT"/>
+      <Level name="负责人学位" column="C_DIRECTOR_DEGREE" uniqueMembers="true"/>
+    </Hierarchy>
+  </Dimension>
+  <Dimension name="人员维度" foreignKey="C_D_PERSON_ID">
+	    <Hierarchy hasAll="true" name="职称" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="职称" column="C_TITLE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy hasAll="true" name="学历" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="学历" column="C_LAST_EDUCATION" uniqueMembers="true"/>
+	    </Hierarchy>
+		<Hierarchy hasAll="true" name="学位" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="学位" column="C_LAST_DEGREE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="年龄段" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="年龄段" column="C_AGE_GROUP" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="性别" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="性别" column="C_GENDER" uniqueMembers="true"/>
+	    </Hierarchy>
+		<Hierarchy name="导师类型" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="导师类型" column="C_TUTOR_TYPE" uniqueMembers="true"/>
+	    </Hierarchy>
+  </Dimension>
+  <Dimension name="机构维度" foreignKey="C_D_UNIT_ID">
+		<Hierarchy hasAll="true" name="高校名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="省份名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="省份名称" column="C_PROVINCE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="办学类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="办学类型" column="C_STYLE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="性质类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="性质类别" column="C_CATEGORY" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="高校类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校类别" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="举办者" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="举办者" column="C_ORGANIZER" uniqueMembers="true"/>
+		</Hierarchy>
+  </Dimension>
+  <Measure name="applyCount" column="C_IS_GRANTED" aggregator="count" visible="false"/>
+  <Measure name="approveFee" column="C_FEE" aggregator="sum"/>
+  <Measure name="grantedCount" column="C_IS_GRANTED" aggregator="sum" visible="false"/>
+  <Measure name="passMidCount" column="C_IS_PASSMID" aggregator="sum" visible="false"/>
+  <Measure name="passEndCount" column="C_IS_FINISHED" aggregator="sum" visible="false"/>
+  <Measure name="passEndNoevaluCount" column="C_IS_FINISHED_NOEVALU" aggregator="sum" visible="false"/>
+  <Measure name="passEndEvaluCount" column="C_IS_FINISHED_EVALU" aggregator="sum" visible="false"/>
+  <Measure name="passEndExcelleCount" column="C_IS_FINISHED_EXCELLE" aggregator="sum" visible="false"/>
+  <Measure name="passEndPaperCount" column="C_IS_FINISHED_PAPER" aggregator="sum" visible="false"/>
+  <Measure name="passEndBookCount" column="C_IS_FINISHED_BOOK" aggregator="sum" visible="false"/>
+  <Measure name="passEndConsulCount" column="C_IS_FINISHED_CONSULTATION" aggregator="sum" visible="false"/>
+</Cube>
+</Schema>

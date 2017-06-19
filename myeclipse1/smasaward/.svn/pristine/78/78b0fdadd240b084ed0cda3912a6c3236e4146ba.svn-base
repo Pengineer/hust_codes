@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#form_selfspace label.error {
+	padding-left: 6px;
+	padding-bottom: 0px;
+	color: rgb(255, 116, 0);
+}
+
+#form_user label.checked {
+	
+}

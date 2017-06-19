@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<joined-subclass name="csdc.bean.EntrustGranted" extends="csdc.bean.ProjectGranted" table="T_ENTRUST_GRANTED">
+		<key column="C_ID"/>
+        <many-to-one name="application" class="csdc.bean.EntrustApplication" fetch="select">
+            <column name="C_APPLICATION_ID" length="40" />
+        </many-to-one>
+        <set name="entrustVariation" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustVariation" />
+        </set>
+        <set name="entrustEndinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustEndinspection" />
+        </set>
+        <set name="entrustFunding" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustFunding" />
+        </set>
+	</joined-subclass>
+
+	<!-- 
+    <class name="csdc.bean.EntrustGranted" table="T_ENTRUST_GRANTED" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="institute" class="csdc.bean.Institute" fetch="select">
+            <column name="C_INSTITUTE_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="department" class="csdc.bean.Department" fetch="select">
+            <column name="C_DEPARTMENT_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="university" class="csdc.bean.Agency" fetch="select">
+            <column name="C_UNIVERSITY_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="application" class="csdc.bean.EntrustApplication" fetch="select">
+            <column name="C_APPLICATION_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="subtype" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_SUBTYPE_ID" length="40" />
+        </many-to-one>
+        <property name="number" type="java.lang.String">
+          <column name="C_NUMBER" length="40"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" />
+        </property>
+        <property name="englishName" type="java.lang.String">
+            <column name="C_ENGLISH_NAME" length="200" />
+        </property>
+        <property name="approveDate" type="java.util.Date">
+            <column name="C_APPROVE_DATE" length="7" />
+        </property>
+        <property name="endStopWithdrawDate" type="java.util.Date">
+            <column name="C_END_STOP_WITHDRAW_DATE" length="7" />
+        </property>
+        <property name="endStopWithdrawPerson" type="java.lang.String">
+            <column name="C_END_STOP_WITHDRAW_PERSON" length="200" />
+        </property>
+        <property name="endStopWithdrawOpinion" type="java.lang.String">
+            <column name="C_END_STOP_WITHDRAW_Opinion" length="800" />
+        </property>
+        <property name="approveFee" type="java.lang.Double">
+            <column name="C_APPROVE_FEE" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="C_STATUS" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="C_NOTE" length="800" />
+        </property>
+        <property name="planEndDate" type="java.util.Date">
+            <column name="C_PLAN_END_DATE" length="7" />
+        </property>
+        <property name="productType" type="java.lang.String">
+            <column name="C_PRODUCT_TYPE" length="400" />
+        </property>
+        <property name="productTypeOther" type="java.lang.String">
+            <column name="C_PRODUCT_TYPE_OTHER" length="200" />
+        </property>
+        <property name="agencyName" type="java.lang.String">
+            <column name="C_AGENCY_NAME" length="200" not-null="true" />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+            <column name="C_DIVISION_NAME" length="200" />
+        </property>
+        <property name="applicantId" type="java.lang.String">
+            <column name="C_APPLICANT_ID" length="400" />
+        </property>
+        <property name="applicantName" type="java.lang.String">
+            <column name="C_APPLICANT_NAME" length="200" not-null="true" />
+        </property>
+        <property name="memberGroupNumber" type="java.lang.Integer">
+            <column name="C_MEMBER_GROUP_NUMBER" precision="1" scale="0"/>
+        </property>
+        <set name="generalVariation" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustVariation" />
+        </set>
+        <set name="generalMidinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustMidinspection" />
+        </set>
+        <set name="generalEndinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustEndinspection" />
+        </set>
+        <set name="generalFunding" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.EntrustFunding" />
+        </set>
+    </class>
+     -->
+</hibernate-mapping>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.Mail" table="T_MAIL">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="100" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="to" type="java.lang.String">
+			<column name="C_TO" />
+		</property>
+		<property name="log" type="java.lang.String">
+			<column name="C_LOG" />
+		</property>
+		<property name="cc" type="java.lang.String">
+			<column name="C_CC" />
+		</property>
+		<property name="bcc" type="java.lang.String">
+			<column name="C_BCC" />
+		</property>
+		<property name="from" type="java.lang.String">
+			<column name="C_FROM" />
+		</property>
+		<property name="replyTo" type="java.lang.String">
+			<column name="C_REPLY_TO" />
+		</property>
+		<property name="subject" type="java.lang.String">
+			<column name="C_SUBJECT" />
+		</property>
+		<property name="body" type="java.lang.String">
+			<column name="C_BODY" />
+		</property>
+		<property name="isHtml" type="java.lang.Integer">
+			<column name="C_IS_HTML" />
+		</property>
+		<property name="createDate" type="java.util.Date">
+			<column name="C_CREATE_DATE" />
+		</property>
+		<property name="finishDate" type="java.util.Date">
+			<column name="C_FINISH_DATE" />
+		</property>
+		<property name="sendTimes" type="java.lang.Integer">
+			<column name="C_SEND_TIMES" />
+		</property>
+		<property name="status" type="java.lang.Integer">
+			<column name="C_STATUS" />
+		</property>
+		<property name="template" type="java.lang.String">
+			<column name="C_TEMPLATE_NAME" />
+		</property>
+		<property name="attachment" type="java.lang.String">
+			<column name="C_ATTACHMENT" />
+		</property>
+		
+		<property name="attachmentName" type="java.lang.String">
+			<column name="C_ATTACHMENT_NAME" />
+		</property>
+	</class>
+</hibernate-mapping>

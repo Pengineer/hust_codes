@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="generalPublicity" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="popInform" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popInform.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="updatePublic" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="addInform" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="confirmGrant" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="exportPublicityList" location="0,0" size="0,0" />
+  </package>
+  <webResource name="import.jsp" path="/project/import.jsp" location="10,2690" size="150,55" />
+  <webResource name="popExport.jsp" path="/project/popExport.jsp" location="372,2410" size="150,55" />
+  <webResource name="listProject.jsp" path="/project/listProject.jsp" location="366,2235" size="150,55" />
+  <webResource name="selectReviewer.jsp" path="/project/selectReviewer.jsp" location="357,2060" size="150,55" />
+  <webResource name="viewProject.jsp" path="/project/viewProject.jsp" location="366,1745" size="150,55" />
+  <webResource name="add.jsp" path="/project/add.jsp" location="159,135" size="150,55" />
+  <webResource name="modify.jsp" path="/project/modify.jsp" location="360,1535" size="150,55" />
+  <webResource name="expertTree.jsp" path="/project/expertTree.jsp" location="369,1255" size="150,55" />
+  <webResource name="expertTree.jsp" path="/expertTree.jsp" location="428,1080" size="150,55" />
+  <webResource name="listPublicity.jsp" path="/project/listPublicity.jsp" location="360,905" size="150,55" />
+  <webResource name="popPrint.jsp" path="/project/print/popPrint.jsp" location="357,730" size="150,55" />
+  <webResource name="grantedNotice.jsp" path="/project/print/grantedNotice.jsp" location="307,555" size="150,55" />
+  <webResource name="grantedList.jsp" path="/project/print/grantedList.jsp" location="313,380" size="150,55" />
+  <webResource name="listPublicity.jsp" path="/project/general/listPublicity.jsp" location="0,0" size="0,0" />
+  <webResource name="popInform.jsp" path="/project/general/popInform.jsp" location="0,0" size="0,0" />
+  <webResource name="list.jsp" path="/project/general/publicity/list.jsp" location="0,0" size="0,0" />
+  <webResource name="popInform.jsp" path="/project/general/publicity/popInform.jsp" location="0,0" size="0,0" />
+  <webResource name="view.jsp" path="/project/general/view.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

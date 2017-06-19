@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.FieldUpdate" table="T_FIELD_UPDATE">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="className" type="java.lang.String">
+			<column name="C_CLASS_NAME" />
+		</property>
+		<property name="entityId" type="java.lang.String">
+			<column name="C_ENTITY_ID" />
+		</property>
+		<property name="fieldName" type="java.lang.String">
+			<column name="C_FIELD_NAME" />
+		</property>
+		<property name="updateDate" type="java.util.Date">
+			<column name="C_UPDATE_DATE" />
+		</property>
+		<property name="oldValue" type="java.lang.String">
+			<column name="C_OLD_VALUE" />
+		</property>
+		<property name="newValue" type="java.lang.String">
+			<column name="C_NEW_VALUE" />
+		</property>
+	</class>
+</hibernate-mapping>

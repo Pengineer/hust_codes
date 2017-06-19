@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="keyMidinspectionAudit" extends="main" namespace="/project/key/midinspection/applyAudit">
+	
+		<action name="toAdd" class="keyMidinspectionApplyAuditAction" method="toAdd">
+	        <result>/project/key/midinspection/applyAudit/popAdd.jsp</result>
+	    </action> 
+	    <action name="add" class="keyMidinspectionApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="toModify" class="keyMidinspectionApplyAuditAction" method="toModify">
+	        <result>/project/key/midinspection/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="modify" class="keyMidinspectionApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="keyMidinspectionApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="keyMidinspectionApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	    <action name="view" class="keyMidinspectionApplyAuditAction" method="view">
+	        <result>/project/key/midinspection/applyAudit/popView.jsp</result>
+	    </action>
+	    <action name="mothball" class="keyMidinspectionApplyAuditAction" method="mothball">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toMothball" class="keyMidinspectionApplyAuditAction"
+			method="toMothball">
+			<result>/project/key/midinspection/applyAudit/popMothball.jsp</result>
+		</action>	
+	</package>
+	
+	<package name="keyMidinspectionApply" extends="main" namespace="/project/key/midinspection/apply">
+		
+		<action name="toList" class="keyMidinspectionApplyAction" method="toList">
+			<result>/project/key/midinspection/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="keyMidinspectionApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="keyMidinspectionApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		
+
+		<action name="simpleSearch" class="keyMidinspectionApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="keyMidinspectionApplyAction" method="toAdvSearch">
+			<result>/project/key/midinspection/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="keyMidinspectionApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyMidinspectionApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyMidinspectionApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyMidinspectionApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="downloadTemplate" class="keyMidinspectionApplyAction" method="downloadTemplate">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetTemplate</param>
+				<param name="contentType">application/zip</param>
+				<param name="contentDisposition">attachment;filename="${filepath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="validateTemplate" class="keyMidinspectionApplyAction" method="validateTemplate">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	    
+		<action name="downloadApply" class="keyMidinspectionApplyAction" method="downloadApply">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filepath}"</param>  
+	 	  	</result>
+	 	  	<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	
+		<action name="validateFile" class="keyMidinspectionApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  	
+	  	<action name="toAdd" class="keyMidinspectionApplyAction" method="toAdd">
+		 	 <result>/project/key/midinspection/apply/popAdd.jsp</result>
+		 	 <result name="input">/project/key/midinspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="add" class="keyMidinspectionApplyAction" method="add">
+			<result>/project/key/midinspection/apply/popAdd.jsp</result>
+			<result name="input">/project/key/midinspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="toAddMidFee" class="keyMidinspectionApplyAction" method="toAddMidFee">
+			 <result>/project/popAddMidFee.jsp</result>
+		</action>
+		
+		<action name="toModify" class="keyMidinspectionApplyAction" method="toModify">
+		 	 <result>/project/key/midinspection/apply/popModify.jsp</result>
+		 	 <result name="input">/project/key/midinspection/apply/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="keyMidinspectionApplyAction" method="modify">
+			<result>/project/key/midinspection/apply/popModify.jsp</result>
+			<result name="input">/project/key/midinspection/apply/popModify.jsp</result>
+		</action>
+
+	   	<action name="submit" class="keyMidinspectionApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   			
+	   	<action name="delete" class="keyMidinspectionApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   	
+	   	<action name="toAddResult" class="keyMidinspectionApplyAction" method="toAddResult">
+		  <result>/project/key/midinspection/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="keyMidinspectionApplyAction" method="toModifyResult">
+		  <result>/project/key/midinspection/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="keyMidinspectionApplyAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="keyMidinspectionApplyAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="keyMidinspectionApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toUploadFileResult" class="keyMidinspectionApplyAction" method="toUploadFileResult">
+		  <result>/project/key/midinspection/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="keyMidinspectionApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="toView" class="keyMidinspectionApplyAction" method="toView">
+	        <result>/project/key/view.jsp</result>
+	    </action>
+	    
+	    <action name="view" class="keyMidinspectionApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	   
+		<action name="prev" class="keyMidinspectionApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="keyMidinspectionApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 发布 -->
+		<action name="publish" class="keyMidinspectionApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 导出列表 -->
+		<action name="confirmExportOverView" class="keyMidinspectionApplyAction" method="confirmExportOverView">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+		<package name="keyMidinspectionApplyRequired" extends="main" namespace="/project/key/midinspection/apply/midRequired">
+		<action name="toList" class="keyMidinspectionApplyRequiredAction" method="toList">
+			<result>/project/key/midinspection/apply/popMidRequired.jsp</result>
+		</action>
+		<action name="list" class="keyMidinspectionApplyRequiredAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="keyMidinspectionApplyRequiredAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="keyMidinspectionApplyRequiredAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyMidinspectionApplyRequiredAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyMidinspectionApplyRequiredAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyMidinspectionApplyRequiredAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<!-- 导出列表 -->
+		<action name="exportOverView" class="keyMidinspectionApplyRequiredAction" method="exportOverView">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	</package>
+</struts>

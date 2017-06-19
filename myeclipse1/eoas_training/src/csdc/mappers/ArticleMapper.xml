@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Article">
+	<resultMap id="articleResult" type="Article">
+		<id property="id" column="article_id" />
+		<result property="title" column="article_title" />
+		<result property="abstract" column="article_abstract" />
+		<result property="createDate" column="article_createDate" />
+		<result property="source" column="article_source" />
+		<result property="isopen" column="article_is_open" />
+		<result property="attachment" column="article_attachment" />
+		<result property="attachmentName" column="article_attachment_name" />
+		<result property="imgHomeshow" column="article_img_homeshow" />
+		<result property="viewCount" column="article_view_count" />
+		<result property="content" column="article_content" />
+		<association property = "account" javaType = "Account">
+			<id property="id" column="account_id" />
+			<result property="email" column="account_email"/>
+			<result property="password" column="account_password"/>
+			<result property="belongId" column="account_belongId"/>
+			<result property="name" column="account_name"/>
+			<result property="registerDate" column="account_registerDate"/>
+			<result property="lastLoginDate" column="account_lastLoginDate"/>
+			<result property="lastLoginIp" column="account_lastLoginIp"/>
+			<result property="loginCount" column="account_loginCount"/>
+			<result property="mailboxVerified" column="account_mailboxVerified"/>
+			<result property="mailboxVerifyCode" column="account_mailboxVerifyCode"/>
+			<result property="isSuperUser" column="account_isSuperUser"/>	
+		</association>
+		<association property = "systemOption" javaType = "SystemOption">
+			<id property="id" column="systemOption_id" />
+			<result property="name" column="systemOption_name" />
+			<result property="description" column="systemOption_description" />
+			<result property="code" column="systemOption_code" />
+			<result property="isAvailable" column="systemOption_isAvailable" />
+			<result property="standard" column="systemOption_standard" />
+			<result property="abbr" column="systemOption_abbr" />
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="Account" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ARTICLE 
+			(C_ID, 
+			C_ACCOUNT_ID, 
+			C_TITLE, 
+			C_ABSTRACT, 
+			C_CREATED_DATE, 
+			C_TYPE_ID, 
+			C_SOURCE, 
+			C_IS_OPEN, 
+			C_ATTACHMENT, 
+			C_ATTACHMENT_NAME, 
+			C_IMG_HOMESHOW, 
+			C_VIEW_COUNT,
+			C_CONTENT)
+		values 
+			(#{id, jdbcType=VARCHAR},
+			#{account.id, jdbcType=VARCHAR},
+			#{title, jdbcType=VARCHAR},
+			#{slideAbstract, jdbcType=VARCHAR},
+			#{createdDate, jdbcType=DATE},
+			#{systemOption.id, jdbcType=VARCHAR},
+			#{source, jdbcType=VARCHAR},
+			#{isOpen, jdbcType=INTEGER},
+			#{attachment, jdbcType=BOOLEAN},
+			#{attachmentName, jdbcType=VARCHAR},
+			#{imgHomeshow, jdbcType=INTEGER},
+			#{viewCount, jdbcType=VARCHAR},
+			#{content, jdbcType=VARCHAR}
+			)
+	</insert>
+	
+	<select id="list" parameterType="map" resultMap="articleResult">
+		SELECT 
+			article.C_ID as article_id, 
+			article.C_TITLE as article_title,
+			article.C_ABSTRACT as article_abstract, 
+			article.C_CREATED_DATE as article_createDate,
+			article.C_SOURCE as article_source,
+			article.C_IS_OPEN as article_is_open,
+			article.C_ATTACHMENT as article_attachment, 
+			article.C_ATTACHMENT_NAME as article_attachment_name, 
+			article.C_IMG_HOMESHOW as article_img_homeshow, 
+			article.C_VIEW_COUNT as article_view_count,
+			article.C_CONTENT as article_content,
+    	    account.C_ID as account_id,
+    		account.C_EMAIL as account_email,
+    		account.C_PASSWORD as account_password,
+    		account.C_BELONG_ID as account_belongId,
+    		account.C_NAME as account_name,
+    		account.C_REGISTER_DATE as account_registerDate,
+    		account.C_LAST_LOGIN_DATE as account_lastLoginDate,
+    		account.C_LAST_LOGIN_IP as account_lastLoginIp,
+    		account.C_LOGIN_COUNT as account_loginCount,
+    		account.C_MAILBOX_VERIFIED as account_mailboxVerified,
+    		account.C_MAILBOX_VERYFY_CODE as account_mailboxVerifyCode,
+    		account.C_IS_SUPERUSER as account_isSuperUser,
+			systemOption.C_ID as systemOption_id,
+			systemOption.C_NAME as systemOption_name, 
+			systemOption.C_DESCRIPTION as systemOption_description,
+			systemOption.C_PARENT_ID as systemOption_parentId, 
+			systemOption.C_CODE as systemOption_code, 
+			systemOption.C_IS_AVAILABLE as systemOption_isAvailable, 
+			systemOption.C_STANDARD as systemOption_standard, 
+			systemOption.C_ABBR as systemOption_abbr
+		 FROM T_ARTICLE article
+		 left join T_SYSTEM_OPTION systemOption on article.C_TYPE_ID = systemOption.C_ID
+		 left join T_ACCOUNT account on article.C_ACCOUNT_ID = account.C_ID
+		 <where>
+		 	<if test = "type != null">
+		 		systemOption.id = #{type}
+		 	</if>
+		 </where>
+	</select>
+</mapper> 

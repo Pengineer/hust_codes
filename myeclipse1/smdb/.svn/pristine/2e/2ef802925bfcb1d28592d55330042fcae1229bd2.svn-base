@@ -1,0 +1,35 @@
+define(function(require, exports, module) {
+	var view = require('javascript/view');
+	require('tool/poplayer/js/pop');
+	require('pop-self');
+	
+	var nameSpace = "log";
+	
+	var showDetails = function(result) {// 显示查看内容
+		if (result.errorInfo == null || result.errorInfo == "") {
+			$("#entityId").attr("value", result.log.id);
+			$("#entityIds").attr("value", result.log.id);
+			$("#view_container").hide();
+			$("#view_container").html(TrimPath.processDOMTemplate("view_template", result));
+			$("#view_container").show();
+		} else {
+			alert(result.errorInfo);
+		}
+		if (parent != null) {
+			parent.loading_flag = false;
+			parent.hideLoading();
+		}
+	};
+	
+	exports.init = function() {
+		view.show(nameSpace, showDetails);
+		view.del(nameSpace, "您确定要删除此日志吗？");
+		view.prev(nameSpace, showDetails);
+		view.next(nameSpace, showDetails);
+		view.back(nameSpace);
+		$(".link2").live("click", function() {
+			popAccount(this.id);
+			return false;
+		});
+	};
+});

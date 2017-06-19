@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Record">
+	<resultMap id="recordResult" type="Record">
+		<id property="id" column="C_ID"/>
+		<result property="writtenScore" column="C_WRITTEN_SCORE"/>
+		<result property="dressup" column="C_DRESSUP"/>
+		<result property="communication" column="C_COMMUNICATION"/>
+		<result property="analysis" column="C_ANALYSIS"/>
+		<result property="flexibility" column="C_FLEXIBILITY"/>
+		<result property="relationships" column="C_RELATIONSHIPS"/>
+		<result property="responsibility" column="C_RESPONSIBILITY"/>
+		<result property="antipressure" column="C_ANTIPRESSURE"/>
+		<result property="execution" column="C_EXECUTION"/>
+		<result property="specialty" column="C_SPECIALTY"/>
+		<result property="willingness" column="C_WILLINGNESS"/>
+		<result property="character" column="C_CHARACTER"/>
+		<result property="note" column="C_NOTE"/>
+		<result property="date" column="C_DATE"/>
+		<association property="positionResume" column="C_POSITION_RESUME_ID" resultMap="positionResumeResult"/>	
+	</resultMap>
+		
+	<resultMap type="PositionResume" id="positionResumeResult">
+		<id property = "id" column="C_POSITION_RESUME_ID" />
+		<result property="applyDate" column="C_APPLY_DATE" />
+		<result property="admitStatus" column="C_ADMIT_STATUS" />
+		<result property="positionStatus" column="C_POSITION_STATUS" />
+		<result property="applyStatus" column="C_APPLY_STATUS" />
+		<association property="position" column="C_POSITION_ID" javaType="Position" resultMap="positionResult" />
+		<association property="resume" column="C_RESUME_ID" javaType="Resume" resultMap="resumeResult" />
+	</resultMap>
+	
+	<resultMap type="Position" id="positionResult">
+		<id property = "id" column="C_ID" />
+		<result property="place" column="C_PLACE" />
+		<result property="name" column="C_NAME" />
+		<result property="releaseTime" column="C_RELEASE_TIME" />
+		<result property="number" column="C_NUMBER" />
+		<result property="responsibility" column="C_RESPONSIBILITY" />
+		<result property="requirement" column="C_REQUIREMENT" />
+	</resultMap>
+	
+	<resultMap id="resumeResult" type="Resume">
+		<constructor>
+			<idArg column="C_ID" javaType="java.lang.String" />
+		</constructor>
+		<id property="id" column="C_ID" />
+		<result property="type" column="C_TYPE" />
+		<result property="resumeName" column="C_RESUME_NAME" />
+		<result property="name" column="C_NAME" />
+		<result property="gender" column="C_GENDER" />
+		<result property="birthday" column="C_BIRTHDAY" />
+		<result property="mobilephone" column="C_MOBILE_PHONE" />
+		<result property="hometown" column="C_HOMETOWN" />
+		<result property="idcardType" column="C_IDCARD_TYPE" />
+		<result property="idcardNumber" column="C_IDCARD_NUMBER" />
+		<result property="photo" column="C_PHOTO" />
+		<result property="scholarship" column="C_SCHOLARSHIP" />
+		<result property="award" column="C_AWARD" />
+		<result property="leaderExperience" column="C_LEADER_EXPERIENCE" />
+		<result property="note" column="C_NOTE" />
+		<result property="eleresume" column="C_ELERESUME" />
+		<result property="production" column="C_PRODUCTION" />
+		<result property="otherAttachment" column="C_OTHER_ATTACHMENT" />
+		<result property="createDate" column="C_CREATEDATE" />
+		<result property="modifyDate" column="C_MODIFYDATE" />
+		<result property="isTalent" column="C_IS_TALENT" />
+		<result property="eleresumeName" column="C_ELERESUME_NAME" />
+		<result property="otherAttachmentName" column="C_OTHER_ATTACHMENT_NAME" />
+		<result property="productionName" column="C_PRODUCTION_NAME" />
+		<association property="account" column="C_ACCOUNT_ID" javaType="Account" resultMap="accountResult" />
+		<collection property="education" ofType="Education" resultMap="educationResult" />
+		<collection property="experience" ofType="Experience" resultMap="experienceResult" />
+	</resultMap>
+	
+	<resultMap id="accountResult" type="Account">
+		<id property="id" column="C_ID" />
+		<result property="email" column="C_EMAIL" />
+		<result property="password" column="C_PASSWORD" />
+		<result property="accountType" column="C_ACCOUNT_TYPE" />
+	</resultMap>
+	
+	<resultMap id="educationResult" type="Education">
+		<id property="id" column="C_EDU_ID" />
+		<result property="education" column="C_EDUCATION" />
+		<result property="degree" column="C_DEGREE" />
+		<result property="school" column="C_SCHOOL" />
+		<result property="stime" column="C_STIME" />
+		<result property="etime" column="C_ETIME" />
+		<result property="major" column="C_MAJOR" />
+		<result property="description" column="C_DESCRIPTION" />
+	</resultMap>
+
+	<resultMap id="experienceResult" type="Experience">
+		<id property="id" column="C_EXP_ID" />
+		<result property="company" column="C_COMPANY" />
+		<result property="companyStime" column="C_COMPANY_STIME" />
+		<result property="companyEtime" column="C_COMPANY_ETIME" />
+		<result property="position" column="C_POSITION" />
+		<result property="positionDescription" column="C_POSITION_DESCRIPTION" />
+		<result property="project" column="C_PROJECT" />
+		<result property="projectStime" column="C_PROJECT_STIME" />
+		<result property="projectEtime" column="C_PROJECT_ETIME" />
+		<result property="dutyDescription" column="C_DUTY_DESCRIPTION" />
+	</resultMap>
+
+	
+	<insert id="insert" parameterType="Record" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType = "java.lang.String" keyProperty = "id" order = "BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_RECORD
+		(
+		C_ID,
+		C_WRITTEN_SCORE,
+		C_DRESSUP,
+		C_COMMUNICATION,
+		C_ANALYSIS,
+		C_FLEXIBILITY,
+		C_RELATIONSHIPS,
+		C_RESPONSIBILITY,
+		C_ANTIPRESSURE,
+		C_EXECUTION,
+		C_SPECIALTY,
+		C_WILLINGNESS,
+		C_CHARACTER,
+		C_NOTE,
+		C_DATE,
+		C_POSITION_RESUME_ID
+		)
+		VALUES
+		(
+		#{id},
+		#{writtenScore},
+		#{dressup},
+		#{communication},
+		#{analysis},
+		#{flexibility},
+		#{relationships},
+		#{responsibility},
+		#{antipressure},
+		#{execution},
+		#{specialty},
+		#{willingness},
+		#{character},
+		#{note},
+		#{date},
+		#{positionResume.id}
+		)
+	</insert>
+	
+	<select id="load" parameterType = "java.lang.String" resultMap="recordResult">
+		select * from  T_RECORD where c_id = #{id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="recordResult">
+		select C_ID, C_WRITTEN_SCORE, C_DRESSUP, C_COMMUNICATION, C_ANALYSIS, C_FLEXIBILITY, C_RELATIONSHIPS, C_RESPONSIBILITY,
+				C_ANTIPRESSURE, C_EXECUTION, C_SPECIALTY, C_WILLINGNESS, C_CHARACTER, C_NOTE, C_DATE,
+				C_POSITION_RESUME_ID  from T_RECORD
+	</select>
+</mapper>

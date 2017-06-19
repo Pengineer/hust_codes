@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="selfspace" location="290,45" size="770,455">
+    <action name="viewInfo" location="135,57" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="loadInfo" location="135,162" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toModifyPassword" location="380,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="modifyPassword" location="380,257" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifyPasswordSuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="toResetPassword" location="65,267" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="resetPassword.jsp" />
+      </result>
+    </action>
+    <action name="resetPassword" location="65,362" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="resetPasswordSuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="resetPassword.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="modifyPassword.jsp" path="/selfspace/modifyPassword.jsp" location="922,660" size="150,55" />
+  <webResource name="modifyPasswordSuccess.jsp" path="/selfspace/modifyPasswordSuccess.jsp" location="621,555" size="150,55" />
+  <webResource name="resetPassword.jsp" path="/selfspace/resetPassword.jsp" location="50,275" size="150,55" />
+  <webResource name="resetPasswordSuccess.jsp" path="/selfspace/resetPasswordSuccess.jsp" location="309,555" size="150,55" />
+</Struts2Diagram>
+

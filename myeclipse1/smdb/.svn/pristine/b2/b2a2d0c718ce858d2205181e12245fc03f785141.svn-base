@@ -1,0 +1,68 @@
+﻿	javascript --> javascrpt_sea
+
+	seajs API: http://seajs.org/docs/#api
+	seajs快速参考：https://github.com/seajs/seajs/issues/266
+
+	smdb前台js可以看做三层（全局、模块、页面）加库（common.js）加插件的形式，而seajs的功能在于将这些js模块化、定义模块接口以及相互如何调用——相当于一个模块加载器。
+
+	目前的核心功能主要是列表，查看，编辑；插件主要有校验，日期选择器，弹层，分标签查看等。下面简要介绍使用方法。
+
+
+	common.js由于涉及的方法太多，尚未理清，贸然修改有风险，所以不改成seajs的模块形式，需要时直接require，common.js中的方法将作为局部变量在模块内使用。
+
+
+	列表页面主要包含按钮初始化、数据显示、弹层以及一些功能性按钮（链接）。页面jsp直接调用页面list.js
+页面list.js require 模块list.js require 全局list.js
+
+	查看页面主要包含按钮初始化、数据显示、弹层以及一些功能性按钮（链接）。页面jsp直接调用页面view.js
+页面view.js require 模块view.js require 全局view.js
+
+	以上两类功能相对简单，也易于提取，全局js提供最基础、大家都要用到的功能。模块js加入一些模块特有方法。页面js分两步：传参数调用模块js和实现一些特有方法。在具体页面可能还要调用弹层、分标签查看、树等插件。编码参照具体代码（人员模块为佳）
+
+	编辑页面（添加和修改类似）的核心js是step_tool，直接require即可。在此基础上将各标签js改写为seajs模式（参照人员），各标签页面js提供标签设置（setting）以及标签内初始化（按钮、弹层等，但不是必须）。在页面js中require个标签js，实现标签内初始化以及标签setting，后面的基本不需要修改。
+
+
+	库js和各插件的调用方式基本都是require。
+	var list = require('javascript/list');
+	var view = require('javascript/view');
+	
+	弹层：
+	require('tool/poplayer/js/pop');
+	require('tool/poplayer/js/pop.self');
+	之后在各自js中写法不变。
+
+	校验：
+	require('javascript/lib/jquery/jquery.validate')($);
+	var validate = require('javascript/person/validate');
+	定义校验对象validate，调用方法为validate.valid();
+
+	日期选择器：
+	var datepick = require("javascript/lib/jquery/jquery.datepick.init");
+	datepick.init();
+	然后在各自页面js中直接初始化即可。
+
+	DWR：
+	require('javascript/engine');
+	require('dwr/util');
+	require('dwr/interface/personService');
+	各自页面写法不变。
+
+	分标签查看：
+	require('javascript/template_tool');
+	各自页面写法不变。
+
+	swfupload上传文件暂时不改，我统一处理
+	
+	cookie
+	require('javascript/lib/jquery/jquery.cookie')($);
+	
+	jquery.ui
+	require('tool/jquery.ui/js/jquery-ui-1.8.5.custom.min');
+	
+	待补充……
+
+	简而言之，seajs模块化修改就是把js之间的相互关系理清，将合适的方法放入合适的模块（要考虑复用性、模块层次性和灵活性），定义好模块实现以及接口，再一步步调用。
+
+
+
+校验方法整理，commonjs中一些方法的整理和提取，seajs配置，commonjs中的image似乎有问题。

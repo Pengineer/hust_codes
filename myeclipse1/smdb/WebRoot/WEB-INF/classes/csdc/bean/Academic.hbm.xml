@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Academic" table="T_Academic" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="person" class="csdc.bean.Person" fetch="select">
+            <column name="C_PERSON_ID" length="40" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="expertType" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_EXPERT_TYPE_ID" length="40" />
+        </many-to-one>
+		<property name="ethnicLanguage" type="java.lang.String">
+            <column name="C_ETHNIC_LANGUAGE" length="400" />
+        </property>
+        <property name="Language" type="java.lang.String">
+            <column name="C_LANGUAGE" length="400" />
+        </property>
+        <property name="disciplineType" type="java.lang.String">
+        	<column name="C_DISCIPLINE_TYPE" length="800" />
+        </property>
+        <property name="discipline" type="java.lang.String">
+            <column name="C_DISCIPLINE" length="800" />
+        </property>
+        <property name="relativeDiscipline" type="java.lang.String">
+        	<column name="C_RELATIVE_DISCIPLINE" length="800" />
+        </property>
+        <property name="tutorType" type="java.lang.String">
+            <column name="C_TUTOR_TYPE" length="40" />
+        </property>
+        <property name="specialityTitle" type="java.lang.String">
+            <column name="C_SPECIALITY_TITLE" length="80" />
+        </property>
+        <property name="researchField" type="java.lang.String">
+            <column name="C_RESEARCH_FIELD" length="2000" />
+        </property>
+        <property name="major" type="java.lang.String">
+            <column name="C_MAJOR" length="200" />
+        </property>
+        <property name="researchSpeciality" type="java.lang.String">
+            <column name="C_RESEARCH_SPECIALITY" length="2000" />
+        </property>
+        <property name="furtherEducation" type="java.lang.String">
+            <column name="C_FURTHER_EDUCATION" length="2000" />
+        </property>
+        <property name="parttimeJob" type="java.lang.String">
+            <column name="C_PARTTIME_JOB" length="2000" />
+        </property>
+        <property name="positionLevel" type="java.lang.String">
+            <column name="C_POSITION_LEVEL" length="40" />
+        </property>
+        <property name="postdoctor" type="java.lang.Integer">
+            <column name="C_POSTDOCTOR" precision="1" scale="0" />
+        </property>
+        <property name="isReviewer" type="java.lang.Integer">
+            <column name="C_IS_REVIEWER" precision="1" scale="0" />
+        </property>
+        <property name="reviewLevel" type="java.lang.String">
+            <column name="C_REVIEW_LEVEL" length="40" />
+        </property>
+        <property name="reviewScore" type="java.lang.Integer">
+            <column name="C_REVIEW_SCORE" precision="5" scale="2" />
+        </property>
+        <property name="talent" type="java.lang.String">
+            <column name="C_TALENT_ID" length="400" />
+        </property>
+        <property name="lastEducation" type="java.lang.String">
+            <column name="C_Last_Education" length="40" />
+        </property>
+        <property name="lastDegree" type="java.lang.String">
+            <column name="C_Last_Degree" length="40" />
+        </property>
+        <property name="countryRegion" type="java.lang.String">
+        	 <column name="C_COUNTRY_REGION" length="80" />
+        </property>
+        <property name="degreeDate" type="java.util.Date">
+            <column name="C_DEGREE_DATE" length="7" />
+        </property>
+        <many-to-one name="computerLevel" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_COMPUTER_LEVEL_ID" length="40" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

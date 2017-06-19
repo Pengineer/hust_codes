@@ -1,0 +1,29 @@
+1，什么是jquery对象？
+  jquery对象就是通过jquery包装DOM对象后产生的对象。
+  jQuery对象是 jQuery独有的.如果一个对象是 jQuery对象,那么它就可以使用 jQuery里的方法:$(“#test”).html();
+  
+       比如： 
+     $("#test").html()意思是指：获取ID为test的元素内的html代码。其中html()是jQuery里的方法 
+       这段代码等同于用DOM实现代码： 
+     document.getElementById("test").innerHTML; 
+      
+       虽然jQuery对象是包装DOM对象后产生的，但是jQuery无法使用DOM对象的任何方法，同理DOM对象也不能使用jQuery里的方法.乱使用会报错
+       约定：如果获取的是 jQuery对象, 那么要在变量前面加上 $. 	
+  var $variable = jQuery对象
+  var variable = DOM对象
+  
+2，DOM对象转成jQuery对象
+        对于已经是一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了。$(DOM对象)
+        
+3，jQuery对象转成DOM对象 ：两种转换方式将一个jQuery对象转换成DOM对象：[index]和.get(index); 
+   (1) jQuery对象是一个数组对象，可以通过[index]的方法，来得到相应的DOM对象
+   (2) 通过jQuery本身提供的get(index)方法，得到相应的DOM对象  
+   
+4，jquery选择器(9种选择器)                
+       选择器是 jQuery的根基, 在 jQuery中,对事件处理,遍历 DOM和 Ajax操作都依赖于选择器
+  jQuery 选择器的优点:简洁的写法 ；完善的事件处理机制；
+  $("#id") == document.getElementById("id")
+  $("tagname") == document.getElementsByTagName("tagName")    
+ 
+       基本选择器，层次选择器，过滤选择器（基本过滤, 内容过滤, 可见性过滤, 属性过滤, 子元素过滤, 表单和表单对象属性过滤选择器）
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   <package name="Product" extends="main" namespace="/product">
+   	
+		<!-- 进入负责成果列表页面 -->
+		<action name="toSearchDirectProduct" class="ProductAction" method="toSearchDirectProduct">
+			<result>/product/listMyProduct.jsp</result>
+		</action>
+		
+		<!-- 个人成果列表查询 -->
+		<action name="searchDirectProduct" class="ProductAction" method="searchDirectProduct">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="toAdd" class="ProductAction" method="toAdd">
+			<result>/product/extIf/popAdd.jsp</result>
+			<result name="success1">/product/addProduct.jsp</result>
+		</action>
+		
+		<!-- 项目成果审核 -->
+		<action name="toAudit" class="ProductAction" method="toAudit">
+			<result>/product/popAudit.jsp</result>
+		</action>
+		
+		<!-- 审核完成-->
+		<action name="audit" class="ProductAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 删除成果项目相关信息-->
+		<action name="deleteProjectInfo" class="ProductAction" method="deleteProjectInfo">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!--  检查成果能否被修改-->
+		<action name="checkModifyProduct" class="ProductAction" method="checkModifyProduct">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddSelect" class="ProductAction" method="toAddSelect">
+			<result>/product/extIf/popSelect.jsp</result>
+		</action>
+		
+   </package>
+</struts>

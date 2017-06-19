@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="csdc.bean.Role_Right">
+
+	<resultMap id="roleRightMap" type="RoleRight" >
+		<id property="id" column="C_ID" />
+		<result property="right" column="C_RIGHT_ID" />
+		<result property="role" column="C_ROLE_ID" />
+	</resultMap>
+
+	<insert id="insert" parameterType="RoleRight" useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ROLE_RIGHT (
+		C_ID,
+		C_RIGHT_ID,
+		C_ROLE_ID) values (
+		#{id,jdbcType=VARCHAR},
+		#{right.id},
+		#{role.id})
+	</insert>
+
+	<!-- 删除RoleRight根据id -->
+	<delete id="delete" parameterType="string">
+		delete from T_ROLE_RIGHT where C_ID = #{id}
+	</delete>
+
+	<!-- 根据角色id查找角色权限中间表 -->
+	<select id="list" parameterType="map" resultMap="roleRightMap">
+		select * from T_ROLE_RIGHT 
+		<where>
+			<if test="roleId != null">
+			 	C_ROLE_ID = #{roleId}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="unitSelfspace" extends="main" namespace="/unit/selfspace">
+
+		<action name="toView" class="unitSelfspaceAction" method="toView">
+			<result name="ministry">/unit/agency/ministry/view.jsp</result>
+			<result name="province">/unit/agency/province/view.jsp</result>
+			<result name="university">/unit/agency/university/view.jsp</result>
+			<result name="institute">/unit/institute/view.jsp</result>
+			<result name="department">/unit/department/view.jsp</result>
+		</action>
+		
+		<action name="view" class="unitSelfspaceAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result> 
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModify" class="unitSelfspaceAction" method="toModify">
+			<result name="ministry">/unit/agency/ministry/modify.jsp</result>
+			<result name="province">/unit/agency/province/modify.jsp</result>
+			<result name="university">/unit/agency/university/modify.jsp</result>
+			<result name="institute">/unit/institute/modify.jsp</result>
+			<result name="department">/unit/department/modify.jsp</result>
+		</action>
+		<action name="modify" class="unitSelfspaceAction" method="modify">
+			<result name="input">/unit/agency/ministry/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+			</result>
+		</action>
+	</package>
+</struts>

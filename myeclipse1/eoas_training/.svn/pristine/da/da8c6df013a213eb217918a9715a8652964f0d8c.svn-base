@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Notice">
+	<resultMap id="noticeResult" type="Notice">
+		<id property="id" column="C_ID" />
+		<result property="title" column="C_TITLE" />
+		<result property="content" column="C_CONTENT" />
+		<result property="createDate" column="C_CREATE_DATE" />
+		<result property="htmlFile" column="C_HTML_FILE" />
+		<result property="type" column="C_TYPE" />
+		<result property="source" column="C_SOURCE" />
+		<result property="isOpen" column="C_IS_OPEN" />
+		<result property="attachmentName" column="C_ATTACHMENT_NAME" />
+		<result property="attachment" column="C_ATTACHMENT" />
+		<result property="viewCount" column="C_VIEW_COUNT" />
+		<association property="account" javaType="Account">
+			<id property="id" column="C_ACCOUNT_ID"/>
+			<result property="email" column="C_EMAIL"/>
+			<result property="password" column="C_PASSWORD"/>
+			<result property="accountType" column="C_ACCOUNT_TYPE"/>
+			<result property="belongId" column="C_BELONG_ID"/>
+		</association>
+	</resultMap>
+	
+	<insert id="insert">
+	  <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+	      SELECT seguence.NEXTVAL AS ID FROM DUAL
+	  </selectKey>
+	  insert into T_NOTICE values 
+		  (#{id,jdbcType=VARCHAR}, 
+		  #{account.id,jdbcType=VARCHAR}, 
+		  #{title,jdbcType=VARCHAR}, 
+		  #{content,jdbcType=VARCHAR},
+		  #{createDate,jdbcType=VARCHAR}, 
+		  #{htmlFile,jdbcType=VARCHAR}, 
+		  #{type,jdbcType=VARCHAR}, 
+		  #{source,jdbcType=VARCHAR}, 
+		  #{isOpen,jdbcType=VARCHAR}, 
+		  #{attachmentName,jdbcType=VARCHAR}, 
+		  #{attachment,jdbcType=VARCHAR}, 
+		  #{viewCount,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.String" >
+		delete  from T_NOTICE where C_ID = #{id}
+	</delete>
+
+	<update id="update" parameterType="Notice">
+		update T_NOTICE set 
+			C_TITLE = #{title,jdbcType=VARCHAR},
+			C_CONTENT = #{content,jdbcType=VARCHAR},
+			C_HTML_FILE = #{htmlFile,jdbcType=VARCHAR},
+			C_TYPE = #{type,jdbcType=VARCHAR},
+			C_SOURCE = #{source,jdbcType=VARCHAR},
+			C_IS_OPEN = #{isOpen,jdbcType=VARCHAR},
+			C_ATTACHMENT_NAME = #{attachmentName,jdbcType=VARCHAR},
+			C_ATTACHMENT = #{attachment,jdbcType=VARCHAR},
+			C_VIEW_COUNT = #{viewCount,jdbcType=VARCHAR}
+		where C_ID = #{id}
+	</update>
+	
+	<select id="load" parameterType="string" resultMap="noticeResult">
+		SELECT * FROM t_notice where c_id = #{id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="noticeResult">
+		SELECT * FROM t_notice
+		<where>
+			<if test="accountId != null">
+				c_account_id = #{accountId}
+			</if>
+		</where>
+	</select>
+
+</mapper> 

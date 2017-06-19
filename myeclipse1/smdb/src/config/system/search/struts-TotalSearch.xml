@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="search" extends="main" namespace="/system/search">
+			
+		<action name="toTotalSearch" class="totalSearchAction" method="toTotalSearch">
+			<result>/system/search/totalSearch.jsp</result>
+		</action>
+		<action name="updateIndex" class="totalSearchAction" method="updateIndex">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="isExistIndex" class="totalSearchAction" method="isExistIndex">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="list" class="totalSearchAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>		
+		<action name="simpleSearch" class="totalSearchAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>		
+		<action name="changePageSize" class="totalSearchAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>		
+		<action name="toPage" class="totalSearchAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="initList" class="totalSearchAction" method="initList">
+			<result type="json"><param name="root">linkedMap</param></result>
+		</action>
+	</package>
+
+</struts>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="role" location="235,10" size="770,1295">
+    <action name="listRole" location="555,477" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listRole.jsp" />
+      </result>
+    </action>
+    <action name="toAddRole" location="555,582" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="addRole.jsp" />
+      </result>
+    </action>
+    <action name="addRole" location="555,677" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="addRole.jsp" />
+      </result>
+    </action>
+    <action name="deleteRole" location="555,792" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="groupDeleteRoles" location="310,792" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="viewRole" location="310,897" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewRole.jsp" />
+      </result>
+    </action>
+    <action name="loadRole" location="310,1002" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifyRole.jsp" />
+      </result>
+    </action>
+    <action name="modifyRole" location="310,1097" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modifyRole.jsp" />
+      </result>
+    </action>
+    <action name="prevRole" location="310,1212" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="nextRole" location="65,1212" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sortRole" location="65,372" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listRole.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="65,267" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listRole.jsp" />
+      </result>
+    </action>
+    <action name="viewUserRole" location="65,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="userRole.jsp" />
+      </result>
+    </action>
+    <action name="userRole" location="65,57" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="listRole.jsp" path="/roleright/listRole.jsp" location="1060,345" size="150,55" />
+  <webResource name="addRole.jsp" path="/roleright/addRole.jsp" location="1063,555" size="150,55" />
+  <webResource name="viewRole.jsp" path="/roleright/viewRole.jsp" location="1060,870" size="150,55" />
+  <webResource name="modifyRole.jsp" path="/roleright/modifyRole.jsp" location="1054,1080" size="150,55" />
+  <webResource name="userRole.jsp" path="/roleright/userRole.jsp" location="10,135" size="150,55" />
+</Struts2Diagram>
+

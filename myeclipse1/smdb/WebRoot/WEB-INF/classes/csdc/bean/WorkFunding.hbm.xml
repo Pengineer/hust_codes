@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.WorkFunding" table="T_WORK_FUNDING">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="C_NAME" length="40" not-null="true" />
+		</property>
+		<property name="date" type="java.util.Date">
+			<column name="C_DATE" length="7" not-null="true" />
+		</property>
+		<property name="fee" type="java.lang.Double">
+			<column name="C_FEE" not-null="true" />
+		</property>
+		<property name="payee" type="java.lang.String">
+			<column name="C_PAYEE" length="200" />
+		</property>
+		<property name="agencyName" type="java.lang.String">
+			<column name="C_AGENCY_NAME" length="200" />
+		</property>
+		<property name="note" type="java.lang.String">
+			<column name="C_NOTE" length="1000" />
+		</property>
+		<property name="type" type="java.lang.String" update="false">
+			<column name="C_TYPE" length="40" not-null="true" />
+		</property>
+		<many-to-one name="agency" class="csdc.bean.Agency" fetch="select">
+			<column name="C_AGENCY_ID" length="40" />
+		</many-to-one>
+		<many-to-one name="person" class="csdc.bean.Person" fetch="select">
+			<column name="C_PERSON_ID" length="40" />
+		</many-to-one>
+		<many-to-one name="institute" class="csdc.bean.Institute"
+			lazy="false">
+			<column name="C_INSTITUTE_ID" length="40" />
+		</many-to-one>
+		<many-to-one name="department" class="csdc.bean.Department"
+			lazy="false">
+			<column name="C_DEPARTMENT_ID" length="40" />
+		</many-to-one>
+		<many-to-one name="fundingList" class="csdc.bean.FundingList" lazy="false">
+			<column name="C_FUNDING_LIST_ID" length="40" />
+		</many-to-one>
+		<many-to-one name="agencyFunding" class="csdc.bean.AgencyFunding" lazy="false">
+			<column name="C_AGENCY_FUNDING_ID" length="40" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

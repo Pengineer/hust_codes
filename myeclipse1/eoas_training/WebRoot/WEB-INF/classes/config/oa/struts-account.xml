@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="account" extends="default" namespace="/oa/account">
+		<!-- 进入权限列表 -->
+		<action name="toList" class="accountAction" method="toList">
+			 <result>/jsp/oa/account/list.jsp</result>
+		</action>
+		<!-- 权限列表 -->
+		<action name="list" class = "accountAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>  
+			</result>
+		</action>
+		
+		<action name="view" class="accountAction" method="view">
+			 <result>/jsp/oa/account/view.jsp</result>
+		</action>
+		
+		<action name="delete" class="accountAction" method="delete">
+			 <result>/jsp/oa/account/list.jsp</result>
+		</action>
+
+	</package>
+</struts>

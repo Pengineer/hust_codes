@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="project" location="221,10" size="525,350">
+    <action name="toSearchMyProject" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listMyProject.jsp" />
+      </result>
+    </action>
+    <action name="searchMyProject" location="65,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toViewMyProject" location="65,267" size="150,41">
+      <result name="general">
+        <resourceEdge source="general" routing="0" target="view.jsp" />
+      </result>
+      <result name="instp">
+        <resourceEdge source="instp" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="viewMyProject" location="310,257" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="listMyProject.jsp" path="/project/listMyProject.jsp" location="10,30" size="150,55" />
+  <webResource name="view.jsp" path="/project/general/view.jsp" location="9,240" size="150,55" />
+  <webResource name="view.jsp" path="/project/instp/view.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

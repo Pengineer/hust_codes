@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：page_left.css
+ *
+ * 文件说明：
+ *     主要用于父页面left帧样式的定义。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 与页面整体布局相关的样式。
+ ***************************************************************/
+
+/*隐藏水平滚动条*/
+html {
+	overflow-x: hidden;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	border: hidden;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	/**background-color: rgb(230, 240, 247);*/
+}
+
+li {
+	list-style-type: none;
+	word-break: break-all;
+	overflow: hidden;
+	line-height: 180%;
+	font-size: 10pt;
+}
+
+img {
+	border: 0;
+}
+
+/* a标签链接不同状态下的样式 */
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}
+
+/* 帧容器 */
+.div_main {
+	width: 100%;
+	height: 100%;
+}
+
+/* 空的区域 */
+.div_nav1 {
+	width: 100%;
+	height: 15pt;
+	background-color: rgb(100, 181, 228);
+}
+
+/* 一级菜单 */
+.menu1 {
+	background-color:#E6F0F7;
+	border-bottom:1px solid #DCDCDC;
+	cursor:pointer;
+	font-weight:bold;
+	margin-left:20px;
+	margin-top:15px;
+	width:100px;
+}
+
+/* 二级菜单 */
+.menu2 {
+	border-bottom:1px solid #DCDCDC;
+	cursor:pointer;
+	margin-left:35px;
+	margin-top:10px;
+}
+
+/* 三级菜单 */
+.menu3 {
+	margin-left:48px;
+	margin-top:5px;
+	margin-bottom:8px;
+	width:100px;
+}

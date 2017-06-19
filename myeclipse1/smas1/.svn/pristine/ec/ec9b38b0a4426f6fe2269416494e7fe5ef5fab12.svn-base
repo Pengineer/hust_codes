@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mail" extends="global" namespace="/mail">
+		<!-- 进入列表 -->
+		<action name="toList" class="mailAction" method="toList">
+			<result>/mail/list.jsp</result>
+		</action>
+		<action name="sendAgain" class="mailAction" method="sendAgain">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input">/mail/view.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="mailAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="mailAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="download" class="mailAction" method="download">
+			<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${attachmentName}"</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="bufferSize">102400000</param>
+			</result>
+		</action>
+		
+		<action name="validateFile" class="mailAction" method="validateFile">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+		</action>
+		<action name="toView" class="mailAction" method="toView">
+			<result name="success">/mail/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="mailAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="mailAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="mailAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="mailAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="mailAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="mailAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="mailAction" method="toAdd">
+			<result>/mail/add.jsp</result>
+		</action>
+
+		<!-- 添加 -->
+		<action name="add" class="mailAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/mail/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="mailAction" method="toModify">
+			<result>/mail/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="mailAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/mail/modify.jsp</result>
+		</action>
+
+		<!-- 删除 -->
+		<action name="delete" class="mailAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="send" class="mailAction" method="send">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+	
+		<action name="cancel" class="mailAction" method="cancel">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+	
+		<action name="sendAll" class="mailAction" method="sendAll">
+			<result type="chain">list</result>
+		</action>
+	
+		<action name="cancelAll" class="mailAction" method="cancelAll">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

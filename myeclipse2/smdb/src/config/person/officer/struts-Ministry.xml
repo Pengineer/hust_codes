@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="ministryOfficer" extends="main" namespace="/person/ministryOfficer">
+
+		<action name="toList" class="ministryOfficerAction" method="toList">
+			<result>/person/officer/ministry/list.jsp</result>
+		</action>
+
+		<action name="list" class="ministryOfficerAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="ministryOfficerAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="ministryOfficerAction" method="toAdvSearch"> -->
+<!-- 			<result>/person/officer/ministry/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="ministryOfficerAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="ministryOfficerAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="ministryOfficerAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="ministryOfficerAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toAdd" class="ministryOfficerAction" method="toAdd">
+			<result>/person/officer/ministry/add.jsp</result>
+		</action>
+
+		<action name="add" class="ministryOfficerAction" method="add">
+			<result type="redirect">/person/ministryOfficer/toView.action?entityId=${entityId}</result>
+			<result name="input">/person/officer/ministry/add.jsp</result>
+		</action>
+
+		<action name="delete" class="ministryOfficerAction" method="delete">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addRecNameInBox" class="ministryOfficerAction" method="addRecNameInBox">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toView" class="ministryOfficerAction" method="toView">
+			<result>/person/officer/ministry/view.jsp</result>
+		</action>
+
+		<action name="view" class="ministryOfficerAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="ministryOfficerAction" method="toModify">
+			<result>/person/officer/ministry/modify.jsp</result>
+		</action>
+		<action name="modify" class="ministryOfficerAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/officer/ministry/modify.jsp</result>
+		</action>
+
+		<action name="prev" class="ministryOfficerAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="ministryOfficerAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toggleKey" class="ministryOfficerAction" method="toggleKey">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toChooseMergeTarget" class="ministryOfficerAction" method="toChooseMergeTarget">
+			<result>/person/pop_merge.jsp</result>
+		</action>
+		
+		<!-- 人员合并 -->
+		<action name="toMerge" class="ministryOfficerAction" method="toMerge">
+			<result>/person/officer/ministry/merge.jsp</result>
+		</action>
+		
+		<action name="fetchMergeData" class="ministryOfficerAction" method="fetchMergeData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="merge" class="ministryOfficerAction" method="merge">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/officer/ministry/merge.jsp</result>
+		</action>
+		
+		<action name="checkIfIsOfficer" class="ministryOfficerAction" method="checkIfIsOfficer">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+
+</struts>

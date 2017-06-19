@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+	
+	<bean id="generateExpertLibNoticeMails" class="csdc.tool.execution.GenerateExpertLibNoticeMails">
+		<constructor-arg ref="smdbDao" />
+	</bean>
+	
+	<bean id="smdbUniversityImporter" class="csdc.tool.execution.importer.SMDBUniversityImporter">
+		<constructor-arg ref="smdbDao" />
+	</bean>
+
+	<bean id="specialityTitleImporter" class="csdc.tool.execution.importer.SpecialityTitleImporter">
+		<constructor-arg value="D:\csdc\pub\reference\standard\数据代码\GBT8561专业技术职务代码\GBT8561-2001专业技术职务代码.xls" />
+	</bean>
+
+	<bean id="testImporter" class="csdc.tool.execution.importer.TestImporter">
+ 		<constructor-arg value="D:\work\项目数据\2013专项申报数据\2013_专项项目_高校思想政治理论课专项_择优报送91项_整理导入.xls" />
+	</bean>
+
+	<bean id="project2013ExpertImporter" class="csdc.tool.execution.importer.Project2013ExpertImporter">
+ 	<!-- 	<constructor-arg value="D:\work\20130128_广东外语外贸大学推荐小语种专家_补充数据.xls" />  -->
+ 		<constructor-arg value="D:\MOEExpert2012.xls" />
+	</bean>
+	
+	<bean id="project2014ExpertImporter" class="csdc.tool.execution.importer.Project2014ExpertImporter">
+ 		<constructor-arg value="D:\MOEExpert2013.xls" />
+	</bean>
+	
+	<bean id="generalApplication2013Importer" class="csdc.tool.execution.importer.GeneralApplication2013Importer">
+<!--   		<constructor-arg value="D:\work\项目数据\20130118_2013年一般项目申报数据（高校通过9753、主管部门通过33574，共43327条）\2013_一般项目_高校通过9753_主管部门通过33574_修正导入.xls" /> -->
+  		<constructor-arg value="D:\work\项目数据\2013专项申报数据\2013_专项项目（2092 + 1101）_整理导入.xls" />
+	</bean>
+	
+	<bean id="instpApplication2013Importer" class="csdc.tool.execution.importer.InstpApplication2013Importer">
+ 		<constructor-arg value="D:\work\项目数据\2013年基地重大项目\20130311_2013年基地重大项目（高校通过233项，主管部门通过47项）_定稿.xls" />
+	</bean>
+	
+	<bean id="firstAuditGeneralApplication" class="csdc.tool.execution.FirstAuditGeneralApplication">
+		<constructor-arg ref="smdbDao" />
+	</bean>
+	
+	<bean id="firstAuditInstpApplication" class="csdc.tool.execution.FirstAuditInstpApplication">
+		<constructor-arg ref="smdbDao" />
+	</bean>
+	
+	<bean id="generalNotReview2013Importer" class="csdc.tool.execution.importer.GeneralNotReview2013Importer">
+ 		<constructor-arg value="D:\work\项目数据\2013年一般项目初审上网格式修改版_项目退评.xls" />
+	</bean>
+	
+	<bean id="fixFirstAuditResult" class="csdc.tool.execution.fix.FixFirstAuditResult">
+  		<constructor-arg value="D:\work\初审结果\教育部人文社会科学研究基地项目初审结果一览表_old - 副本.xls" /> 
+	</bean>
+	
+	<bean id="generalReviewerUpdateImporter" class="csdc.tool.execution.importer.GeneralReviewerUpdateImporter">
+  		<constructor-arg value="D:\work\项目评审表\2013项目评审表.xls" /> 
+	</bean>
+	
+	<bean id="general2ReviewerManualChange2014" class="csdc.tool.execution.importer.General2ReviewerManualChange2014">
+  		<constructor-arg value="E:\2015_专家匹配_后续文件\2015年度一般项目专家匹配表1_已修改.xls" /> 
+	</bean>
+	
+	<bean id="project2015ExpertImporter" class="csdc.tool.execution.importer.Project2015ExpertImporter">
+  		<constructor-arg value="E:\work\2.sks\2.smas\专家匹配\2015\MOEExpert2014_修正导入.xls" /> 
+	</bean>
+	
+	<bean id="project2015ExpertSupplementImporter" class="csdc.tool.execution.importer.Project2015ExpertSupplementImporter">
+  		<constructor-arg value="E:\work\2.sks\2.smas\专家匹配\2015\MOEExpert2014_修正导入_手工确定补录.xls" /> 
+	</bean>
+
+	<bean id="project2015ExpertSecondSupplementImporter" class="csdc.tool.execution.importer.Project2015ExpertSecondSupplementImporter">
+  		<constructor-arg value="E:\work\2.sks\2.smas\专家匹配\2015\MOEExpert2014_第二次补录.xls" /> 
+	</bean>
+	
+	<bean id="generalApplicationMinistryReview2015Import" class="csdc.tool.execution.importer.GeneralApplicationMinistryReview2015Import">
+  		<constructor-arg index="0" value="E:\work\2.sks\1.smdb\20150508_教育部人文社会科学研究一般项目初审结果终版（社科服务中心审定）_修正导入.xls" />
+  		<constructor-arg index="1" value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2015\2015年教育部人文社会科学研究一般项目出版课题申报名单.xls" />
+	</bean>
+	
+	<bean id="awardApplication2015Import" class="csdc.tool.execution.importer.AwardApplication2015Import">
+  		<constructor-arg value="C:\work\2.sks\2.smas\award\20150612_第七届成果奖申报名单（专家建议名单）_评价中心报社科司_修正导入.xls" /> 
+	</bean>
+	
+	<bean id="test" class="csdc.tool.execution.Test">
+		<property name="smdbDao" ref="smdbDao" />
+	</bean>
+
+	<bean id="fixExpertApplyYears" class="csdc.tool.execution.fix.FixExpertApplyYears"></bean>
+	
+	<bean id="fixTitle" class="csdc.tool.execution.fix.FixTitle"></bean>
+	
+	<bean id="fixGeneralDepartment" class="csdc.tool.execution.fix.FixGeneralDepartment"></bean>
+	
+	<bean id="fixExpert4ProfessionalAndParttime" class="csdc.tool.execution.fix.FixExpert4ProfessionalAndParttime"></bean>
+	
+	<bean id="fixExpertDiscipline" class="csdc.tool.execution.fix.FixExpertDiscipline"></bean>
+
+	<bean id="tools" class="csdc.tool.execution.importer.Tools" scope="prototype" />
+	
+	<bean id="expertMerger" class="csdc.tool.widget.ExpertMerger" scope="prototype" />
+	
+	<bean id="leadingSemicolonRemover" class="csdc.tool.widget.LeadingSemicolonRemover" scope="prototype" />
+	
+	<bean id="testSmas" class="csdc.tool.execution.Test" scope="prototype" />
+	
+</beans>

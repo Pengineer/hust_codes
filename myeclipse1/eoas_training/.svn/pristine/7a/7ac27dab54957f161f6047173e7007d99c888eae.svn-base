@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 配置扩展名为action -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 配置主题 -->
+    <constant name="struts.ui.theme" value="simple" />
+    <!-- 配置页面的编码格式 -->
+    <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+    <include file="config/struts-ToIndex.xml" />
+	<include file="config/oa/struts-Account.xml" />
+	<include file="config/recruitment/struts-Account.xml" />
+	<include file="config/oa/struts-Attendance.xml" />
+	<include file="config/oa/struts-Assess.xml" />
+	<include file="config/oa/struts-Mail.xml"/>
+	<include file="config/recruitment/struts-Resume.xml" />
+	<include file="config/recruitment/struts-Position.xml" />
+	<include file="config/recruitment/struts-Record.xml" />
+	<include file="config/recruitment/struts-PositionResume.xml" />
+	<include file="config/recruitment/struts-Uploadify.xml" />
+	<include file="config/oa/struts-System.xml" />
+	<include file="config/oa/struts-Right.xml" />
+	<include file="config/oa/struts-Role.xml" />
+	<include file="config/oa/struts-Asset.xml" />
+	<include file="config/oa/struts-Person.xml" />
+	<include file="config/oa/struts-Department.xml" />
+	<include file="config/oa/struts-Article.xml" />
+	<include file="config/oa/struts-Expert.xml" />
+	<include file="config/oa/struts-Project.xml" />
+<!-- 	<include file="config/oa/struts-News.xml" />
+	<include file="config/oa/struts-Notice.xml" /> -->
+	<include file="config/oa/struts-Salary.xml" />
+	<include file="config/oa/struts-Document.xml" />
+	<include file="config/oa/struts-Customer.xml" />
+	<include file="config/oa/struts-Solution.xml" />
+	<include file="config/oa/struts-SystemOption.xml" />
+	<include file="config/oa/struts-Workflow.xml" />
+	<package name="default" extends="json-default">
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+			<exception-mapping result="sqlError" exception="java.sql.SQLException" />
+		</global-exception-mappings>
+	</package>
+</struts>

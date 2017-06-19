@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：dmss.css
+ *
+ * 文件说明：
+ *
+ *************************************************************************/
+
+body { margin:0; padding:0; width:100%; color:#959595; font:normal 12px/1.8em Arial, sans-serif;}
+ td {
+    font-family: arial,sans-serif;
+    font-size:14px;
+	color:#777777
+}
+html, .main { padding:0; margin:0;}
+.main { background:#fff url(../images/header_bg.jpg) no-repeat center 87px;}
+.clr { clear:both; padding:0; margin:0; width:100%; font-size:0px; line-height:0px;}
+.logo { padding:0; float:left; width:auto;}
+h1 { margin:0; padding:8px 0 40px 24px; float:left; color:#7fd0f6; font:normal 36px/1.2em Arial, Helvetica, sans-serif; letter-spacing:-2px;}
+h1 a, h1 a:hover { color:#7fd0f6; text-decoration:none;}
+h1 small { display:block; margin-top:-4px; padding:0 0 0 68px; color:#959595; font:normal 13px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
+h2 { font:normal 24px/1.5em Arial, Helvetica, sans-serif; padding:8px 0; margin:0 0 8px; color:#323a3f;}
+p { margin:8px 0; padding:0 0 8px 0; font:normal 12px/1.8em Arial, Helvetica, sans-serif;}
+p.spec { }
+a { color:#49b6e9; text-decoration:underline;}
+a.rm { }
+a.com { margin:0; padding:0; text-decoration:none;}
+a.com span { font-weight:bold;}
+
+.header, .content, .menu_nav, .fbg, .footer, form, ol, ol li, ul, .content .mainbar, .content .sidebar { margin:0; padding:0;}
+
+/* header */
+.header { }
+.header_resize { margin:0 auto; padding:12px 0 25px; width:1300px;}
+
+/* menu */
+.menu_nav { margin:0; padding:16px 40px 0 0; float:right; height:29px;}
+.menu_nav ul { list-style:none; height:29px;}
+.menu_nav ul li { margin:0 12px 0 0; padding:0; float:left;}
+.menu_nav ul li a { display:block; margin:0; padding:3px 20px 4px; color:#959595; text-decoration:none; font-size:12px;}
+.menu_nav ul li.active a, .menu_nav ul li a:hover { color:#fff; background:url(../images/menu_a.gif) repeat-x center top;}
+
+
+/* content */
+.tabs { margin:0 auto; padding:0px 0 24px; width:1300px; height:800px;}
+.accordion{ margin:0; padding:0; float:left; width:29%;}
+.group { zoom: 1 }
+.content {width: 67%;  padding: 0.5em; float: right; margin: margin:0 auto;}
+
+/*右键菜单DIV css属性  */
+div#rMenu {position:absolute; visibility:hidden; top:0; background-color: #48B0E5;text-align: left;padding: 2px; z-index: 999;}
+div#rMenu ul li{margin: 1px 0;padding: 0 5px;cursor: pointer;list-style: none outside none;background-color: #A5E6FF;}
+
+/* #content { width: 67%; height: 225px; padding: 0.5em; float: right; margin: margin:0 auto;}
+ */
+ #operateLog { width: 100%; height: 300px; padding: 0.5em; float: right; margin: margin:0 auto;}
+/* #tabs2 { width: 67%; height: 200px; padding: 0.5em; float: right; margin: margin:0 auto;} */
+/*修改“修改密码”模块的样式，使字体右对齐*/
+#modifyPassTable th {font-weight:normal;text-align:right;}
+/*修改“个人信息修改”模块的样式，使字体右对齐*/
+#modifyInfoTable th {font-weight:normal;text-align:right;}
+
+
+
+
+/*table*/
+table { table-layout:fixed;}
+td{ overflow:hidden; text-overflow: elipsis;}
+tfoot input.search_init { color: #999999; }
+tfoot th {overflow:hidden;}
+table.display tr.even.row_selected td { background-color: #52B4E6;}
+table.display tr.odd.row_selected td { background-color: #52B4E6;}
+
+/* search */
+.searchform { float:right;}
+#formsearch { margin:0; height:36px; padding:10px 28px 40px 0;}
+#formsearch span { display:block; margin:6px 0; padding:0; float:left; background:#fff url(../images/search.gif) no-repeat top left;}
+#formsearch input.editbox_search { margin:0; padding:11px 6px 10px; float:left; width:181px; border:none; background:none; font:normal 12px/1.5em Arial, Helvetica, sans-serif; color:#a8acb2;}
+#formsearch input.button_search { margin:6px 0 0 0; padding:0; border:none; float:left;}

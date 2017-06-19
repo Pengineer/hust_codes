@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://www.getahead.ltd.uk/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<create javascript="personService" creator="spring">
+			<param name="beanName" value="personService" />
+		</create>
+		<create javascript="personExtService" creator="spring">
+			<param name="beanName" value="personExtService" />
+			<include method="getCodeNameMapByParentId" />
+		</create>
+		<create javascript="projectService" creator="spring">
+			<param name="beanName" value="projectService" />
+			<include method="getYearMap" />
+			<include method="checkIfTimeValidate" />
+			<include method="getBusinessStatus" />
+			<include method="isAuditReport"/>
+			<include method="isEarlyGranted"/>
+			<include method="isGrantedNumberUnique" />
+			<include method="isEndNumberUnique"/>
+			<include method="getUnivIdNameByProv"/>
+			<include method="getDeptIdNameByUniv"/>
+			<include method="getInstIdNameByUniv"/>
+			<include method="isPersonMatch"/>
+		</create>
+		
+		<create javascript="unitService" creator="spring">
+			<param name="beanName" value="unitService" />
+		</create>
+		<create javascript="unitExtService" creator="spring">
+			<param name="beanName" value="unitExtService" />
+		</create>
+		<convert match="csdc.bean.Person" converter="bean" >
+			<param name="include" value="id,name,englishName,usedName,idcardType,idcardNumber,gender,countryRegion,ethnic,birthplace,birthday,membership,homeAddress,homePhone,homePostcode,officeAddress,officePhone,officePostcode,officeFax,email,mobilePhone,qq,msn,homepage"></param>
+		</convert>
+		<convert match="csdc.bean.Academic" converter="bean" >
+			<param name="exclude" value="person"></param>
+		</convert>
+		<create javascript="productService" creator="spring">
+		 <param name="beanName" value="productService"/>
+		</create>
+		<create javascript="awardService" creator="spring">
+		 	<param name="beanName" value="awardService"/>
+		 	<include method="getProduct" />
+			<include method="getDtype" />
+			<include method="getApplyYear" />
+			<include method="isNumberUnique" />
+			<include method="getYearMap"/>
+		</create>
+		
+		<create javascript="businessService" creator="spring">
+		 	<param name="beanName" value="businessService"/>
+		 	<include method="getChildrenMapByParentId" />
+			<include method="checkBusinessType" />
+			<include method="isBusinessYearCrossed" />
+			<include method="getYearMap"/>
+			<include method="isBusinessYearEqual" />
+		</create>
+		
+		<create javascript="associationService" creator="spring">
+			<param name="beanName" value="associationService" />
+		</create>
+		
+		<create javascript="baseService" creator="spring">
+			<param name="beanName" value="baseService" />
+			<include method="getSystemOptionMap" />
+			<include method="getChildrenMapByParentId" />
+			<include method="getSystemOptionMapAsName" />
+			<include method="getCodeNameMapByParentId" />
+		</create>
+	</allow>
+</dwr>

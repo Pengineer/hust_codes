@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.AccountRole">
+	<resultMap id="accountRoleResult" type="AccountRole">
+		<id property="id" column="accountRole_id" />
+		<association property="account" javaType="Account" column="accountRole_accountId">
+			<id property="id" column="account_id" />
+			
+			<result property="email" column="account_email" />
+			<result property="password" column="account_password" />
+			<result property="belongId" column="account_belongId"/>
+		</association>
+		<association property="role" javaType="Role" column="accountRole_roleId">
+			<id property="id" column="role_id" />
+			<result property="name" column="role_name" />
+			<result property="description" column="role_description" />
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="AccountRole" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ACCOUNT_ROLE (C_ID, C_ACCOUNT_ID, C_ROLE_ID)
+		values (#{id, jdbcType=VARCHAR},#{account.id, jdbcType=VARCHAR},#{role.id, jdbcType=VARCHAR})
+	</insert>
+
+	<select id="list" parameterType="map" resultMap="accountRoleResult">
+		select C_ID, C_ACCOUNT_ID, C_ROLE_ID
+		from T_ACCOUNT_ROLE
+		<where>
+			<if test="accountId != null">
+				 C_ACCOUNT_ID = #{accountId}
+			</if>
+		</where>
+<!-- 		select
+			accountRole.C_ID as accountRole_id,
+			accountRole.C_ACCOUNT_ID as accountRole_accountId,
+			accountRole.C_ROLE_ID as accountRole_roleId,
+			account.C_ID as account_id,
+			account.C_ACCOUNT_TYPE as account_accountType,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_BELONG_ID as account_belongId,
+			role.C_ID as role_id,
+			role.C_NAME as role_name,
+			role.C_DESCRIPTION as role_description
+		from T_ACCOUNT_ROLE accountRole
+		LEFT OUTER JOIN T_ACCOUNT account on accountRole.C_ACCOUNT_ID = account.C_ID
+		LEFT OUTER JOIN T_ROLE role on accountRole.C_ROLE_ID = role.C_ID
+		<where>
+			<if test="accountId != null">
+				 C_ACCOUNT_ID = #{accountId}
+			</if>
+		</where> -->
+	</select>
+	
+		<select id="listAccountRole" parameterType="map" resultMap="accountRoleResult">
+		select
+			accountRole.C_ID as accountRole_id,
+			accountRole.C_ACCOUNT_ID as accountRole_accountId,
+			accountRole.C_ROLE_ID as accountRole_roleId,
+			account.C_ID as account_id,
+			
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_BELONG_ID as account_belongId,
+			role.C_ID as role_id,
+			role.C_NAME as role_name,
+			role.C_DESCRIPTION as role_description
+		from T_ACCOUNT_ROLE accountRole
+		LEFT OUTER JOIN T_ACCOUNT account on accountRole.C_ACCOUNT_ID = account.C_ID
+		LEFT OUTER JOIN T_ROLE role on accountRole.C_ROLE_ID = role.C_ID
+		<where>
+			<if test="accountId != null">
+				 C_ACCOUNT_ID = #{accountId}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.String" >
+		delete  from T_ACCOUNT_ROLE where C_ID = #{id}
+	</delete>
+</mapper> 

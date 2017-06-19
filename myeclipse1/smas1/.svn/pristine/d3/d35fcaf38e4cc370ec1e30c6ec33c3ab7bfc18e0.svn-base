@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.ProjectFunding" table="T_PROJECT_FUNDING">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="date" type="java.util.Date">
+            <column name="C_DATE" length="7" not-null="true" />
+        </property>
+        <property name="fee" type="java.lang.Double">
+            <column name="C_FEE" not-null="true" />
+        </property>
+        <property name="attn" type="java.lang.String">
+            <column name="C_ATTN" length="200" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="C_NOTE" length="800" />
+        </property>
+        <property name="agencyName" type="java.lang.String">
+        	<column name="C_AGENCY_NAME" length="200" />
+        </property>
+        <property name="fbankAccount" type="java.lang.String">
+        	<column name="C_F_BANK_ACCOUNT" length="40" />
+        </property>
+        <property name="fbankAccountName" type="java.lang.String">
+        	<column name="C_F_BANK_ACCOUNT_NAME" length="200" />
+        </property>
+        <property name="fbank" type="java.lang.String">
+        	<column name="C_F_BANK" length="200" />
+        </property>
+        <property name="fcupNumber" type="java.lang.String">
+        	<column name="C_F_CUP_NUMBER" length="40" />
+        </property>
+        <property name="fbankBranch" type="java.lang.String">
+        	<column name="C_F_BANK_BRANCH" length="200" />
+        </property>
+        <property name="fundingType" type="java.lang.Integer">
+            <column name="C_FUNDING_TYPE" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="C_STATUS" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="type" type="java.lang.String">
+			<column name="C_TYPE" length="40" />
+		</property>
+        <many-to-one name="projectFundingList" class="csdc.bean.ProjectFundingList" lazy="false">
+            <column name="C_FUNDING_LIST_ID" length="40"/>
+        </many-to-one>
+	    <many-to-one name="granted" class="csdc.bean.ProjectGranted" fetch="join">
+            <column name="C_GRANTED_ID" length="40" not-null="true" />
+        </many-to-one>	
+	</class>
+</hibernate-mapping>

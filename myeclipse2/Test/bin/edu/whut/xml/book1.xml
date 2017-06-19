@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<书架> 
+  <书> 
+    <书名>Think in java</书名>  
+    <作者>Bruce Eckel</作者>
+    <售价>65.00RMB</售价> 
+  </书>  
+  <书> 
+    <书名 name="abc">Think in C++</书名>  
+    <作者>bruce eckel</作者>  
+    <售价>50.00RMB</售价> 
+  </书> 
+</书架>

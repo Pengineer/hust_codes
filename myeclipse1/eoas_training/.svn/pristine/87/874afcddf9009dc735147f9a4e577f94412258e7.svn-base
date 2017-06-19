@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="assess" extends="default" namespace="/assess">
+				
+		<action name="toAdd" class="assessAction" method="toAdd">
+			<result>/jsp/oa/assess/add.jsp</result>
+		</action>
+			
+		<action name="add" class="assessAction" method="add">
+			<result>/jsp/oa/assess/view.jsp</result>
+		</action>
+		
+		<action name="view" class="assessAction" method="view">
+			<result>/jsp/oa/assess/view.jsp</result>
+		</action>
+		
+		<action name="toList" class="assessAction" method="toList">
+			<result name="success">/jsp/oa/assess/list.jsp</result>
+		</action>
+		
+		<action name="list" class="assessAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

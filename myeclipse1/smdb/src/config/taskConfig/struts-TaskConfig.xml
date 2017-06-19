@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="taskConfig" extends="main" namespace="/taskConfig">
+		
+		<!-- 跳转到任务配置列表页面 -->
+		<action name="toTaskConfigListView" class="taskConfigAction" method="toTaskConfigListView">
+			<result>/dataProcessing/taskConfig/taskConfigList.jsp</result>
+		</action>
+
+		<!-- 跳转到任务列表页面 -->
+		<action name="toTaskListView" class="taskConfigAction" method="toTaskListView">
+			<result>/dataProcessing/taskConfig/taskList.jsp</result>
+		</action>
+		
+		<!-- 跳转到创建自动任务弹层页面 -->
+		<action name="toPopSelect" class="taskConfigAction" method="toPopSelect">
+			<result>/dataProcessing/taskConfig/popSelect.jsp</result>
+		</action>
+		
+		<!-- 跳转到创建自动任务弹层页面 -->
+		<action name="toViewTaskConfigInfo" class="taskConfigAction" method="toViewTaskConfigInfo">
+			<result>/dataProcessing/taskConfig/viewTaskConfigInfo.jsp</result>
+		</action>
+
+		<!-- 创建手动执行任务 -->
+		<action name="createManualTaskConfig" class="taskConfigAction" method="createManualTaskConfig">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<!-- 创建自动执行任务 -->
+		<action name="createAutoTaskConfig" class="taskConfigAction" method="createAutoTaskConfig">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<!-- 获取自动任务配置的列表 -->
+		<action name="gainAutoTaskConfigList" class="taskConfigAction" method="gainAutoTaskConfigList">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<!-- 获取当前正在执行的任务配置列表 -->
+		<action name="gainExecutingTaskConfigList" class="taskConfigAction" method="gainExecutingTaskConfigList">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>			
+		
+		<!-- 获取任务配置列表 -->
+		<action name="gainTaskConfigList" class="taskConfigAction" method="gainTaskConfigList">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<!-- 删除某条任务配置 -->
+		<action name="deleteTaskConfig" class="taskConfigAction" method="deleteTaskConfig">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>		
+
+		<!-- 获取任务列表 -->
+		<action name="gainTaskList" class="taskConfigAction" method="gainTaskList">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<!-- 获取任务配置信息和日志 -->
+		<action name="gainTaskConfigInfo" class="taskConfigAction" method="gainTaskConfigInfo">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+		<!-- 创建任务 -->
+		<action name="createTask" class="taskConfigAction" method="createTask">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>			
+		
+	</package>
+
+</struts>

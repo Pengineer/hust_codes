@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.ProjectApplicationResult" table="T_PROJECT_APPLICATION_RESULT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="universityName" type="java.lang.String">
+            <column name="C_UNIVERSITY_NAME" length="200" />
+        </property>
+        <property name="endinspectionRatio" type="java.lang.Double">
+            <column name="C_ENDINSPECTION_RATIO" precision="10" scale="9" />
+        </property>                
+        <property name="awardScore" type="java.lang.Double">
+            <column name="C_AWARD_SCORE" precision="3" scale="1" />
+        </property>
+        <property name="baseApplicationNumber" type="java.lang.Long">
+            <column name="C_BASE_APPLICATION_NUMBER" precision="4" scale="0" />
+        </property>
+        <property name="universityType" type="java.lang.String">
+            <column name="C_UNIVERSITY_TYPE" length="100" />
+        </property>
+        <property name="universityArea" type="java.lang.String">
+            <column name="C_UNIVERSITY_AREA" length="100" />
+        </property>
+        <property name="projrctType" type="java.lang.String">
+            <column name="C_PROJECT_TYPE" length="200" />
+        </property>
+        <property name="province" type="java.lang.String">
+            <column name="C_PROVINCE" length="200" />
+        </property>
+        <property name="applicationNumber" type="java.lang.Integer">
+            <column name="C_APPLICATION_NUMBER" precision="4" scale="0" />
+        </property>
+         <property name="endinspectionNumber" type="java.lang.Long">
+            <column name="C_ENDINSPECTION_NUMBER" precision="4" scale="0" />
+        </property>
+        
+        <property name="grantedNumber1" type="java.lang.Integer">
+            <column name="C_GRANTED_NUMBER1" precision="4" scale="0" />
+        </property>
+        <property name="grantedRatio" type="java.lang.Double">
+            <column name="C_GRANTED_RATIO" precision="10" scale="9" />
+        </property>
+        <property name="midinspectionNumber" type="java.lang.Long">
+            <column name="C_MIDINSPECTION_NUMBER" precision="4" scale="0" />
+        </property>
+        <property name="midinspectionRatio" type="java.lang.Double">
+            <column name="C_MIDINSPECTION_RATIO" precision="10" scale="9" />
+        </property>
+        <property name="grantedRateWeight" type="java.lang.Long">
+            <column name="C_GRANTED_RATE_WEIGHT" precision="4" scale="0" />
+        </property>
+        <property name="overdueMidinspectionWeight" type="java.lang.Long">
+            <column name="C_OVERDUE_MIDINSPECTION_WEIGHT" precision="4" scale="0" />
+        </property>
+        <property name="overdueEndinspectionWeight" type="java.lang.Long">
+            <column name="C_OVERDUE_ENDINSPECTION_WEIGHT" precision="4" scale="0" />
+        </property>
+        <property name="awardScoreWeight" type="java.lang.Long">
+            <column name="C_AWARD_SCORE_WEIGHT" precision="4" scale="0" />
+        </property>
+        <property name="priApplicationTotal" type="java.lang.Integer">
+            <column name="C_PRI_APPLICATION_TOTAL" precision="4" scale="0" />
+        </property>
+        <property name="moeTiltTotal" type="java.lang.Long">
+            <column name="C_MOE_TILT_TOTAL" precision="4" scale="0" />
+        </property>
+        <property name="westTiltTotal" type="java.lang.Long">
+            <column name="C_WEST_TILT_TOTAL" precision="4" scale="0" />
+        </property>
+        <property name="pubApplicationTotal" type="java.lang.String">
+            <column name="C_PUB_APPLICATION_TOTAL" precision="4" scale="0" />
+        </property>
+        <property name="forApplicationTotal" type="java.lang.Long">
+            <column name="C_FOR_APPLICATION_TOTAL" precision="4" scale="0" />
+        </property>
+        <property name="year" type="java.lang.Integer">
+            <column name="C_YEAR" length="200" />
+        </property>
+        <property name="grantedNumber2" type="java.lang.Long">
+            <column name="C_GRANTED_NUMBER2" precision="4" scale="0" />
+        </property>
+        <property name="grantedNumber3" type="java.lang.Long">
+            <column name="C_GRANTED_NUMBER3" precision="4" scale="0" />
+        </property>
+        
+        <many-to-one name="university" class="csdc.bean.Agency" fetch="select">
+            <column name="C_UNIVERSITY_ID" length="40" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

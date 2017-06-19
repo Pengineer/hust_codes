@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="keyApplicationApply" extends="main" namespace="/project/key/application/apply">
+		
+		<action name="toList" class="keyApplicationApplyAction" method="toList">
+			<result>/project/key/application/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="keyApplicationApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="keyApplicationApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="keyApplicationApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="keyApplicationApplyAction" method="toAdvSearch">
+			<result>/project/key/application/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="keyApplicationApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyApplicationApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyApplicationApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyApplicationApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="keyApplicationApplyAction" method="toAdd">
+			<result>/project/key/application/apply/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="keyApplicationApplyAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toAddGrantedFee" class="keyApplicationApplyAction" method="toAddGrantedFee">
+	        <result>/project/popAddGrantedFee.jsp</result>
+	    </action>
+		
+		<!-- 添加 -->
+		<action name="add" class="keyApplicationApplyAction" method="add">
+			<param name="savePath">/upload/project/key/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+			<result name="input">/project/key/application/apply/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="keyApplicationApplyAction" method="toModify">
+			<result>/project/key/application/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="keyApplicationApplyAction" method="modify">
+			<param name="savePath">/upload/project/key/app/2009</param>
+			<result name="input">/project/key/application/apply/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+		</action>
+		
+		<action name="submit" class="keyApplicationApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   	
+	   	<!-- 删除 -->
+		<action name="delete" class="keyApplicationApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入添加录入页面 -->
+		<action name="toAddResult" class="keyApplicationApplyAction" method="toAddResult">
+			<result>/project/key/application/apply/addResult.jsp</result>
+		</action>
+		
+		<!-- 录入添加 -->
+		<action name="addResult" class="keyApplicationApplyAction" method="addResult">
+			<param name="savePath">/upload/project/key/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+			<result name="input">/project/key/application/apply/addResult.jsp</result>
+		</action>
+		
+		<!-- 进入录入修改页面 -->
+		<action name="toModifyResult" class="keyApplicationApplyAction" method="toModifyResult">
+			<result>/project/key/application/apply/modifyResult.jsp</result>
+		</action>
+		
+		<!-- 录入数据修改 -->
+		<action name="modifyResult" class="keyApplicationApplyAction" method="modifyResult">
+			<param name="savePath">/upload/project/key/app/2009</param>
+			<result name="input">/project/key/application/apply/modifyResult.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+		</action>
+		
+		<action name="toUploadFileResult" class="keyApplicationApplyAction" method="toUploadFileResult">
+		  <result>/project/key/application/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="keyApplicationApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="keyApplicationApplyAction" method="toView">
+	        <result>/project/key/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="keyApplicationApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+		<!-- 查看上条 -->
+		<action name="prev" class="keyApplicationApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="keyApplicationApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下载申请 -->
+		<action name="downloadApply" class="keyApplicationApplyAction" method="downloadApply">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>	
+	     	
+	   	<action name="validateFile" class="keyApplicationApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+	  	 
+	  	 <!-- 发布 -->
+		<action name="publish" class="keyApplicationApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="keyApplicationApplyAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+	<package name="keyApplicationAudit" extends="main" namespace="/project/key/application/applyAudit"> 
+   	   
+        <action name="toAdd" class="keyApplicationApplyAuditAction" method="toAdd">
+	        <result>/project/key/application/applyAudit/popAdd.jsp</result>
+	    </action>
+	    <action name="toModify" class="keyApplicationApplyAuditAction" method="toModify">
+	        <result>/project/key/application/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="add" class="keyApplicationApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="modify" class="keyApplicationApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="keyApplicationApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="keyApplicationApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="view" class="keyApplicationApplyAuditAction" method="view">
+	        <result>/project/key/application/applyAudit/popView.jsp</result>
+	    </action>
+    </package> 
+    
+	<package name="keyGranted" extends="main" namespace="/project/key/application/granted">
+
+		<action name="toList" class="keyApplicationGrantedAction" method="toList">
+			<result>/project/key/application/granted/list.jsp</result>
+		</action>
+
+		<action name="list" class="keyApplicationGrantedAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 发布 -->
+		<action name="publish" class="keyApplicationGrantedAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="keyApplicationGrantedAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="keyApplicationGrantedAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="keyApplicationGrantedAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="keyApplicationGrantedAction" method="toAdvSearch">
+			<result>/project/key/application/granted/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="keyApplicationGrantedAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyApplicationGrantedAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyApplicationGrantedAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyApplicationGrantedAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="keyApplicationGrantedAction" method="toAdd">
+			<result>/project/key/application/granted/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="keyApplicationGrantedAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toAddGrantedFee" class="keyApplicationGrantedAction" method="toAddGrantedFee">
+	        <result>/project/popAddGrantedFee.jsp</result>
+	    </action>
+		
+		<!-- 添加 -->
+		<action name="add" class="keyApplicationGrantedAction" method="add">
+			<param name="savePath">/upload/project/key/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">2</param>
+			</result>
+			<result name="input">/project/key/application/granted/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="keyApplicationGrantedAction" method="toModify">
+			<result>/project/key/application/granted/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="keyApplicationGrantedAction" method="modify">
+			<param name="savePath">/upload/project/key/app/2009</param>
+			<result name="input">/project/key/application/granted/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">2</param>
+				<param name="update">1</param>
+			</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="keyApplicationGrantedAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="keyApplicationGrantedAction" method="toView">
+	        <result>/project/key/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="keyApplicationGrantedAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+		<!-- 查看上条 -->
+		<action name="prev" class="keyApplicationGrantedAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="keyApplicationGrantedAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入撤项页面 -->
+		<action name="toSetUpProjectStatus" class="keyApplicationGrantedAction" method="toSetUpProjectStatus">
+	        <result>/project/key/application/granted/popSetUpProjectStatus.jsp</result>
+	    </action>
+	    
+	    <!-- 撤项 -->
+	    <action name="setUpProjectStatus" class="keyApplicationGrantedAction" method="setUpProjectStatus">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <!-- 导出 -->
+	    <action name="confirmExportOverView" class="keyApplicationGrantedAction" method="confirmExportOverView">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+
+	   	<action name="exportOverView" class="keyApplicationGrantedAction" method="exportOverView">
+	   	    <result name="success">/project/key/application/granted/popExportOverView.jsp</result>
+	   	</action>
+	   	
+	</package>
+	
+	<package name="keyApplicationReview" extends="main" namespace="/project/key/application/review">
+	
+	  	<action name="toAddRevExpert" class="keyApplicationGrantedAction" method="toAddRevExpert">
+	        <result>/project/key/application/review/popAddExpert.jsp</result>
+	    </action>
+	    
+	     <action name="addResultExpert" class="keyApplicationGrantedAction" method="addResultExpert">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" >/project/key/endinspection/review/popAddExpert.jsp</result>
+		</action>
+	
+		 <action name="getGroupRev" class="keyApplicationReviewAction" method="getGroupRev">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+			
+		<action name="toList" class="keyApplicationReviewAction" method="toList">
+			<result>/project/key/application/review/list.jsp</result>
+		</action>
+
+		<action name="list" class="keyApplicationReviewAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="keyApplicationReviewAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="keyApplicationReviewAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="keyApplicationReviewAction" method="toAdvSearch">
+			<result>/project/key/application/review/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="keyApplicationReviewAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyApplicationReviewAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyApplicationReviewAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyApplicationReviewAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="viewReview" class="keyApplicationReviewAction" method="viewReview">
+	    	<result type="redirectAction">
+				<param name="namespace">/project/key/application/apply</param>
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+	    </action>
+	    
+	    <action name="toViewReview" class="keyApplicationReviewAction" method="toViewReview">
+	        <result>/project/key/view.jsp</result>
+	    </action>
+	
+		<action name="prev" class="keyApplicationReviewAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="keyApplicationReviewAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="keyApplicationReviewAction" method="toAdd">
+	        <result>/project/key/application/review/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toAddGroup" class="keyApplicationReviewAction" method="toAddGroup">
+	        <result>/project/key/application/review/popAddGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toAddResult" class="keyApplicationReviewAction" method="toAddResult">
+	        <result>/project/key/application/review/popAddResult.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="keyApplicationReviewAction" method="toModify">
+	        <result>/project/key/application/review/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyGroup" class="keyApplicationReviewAction" method="toModifyGroup">
+	        <result>/project/key/application/review/popModifyGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyResult" class="keyApplicationReviewAction" method="toModifyResult">
+	        <result>/project/key/application/review/popModifyResult.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="keyApplicationReviewAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addGroup" class="keyApplicationReviewAction" method="addGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addResult" class="keyApplicationReviewAction" method="addResult">
+		 	<result>/project/key/application/review/popAddResult.jsp</result>
+		 	<result name="input">/project/key/application/review/popAddResult.jsp</result>
+		</action>
+		
+		<action name="modify" class="keyApplicationReviewAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyGroup" class="keyApplicationReviewAction" method="modifyGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="keyApplicationReviewAction" method="modifyResult">
+			<result>/project/key/application/review/popModifyResult.jsp</result>
+		 	<result name="input">/project/key/application/review/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submit" class="keyApplicationReviewAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitGroup" class="keyApplicationReviewAction" method="submitGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="keyApplicationReviewAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="keyApplicationReviewAction" method="view">
+	        <result>/project/key/application/review/popView.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroup" class="keyApplicationReviewAction" method="viewGroup">
+	        <result>/project/key/application/review/popViewGroup.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroupOpinion" class="keyApplicationReviewAction" method="viewGroupOpinion">
+	        <result>/project/key/application/review/popViewGroupOpinion.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="keyApplicationReviewAudit" extends="main" namespace="/project/key/application/reviewAudit">
+	
+		<action name="toAdd" class="keyApplicationReviewAuditAction" method="toAdd">
+	        <result>/project/key/application/reviewAudit/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="keyApplicationReviewAuditAction" method="toModify">
+	        <result>/project/key/application/reviewAudit/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="keyApplicationReviewAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modify" class="keyApplicationReviewAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="keyApplicationReviewAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="keyApplicationReviewAuditAction" method="view">
+	        <result>/project/key/application/reviewAudit/popView.jsp</result>
+	    </action>
+	    
+	</package>
+</struts>
+

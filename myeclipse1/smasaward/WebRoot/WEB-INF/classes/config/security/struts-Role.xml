@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="role" extends="main" namespace="/role">
+		<!-- 进入列表 -->
+		<action name="toList" class="roleAction" method="toList">
+			<result>/security/role/list.jsp</result>
+		</action>
+		
+		<!-- 角色列表 -->
+		<action name="list" class="roleAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="roleAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="roleAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变页面大小 -->
+		<action name="changePageSize" class="roleAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="roleAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdd" class="roleAction" method="toAdd">
+			<result>/security/role/add.jsp</result>
+		</action>
+		
+		<!-- 添加角色 -->
+		<action name="add" class="roleAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/security/role/add.jsp</result>
+		</action>
+		
+		<action name="toModify" class="roleAction" method="toModify">
+			<result>/security/role/modify.jsp</result>
+		</action>
+		
+		<!-- 修改角色 -->
+		<action name="modify" class="roleAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/security/role/modify.jsp</result>
+		</action>
+		
+		<action name="toView" class="roleAction" method="toView">
+			<result>/security/role/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="roleAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="roleAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="roleAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="roleAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+	
+	
+		
+		
+		<!-- 查看用户角色 -->
+		<action name="viewUserRole" class="roleAction" method="viewUserRole">
+			<result>/security/role/userRole.jsp</result>
+		</action>
+		
+		<!-- 分配角色 -->
+		<action name="userRole" class="roleAction" method="userRole">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="namespace">/user</param>
+				<param name="update">1</param>
+				<param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input" >/security/role/userRole.jsp</result>
+<!--			<result type="json"><param name="root">jsonMap</param></result>-->
+<!--			<result name="input" type="json"><param name="root">jsonMap</param></result>-->
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="expert" extends="main" namespace="/person/expert">
+
+		<action name="toList" class="expertAction" method="toList">
+			<result>/person/expert/list.jsp</result>
+		</action>
+
+		<action name="list" class="expertAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="expertAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+ 		<action name="toAdvSearch" class="expertAction" method="toAdvSearch"> 
+			<result>/person/expert/advSearch.jsp</result> 
+ 		</action> 
+		
+		<action name="advSearch" class="expertAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="expertAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="expertAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="expertAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toAdd" class="expertAction" method="toAdd">
+			<result>/person/expert/add.jsp</result>
+		</action>
+
+		<action name="add" class="expertAction" method="add">
+			<result type="redirect">/person/expert/toView.action?entityId=${entityId}</result>
+			<result name="input">/person/expert/add.jsp</result>
+		</action>
+
+		<action name="delete" class="expertAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toView" class="expertAction" method="toView">
+			<result>/person/expert/view.jsp</result>
+		</action>
+
+		<action name="view" class="expertAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="expertAction" method="toModify">
+			<result>/person/expert/modify.jsp</result>
+		</action>
+		<action name="modify" class="expertAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/expert/modify.jsp</result>
+		</action>
+
+		<action name="prev" class="expertAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="expertAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toggleKey" class="expertAction" method="toggleKey">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 人员合并 -->
+		<action name="toMerge" class="expertAction" method="toMerge">
+			<result>/person/expert/merge.jsp</result>
+		</action>
+		
+		<action name="fetchMergeData" class="expertAction" method="fetchMergeData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="merge" class="expertAction" method="merge">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/expert/merge.jsp</result>
+		</action>
+	</package>
+
+</struts>

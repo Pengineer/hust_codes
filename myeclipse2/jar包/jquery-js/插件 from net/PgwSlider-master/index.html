@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link href="pgwslider.min.css" rel="stylesheet">
+<style type="text/css">
+body { margin: 0px; background-color: #000000; }
+.m{ width: 800px; height: 600px; margin-left: auto; margin-right: auto; margin-top: 10%; }
+</style>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="pgwslider.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).ready(function() {
+    	$('.pgwSlider').pgwSlider();
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="m">
+		<ul class="pgwSlider">
+				<li><img src="img/paris.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+				<li><img src="img/new-york.jpg" alt="Montréal, QC, Canada" data-large-src="img/new-york.jpg"></li>
+				<li> <img src="img/shanghai.jpg"> <span>Shanghai, China</span> </li>
+				<li> <a href="http://www.jq22.com" target="_blank"> <img src="img/new-york.jpg"> <span>New York, NY, USA</span> </a> </li>
+		</ul>
+</div>
+</body>
+</html>

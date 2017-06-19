@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="systemOption" extends="default" namespace="/systemOption">
+		<action name="toView" class="systemOptionAction" method="toView">
+			<result>/jsp/oa/systemOption/view.jsp</result>
+		</action>
+			
+		<action name="view" class="systemOptionAction" method="view">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+
+	</package>
+</struts>

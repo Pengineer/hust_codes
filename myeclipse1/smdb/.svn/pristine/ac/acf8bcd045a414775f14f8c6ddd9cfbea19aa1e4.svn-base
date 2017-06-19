@@ -1,0 +1,123 @@
+<project default="">
+<property file="remote.properties"/>
+
+<!--server operation-->
+    <target name="#showparas">
+    	<echo message="deployment parameters"/>
+    	<echo message="wld.host:${wld.host}"/>
+    	<echo message="wld.port:${wld.port}"/>
+    	<echo message="wld.username:${wld.username}"/>
+    	<echo message="wld.password:${wld.password}"/>
+		<echo message="wld.target:${wld.target}"/>
+		<echo message="serv.name:${serv.name}"/>
+		<echo message="serv.path:${serv.path}"/>
+    	<echo message="#server papameters"/>
+		<echo message="wls.host:${wls.host}"/>
+		<echo message="wls.port:${wls.port}"/>
+		<echo message="wls.username:${wls.username}"/>
+    	<echo message="wls.password:${wls.password}"/>
+		<echo message="cfg.dir:${cfg.dir}"/>
+		<echo message="servername:{servername}"/>
+    	<echo message="domainname:${domainname}"/>
+    </target>
+
+   	<!--tset wlserver config-->		
+   	<target name="wlserver-default">   	    
+   			 <wlserver/>
+    </target>
+    
+    <!--start a new domain & server
+		   create a domain ,default name is mydomain,default server is myserver
+			 only the auto shutdown is still a problem-->
+    <target name="new-server">
+		    <delete dir="${cfg.dir}"/>
+		    <mkdir dir="${cfg.dir}"/>
+		    <wlserver dir="${cfg.dir}" 
+		    		host="${wls.host}" 
+		    		port="${wls.port}"
+		    		username="${wls.username}"
+		    		password="${wls.password}"
+		    		servername="${servername}"
+				    domainname="${domainname}"				    
+				    generateConfig="true"  
+				    action="start"/>
+  	</target>
+  	
+    <!-- start a exist server
+   			always shutdown after start server-->
+	  <target name="start-server">
+	  		<wlserver dir="${cfg.dir}" 
+	    			host="${wls.host}" 
+	    			port="${wls.port}" 
+	    			username="${wls.username}"
+				    password="${wls.password}"
+	    			servername="${servername}"
+	    			domainname="${domainname}"
+	    			generateConfig="false"
+	    			action="start"/>	    			
+	  </target>
+	   
+		<!-- connect-server can work normal,
+				 deprecated-->
+		<target name="connect-server">
+				<wlserver host="${wls.host}" port="${port}" username="${wls.username}" password="${wls.password}" action="connect"/>
+		</target>
+		
+		<!--shutdown a server(domain)
+				just change the start-server's action to shutdown-->
+		<target name="shutdown-server">
+	  		<wlserver dir="${cfg.dir}" 
+	    			host="${wls.host}" 
+	    			port="${wls.port}" 
+	    			username="${wls.username}"
+				    password="${wls.password}"
+	    			servername="${servername}"
+	    			domainname="${domainname}"
+	    			generateConfig="false"
+	    			action="shutdown"/>	    			
+	  </target>
+    
+
+
+<!--deployment operation-->
+			
+	  <!-- deployment(remote deploy)
+  		 upload a war file ,ear or the folder is the same
+     	 source is the war location 
+       name is the server name
+       the dest path is : G:\antspace\smdb\AntBuild\smdb.war or G:\antspace\smdb\AntBuild\smdb if a folder  path must be "/"
+       the first hudson means server name -->
+		<target name="deploy">
+  			<wldeploy  action="deploy"  verbose="true"
+  	 					debug="true"
+  	 					name="${serv.name}"  
+  	 					source="${serv.path}"	 				
+  	 					user="${wld.username}"
+  	 					password="${wld.password}"
+  		        upload="true"
+  		        targets="${wld.target}"
+  	 					adminurl="t3://${wld.host}:${wld.port}"  />
+  	</target>
+  	
+		<!--undeploy the application
+			work normally
+			@name is the server name-->
+		<target name="undeploy">
+  			<wldeploy  action="undeploy"  verbose="true"
+  	 					debug="true"
+  	 					name="${serv.name}"  	 				
+  	 					user="${wld.username}"
+  	 					password="${wld.password}" 		                
+  	 					adminurl="t3://${wld.host}:${wld.port}"  />
+  	</target>
+	
+	
+<!--config operation-->
+		<!---can work normally-->
+		<target name="doconfig">
+				<echo message="${port}"/>
+		  	<wlconfig url="t3://${wls.host}:${port}" username="${wls.username}"
+		     		password="${wls.password}"/>
+		</target>
+   
+</project>

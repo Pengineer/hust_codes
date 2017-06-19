@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="view" location="235,10" size="525,490">
+    <action name="viewAccount" location="310,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewAccount.jsp" />
+      </result>
+    </action>
+    <action name="viewPerson" location="310,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewPerson.jsp" />
+      </result>
+    </action>
+    <action name="viewAgency" location="310,407" size="150,41">
+      <result name="viewAgency">
+        <resourceEdge source="viewAgency" routing="0" target="viewAgency.jsp" />
+      </result>
+      <result name="viewDepartment">
+        <resourceEdge source="viewDepartment" routing="0" target="viewDepartment.jsp" />
+      </result>
+      <result name="viewInstitute">
+        <resourceEdge source="viewInstitute" routing="0" target="viewInstitute.jsp" />
+      </result>
+    </action>
+    <action name="viewProject" location="65,407" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewProject.jsp" />
+      </result>
+    </action>
+    <action name="viewLog" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewLog.jsp" />
+      </result>
+    </action>
+    <action name="viewMemo" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="toPop">
+        <resourceEdge source="toPop" routing="0" target="viewMemo.jsp" />
+      </result>
+    </action>
+    <action name="viewOrganization" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewOrganization.jsp" />
+      </result>
+    </action>
+    <action name="viewOrganization" location="0,0" size="0,0">
+      <result name="toPop">
+        <resourceEdge source="toPop" routing="0" target="viewOrganization.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="viewAccount.jsp" path="/pop/view/viewAccount.jsp" location="809,30" size="150,55" />
+  <webResource name="viewPerson.jsp" path="/pop/view/viewPerson.jsp" location="812,205" size="150,55" />
+  <webResource name="viewAgency.jsp" path="/pop/view/viewAgency.jsp" location="812,380" size="150,55" />
+  <webResource name="viewProject.jsp" path="/pop/view/viewProject.jsp" location="284,555" size="150,55" />
+  <webResource name="viewDepartment.jsp" path="/pop/view/viewDepartment.jsp" location="0,0" size="0,0" />
+  <webResource name="viewInstitute.jsp" path="/pop/view/viewInstitute.jsp" location="0,0" size="0,0" />
+  <webResource name="viewLog.jsp" path="/pop/view/viewLog.jsp" location="0,0" size="0,0" />
+  <webResource name="viewMemo.jsp" path="/pop/view/viewMemo.jsp" location="0,0" size="0,0" />
+  <webResource name="viewOrganization.jsp" path="/pop/view/viewOrganization.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

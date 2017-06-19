@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+		<package name="paper" extends="json-default" namespace="/solicitpapers">
+			
+			<action name="toAdd" class="solicitPapersAction" method="toAdd">
+				<result name="forum">/jsp/solicitPapers/forum.jsp</result>
+				<result name = "topic">/jsp/solicitPapers/topic.jsp</result>
+				<result name = "input">/jsp/index.jsp</result>
+			</action>
+			
+			
+			<action name="add" class="solicitPapersAction" method="add">
+				<result type="json">
+					<param name="root">jsonMap</param>
+				</result>
+			</action>
+			
+		</package>
+	
+
+</struts>

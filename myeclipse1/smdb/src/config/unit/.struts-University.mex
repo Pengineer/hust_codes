@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="university" location="833,10" size="1540,1120">
+    <action name="toAdd" location="1325,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="940,1027" size="150,62">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+      <result name="success" />
+    </action>
+    <action name="toView" location="940,932" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="1185,932" size="150,41">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModify" location="1185,827" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="940,817" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="delete" location="940,257" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="695,757" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="65,747" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="sort" location="65,642" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="prev" location="310,642" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="555,642" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="310,432" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="65,442" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="65,337" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toMerge" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popMergeUniversity.jsp" />
+      </result>
+    </action>
+    <action name="merge" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/unit/agency/university/add.jsp" location="10,1010" size="150,55" />
+  <webResource name="view.jsp" path="/unit/agency/university/view.jsp" location="602,905" size="150,55" />
+  <webResource name="modify.jsp" path="/unit/agency/university/modify.jsp" location="141,135" size="150,55" />
+  <webResource name="list.jsp" path="/unit/agency/university/list.jsp" location="392,240" size="150,55" />
+  <webResource name="advSearch.jsp" path="/unit/agency/university/advSearch.jsp" location="552,415" size="150,55" />
+  <webResource name="popMergeUniversity.jsp" path="/unit/popMergeUniversity.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

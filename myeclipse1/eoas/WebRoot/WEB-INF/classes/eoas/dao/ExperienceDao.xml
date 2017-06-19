@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="eoas.dao.ExperienceDao">
+
+	<insert id="insert"  parameterType="Resume"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_EXPERIENCE 
+	   		(
+	   		 C_ID,
+	   		 C_COMPANY,
+	   		 C_COMPANY_STIME,
+	   		 C_COMPANY_ETIME, 
+	   		 C_POSITION, 
+	   		 C_POSITION_DESCRIPTION, 
+	   		 C_PROJECT,
+	   		 C_PROJECT_STIME,
+	   		 C_PROJECT_ETIME,
+	   		 C_DUTY_DESCRIPTION,
+	   		 C_RESUME_ID
+	   		 )
+        	values 
+            (
+             #{id,jdbcType=VARCHAR},
+             #{company,jdbcType=VARCHAR},
+             #{companyStime,jdbcType=DATE},
+             #{companyEtime,jdbcType=DATE},
+             #{position,jdbcType=DATE},
+             #{positionDescription,jdbcType=VARCHAR},
+             #{project,jdbcType=VARCHAR},
+             #{projectStime,jdbcType=DATE},
+             #{projectEtime,jdbcType=DATE},
+             #{dutyDescription,jdbcType=VARCHAR},
+             #{resume.id,jdbcType=VARCHAR}
+        	)
+     </insert>
+</mapper> 

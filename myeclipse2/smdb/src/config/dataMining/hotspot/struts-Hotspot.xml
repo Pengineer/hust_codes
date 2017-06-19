@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="hotspot" extends="main" namespace="/dataMining/hotspot">
+		
+		<!-- 进入研究热点配置页面 -->
+		<action name="toHotspotConfig" class="hotspotAction" method="toConfig">
+			<result>/dataMining/hotspot/toHotspot.jsp</result>
+		</action>
+		
+		<!-- 进入研究热点页面 -->
+		<action name="toHotspot" class="hotspotAction" method="toHotspot">
+			<result>/dataMining/hotspot/hotspot.jsp</result>
+		</action>
+		
+		<!-- 获取研究热点数据 -->
+		<action name="hotspot" class="hotspotAction" method="hotspot">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 获取索引 -->
+		<action name="updateIndex" class="hotspotAction" method="updateIndex">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 索引文件是否存在 -->
+		<action name="isExistIndex" class="hotspotAction" method="isExistIndex">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="list" class="hotspotAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="hotspotAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="hotspotAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="hotspotAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+
+</struts>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:security="http://www.springframework.org/schema/security" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	<security:global-method-security pre-post-annotations="enabled"/>
+    <security:http auto-config="true" use-expressions="true" access-denied-page="/jsp/403.jsp" lowercase-comparisons="false"
+				access-decision-manager-ref="accessDecisionManager">
+		
+		<security:intercept-url pattern="/css/**" filters="none"/>	
+		<security:intercept-url pattern="/js/**" filters="none"/>
+		<security:intercept-url pattern="/assets/**" filters="none"/>
+		<security:intercept-url pattern="/tools/**" filters="none"/>
+		<security:intercept-url pattern="/lib/**" filters="none"/>
+		<security:intercept-url pattern="/sea_config.js" filters="none"/>
+		<security:intercept-url pattern="/sea.js" filters="none"/>
+		
+		<security:intercept-url pattern="/upload/articleAttachments" filters="none"/>
+		<security:intercept-url pattern="/upload/slideImages/**" filters="none"/>
+		<security:intercept-url pattern="/upload/editorImages/**" filters="none"/>
+		
+		<security:intercept-url pattern="/toIndex.action" filters="none"/>
+		<security:intercept-url pattern="/timeout.action" filters="none"/>
+		
+		<security:intercept-url pattern="/upload/upload.action" filters="none"/>
+		<security:intercept-url pattern="/upload/discard.action" filters="none"/>
+		<security:intercept-url pattern="/upload/fetchGroupFilesSummary.action" filters="none"/>
+		
+		<!-- <security:intercept-url pattern="/**" access="denyAll" /> -->
+		
+		<security:form-login login-processing-url="/login"
+			login-page="/toIndex.action"
+			authentication-failure-url="/toIndex.action?error=0"
+			default-target-url="/login/doLogin.action"
+			always-use-default-target="true" />
+		<security:logout logout-url="/logout" logout-success-url="/toIndex.action" />
+		
+			<!-- 未配置的资源 -->
+		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+		
+        <!-- 最多允许N个同时在线,若个数自定义,自行实现 -->
+        <security:session-management invalid-session-url="/toIndex.action" session-authentication-error-url="/jsp/error.jsp" session-fixation-protection="migrateSession">
+        	<security:concurrency-control max-sessions="10000" expired-url="/timeout.action" error-if-maximum-exceeded="true" />
+        </security:session-management>
+        <!-- 自定义过滤器 -->
+        <security:custom-filter before="FORM_LOGIN_FILTER" ref="myAuthenticationFilter"/>
+    </security:http>
+    
+	<beans:bean id="myAuthenticationFilter" class="csdc.tool.security.MyAuthenticationFilter">
+		<beans:property name="myAuthentication" ref="myAuthentication" />
+	</beans:bean>
+
+	<beans:bean id="myAuthentication" class="csdc.tool.security.MyAuthentication">
+	</beans:bean>
+
+	<beans:bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				<beans:bean class="org.springframework.security.access.vote.RoleVoter" />
+				<beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter" />
+				<beans:bean class="org.springframework.security.web.access.expression.WebExpressionVoter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider user-service-ref="myUserDetailsService">
+			<security:password-encoder hash="md5" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+	<beans:bean id="myUserDetailsService" class="csdc.tool.security.MyUserDeitailsService">
+	</beans:bean>
+</beans:beans>

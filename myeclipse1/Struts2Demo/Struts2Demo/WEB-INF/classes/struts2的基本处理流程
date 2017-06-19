@@ -1,0 +1,12 @@
+在struts2中，struts框架是通过Filter启动的，所有的一次请求（不是由程序跳转导致的请求）都是基于filter的。Filter的配置在web.xml中。
+     StrutsPrepareAndExecuteFilter是Struts2框架的核心控制器，它负责拦截由<url-pattern>/*</url-pattern>指定的所有用户请求，          
+               在StrutsPrepareAndExecuteFilter的init()方法中将会读取类路径下默认的配置文件struts.xml完成初始化操作。
+               
+
+1，当用户请求到达时，web.xml中Filter会过滤用户的请求。默认情况下，如果用户请求的路径不带后缀或者后缀以.action结尾，这时请求将被转入Struts2框架处理，
+       否则Struts2框架将略过该请求的处理。
+2，当请求转入Struts2框架处理时会先经过一系列的拦截器（系统+自定义），然后在struts.xml配置文件中通过匹配URL中所含的Action的name找到指定的Action。
+3，在Action中， 将进行数据的业务逻辑处理，处理完后将返回到本Action指定的JSP页面（返回的对应关系由Action的Result配置）。
+4，JSP页面显示处理结果。
+
+ 与Struts1不同，Struts2对用户的每一次请求都会创建一个Action，所以Struts2中的Action是线程安全的。

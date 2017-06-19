@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.SinossPaper" table="T_SINOSS_Paper">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+	    <property name="projectName" type="java.lang.String">
+            <column name="C_PROJECT_NAME"/>
+        </property>        
+	    <property name="name" type="java.lang.String">
+            <column name="C_NAME"/>
+        </property>  
+ 	    <property name="firstAuthor" type="java.lang.String">
+            <column name="C_FIRST_AUTHOR"/>
+        </property>
+ 	    <property name="otherAuthor" type="java.lang.String">
+            <column name="C_OTHER_AUTHOR"/>
+        </property>
+ 	    <property name="subject" type="java.lang.String">
+            <column name="C_SUBJECT"/>
+        </property>	
+ 	    <property name="subjectType" type="java.lang.String">
+            <column name="C_SUBJECT_TYPE"/>
+        </property>	
+        <property name="isMark" type="java.lang.String">
+            <column name="C_IS_MARK" />
+        </property>  
+ 	    <property name="paperType" type="java.lang.String">
+            <column name="C_PAPER_TYPE"/>
+        </property> 
+ 	    <property name="paperBook" type="java.lang.String">
+            <column name="C_PAPER_BOOK"/>
+        </property>
+ 	    <property name="paperBookType" type="java.lang.String">
+            <column name="C_PAPER_BOOK_TYPE"/>
+        </property>   
+ 	    <property name="PublishScope" type="java.lang.String">
+            <column name="C_PUBLISH_SCOPE"/>
+        </property>
+ 	    <property name="juanhao" type="java.lang.String">
+            <column name="C_JUANHAO"/>
+        </property>
+ 	    <property name="qihao" type="java.lang.String">
+            <column name="C_QIHAO"/>
+        </property>   
+ 	    <property name="pagenumScope" type="java.lang.String">
+            <column name="C_PAGENUM_SCOPE"/>
+        </property> 
+        <property name="wordNumber" type="java.lang.String">
+            <column name="C_WORD_NUMBER" />
+        </property>  
+        <property name="isTranslate" type="java.lang.String">
+            <column name="C_IS_TRANSLATE" />
+        </property>
+ 	    <property name="issn" type="java.lang.String">
+            <column name="C_ISSN"/>
+        </property>	
+ 	    <property name="cn" type="java.lang.String">
+            <column name="C_CN"/>
+        </property>	 
+        <property name="publicDate" type="java.util.Date">
+            <column name="C_PUBLIC_DATE" />
+        </property>
+ 	    <property name="note" type="java.lang.String">
+            <column name="C_NOTE"/>
+        </property>	
+ 	    <property name="projectId" type="java.lang.String">
+            <column name="C_PROJECT_ID"/>
+        </property>
+        <many-to-one name="projectMidinspection" class="csdc.bean.SinossProjectMidinspection" fetch="join">
+            <column name="C_project_Midinspection_ID"/>
+        </many-to-one>		        	                                                             	
+    </class>
+</hibernate-mapping>

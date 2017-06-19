@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<aop:aspectj-autoproxy/>
+	
+	<bean id="myInterceptorByXml" class="edu.hust.interceptor.MyInterceptorByXml"/> 
+	<bean id="personService1" class="edu.hust.service.impl.PersonServiceBean1"/>
+	
+	<!-- 配置AOP：配置切面->配置切点->配置通知 -->
+	<aop:config>
+		<aop:aspect id="cutAspect" ref="myInterceptorByXml">
+			<aop:pointcut id="cutPoint" expression="execution(* edu.hust.service.impl.PersonServiceBean1.*(..))"/>
+			<aop:before pointcut-ref="cutPoint" method="doAccessCheck"/>
+			<aop:after-returning pointcut-ref="cutPoint" method="doAfterCheck"/>
+			<aop:after-throwing pointcut-ref="cutPoint" method="doAfterThrowing"/>
+			<aop:after pointcut-ref="cutPoint" method="doAfter"/>
+			<aop:around pointcut-ref="cutPoint" method="doBasicProfiling"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

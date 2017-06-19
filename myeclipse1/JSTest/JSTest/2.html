@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2.html</title>	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  
+  <body>
+      您喜欢的城市：<br>
+      <ul type="square">
+         <li id="bj" value="beijing" onclick="alert('capture');" style="cursor: pointer;">北京</li>
+         <li id="sh" value="shanghai" style="cursor: pointer;">上海</li>
+         <li id="wh" value="wuhan" style="cursor: pointer;">武汉</li>
+      </ul><br>
+      
+      您喜欢的运动：<br>
+      <ul>
+      	<li id="bb" value="basketball">篮球</li>
+      	<li id="fb" value="football">足球</li>
+      	<li id="pp" value="ping-pong">乒乓球</li>
+      </ul><br><br>
+      
+     <dl>
+     	<dt>国内</dt>
+	     	<dd>A</dd>
+	     	<dd>B</dd>
+	    <dt>国外</dt>
+	     	<dd>C</dd>
+	     	<dd>D</dd>
+     </dl>
+  </body>
+  
+  <script type="text/javascript"> //当文档加载完后，才能执行里面的内容
+	  window.onload=function(){
+	  	document.getElementById("sh").onclick = function(){
+	  		alert("上海");
+	  	}
+	  	document.getElementById("wh").onclick = function(){
+	  		alert("武汉");
+	  	}
+  	  }
+  </script>
+  
+</html>

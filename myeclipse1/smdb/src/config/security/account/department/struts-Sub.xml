@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="accountDepartmentSub" extends="main" namespace="/account/department/sub">
+
+		<action name="toAdd" class="accountDepartmentSubAction" method="toAdd">
+			<result>/security/account/department/sub/add.jsp</result>
+		</action>
+		
+		<action name="getUserName" class="accountDepartmentSubAction" method="getUserName">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="add" class="accountDepartmentSubAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageInfo">${pageInfo}</param>
+			</result>
+			<result name="input">/security/account/department/sub/add.jsp</result>
+		</action>
+		
+		<action name="toModify" class="accountDepartmentSubAction" method="toModify">
+			<result>/security/account/department/sub/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="accountDepartmentSubAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/security/account/department/sub/modify.jsp</result>
+		</action>
+		
+		<action name="toView" class="accountDepartmentSubAction" method="toView">
+			<result>/security/account/department/sub/view.jsp</result>
+		</action>
+		
+		<action name="view" class="accountDepartmentSubAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="delete" class="accountDepartmentSubAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="accountDepartmentSubAction" method="toList">
+			<result>/security/account/department/sub/list.jsp</result>
+		</action>
+		
+		<action name="list" class="accountDepartmentSubAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="accountDepartmentSubAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="accountDepartmentSubAction" method="toAdvSearch"> -->
+<!-- 			<result>/security/account/department/sub/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="accountDepartmentSubAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="accountDepartmentSubAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="accountDepartmentSubAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="accountDepartmentSubAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="accountDepartmentSubAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="accountDepartmentSubAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toEnable" class="accountDepartmentSubAction" method="toEnable">
+			<result>/security/account/popEnable.jsp</result>
+		</action>
+
+		<action name="enable" class="accountDepartmentSubAction" method="enable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="disable" class="accountDepartmentSubAction" method="disable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAssignRole" class="accountDepartmentSubAction" method="toAssignRole">
+			<result>/security/account/popAssignRole.jsp</result>
+		</action>
+
+		<action name="assignRole" class="accountDepartmentSubAction" method="assignRole">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="retrieveCode" class="accountDepartmentSubAction" method="retrieveCode">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModifyPassword" class="accountDepartmentSubAction" method="toModifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<action name="modifyPassword" class="accountDepartmentSubAction" method="modifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+			<result name="input">/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<!-- 对外接口 -->
+		<action name="extIfToAdd" class="accountDepartmentSubAction" method="extIfToAdd">
+			<result>/security/account/extIf/popAdd.jsp</result>
+		</action>
+		
+		<action name="extIfAdd" class="accountDepartmentSubAction" method="extIfAdd">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+
+</struts>

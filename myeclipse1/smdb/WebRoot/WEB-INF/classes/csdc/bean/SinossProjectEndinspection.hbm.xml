@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="csdc.bean.SinossProjectEndinspection" table="T_SINOSS_PROJECT_ENDINSPECTION" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+
+        <property name="code" type="java.lang.String">
+            <column name="C_CODE" length="40">
+                <comment>项目编号</comment>
+            </column>
+        </property>
+        <property name="typeCode" type="java.lang.String">
+            <column name="C_TYPE_CODE" length="40">
+                <comment>项目类别</comment>
+            </column>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200">
+                <comment>项目名称</comment>
+            </column>
+        </property>
+        <property name="sinossProjectId" type="java.lang.String">
+            <column name="C_SINOSS_PROJECT_ID" length="40">
+                <comment>管理平台项目申请id</comment>
+            </column>
+        </property>
+        <property name="checkStatus" type="java.lang.String">
+            <column name="C_CHECK_STATUS" length="40">
+                <comment>审核状态</comment>
+            </column>
+        </property>
+        <property name="checkDate" type="java.util.Date">
+            <column name="C_CHECK_DATE" length="7">
+                <comment>最后审核日期</comment>
+            </column>
+        </property>
+        <property name="checker" type="java.lang.String">
+            <column name="C_CHECKER" length="100">
+                <comment>最后审核人</comment>
+            </column>
+        </property>
+        <property name="checkInfo" type="java.lang.String">
+            <column name="C_CHECK_INFO" length="40">
+                <comment>最后审核内容</comment>
+            </column>
+        </property>
+        <property name="applyDate" type="java.util.Date">
+            <column name="C_APPLY_DATE" length="7">
+                <comment>结项申请日期</comment>
+            </column>
+        </property>
+        <property name="finishReportId" type="java.lang.String">
+            <column name="C_FINISH_REPORT_ID" length="40">
+                <comment>结项报告电子附件id</comment>
+            </column>
+        </property>
+        <property name="dumpDate" type="java.util.Date">
+            <column name="C_DUMP_DATE" length="7">
+                <comment>数据读取时间</comment>
+            </column>
+        </property>
+        <property name="dumpPerson" type="java.lang.String">
+            <column name="C_DUMP_PERSON" length="40">
+                <comment>数据读取操作人员</comment>
+            </column>
+        </property>
+        <property name="from" type="java.lang.String">
+            <column name="C_FROM" length="80">
+                <comment>数据来源</comment>
+            </column>
+        </property>
+        <property name="importDate" type="java.util.Date">
+            <column name="C_IMPORT_DATE" length="7">
+                <comment>数据入库时间</comment>
+            </column>
+        </property>
+        <property name="importPerson" type="java.lang.String">
+            <column name="C_IMPORT_PERSON" length="40">
+                <comment>数据入库操作人员</comment>
+            </column>
+        </property>
+        <property name="sinossId" type="java.lang.String">
+            <column name="C_SINOSS_ID">
+                 <comment>管理平台项目结项id</comment>
+            </column>                   
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE"/>
+        </property>
+        <property name="dfs" type="java.lang.String">
+            <column name="C_DFS" length="200" />
+        </property>     
+        <many-to-one name="projectApplication" class="csdc.bean.ProjectApplication" fetch="join">
+            <column name="C_PROJECT_ID" length="40">
+                <comment>SMDB申请id（FK）</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="projectEndinspection" class="csdc.bean.ProjectEndinspection" fetch="join">
+            <column name="C_ENDINSPECTION_ID" length="40">
+                <comment>SMDB项目结项id</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="projectGranted" class="csdc.bean.ProjectGranted" fetch="join">
+            <column name="C_GRANTED_ID" length="40">
+                <comment>SMDB立项id（FK）</comment>
+            </column>
+        </many-to-one>        
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,1266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 首页加载 -->
+	<bean id="toIndexAction" class="csdc.action.ToIndexAction" scope="prototype" />
+	
+	<!-- 登入后的处理 -->
+	<bean id="loginAction" class="csdc.action.LoginAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+		<property name="generalService" ref="generalService" />
+		<property name="keyService" ref="keyService" />
+		<property name="instpService" ref="instpService" />
+		<property name="postService" ref="postService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="viewService" ref="viewService" />
+		<property name="businessService" ref="businessService" />
+		<property name="passportService" ref="passportService" />
+	</bean>
+	
+	<!-- 导航栏相关操作 -->
+	<bean id="navigationAction" class="csdc.action.NavigationAction" scope="prototype" />
+	
+	<!-- SWF文件上传 -->
+	<bean id="swfuploadAction" class="csdc.action.SwfuploadAction" scope="prototype" />
+	
+	<!-- 异步文件上传 -->
+	<bean id="uploadAction" class="csdc.action.UploadAction" scope="prototype" />
+	
+	<!-- 访问者监控 -->
+	<bean id="monitorVisitorAction" class="csdc.action.system.monitor.VisitorAction" scope="prototype" />
+	
+	<!-- 系统日志 -->
+	<bean id="logAction" class="csdc.action.system.log.LogAction" scope="prototype">
+		<property name="logService" ref="logService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 内嵌日志 -->
+	<bean id="logEmbedAction" class="csdc.action.system.log.LogEmbedAction" scope="prototype">
+	</bean>
+	
+	<!-- 邮件管理 -->
+	<bean id="mailAction" class="csdc.action.system.mail.MailAction" scope="prototype">
+		<property name="mailService" ref="mailService" />
+		<property name="txTemplateRequiresNew" ref="txTemplateRequiresNew" />
+	</bean>
+	
+	<!-- 新闻管理 -->
+	<bean id="newsInnerAction" class="csdc.action.system.news.Inner" scope="prototype">
+		<property name="newsService" ref="newsService" />
+	</bean>
+	<bean id="newsOuterAction" class="csdc.action.system.news.Outer" scope="prototype">
+		<property name="newsService" ref="newsService" />
+	</bean>
+	
+	<!-- 通知管理 -->
+	<bean id="noticeInnerAction" class="csdc.action.system.notice.Inner" scope="prototype">
+		<property name="mailService" ref="mailService" />
+		<property name="noticeService" ref="noticeService" />
+	</bean>
+	
+	<bean id="noticeOuterAction" class="csdc.action.system.notice.Outer" scope="prototype">
+		<property name="noticeService" ref="noticeService" />
+	</bean>
+
+	<!-- 系统业务表管理 -->
+	<bean id="businessAction" class="csdc.action.system.business.BusinessAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="businessService" ref="businessService" />
+	</bean>
+
+	<!-- 系统选项表管理 -->
+	<bean id="systemOptionAction" class="csdc.action.system.option.SystemOptionAction" scope="prototype" />
+	
+	<!-- 系统配置表管理 -->
+	<bean id="systemConfigAction" class="csdc.action.system.config.SystemConfigAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 全站检索 -->
+	<bean id="totalSearchAction" class="csdc.action.system.search.TotalSearchAction" scope="prototype">
+		<property name="totalSearchService" ref="totalSearchService" />
+	</bean>
+	
+	<!-- 系统服务端接口管理  -->
+	<bean id="sinossServerAction" class="csdc.action.system.interfaces.SinossServerAction" scope="prototype">
+		<property name="interfaceService" ref="interfaceService" />
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 系统客户端接口管理  -->
+	<bean id="sinossClientAction" class="csdc.action.system.interfaces.SinossClientAction" scope="prototype">
+		<property name="interfaceService" ref="interfaceService" />
+		<property name="webServiceService" ref="webServiceService" />
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+		<!-- 文档配置 -->
+	<bean id="docManagementAction" class="csdc.action.system.doc.DocManagementAction" scope="prototype">
+	</bean>	
+	
+	<!-- 留言管理 -->
+	<bean id="messageInnerAction" class="csdc.action.system.message.Inner" scope="prototype">
+		<property name="messageService" ref="messageService" />
+		<property name="mailService" ref="mailService" />
+	</bean>
+	<bean id="messageOuterAction" class="csdc.action.system.message.Outer" scope="prototype">
+		<property name="messageService" ref="messageService" />
+	</bean>
+	
+	<!-- 站内信管理 -->
+	<bean id="inBoxAction" class="csdc.action.system.inBox.InBoxAction" scope="prototype">
+		<property name="inBoxService" ref="inBoxService" />
+	</bean>
+	
+	<!-- 角色管理 -->
+	<bean id="roleAction" class="csdc.action.security.RoleAction" scope="prototype">
+		<property name="roleService" ref="roleService" />
+	</bean>
+	
+	<!-- 权限管理 -->
+	<bean id="rightAction" class="csdc.action.security.RightAction" scope="prototype">
+		<property name="rightService" ref="rightService" />
+	</bean>
+	
+	<!-- 通行证管理 -->
+	<bean id="passportAction" class="csdc.action.security.PassportAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+<!-- 		<property name="passportService" ref="passportService" /> -->
+	</bean>
+	
+	<!-- 部级主账号管理 -->
+	<bean id="accountMinistryMainAction" class="csdc.action.security.account.ministry.MainAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 省级主账号管理 -->
+	<bean id="accountProvinceMainAction" class="csdc.action.security.account.province.MainAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 校级主账号管理 -->
+	<bean id="accountUniversityMainAction" class="csdc.action.security.account.university.MainAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 院系主账号管理 -->
+	<bean id="accountDepartmentMainAction" class="csdc.action.security.account.department.MainAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 基地主账号管理 -->
+	<bean id="accountInstituteMainAction" class="csdc.action.security.account.institute.MainAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 部级子账号管理 -->
+	<bean id="accountMinistrySubAction" class="csdc.action.security.account.ministry.SubAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 省级子账号管理 -->
+	<bean id="accountProvinceSubAction" class="csdc.action.security.account.province.SubAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 校级子账号管理 -->
+	<bean id="accountUniversitySubAction" class="csdc.action.security.account.university.SubAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 院系子账号管理 -->
+	<bean id="accountDepartmentSubAction" class="csdc.action.security.account.department.SubAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 基地子账号管理 -->
+	<bean id="accountInstituteSubAction" class="csdc.action.security.account.institute.SubAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 专家账号管理 -->
+	<bean id="accountExpertAction" class="csdc.action.security.account.ExpertAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 教师账号管理 -->
+	<bean id="accountTeacherAction" class="csdc.action.security.account.TeacherAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 学生账号管理 -->
+	<bean id="accountStudentAction" class="csdc.action.security.account.StudentAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	
+	<!-- 高校更名管理 -->
+	<bean id="universityVariationAction" class="csdc.action.dm.universityVariation.UniversityVariationAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 查重标记管理 -->
+	<bean id="dupCheckAction" class="csdc.action.dm.dupCheck.DupCheckAction" scope="prototype">
+	</bean>
+	
+	<!-- 数据自动入库 -->
+	<bean id="dataImporterAction" class="csdc.action.dataProcessing.dataImporter.DataImporterAction" scope="prototype">
+	</bean>
+	
+	<!-- 配置xml字段值、从数据源到中间表数据入库 -->
+	<bean id="sourceToMidTableAction" class="csdc.action.dataProcessing.SourceToMidTableAction" scope="prototype">
+		<property name="sourceToMidTableService" ref="sourceToMidTableService" />
+	</bean>
+	
+	<!-- 任务配置 -->
+	<bean id="taskConfigAction" class="csdc.action.taskConfig.TaskConfigAction" scope="prototype">
+	
+	</bean>
+	
+
+	<!-- 弹出层选择 -->
+	<bean id="selectMinistryAction" class="csdc.action.pop.select.MinistryAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectProvinceAction" class="csdc.action.pop.select.ProvinceAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectUniversitySubjectionAction" class="csdc.action.pop.select.UniversitySubjectionAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectUniversityAction" class="csdc.action.pop.select.UniversityAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectMinistryGroupAction" class="csdc.action.pop.select.MinistryGroupAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectProvinceGroupAction" class="csdc.action.pop.select.ProvinceGroupAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectUniversityGroupAction" class="csdc.action.pop.select.UniversityGroupAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectDepartmentAction" class="csdc.action.pop.select.DepartmentAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectInstituteAction" class="csdc.action.pop.select.InstituteAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectExpertAction" class="csdc.action.pop.select.ExpertAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectTeacherAction" class="csdc.action.pop.select.TeacherAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectStudentAction" class="csdc.action.pop.select.StudentAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectOfficerAction" class="csdc.action.pop.select.OfficerAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectDisciplineTypeAction" class="csdc.action.pop.select.DisciplineTypeAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="selectRelyDisciplinesAction" class="csdc.action.pop.select.RelyDisciplinesAction" scope="prototype">
+		<property name="unitExtService" ref="unitExtService" />
+	</bean>
+	
+	<bean id="selectProjectAction" class="csdc.action.pop.select.ProjectAction" scope="prototype">
+	</bean>
+	
+	<bean id="selectTopicAction" class="csdc.action.pop.select.TopicAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="selectUngrantedProjectAction" class="csdc.action.pop.select.UngrantedProjectAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="selectEthnicLanguageAction" class="csdc.action.pop.select.EthnicLanguageAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="selectForeignLanguageAction" class="csdc.action.pop.select.ForeignLanguageAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="selectIndexTypeAction" class="csdc.action.pop.select.IndexTypeAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="selectPublicationAction" class="csdc.action.pop.select.PublicationAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="editProductTypeAction" class="csdc.action.pop.edit.ProductTypeAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<bean id="viewAction" class="csdc.action.pop.ViewAction" scope="prototype">
+		<property name="viewService" ref="viewService" />
+	</bean>
+	
+	
+	
+	<!-- 个人空间 -->
+	<bean id="selfspaceAction" class="csdc.action.SelfspaceAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+		<property name="passportService" ref="passportService" />
+	</bean>
+    <!--备忘录-->
+	<bean id="memoAction" class="csdc.action.selfspace.MemoAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="memoService" ref="memoService" />
+	</bean>
+	
+	<!-- 部级管理员管理 -->
+	<bean id="ministryOfficerAction" class="csdc.action.person.officer.MinistryAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+	</bean>
+	
+	<!-- 省级管理员管理 -->
+	<bean id="provinceOfficerAction" class="csdc.action.person.officer.ProvinceAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+	</bean>
+	
+	<!-- 校级管理员管理 -->
+	<bean id="universityOfficerAction" class="csdc.action.person.officer.UniversityAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+	</bean>
+	
+	<!-- 院系管理员管理 -->
+	<bean id="departmentOfficerAction" class="csdc.action.person.officer.DepartmentAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+	</bean>
+	
+	<!-- 研究机构管理员管理 -->
+	<bean id="instituteOfficerAction" class="csdc.action.person.officer.InstituteAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+	</bean>
+	
+	<!-- 外部专家管理 -->
+	<bean id="expertAction" class="csdc.action.person.ExpertAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+		<property name="productService" ref="productService" />
+		<property name="projectExtService" ref="projectExtService" />
+	</bean>
+	
+	<!-- 内部专家(教师)管理 -->
+	<bean id="teacherAction" class="csdc.action.person.TeacherAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+		<property name="productService" ref="productService" />
+		<property name="projectExtService" ref="projectExtService" />
+	</bean>
+
+	<!-- 学生管理 -->
+	<bean id="studentAction" class="csdc.action.person.StudentAction" scope="prototype">
+		<property name="personService" ref="personService" />
+		<property name="accountExtService" ref="accountExtService" />
+		<property name="unitExtService" ref="unitExtService" />
+		<property name="productService" ref="productService" />
+		<property name="projectExtService" ref="projectExtService" />
+	</bean>
+	
+	<!-- 科研人员交流管理 -->
+	<bean id="linkedinAction" class="csdc.action.person.LinkedinAction" scope="prototype">
+	</bean>
+	
+	<!-- 管理机构管理 -->
+	<bean id="unitAction" class="csdc.action.unit.UnitAction" scope="prototype">
+		<property name="unitService" ref="unitService" />
+	</bean>
+	
+	<!-- 部级机构管理 -->
+	<bean id="ministryAction" class="csdc.action.unit.agency.MinistryAction" scope="prototype">
+		<property name="unitService" ref="unitService" />
+	</bean>
+	
+	<!-- 省级机构管理 -->
+	<bean id="provinceAction" class="csdc.action.unit.agency.ProvinceAction" scope="prototype">
+		<property name="unitService" ref="unitService" />
+	</bean>
+	
+	<!-- 校级机构管理 -->
+	<bean id="universityAction" class="csdc.action.unit.agency.UniversityAction" scope="prototype">
+		<property name="unitService" ref="unitService" />
+	</bean>
+	
+	<!-- 院系管理 -->
+	<bean id="departmentAction" class="csdc.action.unit.DepartmentAction" scope="prototype">
+		<property name="unitService" ref="unitService"/>
+	</bean>
+	
+	<!-- 基地管理 -->
+	<bean id="instituteAction" class="csdc.action.unit.InstituteAction" scope="prototype">
+		<property name="unitService" ref="unitService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 单位个人空间管理 -->
+	<bean id="unitSelfspaceAction" class="csdc.action.unit.UnitSelfspaceAction" scope="prototype">
+		<property name="unitService" ref="unitService" />
+	</bean>
+	
+	<!-- 项目管理 --> 
+	<bean id="projectAction" class="csdc.action.project.ProjectAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 一般项目申请申请 -->
+	<bean id="generalApplicationApplyAction" class="csdc.action.project.general.ApplicationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<bean id="generalApplicationFirstAuditAction" class="csdc.action.project.general.FirstAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 一般项目限项申请-->
+	<bean id="generalApplicationApplyStrictAction" class="csdc.action.project.general.ApplicationApplyStrictAction" scope="prototype">
+		<property name="generalService" ref="generalService" />
+		<property name="txTemplateRequiresNew" ref="txTemplateRequiresNew" />
+	</bean>
+	
+	<!-- 一般项目申请审核-->
+	<bean id="generalApplicationApplyAuditAction" class="csdc.action.project.general.ApplicationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 一般项目申请评审 -->
+	<bean id="generalApplicationReviewAction" class="csdc.action.project.general.ApplicationReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 一般项目申请评审审核 -->
+	<bean id="generalApplicationReviewAuditAction" class="csdc.action.project.general.ApplicationReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+	</bean>
+	
+	<!-- 一般项目立项管理 --> 
+	<bean id="generalApplicationGrantedAction" class="csdc.action.project.general.ApplicationGrantedAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 一般项目年检申请 -->
+	<bean id="generalAnninspectionApplyAction" class="csdc.action.project.general.AnninspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 一般项目年检审核-->
+	<bean id="generalAnninspectionApplyAuditAction" class="csdc.action.project.general.AnninspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 一般项目中检申请 -->
+	<bean id="generalMidinspectionApplyAction" class="csdc.action.project.general.MidinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<!-- 一般项目需中检 -->
+	<bean id="generalMidinspectionApplyRequiredAction" class="csdc.action.project.general.MidinspectionApplyRequiredAction" scope="prototype">
+			<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 一般项目中检审核-->
+	<bean id="generalMidinspectionApplyAuditAction" class="csdc.action.project.general.MidinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 一般项目结项申请 -->
+	<bean id="generalEndinspectionApplyAction" class="csdc.action.project.general.EndinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 一般项目结项审核 -->
+	<bean id="generalEndinspectionApplyAuditAction" class="csdc.action.project.general.EndinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 一般项目结项评审 -->
+	<bean id="generalEndinspectionReviewAction" class="csdc.action.project.general.EndinspectionReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 一般项目结项评审审核 -->
+	<bean id="generalEndinspectionReviewAuditAction" class="csdc.action.project.general.EndinspectionReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 一般项目变更申请管理 -->
+	<bean id="generalVariationApplyAction" class="csdc.action.project.general.VariationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="generalService" ref="generalService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 一般项目变更审核管理 -->
+	<bean id="generalVariationApplyAuditAction" class="csdc.action.project.general.VariationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 重大攻关项目选题申请 -->
+	<bean id="keyTopicSelectionApplyAction" class="csdc.action.project.key.TopicSelectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 重大攻关项目选题审核-->
+	<bean id="keyTopicSelectionApplyAuditAction" class="csdc.action.project.key.TopicSelectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+	</bean>
+
+	<!-- 重大攻关项目招标申请 --> 
+	<bean id="keyApplicationApplyAction" class="csdc.action.project.key.ApplicationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 重大攻关项目招标审核-->
+	<bean id="keyApplicationApplyAuditAction" class="csdc.action.project.key.ApplicationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<!-- 重大攻关项目招标评审 -->
+	<bean id="keyApplicationReviewAction" class="csdc.action.project.key.ApplicationReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<!-- 重大攻关项目招标评审审核 -->
+	<bean id="keyApplicationReviewAuditAction" class="csdc.action.project.key.ApplicationReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+	</bean>
+	
+	<!-- 重大攻关项目中标管理 --> 
+	<bean id="keyApplicationGrantedAction" class="csdc.action.project.key.ApplicationGrantedAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 重大攻关项目年检申请 -->
+	<bean id="keyAnninspectionApplyAction" class="csdc.action.project.key.AnninspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 重大攻关项目年检审核-->
+	<bean id="keyAnninspectionApplyAuditAction" class="csdc.action.project.key.AnninspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 重大攻关项目中检申请 -->
+	<bean id="keyMidinspectionApplyAction" class="csdc.action.project.key.MidinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 重大攻关项目需中检 -->
+	<bean id="keyMidinspectionApplyRequiredAction" class="csdc.action.project.key.MidinspectionApplyRequiredAction" scope="prototype">
+			<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 重大攻关项目中检审核-->
+	<bean id="keyMidinspectionApplyAuditAction" class="csdc.action.project.key.MidinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 重大攻关项目结项申请 -->
+	<bean id="keyEndinspectionApplyAction" class="csdc.action.project.key.EndinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!--重大攻关项目结项审核 -->
+	<bean id="keyEndinspectionApplyAuditAction" class="csdc.action.project.key.EndinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 重大攻关项目结项评审 -->
+	<bean id="keyEndinspectionReviewAction" class="csdc.action.project.key.EndinspectionReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 重大攻关项目结项评审审核 -->
+	<bean id="keyEndinspectionReviewAuditAction" class="csdc.action.project.key.EndinspectionReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 重大攻关项目变更申请管理 -->
+	<bean id="keyVariationApplyAction" class="csdc.action.project.key.VariationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="keyService" ref="keyService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 重大攻关项目变更审核管理 -->
+	<bean id="keyVariationApplyAuditAction" class="csdc.action.project.key.VariationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 基地项目申请申请 --> 
+	<bean id="instpApplicationApplyAction" class="csdc.action.project.instp.ApplicationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<bean id="instpApplicationFirstAuditAction" class="csdc.action.project.instp.FirstAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 基地项目申请审核-->
+	<bean id="instpApplicationApplyAuditAction" class="csdc.action.project.instp.ApplicationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 基地项目申请评审 -->
+	<bean id="instpApplicationReviewAction" class="csdc.action.project.instp.ApplicationReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+	</bean>
+	<!-- 基地项目申请评审审核 -->
+	<bean id="instpApplicationReviewAuditAction" class="csdc.action.project.instp.ApplicationReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+	</bean>
+	
+	<!-- 基地项目立项管理 --> 
+	<bean id="instpApplicationGrantedAction" class="csdc.action.project.instp.ApplicationGrantedAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 基地项目年检申请 -->
+	<bean id="instpAnninspectionApplyAction" class="csdc.action.project.instp.AnninspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 基地项目年检审核-->
+	<bean id="instpAnninspectionApplyAuditAction" class="csdc.action.project.instp.AnninspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 基地项目中检申请 -->
+	<bean id="instpMidinspectionApplyAction" class="csdc.action.project.instp.MidinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 重大攻关项目需中检 -->
+	<bean id="instpMidinspectionApplyRequiredAction" class="csdc.action.project.instp.MidinspectionApplyRequiredAction" scope="prototype">
+			<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 基地项目中检审核-->
+	<bean id="instpMidinspectionApplyAuditAction" class="csdc.action.project.instp.MidinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 基地项目结项申请 -->
+	<bean id="instpEndinspectionApplyAction" class="csdc.action.project.instp.EndinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 基地项目结项审核 -->
+	<bean id="instpEndinspectionApplyAuditAction" class="csdc.action.project.instp.EndinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 基地项目结项评审 -->
+	<bean id="instpEndinspectionReviewAction" class="csdc.action.project.instp.EndinspectionReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+	</bean>
+	<!-- 基地项目结项评审审核 -->
+	<bean id="instpEndinspectionReviewAuditAction" class="csdc.action.project.instp.EndinspectionReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 基地项目变更申请管理 -->
+	<bean id="instpVariationApplyAction" class="csdc.action.project.instp.VariationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="instpService" ref="instpService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 基地项目变更审核管理 -->
+	<bean id="instpVariationApplyAuditAction" class="csdc.action.project.instp.VariationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 后期资助项目申请申请 --> 
+	<bean id="postApplicationApplyAction" class="csdc.action.project.post.ApplicationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 后期资助项目申请审核-->
+	<bean id="postApplicationApplyAuditAction" class="csdc.action.project.post.ApplicationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>	
+	<!-- 后期资助项目申请评审 -->
+	<bean id="postApplicationReviewAction" class="csdc.action.project.post.ApplicationReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 后期资助项目申请评审审核 -->
+	<bean id="postApplicationReviewAuditAction" class="csdc.action.project.post.ApplicationReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+	</bean>
+	
+	<!-- 后期资助项目立项管理 --> 
+	<bean id="postApplicationGrantedAction" class="csdc.action.project.post.ApplicationGrantedAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 后期资助项目年检申请 -->
+	<bean id="postAnninspectionApplyAction" class="csdc.action.project.post.AnninspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 后期资助项目年检审核-->
+	<bean id="postAnninspectionApplyAuditAction" class="csdc.action.project.post.AnninspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+
+	<!-- 后期资助项目结项申请 -->
+	<bean id="postEndinspectionApplyAction" class="csdc.action.project.post.EndinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 后期资助项目结项审核 -->
+	<bean id="postEndinspectionApplyAuditAction" class="csdc.action.project.post.EndinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 后期资助项目结项评审 -->
+	<bean id="postEndinspectionReviewAction" class="csdc.action.project.post.EndinspectionReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 后期资助项目结项评审审核 -->
+	<bean id="postEndinspectionReviewAuditAction" class="csdc.action.project.post.EndinspectionReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 后期资助项目变更申请管理 -->
+	<bean id="postVariationApplyAction" class="csdc.action.project.post.VariationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="postService" ref="postService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 后期资助项目变更审核管理 -->
+	<bean id="postVariationApplyAuditAction" class="csdc.action.project.post.VariationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 委托应急课题申请申请 --> 
+	<bean id="entrustApplicationApplyAction" class="csdc.action.project.entrust.ApplicationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 重大攻关项目需中检 -->
+	<bean id="entrustMidinspectionApplyRequiredAction" class="csdc.action.project.entrust.MidinspectionApplyRequiredAction" scope="prototype">
+			<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 委托应急课题申请审核-->
+	<bean id="entrustApplicationApplyAuditAction" class="csdc.action.project.entrust.ApplicationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 委托应急课题申请评审 -->
+	<bean id="entrustApplicationReviewAction" class="csdc.action.project.entrust.ApplicationReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 委托应急课题申请评审审核 -->
+	<bean id="entrustApplicationReviewAuditAction" class="csdc.action.project.entrust.ApplicationReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+	</bean>
+	
+	<!-- 委托应急课题立项管理 --> 
+	<bean id="entrustApplicationGrantedAction" class="csdc.action.project.entrust.ApplicationGrantedAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 委托应急课题结项申请 -->
+	<bean id="entrustEndinspectionApplyAction" class="csdc.action.project.entrust.EndinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 委托应急课题结项审核 -->
+	<bean id="entrustEndinspectionApplyAuditAction" class="csdc.action.project.entrust.EndinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 委托应急课题结项评审 -->
+	<bean id="entrustEndinspectionReviewAction" class="csdc.action.project.entrust.EndinspectionReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 委托应急课题结项评审审核 -->
+	<bean id="entrustEndinspectionReviewAuditAction" class="csdc.action.project.entrust.EndinspectionReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 委托应急课题变更申请管理 -->
+	<bean id="entrustVariationApplyAction" class="csdc.action.project.entrust.VariationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="entrustService" ref="entrustService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 委托应急课题变更审核管理 -->
+	<bean id="entrustVariationApplyAuditAction" class="csdc.action.project.entrust.VariationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 专项任务项目申请申请 -->
+	<bean id="specialApplicationApplyAction" class="csdc.action.project.special.ApplicationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<bean id="specialApplicationFirstAuditAction" class="csdc.action.project.special.FirstAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 专项任务项目限项申请-->
+	<bean id="specialApplicationApplyStrictAction" class="csdc.action.project.special.ApplicationApplyStrictAction" scope="prototype">
+		<property name="specialService" ref="specialService" />
+		<property name="txTemplateRequiresNew" ref="txTemplateRequiresNew" />
+	</bean>
+	
+	<!-- 专项任务项目申请审核-->
+	<bean id="specialApplicationApplyAuditAction" class="csdc.action.project.special.ApplicationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 专项任务项目申请评审 -->
+	<bean id="specialApplicationReviewAction" class="csdc.action.project.special.ApplicationReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 专项任务项目申请评审审核 -->
+	<bean id="specialApplicationReviewAuditAction" class="csdc.action.project.special.ApplicationReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+	</bean>
+	
+	<!-- 专项任务项目立项管理 --> 
+	<bean id="specialApplicationGrantedAction" class="csdc.action.project.special.ApplicationGrantedAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 专项任务项目年检申请 -->
+	<bean id="specialAnninspectionApplyAction" class="csdc.action.project.special.AnninspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 专项任务项目年检审核-->
+	<bean id="specialAnninspectionApplyAuditAction" class="csdc.action.project.special.AnninspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 专项任务项目中检申请 -->
+	<bean id="specialMidinspectionApplyAction" class="csdc.action.project.special.MidinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<!-- 专项任务项目需中检 -->
+	<bean id="specialMidinspectionApplyRequiredAction" class="csdc.action.project.special.MidinspectionApplyRequiredAction" scope="prototype">
+			<property name="projectService" ref="projectService" />
+	</bean>
+	
+	<!-- 专项任务项目中检审核-->
+	<bean id="specialMidinspectionApplyAuditAction" class="csdc.action.project.special.MidinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 专项任务项目结项申请 -->
+	<bean id="specialEndinspectionApplyAction" class="csdc.action.project.special.EndinspectionApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+		<property name="baseService" ref="baseService" />
+	</bean>
+	
+	<!-- 专项任务项目结项审核 -->
+	<bean id="specialEndinspectionApplyAuditAction" class="csdc.action.project.special.EndinspectionApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 专项任务项目结项评审 -->
+	<bean id="specialEndinspectionReviewAction" class="csdc.action.project.special.EndinspectionReviewAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 专项任务项目结项评审审核 -->
+	<bean id="specialEndinspectionReviewAuditAction" class="csdc.action.project.special.EndinspectionReviewAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 专项任务项目变更申请管理 -->
+	<bean id="specialVariationApplyAction" class="csdc.action.project.special.VariationApplyAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+		<property name="specialService" ref="specialService" />
+		<property name="productService" ref="productService" />
+	</bean>
+	<!-- 专项任务项目变更审核管理 -->
+	<bean id="specialVariationApplyAuditAction" class="csdc.action.project.special.VariationApplyAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 立项计划书审核 -->
+	<bean id="generalApplicationGrantedApplyAuditAction" class="csdc.action.project.general.ApplicationGrantedAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="instpApplicationGrantedApplyAuditAction" class="csdc.action.project.instp.ApplicationGrantedAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="keyApplicationGrantedApplyAuditAction" class="csdc.action.project.key.ApplicationGrantedAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="postApplicationGrantedApplyAuditAction" class="csdc.action.project.post.ApplicationGrantedAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="entrustApplicationGrantedApplyAuditAction" class="csdc.action.project.entrust.ApplicationGrantedAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<bean id="specialApplicationGrantedApplyAuditAction" class="csdc.action.project.special.ApplicationGrantedAuditAction" scope="prototype">
+		<property name="projectService" ref="projectService" />
+	</bean>
+	<!-- 成果管理 --> 
+	<bean id="ProductAction" class="csdc.action.product.ProductAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 论文成果管理 --> 
+	<bean id="PaperAction" class="csdc.action.product.PaperAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 著作成果管理 --> 
+	<bean id="BookAction" class="csdc.action.product.BookAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!--  研究咨询报告成果管理 --> 
+	<bean id="ConsultationAction" class="csdc.action.product.ConsultationAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!--  电子出版物成果管理 --> 
+	<bean id="ElectronicAction" class="csdc.action.product.ElectronicAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!--  专利成果管理 --> 
+	<bean id="PatentAction" class="csdc.action.product.PatentAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!--  其他成果管理 --> 
+	<bean id="OtherProductAction" class="csdc.action.product.OtherProductAction" scope="prototype">
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	<!-- 奖励管理 --> 
+	<bean id="awardAction" class="csdc.action.award.AwardAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<!-- 人文社科奖管理 --> 
+	<bean id="moesocialApplicationApplyAction" class="csdc.action.award.moesocial.ApplicationApplyAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<bean id="moesocialApplicationApplyAuditAction" class="csdc.action.award.moesocial.ApplicationApplyAuditAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<bean id="moesocialApplicationReviewAction" class="csdc.action.award.moesocial.ApplicationReviewAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<bean id="moesocialApplicationReviewAuditAction" class="csdc.action.award.moesocial.ApplicationReviewAuditAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<bean id="moesocialApplicationPublicityAction" class="csdc.action.award.moesocial.ApplicationPublicityAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<bean id="moesocialApplicationPublicityAuditAction" class="csdc.action.award.moesocial.ApplicationPublicityAuditAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<bean id="moesocialApplicationAwardedAction" class="csdc.action.award.moesocial.ApplicationAwardedAction" scope="prototype">
+		<property name="awardService" ref="awardService" />
+	</bean>
+	
+	<!-- 统计分析基础 --> 
+	<bean id="baseStatisticAction" class="csdc.action.statistic.BaseStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+		<property name="baseService" ref="sqlBaseService" />
+	</bean>
+	
+	<!-- 常规统计分析 --> 
+	<bean id="commonStatisticAction" class="csdc.action.statistic.common.CommonStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<!-- 项目定制统计分析 --> 
+	<bean id="projectStatisticAction" class="csdc.action.statistic.custom.ProjectStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<!-- 奖励定制统计分析 --> 
+	<bean id="awardStatisticAction" class="csdc.action.statistic.custom.AwardStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<!-- 人员定制统计分析 --> 
+	<bean id="personStatisticAction" class="csdc.action.statistic.custom.PersonStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<!-- 机构定制统计分析 --> 
+	<bean id="unitStatisticAction" class="csdc.action.statistic.custom.UnitStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<!-- 成果定制统计分析 --> 
+	<bean id="productStatisticAction" class="csdc.action.statistic.custom.ProductStatisticAction" scope="prototype">
+		<property name="statisticService" ref="statisticService" />
+	</bean>
+	
+	<!-- 项目关联性分析 -->
+	<bean id="projectAnalysisAction" class="csdc.action.statistic.analysis.ProjectAnalysisAction" scope="prototype">
+	</bean>
+	
+	<!-- 数据挖掘结果 -->
+	<bean id="dataMiningResultAction" class="csdc.action.dataMining.DataMiningResultAction" scope="prototype" />
+
+	<!-- 领域热点分析 -->
+	<bean id="hotspotAction" class="csdc.action.dataMining.hotspot.HotspotAction" scope="prototype" />
+	
+	<!-- 关联规则挖掘 -->
+	<bean id="associationAction" class="csdc.action.dataMining.association.AssociationAction" scope="prototype">
+		<property name="associationService" ref="associationService" />
+	</bean>
+	<!-- 分类预测挖掘 -->
+	<bean id="classificationAction" class="csdc.action.dataMining.classification.ClassificationAction" scope="prototype" />
+	
+	
+	<!-- 辅助信息平台 -->
+	<bean id="messageAuxiliaryPersonAction" class="csdc.action.messageAuxiliary.PersonAction" scope="prototype" />
+	<bean id="messageAuxiliaryUnitAction" class="csdc.action.messageAuxiliary.UnitAction" scope="prototype" />  
+	
+	
+	<!-- 校验action -->
+	<bean id="validateAction" class="csdc.action.ValidateAction" scope="prototype" />
+	
+	<!-- Mobile管理 -->
+	<bean id="mobileAction" class="csdc.action.mobile.MobileAction" scope="prototype" />
+
+	<!-- Mobile登陆管理 -->
+	<bean id="mobileLoginAction" class="csdc.action.mobile.MobileLoginAction" scope="prototype" />
+	<bean id="mobileActivateAction" class="csdc.action.mobile.MobileActivateAction" scope="prototype" >
+		<property name="mobileActivateService" ref="mobileActivateService" />
+	</bean>
+
+	<!-- Mobile个人信息管理 -->
+	<bean id="mobileSelfspaceAction" class="csdc.action.mobile.MobileSelfspaceAction" scope="prototype" />
+
+	<!-- Mobile设置管理 -->
+	<bean id="mobileSettingAction" class="csdc.action.mobile.MobileSettingAction" scope="prototype" />
+	
+	<!-- Mobile人员管理 -->
+	<bean id="mobileBasisPersonAction" class="csdc.action.mobile.basis.MobilePersonAction" scope="prototype" />
+	
+	<!-- Mobile机构管理 -->
+	<bean id="mobileBasisUnitAction" class="csdc.action.mobile.basis.MobileUnitAction" scope="prototype" />
+	
+	<!-- Mobile项目管理 -->
+	<bean id="mobileBasisProjectAction" class="csdc.action.mobile.basis.MobileProjectAction" scope="prototype" />
+	
+	<!-- Mobile成果管理 -->
+	<bean id="mobileBasisProductAction" class="csdc.action.mobile.basis.MobileProductAction" scope="prototype" />
+	
+	<!-- Mobile奖励管理-->
+	<bean id="mobileBasisAwardAction" class="csdc.action.mobile.basis.MobileAwardAction" scope="prototype" />
+	
+	<!-- Mobile新闻管理 -->
+	<bean id="mobileInfoNewsAction" class="csdc.action.mobile.info.MobileNewsAction" scope="prototype" />
+	
+	<!-- Mobile通知管理 -->
+	<bean id="mobileInfoNoticeAction" class="csdc.action.mobile.info.MobileNoticeAction" scope="prototype" />
+	
+	<!-- Mobile留言簿管理 -->
+	<bean id="mobileInfoMessageAction" class="csdc.action.mobile.info.MobileMessageAction" scope="prototype" />
+		
+	<!-- Mobile常规统计-->
+	<bean id="mobileStatisticCommonAction" class="csdc.action.mobile.statistic.CommonStatisticAction" scope="prototype" />
+	
+	<!-- Mobile定制统计-->
+	<bean id="mobileStatisticCustomAction" class="csdc.action.mobile.statistic.CustomStatisticAction" scope="prototype" />
+	
+	<!-- Mobile统计分析报告-->
+	<bean id="mobileStatisticReportAction" class="csdc.action.mobile.statistic.StatisticReportAction" scope="prototype" />
+	
+	<!-- Mobil经费系统-->
+	<bean id="mobileFundingFundingAction" class="csdc.action.mobile.funding.MobileFundingAction" scope="prototype" />
+	
+	<bean id="mobileFundingAgencyFundingAction" class="csdc.action.mobile.funding.MobileAgencyFundingAction" scope="prototype" />
+	
+	<bean id="mobileFundingFundingListAction" class="csdc.action.mobile.funding.MobileFundingListAction" scope="prototype" />
+	
+	<bean id="mobileFundingFundingBatchAction" class="csdc.action.mobile.funding.MobileFundingBatchAction" scope="prototype" />
+	
+	<!-- 国家自然科学基金-->
+	<bean id="nsfcAction" class="csdc.action.other.NsfcAction" scope="prototype">
+	</bean>
+
+	<!-- 国家社会科学基金-->
+	<bean id="nssfAction" class="csdc.action.other.NssfAction" scope="prototype">
+	</bean>
+	
+	<!-- 国家社会科学基金申请-->
+	<bean id="nssfApplicationAction" class="csdc.action.other.NssfApplicationAction" scope="prototype">
+	</bean>
+		
+	<!-- Execution相关 -->
+	<bean id="executionAction" class="csdc.action.system.execution.ExecutionAction" scope="prototype" />
+
+	<!-- Query相关 -->
+	<bean id="queryAction" class="csdc.action.system.query.QueryAction" scope="prototype" />
+
+	<bean id="fundingAction" class="csdc.action.funding.FundingAction" scope="prototype" >
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="projectFundAction" class="csdc.action.funding.ProjectFundAction" scope="prototype" >
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="projectFundingAction" class="csdc.action.funding.ProjectFundingAction" scope="prototype" >
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="workFundingAction" class="csdc.action.funding.FundingAction" scope="prototype" >
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="fundingBatchAction" class="csdc.action.funding.FundingBatchAction" scope="prototype" />
+	<bean id="workFundingListAction" class="csdc.action.funding.WorkFundingListAction" scope="prototype">
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="projectFundingListAction" class="csdc.action.funding.ProjectFundingListAction" scope="prototype">
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="fundingListAction" class="csdc.action.funding.FundingListAction" scope="prototype">
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+	<bean id="agencyFundingAction" class="csdc.action.funding.AgencyFundingAction" scope="prototype">
+		<property name="fundingService" ref="fundingService" />
+	</bean>
+<!--<bean id="instpFundingAction" class="csdc.action.funding.InstpFundingAction" scope="prototype">
+		<property name="fundingService" ref="fundingService" />
+	</bean> -->
+
+	<!-- 门户网站招聘模块 -->
+	<bean id="outerRecruitAction" class="csdc.action.portal.OuterRecruitAction" scope="prototype" />
+	
+	<!-- 内部管理系统 -->
+	<bean id="managementAction" class="csdc.action.management.ManagementAction" scope="prototype" />
+	<!-- 内部管理系统招聘管理 -->
+	<bean id="applicantAction" class="csdc.action.management.recruit.ApplicantAction" scope="prototype" />
+	<bean id="templateAction" class="csdc.action.management.recruit.TemplateAction" scope="prototype" />
+	<bean id="jobAction" class="csdc.action.management.recruit.JobAction" scope="prototype" />
+</beans>

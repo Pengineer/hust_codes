@@ -1,0 +1,7 @@
+struts.enable.DynamicMethodInvocation=true
+struts.multipart.maxSize=2048000000
+struts.devMode=false
+struts.serve.static.browserCache=true
+
+struts.ui.theme=simple
+struts.ui.templateDir=template

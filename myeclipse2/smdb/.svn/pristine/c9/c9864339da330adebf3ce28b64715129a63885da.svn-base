@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Institute" table="T_INSTITUTE" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="researchActivityType" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_RESEARCH_TYPE_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="linkman" class="csdc.bean.Person" fetch="select">
+            <column name="C_LINKMAN_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="subjection" class="csdc.bean.Agency" fetch="select">
+            <column name="C_SUBJECTION_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="type" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_TYPE_ID" length="40" not-null="true" />
+        </many-to-one>
+        <property name="researchArea" type="java.lang.String">
+            <column name="C_RESEARCH_AREA_ID" length="40" />
+        </property>
+        <many-to-one name="director" class="csdc.bean.Person" fetch="select">
+            <column name="C_DIRECTOR_ID" length="40" />
+        </many-to-one>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" />
+        </property>
+        <property name="englishName" type="java.lang.String">
+            <column name="C_ENGLISH_NAME" length="200" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="C_CODE" length="40" />
+        </property>
+        <property name="approveDate" type="java.util.Date">
+            <column name="C_APPROVE_DATE" length="7" />
+        </property>
+        <property name="form" type="java.lang.String">
+            <column name="C_FORM" length="40" />
+        </property>
+        <property name="isIndependent" type="java.lang.Integer">
+            <column name="C_IS_INDEPENDENT" precision="1" scale="0" />
+        </property>
+        <property name="introduction" type="java.lang.String">
+            <column name="C_INTRODUCTION" />
+        </property>
+        <property name="disciplineType" type="java.lang.String">
+            <column name="C_DISCIPLINE_TYPE" length="400" />
+        </property>
+        <property name="officeArea" type="java.lang.Integer">
+            <column name="C_OFFICE_AREA" precision="8" scale="0" />
+        </property>
+        <property name="chineseBookAmount" type="java.lang.String">
+            <column name="C_CHINESE_BOOK_AMOUNT" length="40" />
+        </property>
+        <property name="foreignBookAmount" type="java.lang.String">
+            <column name="C_FOREIGN_BOOK_AMOUNT" length="40" />
+        </property>
+        <property name="chinesePaperAmount" type="java.lang.String">
+            <column name="C_CHINESE_PAPER_AMOUNT" length="40" />
+        </property>
+        <property name="foreignPaperAmount" type="java.lang.String">
+            <column name="C_FOREIGN_PAPER_AMOUNT" length="40" />
+        </property>
+        <property name="dataroomArea" type="java.lang.Integer">
+            <column name="C_DATAROOM_AREA" precision="8" scale="0" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="C_ADDRESS" length="400" />
+        </property>
+        <property name="postcode" type="java.lang.String">
+            <column name="C_POSTCODE" length="40" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="C_PHONE" length="40" />
+        </property>
+        <property name="fax" type="java.lang.String">
+            <column name="C_FAX" length="40" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="C_EMAIL" length="200" />
+        </property>
+        <property name="homepage" type="java.lang.String">
+            <column name="C_HOMEPAGE" length="100" />
+        </property>
+        <property name="abbr" type="java.lang.String">
+            <column name="C_ABBR" length="40" />
+        </property>
+        <property name="approveSession" type="java.lang.String">
+            <column name="C_APPROVE_SESSION" length="40" />
+        </property>
+        <set name="committee" inverse="true">
+            <key>
+                <column name="C_INSTITUTE_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.Committee" />
+        </set>
+        <set name="student" inverse="true">
+            <key>
+                <column name="C_INSTITUTE_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.Student" />
+        </set>
+        <set name="committeeActivitie" inverse="true">
+            <key>
+                <column name="C_INSTITUTE_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.CommitteeActivity" />
+        </set>
+        <set name="officer" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Officer" />
+        </set>
+        <set name="teacher" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Teacher" />
+        </set>
+        <set name="subInstitute" inverse="true">
+            <key>
+                <column name="C_INSTITUTE_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.SubInstitute" />
+        </set>
+        <set name="discipline" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Discipline" />
+        </set>
+        <set name="doctorDept" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Doctoral" />
+        </set>
+        <set name="awardApplication" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+         <set name="awardDeptInstAudInstId" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        <set name="awardFinAudInstId" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        <set name="awardReviewInst" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardReview" />
+        </set>
+        <set name="productInstitute" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Product" />
+        </set>
+         <set name="productAuditorInstitute" inverse="true">
+        	<key>
+        		<column name="C_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Product" />
+        </set>
+        <set name="memberInstitute" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectMember" />
+        </set>
+        <set name="applicationInstitute" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectApplication" />
+        </set>
+        <set name="grantedInstitute" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectGranted" />
+        </set>
+        <set name="proEndReviewInstitute" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectEndinspectionReview" />
+        </set>
+        <set name="proVarOldInstitute" inverse="true">
+        	<key>
+        		<column name="C_OLD_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="proVarNewInstitute" inverse="true">
+        	<key>
+        		<column name="C_NEW_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="proAppDeptInstAudInstId" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectApplication" />
+        </set>
+        <set name="proAppFinAudInstId" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectApplication" />
+        </set>
+        <set name="proMidDeptInstAudInstId" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectMidinspection" />
+        </set>
+        <set name="proMidFinAudInstId" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectMidinspection" />
+        </set>
+        <set name="proEndDeptInstAudInstId" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectEndinspection" />
+        </set>
+        <set name="proEndFinAudInstId" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectEndinspection" />
+        </set>
+        <set name="proVarDeptInstAudInstId" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="proVarFinAudInstId" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_INST_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="resDataInst" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectData" />
+        </set>
+        <set name="instituteFunding" inverse="true">
+        	<key>
+        		<column name="C_INSTITUTE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.InstituteFunding" />
+        </set>
+    </class>
+</hibernate-mapping>

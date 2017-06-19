@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.JobTemplate" table="T_JOB_TEMPLATE" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="job" class="csdc.bean.Job" fetch="select">
+            <column name="C_JOB_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="template" class="csdc.bean.Template" fetch="select">
+            <column name="C_Template_ID" length="40" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

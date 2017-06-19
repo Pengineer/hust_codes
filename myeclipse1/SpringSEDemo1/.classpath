@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-beans-4.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-context-4.1.1.RELEASE.jar" sourcepath="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-context-support-4.1.1.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-context-support-4.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-core-4.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-expression-4.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-aop-4.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/Spring/spring-framework-4.1.1.RELEASE/libs/spring-aspects-4.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="E:/myeclipse10/jar包/office-commons-beanutils-1.9.1/commons-logging-1.1.3/commons-logging-1.1.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

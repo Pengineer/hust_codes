@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>5.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+           省：
+    <select id="province" name="province">
+    	<option value="">请选择...</option>
+    	<option value="beijing">北京市</option>
+    	<option value="shanghai">上海市</option>
+    	<option value="hubei">湖北省</option>
+    </select>
+    <hr>
+            省内行政区：
+    <select id="city" name="city">
+    	<option value="">请选择</option>
+    </select>
+  </body>
+  
+  <script type="text/javascript">  	
+  	//如果下拉框有改变，执行此脚本函数
+  	document.getElementById("province").onchange=function(){
+  		//this表示select标签，获取当前的option选项 
+  		var changeProvinceElement = this.value;//右边等同于：alert(this.getElementsByTagName("option")[this.selectedIndex].value);
+  		
+  		//清空第二个select下拉框的内容
+  		var oldCityElement = document.getElementById("city");
+  		var oldOptionElements = oldCityElement.getElementsByTagName("option");
+  		for(var i=oldOptionElements.length-1; i>=0; i--){
+  			oldCityElement.removeChild(oldOptionElements[i]);
+  		}
+  		
+  		//解析xml文档
+  		var xmlDoc = parseXML("cities.xml");
+        var xmlProvinceElements = xmlDoc.getElementsByTagName("province");
+        //xml中选中的省
+        var xmlProvinceElement = null;
+        
+		for(var i=0; i<xmlProvinceElements.length; i++){
+			if(xmlProvinceElements[i].getAttribute("name") == changeProvinceElement){
+				//把符合条件的省的元素保存早外部
+				xmlProvinceElement=xmlProvinceElements[i];	
+				//alert(xmlProvinceElement.innerHTML);			
+			}
+		}
+		
+		if(xmlProvinceElement!=null){
+			var xmlCityElements = xmlProvinceElement.getElementsByTagName("city");
+			for(var i=xmlCityElements.length-1; i>=0; i--){
+				//创建<option></option>
+				var optionElement = document.createElement("option");
+				//给创建的option赋属性值<option value="海淀"></option>
+				optionElement.setAttribute("value", xmlCityElements[i].innerHTML); 				
+				//为option 增加标签体
+				optionElement.innerHTML=xmlCityElements[i].innerHTML;
+				//将option添加到document的第二个select下拉框
+				document.getElementById("city").appendChild(optionElement);
+			}
+		} 		
+  	}
+      /*
+       *解析xml文档：摘抄自W3school的xml文档标准解析代码
+       */
+   	function parseXML(filename){
+   	  if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+	  	xmlhttp=new XMLHttpRequest();
+	  }else{// code for IE6, IE5
+	  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.open("GET",filename,false);  //第三个参数是关闭异步加载
+	  xmlhttp.send();
+	  xmlDoc=xmlhttp.responseXML;
+	  return xmlDoc;
+   	}
+  </script>
+  
+</html>

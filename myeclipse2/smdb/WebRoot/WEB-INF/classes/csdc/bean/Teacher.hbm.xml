@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Teacher" table="T_TEACHER" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="person" class="csdc.bean.Person" fetch="select">
+            <column name="C_PERSON_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="department" class="csdc.bean.Department" fetch="select">
+        	<column name="C_DEPARTMENT_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="institute" class="csdc.bean.Institute" fetch="select">
+        	<column name="C_INSTITUTE_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="university" class="csdc.bean.Agency" fetch="select">
+        	<column name="C_UNIVERSITY_ID" length="40" not-null="true" />
+        </many-to-one>
+        <property name="agencyName" type="java.lang.String">
+        	<column name="C_AGENCY_NAME" />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+        	<column name="C_DIVISION_NAME" />
+        </property>
+        <property name="position" type="java.lang.String">
+        	<column name="C_POSITION" length="200" />
+        </property>
+        <property name="staffCardNumber" type="java.lang.String">
+        	<column name="C_STAFF_CARD_NUMBER" length="40" />
+        </property>
+        <property name="workMonthPerYear" type="java.lang.Integer">
+            <column name="C_WORK_MONTH_PER_YEAR" precision="2" scale="0" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="C_START_DATE" length="7" />
+        </property>
+        <property name="endDate" type="java.util.Date">
+            <column name="C_END_DATE" length="7" />
+        </property>
+        <property name="type" type="java.lang.String">
+        	<column name="C_TYPE" length="40" not-null="true" />
+        </property>
+        <property name="createType" type="java.lang.Integer">
+        	<column name="C_CREATE_TYPE" precision="1" scale="0" />
+        </property>
+        <!-- 
+        <property name="accountStatus" type="java.lang.String">
+        	<column name="C_ACCOUNT_STATUS" length="40" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+        	<column name="C_STATUS" precision="1" scale="0" />
+        </property>
+         -->
+    </class>
+</hibernate-mapping>

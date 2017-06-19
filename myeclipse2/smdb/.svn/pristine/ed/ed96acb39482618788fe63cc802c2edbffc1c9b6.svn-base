@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="keyTopicSelectionAudit" extends="main" namespace="/project/key/topicSelection/applyAudit">
+	
+		<action name="toAdd" class="keyTopicSelectionApplyAuditAction" method="toAdd">
+	        <result>/project/key/topicSelection/applyAudit/popAdd.jsp</result>
+	    </action> 
+	    <action name="add" class="keyTopicSelectionApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="toModify" class="keyTopicSelectionApplyAuditAction" method="toModify">
+	        <result>/project/key/topicSelection/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="modify" class="keyTopicSelectionApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="keyTopicSelectionApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="keyTopicSelectionApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	    <action name="view" class="keyTopicSelectionApplyAuditAction" method="view">
+	        <result>/project/key/topicSelection/applyAudit/popView.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="keyTopicSelectionApply" extends="main" namespace="/project/key/topicSelection/apply">
+		
+		<action name="toList" class="keyTopicSelectionApplyAction" method="toList">
+			<result>/project/key/topicSelection/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="keyTopicSelectionApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="keyTopicSelectionApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="keyTopicSelectionApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="keyTopicSelectionApplyAction" method="toAdvSearch">
+			<result>/project/key/topicSelection/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="keyTopicSelectionApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyTopicSelectionApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyTopicSelectionApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyTopicSelectionApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	  	<action name="toAdd" class="keyTopicSelectionApplyAction" method="toAdd">
+		 	 <result>/project/key/topicSelection/apply/add.jsp</result>
+		 	 <result name="input">/project/key/topicSelection/apply/add.jsp</result>
+		</action>
+		
+		<action name="add" class="keyTopicSelectionApplyAction" method="add">
+			<result name="input">/project/key/topicSelection/apply/add.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="topsId">${topsId}</param>
+				<param name="listType">12</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"topicSelection"</param>
+			</result>
+		</action>
+		
+		<action name="toModify" class="keyTopicSelectionApplyAction" method="toModify">
+		 	 <result>/project/key/topicSelection/apply/modify.jsp</result>
+		 	 <result name="input">/project/key/topicSelection/apply/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="keyTopicSelectionApplyAction" method="modify">
+			<result name="input">/project/key/topicSelection/apply/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="topsId">${topsId}</param>
+				<param name="listType">12</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"topicSelection"</param>
+			</result>
+		</action>
+
+	   	<action name="submit" class="keyTopicSelectionApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   			
+	   	<action name="delete" class="keyTopicSelectionApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   	
+	   	<action name="toAddResult" class="keyTopicSelectionApplyAction" method="toAddResult">
+		  <result>/project/key/topicSelection/apply/addResult.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="keyTopicSelectionApplyAction" method="toModifyResult">
+		  <result>/project/key/topicSelection/apply/modifyResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="keyTopicSelectionApplyAction" method="addResult">
+			<result name="input">/project/key/topicSelection/apply/addResult.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="topsId">${topsId}</param>
+				<param name="listType">12</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"topicSelection"</param>
+			</result>
+		</action>
+		
+		<action name="modifyResult" class="keyTopicSelectionApplyAction" method="modifyResult">
+			<result name="input">/project/key/topicSelection/apply/modifyResult.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="topsId">${topsId}</param>
+				<param name="listType">12</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"topicSelection"</param>
+			</result>
+		</action>
+		
+		<action name="submitResult" class="keyTopicSelectionApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="toView" class="keyTopicSelectionApplyAction" method="toView">
+	        <result>/project/key/view.jsp</result>
+	    </action>
+	    
+	    <action name="viewTopic" class="keyTopicSelectionApplyAction" method="viewTopic">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	   
+		<action name="prev" class="keyTopicSelectionApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">viewTopic</param>
+				<param name="topsId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="keyTopicSelectionApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">viewTopic</param>
+				<param name="topsId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

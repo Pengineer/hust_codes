@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+    <joined-subclass name="csdc.bean.OtherProduct" extends="csdc.bean.Product" table="T_OTHER_PRODUCT">
+    	 <key column="C_ID"/>
+         <property name="supportProject" type="java.lang.String">
+            <column name="C_SUPPORT_PROJECT" length="400" />
+         </property>
+         <property name="evaluation" type="java.lang.String">
+            <column name="C_EVALUATION" length="800" />
+       	 </property>
+         <property name="pressDate" type="java.util.Date">
+            <column name="C_PRESS_DATE" length="7" />
+         </property>
+         <property name="subtype" type="java.lang.String">
+            <column name="C_SUBTYPE" length="200" />
+         </property>
+         <property name="publishUnit" type="java.lang.String">
+            <column name="C_PUBLISH_UNIT" length="400" />
+         </property>
+    </joined-subclass>
+    
+</hibernate-mapping>

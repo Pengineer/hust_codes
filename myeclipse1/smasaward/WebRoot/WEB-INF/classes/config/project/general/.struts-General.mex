@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="general" location="793,10" size="2380,1645">
+    <action name="toImportProject" location="2165,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="import.jsp" />
+      </result>
+    </action>
+    <action name="importProject" location="65,1552" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="import.jsp" />
+      </result>
+    </action>
+    <action name="popExport" location="65,1282" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popExport.jsp" />
+      </result>
+    </action>
+    <action name="projectTemplate" location="310,1283" size="150,40" />
+    <action name="exportProject" location="310,1388" size="150,40" />
+    <action name="exportProjectReviewer" location="310,1493" size="150,40" />
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="listProject" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="1430,1317" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="createExpertTree" location="800,1108" size="150,40" />
+    <action name="matchPatch" location="1045,1108" size="150,40" />
+    <action name="toSelectExpert" location="1045,932" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="selectReviewer.jsp" />
+      </result>
+    </action>
+    <action name="matchExpert" location="1290,932" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="batchReplaceExpert" location="1290,1212" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="matchExpert4Instp" location="1045,1213" size="150,40" />
+    <action name="exportInstpReviewer" location="1045,1318" size="150,40" />
+    <action name="reMatchExpert" location="1780,852" size="150,62">
+      <result name="one" />
+      <result name="more" />
+    </action>
+    <action name="enableReview" location="1290,442" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="disableReview" location="1290,337" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="granting" location="1045,327" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="deleteExpertProjects" location="800,327" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="exportMatchUpdate" location="800,443" size="150,40" />
+    <action name="searchExpert" location="555,442" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="expertTree.jsp" />
+      </result>
+    </action>
+    <action name="showExpertTree" location="310,442" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="expertTree.jsp" />
+      </result>
+    </action>
+    <action name="exportGrantingSchedule" location="310,338" size="150,40" />
+    <action name="exportGrantingList" location="65,338" size="150,40" />
+  </package>
+  <webResource name="import.jsp" path="/project/general/import.jsp" location="10,1535" size="150,55" />
+  <webResource name="popExport.jsp" path="/project/general/popExport.jsp" location="512,1255" size="150,55" />
+  <webResource name="listProject.jsp" path="/project/general/listProject.jsp" location="506,1080" size="150,55" />
+  <webResource name="selectReviewer.jsp" path="/project/general/selectReviewer.jsp" location="497,905" size="150,55" />
+  <webResource name="viewProject.jsp" path="/project/general/viewProject.jsp" location="506,730" size="150,55" />
+  <webResource name="add.jsp" path="/project/general/add.jsp" location="194,135" size="150,55" />
+  <webResource name="modify.jsp" path="/project/general/modify.jsp" location="500,520" size="150,55" />
+  <webResource name="expertTree.jsp" path="/project/general/expertTree.jsp" location="509,240" size="150,55" />
+  <webResource name="view.jsp" path="/project/general/view.jsp" location="0,0" size="0,0" />
+  <webResource name="list.jsp" path="/project/general/list.jsp" location="0,0" size="0,0" />
+  <webResource name="add.jsp" path="/project/general/add.jsp" location="0,0" size="0,0" />
+  <webResource name="modify.jsp" path="/project/general/modify.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

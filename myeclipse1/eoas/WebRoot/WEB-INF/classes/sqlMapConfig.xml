@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias  type="eoas.bean.Account"  alias="Account"  />
+		<typeAlias  type="eoas.bean.Resume"  alias="Resume"  />
+	</typeAliases>
+	<mappers>
+		<mapper resource="eoas/dao/AccountDao.xml" />
+		<mapper resource="eoas/dao/ResumeDao.xml" />
+		<mapper resource="eoas/dao/PositionDao.xml" />
+		<mapper resource="eoas/dao/RecordDao.xml" />
+		<mapper resource="eoas/dao/EducationDao.xml" />
+		<mapper resource="eoas/dao/ExperienceDao.xml" />
+	</mappers>
+</configuration>

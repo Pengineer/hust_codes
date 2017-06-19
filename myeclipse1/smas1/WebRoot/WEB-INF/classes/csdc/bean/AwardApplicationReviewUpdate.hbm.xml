@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.AwardApplicationReviewUpdate" table="T_AWARD_APP_REVIEW_UPDATE">
+		<id name="id" type="java.lang.Integer">
+			<column name="C_ID" precision="20"  scale="0"/>
+			<generator class="increment" />
+		</id>
+		<many-to-one name="award" class="csdc.bean.AwardApplication" fetch="select">
+			<column name="C_AWARD_ID" length="40" not-null="true" />
+		</many-to-one>
+		<many-to-one name="reviewer" class="csdc.bean.Expert" fetch="select">
+			<column name="C_REVIEWER_ID" length="40" not-null="true" />
+		</many-to-one>
+		<property name="isManual" type="java.lang.Integer">
+			<column name="C_IS_MANUAL"  precision="1" scale="0" />
+		</property>
+		<property name="year" type="java.lang.Integer">
+			<column name="C_YEAR" />
+		</property>
+		<property name="matchTime" type="java.sql.Timestamp">
+			<column name="C_MATCH_TIME" length="7" />
+		</property>
+		<property name="isAdd" type="java.lang.Integer">
+			<column name="C_IS_ADD"  precision="1" scale="0" />
+		</property>
+		<property name="priority" type="java.lang.Integer">
+			<column name="C_PRIORITY"  precision="10" scale="0" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="C_TYPE" length="40" />
+		</property>		
+	</class>
+</hibernate-mapping>

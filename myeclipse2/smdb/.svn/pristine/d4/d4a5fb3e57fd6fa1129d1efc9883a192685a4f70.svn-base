@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="monitorVisitor" extends="main" namespace="/system/monitor/visitor">
+		
+		<action name="evict" class="monitorVisitorAction" method="evict">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="monitorVisitorAction" method="toList">
+			<result>/system/monitor/visitor/list.jsp</result>
+		</action>
+
+		<action name="list" class="monitorVisitorAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="monitorVisitorAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="monitorVisitorAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="monitorVisitorAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="monitorVisitorAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+
+</struts>

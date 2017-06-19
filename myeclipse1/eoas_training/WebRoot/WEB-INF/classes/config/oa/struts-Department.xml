@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="department" extends="default" namespace="/department">
+		<action name="toAdd" class="departmentAction" method="toAdd">
+			<result name="success">/jsp/oa/department/add.jsp</result>
+		</action>
+		
+		<action name="add" class="departmentAction" method="add">
+			<result>/jsp/oa/department/view.jsp</result>
+		</action>
+
+		<action name="delete" class="departmentAction" method="delete">
+			<result>/jsp/oa/department/list.jsp</result>
+		</action>
+		
+		<action name="modify" class="departmentAction" method="modify">
+			<result>/jsp/oa/department/view.jsp</result>
+		</action>
+	
+		<action name="toView" class="departmentAction" method="toView">
+			<result>/jsp/oa/department/view.jsp</result>
+		</action>
+			
+		<action name="view" class="departmentAction" method="view">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name="list" class="departmentAction" method="list">
+			<result>/jsp/oa/department/view.jsp</result>
+		</action>
+		
+	</package>
+</struts>

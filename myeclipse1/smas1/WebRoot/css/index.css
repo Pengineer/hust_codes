@@ -1,0 +1,319 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：index.css
+ *
+ * 文件说明：
+ *     主要用于登入前主页面样式的定义。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ * 2013-09-01  徐江伟： 修改文件（整个登录页面改版）。
+ *************************************************************************/
+
+/****************************************************************
+ * 与页面整体布局相关的样式。
+ ***************************************************************/
+
+/* 默认边距 */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* 页面容器 */
+#container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+/* 标题 */
+#title {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	width: 300px;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	background-color: rgb(230, 240, 247);
+	border: solid #999;
+    border-width: 1px;
+}
+
+/*设置头样式  */
+.login_header {
+	background: url("../image/header_bar.gif");
+	height: 60px;
+	color: white;
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 25pt;
+	line-height: 60px;
+	font-weight: bold;
+	overflow: hidden;
+	width: 100%;
+	min-width: 1024px;
+}
+/*设置头信息文字左边距 */
+.login_header span  {
+	margin-left: 50px;
+}
+
+/*设置中间布局*/
+.login_center {
+	margin: 0 auto;
+	min-width: 1024px;
+	width: 100%;
+	background: #D8DDE6;
+	height: 100%;
+	min-height: 600px;
+}
+
+/*设置登录页面pic样式*/
+.login_center_pic {
+	background-image: url("../image/login_center_pic.png");
+    position: absolute;
+    height: 350px;
+    margin-left: 100px;
+    margin-top: 20px;
+    width: 500px;
+    border: 1px solid #E5E5E5;
+    color: white;
+}
+
+/*设置登录表单样式*/
+.login_center_form {
+	border-radius: 5px 5px 5px 5px;
+	margin-top: 20px;
+	margin-right: 50px;
+	margin-bottom: 10px;
+	height: 330px;
+	padding: 20px 0px 15px 25px;
+	border: 1px solid #E5E5E5;
+	color: #536A8E;
+	background: none repeat scroll 0 0 #C9D1DD;
+	width:320px;
+	position: relative;
+	float: right;
+}
+
+/*设置登录页面里找回密码/注册字体*/
+.linkText {
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 9pt;
+	text-align: right;
+	color: #536A8E;
+}
+
+/*设置页脚*/
+.login_footer {
+	background: none repeat scroll 0 0 #F4F4F4;
+	border-top: 3px solid #5F718E;
+	clear: both;
+	color: #666666;
+	height: 80px;
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 10pt;
+	text-align: center;
+	min-width: 1024px;
+}
+
+/*设置页脚文本样式*/
+.login_footer_txt {
+	line-height: 22px;
+	margin-top: 15px;
+	padding-right: 20px;
+	text-align: center;
+}
+
+/*设置登录表格样式*/
+.login_table {
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 11pt;
+}
+
+.login_table tr td {
+	width: 70px;
+}
+
+/*验证码垂直对齐*/
+.rand_img {
+	vertical-align: text-bottom;
+}
+
+/*错误信息显示样式*/
+.errorInfo {
+	color: red;
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 10pt;
+}
+
+/*登录输入框样式*/
+.input_login {
+	border-radius: 3px 3px 3px 3px;
+    background-color: #F5FBFF;
+    border: 1px solid #0C4163;
+    color: #333333;
+	font-size: 20px;
+	height: 30px;
+    width: 250px;
+    line-height: 35px;
+}
+
+.input_login:hover {
+    border: 1px solid #FF7A01;
+}
+
+.input_login:focus {
+    border: 1px solid #FF7A01;
+}
+
+/*单独设置验证码输入框*/
+.input_login1 {
+	border-radius: 3px 3px 3px 3px;
+    background-color: #F5FBFF;
+    border: 1px solid #0C4163;
+    color: #333333;
+	font-size: 20px;
+	height: 30px;
+	line-height: 35px;
+    width: 160px;
+}
+
+.input_login1:hover {
+    border: 1px solid #FF7A01;
+}
+
+.input_login1:focus {
+    border: 1px solid #FF7A01;
+}
+
+/*登录输入框样式*/
+.input_login2 {
+	border-radius: 3px 3px 3px 3px;
+    background-color: #F5FBFF;
+    border: 1px solid #0C4163;
+    color: #333333;
+	height: 30px;
+    width: 250px;
+    line-height: 35px;
+}
+
+.input_login2:hover {
+    border: 1px solid #FF7A01;
+}
+
+.input_login2:focus{
+    border: 1px solid #FF7A01;
+}
+
+/*设置按钮样式*/
+.new_btn {
+	border-radius: 3px 3px 3px 3px;
+	background: #FF7A01;
+    border: 1px solid #536A8E;
+    color: #D8DDE6;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11pt;
+    font-weight: bold;
+    height: 33px;
+    line-height: 31px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 250px;
+    margin-top: 10px;
+}
+
+.new_btn:hover {
+	background: #FFAD09;
+}
+
+.new_btn:focus{
+	background: #FFAD09;
+}
+
+/*设置链接样式*/
+a:link {
+	text-decoration: none;
+	color: #FF7A01;
+}
+
+/* 错误容器 */
+#error {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+/* 背景行 */
+#errorbg {
+	height: 20px;
+	background-color: #9AA7BD;
+}
+
+#table_error {
+	width: 100%;
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 15px;
+}
+
+.static {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.static_table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 98%;
+	text-align: left;
+	line-height: 31px;
+	border-collapse: collapse;
+}
+
+.static_table td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.staticwd0 {
+	background-color: #BAC3D2;
+	padding-left: 5px;
+	font-weight: bold;
+}
+
+.staticwd1 {
+	background-color: rgb(230, 230, 230);
+	padding-right: 10px;
+	text-align: right;
+	width: 120px;
+}
+
+.staticwd2 {
+	text-align: left;
+	padding-left: 10px;
+}
+
+.staticwd3 {
+	background-color: rgb(230, 230, 230);
+	padding-right: 10px;
+	text-align: right;
+}
+
+.staticwd4 {
+	text-align: center;
+	width: 98px;
+}
+
+.staticwd5 {
+	background-color: rgb(230, 230, 230);
+	padding-right: 10px;
+	text-align: right;
+	width: 160px;
+}
+
+.text_red {
+	color: #FF7400;
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="outerRecruit" extends="main" namespace="/portal/recruit">
+		
+		<action name="searchJob" class="outerRecruitAction" method="searchJob">
+			<result>/portal/recruit/main.jsp</result>
+		</action>
+		
+		<action name="searchJobs" class="outerRecruitAction" method="searchJobs">
+			<result>/portal/recruit/jobList.jsp</result>
+		</action>
+		
+		<action name="viewJob" class="outerRecruitAction" method="viewJob">
+			<result>/portal/recruit/viewJob.jsp</result>
+		</action>
+		
+		<action name="getInfo" class="outerRecruitAction" method="getInfo">
+			<result type="json"><param name="root">json</param></result>
+		</action>
+		
+		<action name="toApply" class="outerRecruitAction" method="toApply">
+			<result>/portal/recruit/apply.jsp</result>
+		</action>
+		
+		<action name="apply" class="outerRecruitAction" method="apply">
+			<result type="redirectAction">
+				<param name="actionName">viewApplicant</param>
+				<param name="appId">${appId}</param>
+			</result>
+		</action>
+		
+		<action name="searchApplicant" class="outerRecruitAction" method="searchApplicant">
+			<result>/portal/recruit/myJob/list.jsp</result>
+			<result name="input">/portal/recruit/myJob/myApplyLogin.jsp</result>
+		</action>
+		
+		<action name="viewApplicant" class="outerRecruitAction" method="viewApplicant">
+			<result>/portal/recruit/myJob/viewMyInfo.jsp</result>
+		</action>
+		
+		<action name="toModifyApplicant" class="outerRecruitAction" method="toModifyApplicant">
+			<result>/portal/recruit/myJob/modify.jsp</result>
+		</action>
+		
+		<action name="modifyApplicant" class="outerRecruitAction" method="modifyApplicant">
+			<result type="redirectAction">
+				<param name="actionName">viewApplicant</param>
+				<param name="appId">${appId}</param>
+			</result>
+		</action>
+
+		<action name="prev" class="outerRecruitAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">viewApplicant</param>
+				<param name="appId">${appId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="outerRecruitAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">viewApplicant</param>
+				<param name="appId">${appId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toWord" class="outerRecruitAction" method="toWord">
+			<result>/portal/recruit/main.jsp</result>
+		</action>
+		
+		<action name="fileDownload" class="outerRecruitAction" method="fileDownload">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filePath}"</param>  
+	 	  	</result>
+	 	</action>
+	 	
+	 	<action name="templateDownload" class="outerRecruitAction" method="templateDownload">
+			<result type="stream">
+		 	    <param name="inputName">targetTemplate</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filePath}"</param>  
+	 	  	</result>
+	 	</action>
+	</package>
+	
+</struts>

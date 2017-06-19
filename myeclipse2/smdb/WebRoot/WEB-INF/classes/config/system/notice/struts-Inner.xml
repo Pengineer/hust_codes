@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="noticeInner" extends="main" namespace="/notice/inner">
+		
+		<action name="toAdd" class="noticeInnerAction" method="toAdd">
+			<result>/system/notice/inner/add.jsp</result>
+		</action>
+		
+		<action name="add" class="noticeInnerAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/system/notice/inner/add.jsp</result>
+		</action>
+		
+		<action name="toModify" class="noticeInnerAction" method="toModify">
+			<result>/system/notice/inner/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="noticeInnerAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/system/notice/inner/modify.jsp</result>
+		</action>
+		
+		<action name="toView" class="noticeInnerAction" method="toView">
+			<result>/system/notice/inner/view.jsp</result>
+		</action>
+		
+		<action name="view" class="noticeInnerAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="download" class="noticeInnerAction" method="download">
+			<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${attachmentName}"</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="bufferSize">10240000</param>
+			</result>
+		</action>
+		
+		<action name="validateFile" class="noticeInnerAction" method="validateFile">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+		</action>
+		
+		<action name="prev" class="noticeInnerAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="noticeInnerAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="delete" class="noticeInnerAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="noticeInnerAction" method="toList">
+			<result>/system/notice/inner/list.jsp</result>
+		</action>
+
+		<action name="list" class="noticeInnerAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="noticeInnerAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="noticeInnerAction" method="toAdvSearch"> -->
+<!-- 			<result>/system/notice/inner/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="noticeInnerAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="noticeInnerAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="noticeInnerAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="noticeInnerAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	</package>
+
+</struts>

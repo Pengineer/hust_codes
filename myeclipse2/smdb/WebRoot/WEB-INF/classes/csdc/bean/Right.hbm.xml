@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Right" table="T_RIGHT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="C_DESCRIPTION" length="800" not-null="true" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="C_CODE" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="nodevalue" type="java.lang.String">
+            <column name="C_NODE_VALUE" length="40" not-null="true" unique="true" />
+        </property>
+        <set name="roleRight" inverse="true" cascade="all">
+            <key>
+                <column name="C_RIGHT_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.RoleRight" />
+        </set>
+    </class>
+</hibernate-mapping>

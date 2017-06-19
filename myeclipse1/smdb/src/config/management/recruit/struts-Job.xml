@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="job" extends="main" namespace="/management/recruit/job">
+	
+		<action name="toAdd" class="jobAction" method="toAdd">
+			<result>/management/recruit/job/add.jsp</result>
+		</action>
+		
+		<action name="add" class="jobAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+	
+		<action name="toModify" class="jobAction" method="toModify">
+			<result>/management/recruit/job/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="jobAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+		
+		<action name="toView" class="jobAction" method="toView">
+			<result>/management/recruit/job/view.jsp</result>
+		</action>
+		
+		<action name="view" class="jobAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toList" class="jobAction" method="toList">
+			<result>/management/recruit/job/list.jsp</result>
+		</action>
+		
+		<action name="list" class="jobAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="jobAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="jobAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="jobAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="jobAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="jobAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="delete" class="jobAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="selectTemplate" class="jobAction" method="selectTemplate">
+			<result>/management/recruit/job/popSelectTemplate.jsp</result>
+		</action>
+		
+		<action name="validateFile" class="jobAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	  	</action>
+		
+		<action name="prev" class="jobAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="jobAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="download" class="jobAction" method="download">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filepath}"</param>  
+	 	  	</result>
+	 	</action>
+	</package>
+</struts>

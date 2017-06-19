@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="generalEndinspection" extends="global" namespace="/project/general/endinspection">
+		<!-- 进入列表 -->
+		<action name="toList" class="generalEndinspectionAction" method="toList">
+			<result>/project/general/endinspection/list.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="generalEndinspectionAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalEndinspectionAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="generalEndinspectionAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="generalEndinspectionAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="generalEndinspectionAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="generalEndinspectionAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalEndinspectionAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalEndinspectionAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalEndinspectionAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="popAudit" class="generalEndinspectionAction" method="popAudit">
+			<result>/project/general/endinspection/popAudit.jsp</result>
+		</action>
+		
+		<action name="audit" class="generalEndinspectionAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="auditView" class="generalEndinspectionAction" method="auditView">
+			<result>...jsp</result>
+		</action>
+		
+		<action name="popAuditReview" class="generalEndinspectionAction" method="popAuditReview">
+			<result>/project/general/endinspection/popFinalResult.jsp</result>
+		</action>
+		
+		<action name="auditReview" class="generalEndinspectionAction" method="auditReview">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="auditReviewView" class="generalEndinspectionAction" method="auditReviewView">
+			<result>...jsp</result>
+		</action>
+		
+		<action name="toAddResult" class="generalEndinspectionAction" method="toAddResult">
+		  <result>/project/general/endinspection/popAddResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="generalEndinspectionAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddEndFee" class="generalEndinspectionAction" method="toAddEndFee">
+			<result>/project/general/endinspection/popModifyFee.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="generalEndinspectionAction" method="toModifyResult">
+		  <result>...jsp</result>
+		</action>
+		
+		<action name="modifyResult" class="generalEndinspectionAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 后台要增加经费修改的跳转页面 -->
+		<action name="toModifyResult" class="generalEndinspectionAction" method="toModifyResult">
+		  <result>/project/general/endinspection/popModifyFee.jsp</result>
+		</action>
+	</package>
+</struts>

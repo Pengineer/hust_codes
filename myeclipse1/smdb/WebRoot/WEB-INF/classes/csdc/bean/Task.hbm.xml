@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Task" table="T_TASK" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="400" not-null="true" />
+        </property>
+        <property name="parameters" type="java.lang.String">
+            <column name="C_PARAMETERS" length="1000" />
+        </property>
+        <property name="className" type="java.lang.String">
+            <column name="C_CLASS_NAME" length="100" />
+        </property>
+        <property name="methodName" type="java.lang.String">
+            <column name="C_METHOD_NAME" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

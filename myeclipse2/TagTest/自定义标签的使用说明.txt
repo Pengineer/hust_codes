@@ -1,0 +1,11 @@
+由于一个格式良好的jsp文件中不允许嵌入一行java代码，因此我们用自定义标签的方式来解决该问题。
+
+
+1，首先我们需要在WEB-INF下建立一个存放自定义标签的文档，文档的后缀名是.tld 。
+
+2，找到系统提供的例子F:\Tomcat 7.0\webapps\examples\WEB-INF\jsp2\jsp2-example-taglib.tld，
+       复制里面的头部和尾部。然后参考例子自定义标签。
+       
+3，为自定义标签绑定一个java文件，该java文件可以协助jsp完成特定的功能。这个java类必须实现Tag接口，我们一般继承TagSupport类。
+
+4，在jsp文件中导入和使用该标签（用jsp的taglib指令导入标签绑定的URI即可导入该标签--在tld文件中）。

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="expert" extends="global" namespace="/expert">
+		<!-- 进入列表 -->
+		<action name="toList" class="expertAction" method="toList">
+			<result>/expert/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="expertAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="expertAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="expertAction" method="toView">
+			<result name="normalView">/expert/view.jsp</result>
+			<result name="popView">/expert/popView.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="expertAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="expertAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="expertAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="expertAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="expertAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="expertAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="expertAction" method="toAdd">
+			<result>/expert/add.jsp</result>
+		</action>
+
+		<!-- 添加 -->
+		<action name="add" class="expertAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="expertType">${expertType}</param>
+				<param name="isReviewer">${isReviewer}</param>
+			</result>
+			<result name="input">/expert/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="expertAction" method="toModify">
+			<result>/expert/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="expertAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+				<param name="expertType">${expertType}</param>
+				<param name="isReviewer">${isReviewer}</param>
+			</result>
+			<result name="input">/expert/modify.jsp</result>
+		</action>
+
+		<!-- 删除 -->
+		<action name="delete" class="expertAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+		<!-- 进入专家导入页面 -->
+		<action name="toImportExpert" class="expertAction" method="toImportExpert">
+		 	<result>/expert/import.jsp</result>
+		</action>
+		
+		<!-- 专家导入 -->
+		<action name="importExpert" class="expertAction" method="importExpert">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			</result>
+		 	<result name="input">/expert/import.jsp</result>
+		</action>
+		
+		<!-- 导出专家模板 -->
+		<action name="expertTemplate" class="expertAction" method="expertTemplate">
+		</action>
+
+		<!-- 弹出层导出 -->
+		<action name="popExport" class="expertAction" method="popExport">
+			<result>/expert/popExport.jsp</result>
+		</action>
+				
+		<!-- 导出专家 -->
+		<action name="exportExpert" class="expertAction" method="exportExpert">
+		</action>
+		
+		<action name="exportExcel" class="expertAction" method="exportExcel">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+		
+		<!-- 进入退评弹出层 -->		
+		<action name="toDisableReview" class="expertAction" method="toDisableReview">
+			<result>/expert/popDisableReview.jsp</result>
+		</action>
+		
+		<!-- 退评 -->
+		<action name="disableReview" class="expertAction" method="disableReview">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 参评 -->
+		<action name="enableReview" class="expertAction" method="enableReview">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+				<param name="expertType">${expertType}</param>
+				<param name="isReviewer">${isReviewer}</param>
+			</result>
+		</action>
+		
+		<!-- 退评 -->
+		<action name="fetchAutoData" class="expertAction" method="fetchAutoData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toggleKey" class="expertAction" method="toggleKey">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入添加同步重点人页面 -->
+		<action name="toAddKeyPerson" class="expertAction" method="toAddKeyPerson">
+			<result>/expert/addKeyPerson.jsp</result>
+		</action>
+		
+		<!-- 添加同步重点人 -->
+		<action name="addKeyPerson" class="expertAction" method="addKeyPerson">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

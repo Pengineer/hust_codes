@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="csdc.bean.Salary">
+
+	<resultMap id="salaryResult" type="Salary" >
+		<id property="id" column="salary_id" />
+		<result property="fixedSalary" column="salary_fixedSalary" />
+		<result property="bonus" column="salary_bonus" />
+		<result property="taxes" column="salary_taxes" />
+		<result property="subsidies" column="salary_subsidies" />
+		<result property="releaseTime" column="salary_releaseTime" />
+		<result property="time" column="salary_time" />
+		<result property="salary" column="salary_salary" />
+		<result property="auditTime" column="salary_auditTime" />
+		<result property="status" column="salary_status" />
+		<result property="note" column="salary_note" />
+		<association property="auditor" column = "salary_auditorId" javaType="Account">
+			<id property="id" column="auditor_id" />
+			<result property="email" column="auditor_email" />
+			<result property="password" column="auditor_password" />
+			<result property="accountType" column="auditor_accountType" />
+			<result property="belongId" column="auditor_belongId" />
+		</association>
+		<association property="account" column = "salary_accountId" javaType="Account">
+			<id property="id" column="account_id" />
+			<result property="email" column="account_email" />
+			<result property="password" column="account_password" />
+			<result property="accountType" column="account_accountType" />
+			<result property="belongId" column="account_belongId" />
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="Salary" useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_SALARY (
+			C_ID,
+			C_FIXED_SALARY,
+			C_BONUS,
+			C_TAXES,
+			C_SUBSIDIES,
+			C_RELEASE_TIME,
+			C_TIME,
+			C_SALARY,
+			C_AUDIT_TIME,
+			C_STATUS,
+			C_AUDITOR_ID,
+			C_ACCOUNT_ID,
+			C_NOTE
+			)
+		values (
+			#{id,jdbcType=VARCHAR},
+			#{fixedSalary,jdbcType=VARCHAR},
+			#{bonus,jdbcType=VARCHAR},
+			#{taxes,jdbcType=VARCHAR},
+			#{subsidies,jdbcType=VARCHAR},
+			#{releaseTime,jdbcType=DATE},
+			#{time,jdbcType=DATE},
+			#{salary,jdbcType=VARCHAR},
+			#{auditTime,jdbcType=VARCHAR},
+			#{status,jdbcType=VARCHAR},
+			#{auditor.id,jdbcType=VARCHAR},
+			#{account.id,jdbcType=VARCHAR},
+			#{note,jdbcType=VARCHAR})
+	</insert>
+	
+	<select id = "load" resultMap = "salaryResult">
+		select
+			salary.C_ID as salary_id,
+			salary.C_FIXED_SALARY as salary_fixedSalary,
+			salary.C_BONUS as salary_bonus,
+			salary.C_TAXES as salary_taxes,
+			salary.C_SUBSIDIES as salary_subsidies,
+			salary.C_RELEASE_TIME as salary_releaseTime,
+			salary.C_TIME as salary_time,
+			salary.C_SALARY as salary_salary,
+			salary.C_AUDIT_TIME as salary_auditTime,
+			salary.C_STATUS as salary_status,
+			salary.C_AUDITOR_ID as salary_auditorId,
+			auditor.C_ID as auditor_id,
+			auditor.C_EMAIL as auditor_email,
+			auditor.C_PASSWORD as auditor_password,
+			auditor.C_ACCOUNT_TYPE as auditor_accountType,
+			auditor.C_BELONG_ID as auditor_belongId,
+			salary.C_ACCOUNT_ID as salary_accountId,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_ACCOUNT_TYPE as account_accountType,
+			account.C_BELONG_ID as account_belongId,
+			salary.C_NOTE as salary_note
+		from T_SALARY salary
+			left outer join Account auditor on auditor.C_ID = salary.C_AUDITOR_ID
+			left outer join Account account on account.C_ID = salary.C_ACCOUNT_ID
+	</select>
+	
+	<select id = "list" parameterType = "map" resultMap = "salaryResult">
+		select
+			salary.C_ID as salary_id,
+			salary.C_FIXED_SALARY as salary_fixedSalary,
+			salary.C_BONUS as salary_bonus,
+			salary.C_TAXES as salary_taxes,
+			salary.C_SUBSIDIES as salary_subsidies,
+			salary.C_RELEASE_TIME as salary_releaseTime,
+			salary.C_TIME as salary_time,
+			salary.C_SALARY as salary_salary,
+			salary.C_AUDIT_TIME as salary_auditTime,
+			salary.C_STATUS as salary_status,
+			salary.C_AUDITOR_ID as salary_auditorId,
+			auditor.C_ID as auditor_id,
+			auditor.C_EMAIL as auditor_email,
+			auditor.C_PASSWORD as auditor_password,
+			auditor.C_ACCOUNT_TYPE as auditor_accountType,
+			auditor.C_BELONG_ID as auditor_belongId,
+			salary.C_ACCOUNT_ID as salary_accountId,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_ACCOUNT_TYPE as account_accountType,
+			account.C_BELONG_ID as account_belongId,
+			salary.C_NOTE as salary_note
+		from T_SALARY salary
+			left outer join T_ACCOUNT auditor on auditor.C_ID = salary.C_AUDITOR_ID
+			left outer join T_ACCOUNT account on account.C_ID = salary.C_ACCOUNT_ID
+	</select>
+</mapper>

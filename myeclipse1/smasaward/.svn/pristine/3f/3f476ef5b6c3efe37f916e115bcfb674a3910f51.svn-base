@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="exportReviewStatic" extends="global" namespace="/statistic/review">
+		<!-- 进入学科退避矩阵页面 -->
+		<action name="disciplineMatrix" class="disciplineStatisticAction" method="disciplineMatrix">
+			<result>/reviewstatic/statDiscipline.jsp</result>
+		</action>
+		
+		<!-- 进入警告统计页面 -->
+		<action name="warnStatistic" class="warnStatisticAction" method="view">
+			<result>/reviewstatic/statWarn.jsp</result>
+		</action>
+		
+		<!-- 进入高校使用情况页面 -->
+		<action name="universityUseStatistic" class="universityUseStatisticAction" method="view">
+			<result>/reviewstatic/universityUseStatistic.jsp</result>
+		</action>
+	</package>
+<!-- 	
+	<package name="universityReviewStatic" extends="global" namespace="/reviewStatic/university">
+		进入列表
+		<action name="toList" class="reviewStaticAction" method="toList">
+			<result>/reviewstatic/listUniversity.jsp</result>
+		</action>
+		
+		列表
+		<action name="list" class="reviewStaticAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		排序
+		<action name="sort" class="reviewStaticAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		改变pageSize
+		<action name="changePageSize" class="reviewStaticAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		到指定页
+		<action name="toPage" class="reviewStaticAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="statisticOne" class="reviewStaticAction" method="statisticOne"/>
+		<action name="statisticTwo" class="reviewStaticAction" method="statisticTwo"/>
+		<action name="statisticThree" class="reviewStaticAction" method="statisticThree"/>
+		
+	</package>
+	
+	<package name="exportReviewStatic" extends="global" namespace="/reviewStatic/expert">
+		进入列表
+		<action name="toList" class="reviewStaticAction" method="toList">
+			<result>/reviewstatic/listExpert.jsp</result>
+		</action>
+		
+		列表
+		<action name="list" class="reviewStaticAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		排序
+		<action name="sort" class="reviewStaticAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		改变pageSize
+		<action name="changePageSize" class="reviewStaticAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		到指定页
+		<action name="toPage" class="reviewStaticAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+
+	</package> -->
+</struts>

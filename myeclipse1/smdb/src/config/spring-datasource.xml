@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:property-placeholder location="classpath:init.properties" ignore-unresolvable="true"/>
+
+	<!-- 数据源配置-->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>${jndiname}</value>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+				<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.current_session_context_class">${hibernate.current_session_context_class}</prop> 
+				<prop key="hibernate.jdbc.fetch_size">${hibernate.jdbc.fetch_size}</prop>
+				<prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
+ 			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>csdc/bean/Abroad.hbm.xml</value>
+				<value>csdc/bean/Person.hbm.xml</value>
+				<value>csdc/bean/Officer.hbm.xml</value>
+				<value>csdc/bean/Expert.hbm.xml</value>
+				<value>csdc/bean/Teacher.hbm.xml</value>
+				<value>csdc/bean/Student.hbm.xml</value>
+				<value>csdc/bean/Work.hbm.xml</value>
+				<value>csdc/bean/Agency.hbm.xml</value>
+				<value>csdc/bean/Department.hbm.xml</value>
+				<value>csdc/bean/Institute.hbm.xml</value>
+				<value>csdc/bean/InstituteFunding.hbm.xml</value>
+				<value>csdc/bean/Passport.hbm.xml</value>
+				<value>csdc/bean/Account.hbm.xml</value>
+				<value>csdc/bean/AccountRole.hbm.xml</value>
+				<value>csdc/bean/Committee.hbm.xml</value>
+				<value>csdc/bean/CommitteeActivity.hbm.xml</value>
+				<value>csdc/bean/CommitteeMember.hbm.xml</value>
+				<value>csdc/bean/Education.hbm.xml</value>
+				<value>csdc/bean/FieldUpdate.hbm.xml</value>
+				<value>csdc/bean/Mail.hbm.xml</value>
+				<value>csdc/bean/Right.hbm.xml</value>
+				<value>csdc/bean/Role.hbm.xml</value>
+				<value>csdc/bean/RoleAgency.hbm.xml</value>
+				<value>csdc/bean/RoleRight.hbm.xml</value>
+				<value>csdc/bean/SubInstitute.hbm.xml</value>
+				<value>csdc/bean/SystemOption.hbm.xml</value>
+				<value>csdc/bean/SystemConfig.hbm.xml</value>
+				<value>csdc/bean/Academic.hbm.xml</value>
+				<value>csdc/bean/UniversityVariation.hbm.xml</value>
+				<value>csdc/bean/CrawlTask.hbm.xml</value>
+				<value>csdc/bean/PopularBook.hbm.xml</value>
+				
+				<!-- ****************************************************** -->
+				<value>csdc/bean/Product.hbm.xml</value>
+				<value>csdc/bean/ProjectApplication.hbm.xml</value>
+				<value>csdc/bean/ProjectApplicationReview.hbm.xml</value>
+				<value>csdc/bean/ProjectMember.hbm.xml</value>
+				<value>csdc/bean/ProjectVariation.hbm.xml</value>
+				<value>csdc/bean/ProjectFee.hbm.xml</value>
+				<value>csdc/bean/ProjectFunding.hbm.xml</value>
+				<value>csdc/bean/ProjectGranted.hbm.xml</value>
+				<value>csdc/bean/ProjectAnninspection.hbm.xml</value>
+				<value>csdc/bean/ProjectMidinspection.hbm.xml</value>
+				<value>csdc/bean/ProjectEndinspection.hbm.xml</value>
+				<value>csdc/bean/ProjectEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/ProjectProduct.hbm.xml</value>
+				<value>csdc/bean/ProjectAnninspectionProduct.hbm.xml</value>
+				<value>csdc/bean/ProjectMidinspectionProduct.hbm.xml</value>
+				<value>csdc/bean/ProjectEndinspectionProduct.hbm.xml</value>
+				
+				<value>csdc/bean/GeneralAnninspection.hbm.xml</value>
+				<value>csdc/bean/GeneralMidinspection.hbm.xml</value>
+				<value>csdc/bean/GeneralEndinspection.hbm.xml</value>
+				<value>csdc/bean/GeneralEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/GeneralGranted.hbm.xml</value>
+				<value>csdc/bean/GeneralApplication.hbm.xml</value>
+				<value>csdc/bean/GeneralApplicationReview.hbm.xml</value>
+				<value>csdc/bean/GeneralMember.hbm.xml</value>
+				<value>csdc/bean/GeneralVariation.hbm.xml</value>
+				<value>csdc/bean/GeneralFunding.hbm.xml</value>
+				<value>csdc/bean/KeyAnninspection.hbm.xml</value>
+				<value>csdc/bean/KeyMidinspection.hbm.xml</value>
+				<value>csdc/bean/KeyEndinspection.hbm.xml</value>
+				<value>csdc/bean/KeyEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/KeyGranted.hbm.xml</value>
+				<value>csdc/bean/KeyTopic.hbm.xml</value>
+				<value>csdc/bean/KeyApplication.hbm.xml</value>
+				<value>csdc/bean/KeyApplicationReview.hbm.xml</value>
+				<value>csdc/bean/KeyMember.hbm.xml</value>
+				<value>csdc/bean/KeyVariation.hbm.xml</value>
+				<value>csdc/bean/KeyFunding.hbm.xml</value>
+				<value>csdc/bean/EntrustEndinspection.hbm.xml</value>
+				<value>csdc/bean/EntrustEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/EntrustGranted.hbm.xml</value>
+				<value>csdc/bean/EntrustApplication.hbm.xml</value>
+				<value>csdc/bean/EntrustApplicationReview.hbm.xml</value>
+				<value>csdc/bean/EntrustMember.hbm.xml</value>
+				<value>csdc/bean/EntrustVariation.hbm.xml</value>
+				<value>csdc/bean/EntrustFunding.hbm.xml</value>
+				<value>csdc/bean/SpecialAnninspection.hbm.xml</value>
+				<value>csdc/bean/SpecialMidinspection.hbm.xml</value>
+				<value>csdc/bean/SpecialEndinspection.hbm.xml</value>
+				<value>csdc/bean/SpecialEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/SpecialGranted.hbm.xml</value>
+				<value>csdc/bean/SpecialApplication.hbm.xml</value>
+				<value>csdc/bean/SpecialApplicationReview.hbm.xml</value>
+				<value>csdc/bean/SpecialMember.hbm.xml</value>
+				<value>csdc/bean/SpecialVariation.hbm.xml</value>
+				<value>csdc/bean/SpecialFunding.hbm.xml</value>
+				<value>csdc/bean/Paper.hbm.xml</value>
+				<value>csdc/bean/Book.hbm.xml</value>
+				<value>csdc/bean/Electronic.hbm.xml</value>
+				<value>csdc/bean/Consultation.hbm.xml</value>
+				<value>csdc/bean/OtherProduct.hbm.xml</value>
+				<value>csdc/bean/Patent.hbm.xml</value>
+				<value>csdc/bean/AwardApplication.hbm.xml</value>
+				<value>csdc/bean/AwardGranted.hbm.xml</value>
+				<value>csdc/bean/AwardReview.hbm.xml</value>
+				<value>csdc/bean/Business.hbm.xml</value>
+				<value>csdc/bean/News.hbm.xml</value>
+				<value>csdc/bean/Notice.hbm.xml</value>
+				<value>csdc/bean/Message.hbm.xml</value>
+				<value>csdc/bean/InBox.hbm.xml</value>
+				<value>csdc/bean/InBoxAccount.hbm.xml</value>
+				<value>csdc/bean/MDXQuery.hbm.xml</value>
+				<value>csdc/bean/Log.hbm.xml</value>
+				<value>csdc/bean/Discipline.hbm.xml</value>
+				<value>csdc/bean/Doctoral.hbm.xml</value>
+				<value>csdc/bean/ProjectData.hbm.xml</value>
+				<value>csdc/bean/InstpApplication.hbm.xml</value>
+				<value>csdc/bean/InstpApplicationReview.hbm.xml</value>
+				<value>csdc/bean/InstpGranted.hbm.xml</value>
+				<value>csdc/bean/InstpMember.hbm.xml</value>
+				<value>csdc/bean/InstpAnninspection.hbm.xml</value>
+				<value>csdc/bean/InstpMidinspection.hbm.xml</value>
+				<value>csdc/bean/InstpEndinspection.hbm.xml</value>
+				<value>csdc/bean/InstpEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/InstpVariation.hbm.xml</value>
+				<value>csdc/bean/InstpFunding.hbm.xml</value>
+				<value>csdc/bean/Memo.hbm.xml</value>
+				<value>csdc/bean/Nsfc.hbm.xml</value>
+				<value>csdc/bean/Nssf.hbm.xml</value>
+				<value>csdc/bean/NssfProjectApplication.hbm.xml</value>
+				<value>csdc/bean/GeneralSpecial.hbm.xml</value>
+				<value>csdc/bean/PostEndinspection.hbm.xml</value>
+				<value>csdc/bean/PostEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/PostGranted.hbm.xml</value>
+				<value>csdc/bean/PostApplication.hbm.xml</value>
+				<value>csdc/bean/PostApplicationReview.hbm.xml</value>
+				<value>csdc/bean/PostMember.hbm.xml</value>
+				<value>csdc/bean/PostAnninspection.hbm.xml</value>
+				<value>csdc/bean/PostVariation.hbm.xml</value>
+				<value>csdc/bean/PostFunding.hbm.xml</value>
+ 				<value>csdc/bean/DevrptAnninspection.hbm.xml</value>
+				<value>csdc/bean/DevrptMidinspection.hbm.xml</value>
+				<value>csdc/bean/DevrptEndinspection.hbm.xml</value>
+				<value>csdc/bean/DevrptEndinspectionReview.hbm.xml</value>
+				<value>csdc/bean/DevrptGranted.hbm.xml</value>
+				<value>csdc/bean/DevrptApplication.hbm.xml</value>
+				<value>csdc/bean/DevrptApplicationReview.hbm.xml</value>
+				<value>csdc/bean/DevrptMember.hbm.xml</value>
+				<value>csdc/bean/DevrptVariation.hbm.xml</value>
+				<value>csdc/bean/DevrptFunding.hbm.xml</value>
+				<value>csdc/bean/Devrpt.hbm.xml</value>
+ 
+				<value>csdc/bean/SinossChecklogs.hbm.xml</value>
+				<value>csdc/bean/SinossMembers.hbm.xml</value>
+				<value>csdc/bean/SinossModifyContent.hbm.xml</value>
+				<value>csdc/bean/SinossProjectVariation.hbm.xml</value>
+				<value>csdc/bean/SinossProjectApplication.hbm.xml</value>
+				<value>csdc/bean/SinossBook.hbm.xml</value>
+				<value>csdc/bean/SinossConsultation.hbm.xml</value>
+				<value>csdc/bean/SinossElectronic.hbm.xml</value>
+				<value>csdc/bean/SinossPaper.hbm.xml</value>
+				<value>csdc/bean/SinossPatent.hbm.xml</value>
+				<value>csdc/bean/SinossProjectMidinspection.hbm.xml</value>
+				<value>csdc/bean/SinossProjectEndinspection.hbm.xml</value>
+				<value>csdc/bean/DMResult.hbm.xml</value>
+				<value>csdc/bean/SyncStatus.hbm.xml</value>
+				<value>csdc/bean/InterfaceConfig.hbm.xml</value>
+				<value>csdc/bean/Friend.hbm.xml</value>
+				<value>csdc/bean/ProjectApplicationResult.hbm.xml</value>
+				<value>csdc/bean/MobileDevice.hbm.xml</value>		
+				<value>csdc/bean/Applicant.hbm.xml</value>
+				<value>csdc/bean/Job.hbm.xml</value>
+				<value>csdc/bean/JobTemplate.hbm.xml</value>
+				<value>csdc/bean/Template.hbm.xml</value>
+				<value>csdc/bean/FieldConfig.hbm.xml</value>
+				
+				<value>csdc/bean/WorkFunding.hbm.xml</value>				
+				<value>csdc/bean/FundingBatch.hbm.xml</value>
+				<value>csdc/bean/FundingList.hbm.xml</value>
+				<value>csdc/bean/AgencyFunding.hbm.xml</value>
+				<value>csdc/bean/BankAccount.hbm.xml</value>
+				<value>csdc/bean/Address.hbm.xml</value>
+				
+				<value>csdc/bean/Task.hbm.xml</value>
+				<value>csdc/bean/TaskLog.hbm.xml</value>
+				<value>csdc/bean/TaskConfig.hbm.xml</value>
+				<value>csdc/bean/TaskTaskConfig.hbm.xml</value>
+				<value>csdc/bean/Researcher.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="cMIPSDao" class="csdc.dao.JdbcDao">
+		<property name="dataSource" ref="cMIPSDataSource" />
+	</bean>
+
+	<bean id="cMIPSDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${cmips.jdbc.driverClassName}" />
+		<property name="url" value="${cmips.jdbc.url}" />
+		<property name="username" value="${cmips.jdbc.username}" />
+		<property name="password" value="${cmips.jdbc.password}" />
+	</bean>
+
+	<bean id="jdbcDao" class="csdc.dao.JdbcDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 配置Dao -->
+	<bean id="hibernateBaseDao" class="csdc.dao.HibernateBaseDao" />
+
+	<bean id="sqlBaseDao" class="csdc.dao.SqlBaseDao" />
+
+	<bean id="systemOptionDao" class="csdc.dao.SystemOptionDao" />
+
+</beans>

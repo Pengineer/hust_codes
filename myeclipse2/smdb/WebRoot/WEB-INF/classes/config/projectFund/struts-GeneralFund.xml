@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="GeneralFund" extends="main" namespace="/projectFund/general">
+	
+		<action name="toList" class="GeneralFundAction" method="toList">
+			<result>/projectFund/generalFund/list.jsp</result>
+		</action>
+
+		<action name="list" class="GeneralFundAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="GeneralFundAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="GeneralFundAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="GeneralFundAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="GeneralFundAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="GeneralFundAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="GeneralFundAction" method="toView">
+	        <result>/projectFund/generalFund/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="GeneralFundAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <!-- 导出 -->
+	    <action name="confirmExportOverView" class="GeneralFundAction" method="confirmExportOverView">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	   	
+	</package>
+</struts>

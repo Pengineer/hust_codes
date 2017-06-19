@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="log" location="10,165" size="1260,910">
+    <action name="toView" location="1045,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="1045,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="800,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="800,47" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="555,47" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toSimpleSearch" location="555,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="555,327" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdvSearch" location="555,442" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="555,757" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sort" location="800,747" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="changePageSize" location="800,642" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="800,537" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toBackToList" location="1045,537" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="backToList" location="1045,817" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toStatistic" location="310,827" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+    <action name="statistic" location="65,827" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="view.jsp" path="/system/log/view.jsp" location="1334,185" size="150,55" />
+  <webResource name="list.jsp" path="/system/log/list.jsp" location="1474,360" size="150,55" />
+  <webResource name="advSearch.jsp" path="/system/log/advSearch.jsp" location="1319,570" size="150,55" />
+  <webResource name="popView.jsp" path="/system/log/popView.jsp" location="310,10" size="150,55" />
+</Struts2Diagram>
+

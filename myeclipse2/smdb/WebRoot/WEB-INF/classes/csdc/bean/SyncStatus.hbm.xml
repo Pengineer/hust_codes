@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.SyncStatus" table="T_SYNC_STATUS">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="peer" type="java.lang.String">
+            <column name="C_PEER" length="40"/>
+        </property>	
+        <property name="interfaceName" type="java.lang.String">
+            <column name="C_INTERFACE" length="100"/>
+        </property>
+        <property name="projectId" type="java.lang.String">
+            <column name="C_PROJECT_ID" length="40"/>
+        </property>
+        <property name="midinspectionId" type="java.lang.String">
+            <column name="C_MIDINSPECTION_ID" length="40"/>
+        </property>
+        <property name="variationId" type="java.lang.String">
+            <column name="C_VARIATION_ID" length="40"/>
+        </property>  
+        <property name="endinspectionId" type="java.lang.String">
+            <column name="C_ENDINSPECTION_ID" length="40"/>
+        </property>                              	  
+		<property name="requestDate" type="java.util.Date">
+			<column name="C_REQUEST_DATE" />
+		</property>    
+		<many-to-one name="requestAccount" class="csdc.bean.Account" fetch="join">
+            <column name="C_REQUEST_ACCOUNT_ID"/>
+        </many-to-one>	
+        <property name="requestAccountBelong" type="java.lang.String">
+            <column name="C_REQUEST_ACCOUNT_BELONG" length="40"/>
+        </property>
+		<property name="replyDate" type="java.util.Date">
+			<column name="C_REPLY_DATE" />
+		</property>    
+		<many-to-one name="responseAccount" class="csdc.bean.Account" fetch="join">
+            <column name="C_REPLY_ACCOUNT_ID"/>
+        </many-to-one>	
+        <property name="responseAccountBelong" type="java.lang.String">
+            <column name="C_REPLY_ACCOUNT_BELONG" length="40"/>
+        </property>   
+        <property name="status" type="java.lang.Integer">
+        	<column name="C_STATUS" precision="1" scale="0" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="C_NOTE" />
+        </property>                             	                	                
+	</class>
+</hibernate-mapping>

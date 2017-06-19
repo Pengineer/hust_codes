@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="statistic" location="10,10" size="180,70">
+    <action name="showChart" location="15,23" size="150,40" />
+    <action name="drillDown" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="drillLevel" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="statisticWelcome.jsp" path="/statistic/statisticWelcome.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

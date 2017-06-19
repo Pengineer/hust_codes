@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.SystemOption">
+	<resultMap id="systemOptionTreeMap" type="map">
+		<id property="id" column="systemOption_id" />
+		<result property="pId" column="systemOption_parentId" />
+		<result property="name" column="systemOption_name" />
+		<result property="code" column="systemOption_code" />
+	</resultMap>
+
+	<resultMap id="systemOptionResult" type="SystemOption">
+		<id property="id" column="systemOption_id" />
+		<result property="name" column="systemOption_name" />
+		<result property="description" column="systemOption_description" />
+		<result property="code" column="systemOption_code" />
+		<result property="isAvailable" column="systemOption_isAvailable" />
+		<result property="standard" column="systemOption_standard" />
+		<result property="abbr" column="systemOption_abbr" />
+		<association property="systemOption" column="systemOption_parentId" select="selectSystemOptionByParentId"></association>
+	</resultMap>
+	
+	<!-- 查询系统选项的所有节点map值 -->	
+	<select id="listSystemOptionMap" parameterType="map" resultMap="systemOptionTreeMap">
+		select 
+			systemOption.C_ID as systemOption_id,
+			systemOption.C_NAME as systemOption_name, 
+			systemOption.C_PARENT_ID as systemOption_parentId,
+			systemOption.C_CODE as systemOption_code
+		from T_SYSTEM_OPTION systemOption
+		<where>
+			<if test="id != null">
+				C_ID = #{id} order by systemOption.C_CODE asc
+			</if>
+			<if test="systemOptionId != null">
+				C_PARENT_ID = #{systemOptionId} order by systemOption.C_CODE asc
+			</if>
+			<if test="name != null">
+				systemOption.C_PARENT_ID in (select sys.C_ID  from T_SYSTEM_OPTION sys where sys.C_ID = systemOption.C_PARENT_ID AND sys.C_NAME like #{name})
+				order by systemOption.C_CODE asc	
+			</if>
+			<if test="code != null">
+				systemOption.C_STANDARD like '%2009%' and  systemOption.C_CODE in(:code) order by systemOption.C_CODE asc
+			</if>
+		</where>
+	</select>
+	
+	<select id = "selectSystemOptionByParentId" resultMap = "systemOptionResult">
+		select 
+			C_ID as systemOption_id,
+			C_NAME as systemOption_name, 
+			C_DESCRIPTION as systemOption_description,
+			C_PARENT_ID as systemOption_parentId, 
+			C_CODE as systemOption_code, 
+			C_IS_AVAILABLE as systemOption_isAvailable, 
+			C_STANDARD as systemOption_standard, 
+			C_ABBR as systemOption_abbr
+		from T_SYSTEM_OPTION
+		where C_PARENT_ID = #{systemOption.id} order by systemOption.C_CODE asc
+	</select>
+
+
+	
+	<select id = "list" parameterType = "map" resultMap = "systemOptionResult">
+		select 
+			C_ID as systemOption_id,
+			C_NAME as systemOption_name, 
+			C_DESCRIPTION as systemOption_description,
+			C_PARENT_ID as systemOption_parentId, 
+			C_CODE as systemOption_code, 
+			C_IS_AVAILABLE as systemOption_isAvailable, 
+			C_STANDARD as systemOption_standard, 
+			C_ABBR as systemOption_abbr
+		from T_SYSTEM_OPTION
+		<where>
+			<if test="systemOptionId != null">
+				C_PARENT_ID = #{systemOptionId}
+			</if>
+		</where>
+		order by systemOption.C_CODE asc
+	</select>
+	
+	
+	<resultMap id="systemOptionResult1" type="map">
+		<id property="id" column="systemOption_id" />
+		<result property="name" column="systemOption_name" />
+		<result property="description" column="systemOption_description" />
+		<result property="code" column="systemOption_code" />
+		<result property="isAvailable" column="systemOption_isAvailable" />
+		<result property="standard" column="systemOption_standard" />
+		<result property="abbr" column="systemOption_abbr" />
+		<association property="systemOption" column="systemOption_parentId" select="selectSystemOptionByParentId"></association>
+	</resultMap>
+	
+	<select id = "listByParentId" parameterType = "string" resultMap = "systemOptionResult2">
+		select 
+			C_ID as systemOption_id,
+			C_NAME as systemOption_name, 
+			C_DESCRIPTION as systemOption_description,
+			C_PARENT_ID as systemOption_parentId, 
+			C_CODE as systemOption_code, 
+			C_IS_AVAILABLE as systemOption_isAvailable, 
+			C_STANDARD as systemOption_standard, 
+			C_ABBR as systemOption_abbr
+		from T_SYSTEM_OPTION systemOption
+		<where>
+			systemOption.C_IS_AVAILABLE = 1
+			and	systemOption.C_PARENT_ID = #{id}
+		</where>
+		order by systemOption.C_CODE asc
+	</select>
+	
+	<select id = "load" parameterType = "string" resultMap = "systemOptionResult2">
+		select 
+			C_ID as systemOption_id,
+			C_NAME as systemOption_name, 
+			C_DESCRIPTION as systemOption_description,
+			C_PARENT_ID as systemOption_parentId, 
+			C_CODE as systemOption_code, 
+			C_IS_AVAILABLE as systemOption_isAvailable, 
+			C_STANDARD as systemOption_standard, 
+			C_ABBR as systemOption_abbr
+		from T_SYSTEM_OPTION systemOption
+		<where>
+			systemOption.C_IS_AVAILABLE = 1
+			and	systemOption.C_ID = #{id}
+		</where>
+		order by systemOption.C_CODE asc
+	</select>
+	
+	<resultMap id="systemOptionResult2" type="SystemOption">
+		<id property="id" column="systemOption_id" />
+		<result property="name" column="systemOption_name" />
+		<result property="description" column="systemOption_description" />
+		<result property="code" column="systemOption_code" />
+		<result property="isAvailable" column="systemOption_isAvailable" />
+		<result property="standard" column="systemOption_standard" />
+		<result property="abbr" column="systemOption_abbr" />
+		<association property="systemOption" column="systemOption_parentId" javaType="SystemOption" select="selectParent" />
+		<collection property="systemOptions" column="systemOption_id" ofType="SystemOption" javaType="java.util.Set" select="selectChildren" />
+	</resultMap>
+	
+	<select id="selectParent" parameterType="string" resultMap="systemOptionResult2">
+		select 
+			C_ID as systemOption_id,
+			C_NAME as systemOption_name, 
+			C_DESCRIPTION as systemOption_description,
+			C_PARENT_ID as systemOption_parentId, 
+			C_CODE as systemOption_code, 
+			C_IS_AVAILABLE as systemOption_isAvailable, 
+			C_STANDARD as systemOption_standard, 
+			C_ABBR as systemOption_abbr
+		from T_SYSTEM_OPTION systemOption
+		where systemOption.C_ID = #{systemOption.id} order by systemOption.C_CODE asc
+	</select>
+	
+	<select id="selectChildren" parameterType="string" resultMap="systemOptionResult2">
+		select 
+			C_ID as systemOption_id,
+			C_NAME as systemOption_name, 
+			C_DESCRIPTION as systemOption_description,
+			C_PARENT_ID as systemOption_parentId, 
+			C_CODE as systemOption_code, 
+			C_IS_AVAILABLE as systemOption_isAvailable, 
+			C_STANDARD as systemOption_standard, 
+			C_ABBR as systemOption_abbr
+		from T_SYSTEM_OPTION systemOption
+		where systemOption.C_PARENT_ID=#{systemOption.systemOption.id} order by systemOption.C_CODE asc
+	</select>
+	
+	<select id="listCodeByParentId" parameterType="string" resultMap="systemOptionResult3">
+		select 
+			C_CODE as systemOption_code
+		from T_SYSTEM_OPTION systemOption
+		where systemOption.C_PARENT_ID=#{systemOptionId} order by systemOption.C_CODE asc
+	</select>
+	
+	<resultMap id="systemOptionResult3" type="String">
+		<result property="code" column="systemOption_code" />
+	</resultMap>
+	
+	<select id="getDispIdCodeNameById" parameterType="map" resultMap="systemOptionResult4">
+		select 
+			systemOption.C_ID as systemOption_id,
+			systemOption.C_CODE as systemOption_code,
+			systemOption.C_NAME as systemOption_name
+		from T_SYSTEM_OPTION systemOption
+		<where>
+			<if test="id != null">
+				systemOption.C_ID = #{id}
+			</if>
+			<if test="code != null">
+				systemOption.C_STANDARD like '%2009%' and systemOption.C_CODE in
+				<foreach item="item" index="index" collection="code"
+				      open="(" separator="," close=")">
+				        #{item}
+				</foreach>
+			</if>
+		</where>
+		order by systemOption.C_CODE asc
+	</select>
+	
+	<resultMap id="systemOptionResult4" type="map">
+		<id property="id" column="systemOption_id" />
+		<result property="code" column="systemOption_code" />
+		<result property="name" column="systemOption_name" />
+	</resultMap>
+</mapper>

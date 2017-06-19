@@ -1,0 +1,101 @@
+body {
+	margin:0px;
+}
+body, td, div, .p, a ,input{
+    font-family: arial,sans-serif;
+}
+body{
+    color:#222222;
+} 
+
+#s_topinfo {
+	margin-left:40px;
+    margin-bottom:15px;
+}
+#s_topinfo span{
+    color:#999999;
+    font-size: small;
+}
+ol li {
+    list-style: none outside none;
+}
+li.g {
+    margin-bottom: 23px;
+    margin-top: 0;
+}
+
+#s_result h3.s_title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: medium;
+    display: inline;
+    font-weight: normal;
+}
+
+em{
+    color: #DD4B39;
+    font-style: normal;
+    font-weight: normal;
+}
+#s_wrap{
+    width:600px;
+}
+span.st {
+    font-size: small;
+}
+.s_ds {
+    font-size: small;
+    color:#008000;
+}
+
+.s_tip_icon{
+    margin:0 10px 0 5px;
+    position: relative;
+    top:10px;
+    left:4px;
+    height:4px;
+    width:4px;
+    cursor:pointer;
+    border-color:#006621 #FFFFFF #FFFFFF;
+    border-style:solid;
+    border-width:4px;
+}
+.s_dd{
+    font-size: small;
+    color: #666666;
+}
+
+/*分页*/
+.page_nav a {
+    color: #1E0FBE;
+    font-size: small;
+}
+#s_foot {
+    margin-left:100px;
+}
+span.e_num {
+    display:block;
+    width:20px;
+}
+
+/*搜索框*/
+#s_top {
+    width:100%;
+    background-color:#F1F1F1;
+    padding-left:40px;
+    padding-top:20px;
+    padding-bottom:20px;
+    
+}
+#s_tb td{
+    height:28px;
+}
+#s_form .s_query{
+    display:block;
+    width:500px;
+    height:21px;
+    font-size:17px;
+}
+

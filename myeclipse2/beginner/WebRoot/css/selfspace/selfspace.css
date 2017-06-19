@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：selfspace.css
+ *
+ * 文件说明：
+ *     主要用于个人空间页面样式定义。
+ *
+ * 历史记录：
+ * 2010-03-17  龚凡：创建文件。
+ *************************************************************************/
+
+/* 修改密码 */
+.tdpassname {
+	width: 100px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230,230,230);
+}
+
+.tdpassvalue {
+	padding-left: 5px;
+}
+
+.successfind {
+	text-align: center;
+}

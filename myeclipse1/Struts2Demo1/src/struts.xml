@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>	 
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+	 
+	<include file="config/struts-parameter.xml"></include>
+	<include file="config/struts-attribute.xml"></include>
+	<include file="config/struts-fileupload.xml"></include>
+	<include file="config/struts-interceptor.xml"></include>
+	
+	
+	<package name="main" extends="json-default">
+		<interceptors>
+			<!-- 自定义拦截器1 -->
+			<interceptor name="permission" class="edu.hust.action.interceptor.PermissionInterceptorAction"></interceptor>
+		
+			<!-- 自定义拦截器栈1：如果在Action中只引入自定义的拦截器，那么系统自带的拦截器将都失效（不允许），因此我们一般建一个拦截器栈，将系统自带的拦截器和自定义拦截器捆绑在一起 -->
+			<interceptor-stack name="permissionStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="permission"></interceptor-ref>
+			</interceptor-stack>		
+	    </interceptors>
+	    
+	    <global-results>
+			<result name="message">/WEB-INF/page/message.jsp</result>
+		</global-results>
+		
+	</package>
+	
+	
+</struts>

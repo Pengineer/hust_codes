@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="instp" extends="global" namespace="/project/instp">
+	
+		<!-- 进入列表 -->
+		<action name="toList" class="instpAction" method="toList">
+			<result>/project/instp/application/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="instpAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="instpAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="instpAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="instpAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+				
+		<action name="toDeleteMatches" class="instpAction" method="toDeleteMatches">
+			<result>/project/instp/popDeleteMatches.jsp</result>
+		</action>
+		
+		<action name="deleteMatches" class="instpAction" method="deleteMatches">
+			<result type="redirectAction">
+			    <param name="actionName">toList</param>
+			    <param name="update">1</param>
+			    <param name="listType">1</param>
+			    <param name="isReviewable">1</param>
+			</result>
+		</action>
+		
+		<action name="toView" class="instpAction" method="toView">
+			<result>/project/instp/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="instpAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="instpAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="instpAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="delete" class="instpAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		
+		<!-- 专家树-->
+		<action name="createExpertTree" class="instpAction" method="createExpertTree">
+			<result type="json"><param name="root">nodesInfo</param></result>
+		</action>
+		
+		<action name="toSelectExpert" class="instpAction" method="toSelectExpert">
+		 	<result name="success">/project/instp/selectReviewer.jsp</result>
+		</action>
+		
+		<action name="searchExpert" class="instpAction" method="searchExpert">
+			<result>/project/instp/expertTree.jsp</result>
+		</action>
+		
+		<action name="showExpertTree" class="instpAction" method="showExpertTree">
+			<result>/project/instp/expertTree.jsp</result>
+		</action>
+
+		<!-- 自动匹配 -->
+		<action name="matchExpert" class="instpAction" method="matchExpert">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			 	<param name="isReviewable">1</param>
+			</result>
+		</action>
+		
+		<!-- 批量替换专家 -->
+		<action name="batchReplaceExpert" class="instpAction" method="batchReplaceExpert">
+			<result type="json"><param name="root">flag</param></result>
+		</action>
+		
+		<!-- 指定专家移交 -->
+		<action name="transferMatch" class="instpAction" method="transferMatch">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 手工匹配 -->
+		<action name="reMatchExpert" class="instpAction" method="reMatchExpert">
+			<result name="one" type="redirectAction">
+				<param name="actionName">toView</param>
+			 	<param name="entityId">${entityId}</param>
+			 	<param name="update">1</param>
+			 	<param name="listType">1</param>
+			 	<param name="isReviewable">${isReviewable}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="more" type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			 	<param name="entityId">${entityId}</param>
+			 	<param name="listType">1</param>
+			 	<param name="isReviewable">${isReviewable}</param>
+			 	<param name="businessType">${businessType}</param>
+			</result>
+		</action>
+		
+		<action name="toAdd" class="instpAction" method="toAdd">
+			<result>/project/instp/add.jsp</result>
+		</action>
+		
+		<action name="add" class="instpAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="businessType">${businessType}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input">/project/instp/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="instpAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+		
+		<action name="toModify" class="instpAction" method="toModify">
+			<result>/project/instp/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="instpAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input">/project/instp/modify.jsp</result>
+		</action>
+		
+		<action name="groupDelete" class="instpAction" method="groupDelete">
+			<result type="redirectAction">list</result>
+			<param name="isReviewable">${isReviewable}</param>
+		</action>
+		
+		<action name="enableReview" class="instpAction" method="enableReview">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+				<param name="listType">${listType}</param>
+				<param name="isReviewable">${isReviewable}</param>
+			</result>
+		</action>
+		
+		<!-- 进入退评弹出层 -->		
+		<action name="toDisableReview" class="instpAction" method="toDisableReview">
+			<result>/project/instp/popDisableReview.jsp</result>
+		</action>
+		
+		<!-- 退评 -->
+		<action name="disableReview" class="instpAction" method="disableReview">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="deleteExpertProjects" class="instpAction" method="deleteExpertProjects">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 弹出层导出 -->
+		<action name="popExport" class="instpAction" method="popExport">
+			<result>/project/instp/popExport.jsp</result>
+		</action>
+		
+		<!-- 导出基地项目一览表-->
+		<action name="exportProject" class="instpAction" method="exportProject">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">projectFile</param>
+			</result>
+		</action>
+		
+		<!-- 导出基地项目评审一览表 -->
+		<action name="exportProjectReviewer" class="instpAction" method="exportProjectReviewer">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">projectReviewerFile</param>
+			</result>
+		</action>
+		
+		<!-- 导出匹配更新 -->
+		<action name="exportMatchUpdate" class="instpAction" method="exportMatchUpdate">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">matchUpdateFile</param>
+			</result>
+		</action>
+		
+		<!-- 数据入库-->
+		<action name="importData" class="instpAction" method="importData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 审核弹出层  -->
+		<action name="popAudit" class="instpAction" method="popAudit">
+			<result>/project/instp/application/popAudit.jsp</result><!-- 返回JSP页面 -->
+		</action>
+		<!-- 项目评审审核 -->
+		<action name="audit" class="instpAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="auditView" class="instpAction" method="auditView">
+		<!-- TODO -->
+	        <result>.....jsp</result>
+	    </action>
+	</package>
+</struts>

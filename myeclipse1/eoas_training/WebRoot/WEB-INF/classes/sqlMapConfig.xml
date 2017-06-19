@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="csdc.bean.Account" alias="Account" />
+		<typeAlias type="csdc.bean.AccountRole" alias="AccountRole" />
+		<typeAlias type="csdc.bean.Article" alias="Article" />
+		<typeAlias type="csdc.bean.Asset" alias="Asset" />
+		<typeAlias type="csdc.bean.Assess" alias="Assess" />
+		<typeAlias type="csdc.bean.Attendance" alias="Attendance" />
+		<typeAlias type="csdc.bean.Role" alias="Role" />
+		<typeAlias type="csdc.bean.Right" alias="Right" />
+		<typeAlias type="csdc.bean.Role_Right" alias="RoleRight" />
+		<typeAlias type="csdc.bean.Department" alias="Department" />
+		<typeAlias type="csdc.bean.Person" alias="Person" />
+		<typeAlias type="csdc.bean.Staff" alias="Staff" />
+		<typeAlias type="csdc.bean.AccountPosition" alias="AccountPosition" />
+		<typeAlias type="csdc.bean.PersonDepartment" alias="PersonDepartment" />
+		<typeAlias type="csdc.bean.PersonRoleDepartment" alias="PersonRoleDepartment" />
+		<typeAlias type="csdc.bean.Resume" alias="Resume" />
+		<typeAlias type="csdc.bean.Education" alias="Education" />
+		<typeAlias type="csdc.bean.Experience" alias="Experience" />
+		<typeAlias type="csdc.bean.Expert" alias="Expert" />
+		<typeAlias type="csdc.bean.Resume"  alias="Resume"  />
+		<typeAlias type="csdc.bean.Education"  alias="Education"  />
+		<typeAlias type="csdc.bean.Experience"  alias="Experience"  />
+		<typeAlias type="csdc.bean.Position"  alias="Position"  />
+		<typeAlias type="csdc.bean.PositionResume" alias="PositionResume" />
+		<typeAlias type="csdc.bean.Project" alias="Project" />
+		<typeAlias type="csdc.bean.Record" alias="Record" />
+		<typeAlias type="csdc.bean.Document" alias="Document" />
+		<typeAlias type="csdc.bean.DocResult" alias="DocResult" />
+		<typeAlias type="csdc.bean.Customer" alias="Customer" />
+		<typeAlias type="csdc.bean.Contact" alias="Contact" />
+		<typeAlias type="csdc.bean.Solution" alias="Solution" />
+		<typeAlias type="csdc.bean.Mail" alias="Mail" />
+		<typeAlias type="csdc.bean.News" alias="News" />
+		<typeAlias type="csdc.bean.Notice" alias="Notice" />
+		<typeAlias type="csdc.bean.Salary" alias="Salary" />
+		<typeAlias type="csdc.bean.SystemOption" alias="SystemOption" />
+	</typeAliases>
+<!-- 	<mappers>
+		<mapper resource="eoas/dao/AccountDao.xml" />
+		<mapper resource="eoas/dao/AccountPositionDao.xml" />
+		<mapper resource="eoas/dao/AccountRoleDao.xml" />
+		<mapper resource="eoas/dao/AssetDao.xml" />
+		<mapper resource="eoas/dao/ResumeDao.xml" />
+		<mapper resource="eoas/dao/PositionDao.xml" />
+		<mapper resource="eoas/dao/PositionResumeDao.xml" />
+		<mapper resource="eoas/dao/RecordDao.xml" />
+		<mapper resource="eoas/dao/RoleDao.xml" />
+		<mapper resource="eoas/dao/DepartmentDao.xml" />
+		<mapper resource="eoas/dao/RightDao.xml" />
+		<mapper resource="eoas/dao/RoleRightDao.xml" />
+	    <mapper resource="eoas/dao/PersonDao.xml" />
+		<mapper resource="eoas/dao/StaffDao.xml" />
+		<mapper resource="eoas/dao/MailDao.xml" />
+	</mappers> -->
+</configuration>

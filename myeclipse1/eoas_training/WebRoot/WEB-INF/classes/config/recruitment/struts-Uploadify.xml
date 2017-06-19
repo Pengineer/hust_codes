@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="upload" namespace="/upload" extends="default">
+		<action name="resetGroup" class="eoas.action.recruitment.UploadifyAction" method="resetGroup">
+			<result type="json"><param name="root">json</param></result>
+		</action>
+
+		<action name="upload" class="eoas.action.recruitment.UploadifyAction" method="upload">
+			<result type="json"><param name="root">json</param></result>
+		</action>
+
+		<action name="discard" class="eoas.action.recruitment.UploadifyAction" method="discard">
+			<result type="json"><param name="root">json</param></result>
+		</action>
+
+		<action name="fetchGroupFilesSummary" class="eoas.action.recruitment.UploadifyAction" method="fetchGroupFilesSummary">
+			<result type="json"><param name="root">json</param></result>
+		</action>
+	</package>
+</struts>

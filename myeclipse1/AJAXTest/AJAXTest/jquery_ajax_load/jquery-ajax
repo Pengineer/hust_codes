@@ -1,0 +1,10 @@
+参看API 
+
+jquery对ajax进行了封装，对ajax请求，ajax事件等都进行了函数的封装； 
+对ajax请求的封装分为三成：最底层的方法是$.ajax(),第二层是load(),$.get()和$.post(),第三层是
+$.getScript()和$.getJSON()
+
+
+load() 方法通过 AJAX 请求从服务器加载数据（嘻嘻，动态异步加载），并把返回的数据放置到指定的元素中。
+load(url,data,function(response,status,xhr))该方法是最简单的从服务器获取数据的方法：
+url是服务器中的资源地址，  data是浏览器传过去的参数数据（可选），  function里面有来自服务器发过来的数据，还有ajax的核心对象xmlHttpRequest

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<joined-subclass name="csdc.bean.KeyGranted" extends="csdc.bean.ProjectGranted" table="T_KEY_GRANTED">
+		<key column="C_ID"/>
+        <many-to-one name="application" class="csdc.bean.KeyApplication" fetch="select">
+            <column name="C_APPLICATION_ID" length="40" />
+        </many-to-one>
+        <set name="keyAnninspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.KeyAnninspection" />
+        </set>
+        <set name="keyVariation" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.KeyVariation" />
+        </set>
+        <set name="keyMidinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.KeyMidinspection" />
+        </set>
+        <set name="keyEndinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.KeyEndinspection" />
+        </set>
+        <set name="keyFunding" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.KeyFunding" />
+        </set>
+	</joined-subclass>
+
+</hibernate-mapping>

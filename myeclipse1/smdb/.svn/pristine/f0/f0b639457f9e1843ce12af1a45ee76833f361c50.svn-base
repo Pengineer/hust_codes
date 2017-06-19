@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="accountProvinceMain" extends="main" namespace="/account/province/main">
+
+		<action name="toAdd" class="accountProvinceMainAction" method="toAdd">
+			<result>/security/account/province/main/add.jsp</result>
+		</action>
+
+		<action name="add" class="accountProvinceMainAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageInfo">${pageInfo}</param>
+			</result>
+			<result name="input">/security/account/province/main/add.jsp</result>
+			
+		</action>
+		
+		<action name="toView" class="accountProvinceMainAction" method="toView">
+			<result>/security/account/province/main/view.jsp</result>
+		</action>
+		
+		<action name="view" class="accountProvinceMainAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="accountProvinceMainAction" method="toModify">
+			<result>/security/account/province/main/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="accountProvinceMainAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/security/account/province/main/modify.jsp</result>
+		</action>
+
+		<action name="delete" class="accountProvinceMainAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="accountProvinceMainAction" method="toList">
+			<result>/security/account/province/main/list.jsp</result>
+		</action>
+		
+		<action name="list" class="accountProvinceMainAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="accountProvinceMainAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="accountProvinceMainAction" method="toAdvSearch"> -->
+<!-- 			<result>/security/account/province/main/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="accountProvinceMainAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="accountProvinceMainAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="accountProvinceMainAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="accountProvinceMainAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="accountProvinceMainAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="accountProvinceMainAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toEnable" class="accountProvinceMainAction" method="toEnable">
+			<result>/security/account/popEnable.jsp</result>
+		</action>
+
+		<action name="enable" class="accountProvinceMainAction" method="enable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="disable" class="accountProvinceMainAction" method="disable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAssignRole" class="accountProvinceMainAction" method="toAssignRole">
+			<result>/security/account/popAssignRole.jsp</result>
+		</action>
+
+		<action name="assignRole" class="accountProvinceMainAction" method="assignRole">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="retrieveCode" class="accountProvinceMainAction" method="retrieveCode">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModifyPassword" class="accountProvinceMainAction" method="toModifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<action name="modifyPassword" class="accountProvinceMainAction" method="modifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+			<result name="input">/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<!-- 对外接口 -->
+		<action name="extIfToAdd" class="accountProvinceMainAction" method="extIfToAdd">
+			<result>/security/account/extIf/popAdd.jsp</result>
+		</action>
+		
+		<action name="extIfAdd" class="accountProvinceMainAction" method="extIfAdd">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+
+</struts>

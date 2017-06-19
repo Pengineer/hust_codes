@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user username = "zhangsan" password = "123" email = "aa@sina.com"></user>
+	<user username = "lisi" password ="456" email = "bb@qq.com"></user>
+</users>

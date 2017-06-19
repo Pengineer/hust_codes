@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="smdbClient" extends="global" namespace="/system/smdbClient">
+		<!-- 数据在线同步 -->
+		<action name="syncDataOnline" class="smdbClientAction" method="syncDataOnline">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 数据往年数据修复（同步） -->
+		<action name="syncDataFix" class="smdbClientAction" method="syncDataFix">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 测试开发调用 -->
+		<action name="testMethod" class="smdbClientAction" method="testMethod">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+</struts>

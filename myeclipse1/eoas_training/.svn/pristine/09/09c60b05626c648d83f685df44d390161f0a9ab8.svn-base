@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Mail">
+	<resultMap id="mailResult" type="Mail">
+		<id property="id" column="C_ID" />
+		<result property="sendTo" column="C_SEND_TO" />
+		<result property="subject" column="C_SUBJECT" />
+		<result property="body" column="C_BODY" />
+		<result property="isHtml" column="C_IS_HTML" />
+		<result property="createDate" column="C_CREATE_DATE" />
+		<result property="sendTimes" column="C_SEND_TIMES" />
+		<result property="finishDate" column="C_FINISH_DATE" />
+		<result property="status" column="C_STATUS" />
+		<result property="attachment" column="C_ATTACHMENT" />
+		<result property="attachmentName" column="C_ATTACHMENT_NAME" />
+		<result property="replyTo" column="C_REPLY_TO" />
+		<result property="bcc" column="C_BCC" />
+		<result property="log" column="C_LOG" />
+		<result property="cc" column="C_CC" />
+		<result property="from" column="C_FROM" />
+		<association property="account" column="C_ACCOUNT_ID" javaType="Account">
+			<id property="id" column="C_ACCOUNT_ID" />
+			<result property="email" column="C_EMAIL" />
+			<result property="password" column="C_PASSWORD" />
+			<result property="accountType" column="C_ACCOUNT_TYPE" />
+			<result property="belongId" column="C_BELONG_ID" />
+		</association>
+	</resultMap>
+	
+	<!-- 添加邮件 -->
+	<insert id="insert" parameterType="Mail" useGeneratedKeys="true"
+		keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"
+			order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_MAIL
+		(
+		C_ID,
+		C_SEND_TO,
+		C_SUBJECT,
+		C_BODY,
+		C_IS_HTML,
+		C_CREATE_DATE,
+		C_SEND_TIMES,
+		C_FINISH_DATE,
+		C_ACCOUNT_ID,
+		C_STATUS,
+		C_ATTACHMENT,
+		C_ATTACHMENT_NAME,
+		C_REPLY_TO,
+		C_BCC,
+		C_LOG,
+		C_CC,
+		C_FROM
+		)
+		values
+		(
+		#{id,jdbcType=VARCHAR},
+		#{sendTo,jdbcType=VARCHAR},
+		#{subject,jdbcType=NUMERIC},
+		#{body,jdbcType=DATE},
+		#{isHtml,jdbcType=NUMERIC},
+		#{createDate,jdbcType=NUMERIC},
+		#{sendTimes,jdbcType=VARCHAR},
+		#{finishDate,jdbcType=VARCHAR},
+		#{account.id,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{attachment,jdbcType=VARCHAR},
+		#{attachmentName,jdbcType=VARCHAR},
+		#{replyTo,jdbcType=VARCHAR},
+		#{bcc,jdbcType=VARCHAR},
+		#{log,jdbcType=VARCHAR},
+		#{cc,jdbcType=VARCHAR},
+		#{from,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.String" >
+		delete  from T_MAIL where C_ID = #{id}
+	</delete>
+	
+	<update id="update" parameterType="java.lang.String">
+		update T_MAIL set 
+			C_SEND_TO = #{sendTo,jdbcType=VARCHAR},
+			C_SUBJECT = #{subject,jdbcType=NUMERIC},
+			C_BODY = #{body,jdbcType=DATE},
+			C_IS_HTML = #{isHtml,jdbcType=NUMERIC},
+			C_CREATE_DATE = #{createDate,jdbcType=NUMERIC},
+			C_SEND_TIMES = #{sendTimes,jdbcType=VARCHAR},
+			C_FINISH_DATE = #{finishDate,jdbcType=VARCHAR},
+			C_STATUS = #{status,jdbcType=VARCHAR},
+			C_ATTACHMENT = #{attachment,jdbcType=VARCHAR},
+			C_ATTACHMENT_NAME = #{attachmentName,jdbcType=VARCHAR},
+			C_REPLY_TO = #{replyTo,jdbcType=VARCHAR},
+			C_BCC = #{bcc,jdbcType=VARCHAR},
+			C_LOG = #{log,jdbcType=VARCHAR},
+			C_CC = #{cc,jdbcType=VARCHAR},
+			C_FROM = #{from,jdbcType=VARCHAR},
+			C_ACCOUNT_ID = #{account.id,jdbcType=DATE}
+			where C_ID = #{id}
+	</update>
+	
+	<select id="list" parameterType="map" resultMap="mailResult">
+		SELECT * FROM t_mail 
+		<where>
+			<if test="accountId != null and accountId != '10000000001'">
+				c_account_id = #{accountId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="load" parameterType = "java.lang.String" resultMap="mailResult">
+		select * from t_mail where c_id= #{id}
+	</select>
+	
+	<select id="selectMailByStatus" parameterType = "java.lang.Integer" resultType="java.lang.String">
+		select t_mail.c_id from t_mail where t_mail.c_status = 0
+	</select>
+</mapper> 

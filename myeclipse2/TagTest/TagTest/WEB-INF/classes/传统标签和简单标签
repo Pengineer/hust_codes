@@ -1,0 +1,16 @@
+1，JSP Tag标签分为传统标签和简单标签。
+
+2，传统标签时JSP2.0 之前使用的标签，主要是实现Tag接口，
+   Tag接口---IterationTag接口+BodyTag接口
+	    	IterationTag接口的实现类是TagSupport类；----通常用于控制输出次数
+		    BodyTag接口的实现类是BodyTagSupport类；-----通常用于修改标签体
+		
+3，传统标签的接口关系比较复杂，操作也比较复杂。在JSP2.0开始，就出现了简单标签，它只有一个接口SimpleTag接口，一个实现类
+   SimpleTagSupport类，因此任何类型的操作都只需要继承该类就可以了。
+
+4，简单标签：
+       简单标签没有doStartTag和doEndTag方法，只要碰到标签就会调用doTag方法，在调用该方法的时候回自动调用setJspBody方法，
+       也就是说我们可以直接在doTag方法中拿到标签体对象。
+       
+       在JSP2.0开始，sun公司就规定不允许在ＪＳＰ页面中插入脚本代码，因此和传统标签不一样的是，简单标签在tld文档中的标签体类型不再是
+  JSP，而是scriptless.

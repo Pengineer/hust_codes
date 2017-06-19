@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="entrustApplicationApply" extends="main" namespace="/project/entrust/application/apply">
+		
+		<action name="toList" class="entrustApplicationApplyAction" method="toList">
+			<result>/project/entrust/application/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="entrustApplicationApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="entrustApplicationApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="entrustApplicationApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="entrustApplicationApplyAction" method="toAdvSearch">
+			<result>/project/entrust/application/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="entrustApplicationApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="entrustApplicationApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="entrustApplicationApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="entrustApplicationApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="entrustApplicationApplyAction" method="toAdd">
+			<result>/project/entrust/application/apply/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="entrustApplicationApplyAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toAddGrantedFee" class="entrustApplicationApplyAction" method="toAddGrantedFee">
+	        <result>/project/popAddGrantedFee.jsp</result>
+	    </action>
+		
+		<!-- 添加 -->
+		<action name="add" class="entrustApplicationApplyAction" method="add">
+			<param name="savePath">/upload/project/entrust/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+			<result name="input">/project/entrust/application/apply/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="entrustApplicationApplyAction" method="toModify">
+			<result>/project/entrust/application/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="entrustApplicationApplyAction" method="modify">
+			<param name="savePath">/upload/project/entrust/app/2009</param>
+			<result name="input">/project/entrust/application/apply/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+		</action>
+		
+		<action name="submit" class="entrustApplicationApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   	
+	   	<!-- 删除 -->
+		<action name="delete" class="entrustApplicationApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入添加录入页面 -->
+		<action name="toAddResult" class="entrustApplicationApplyAction" method="toAddResult">
+			<result>/project/entrust/application/apply/addResult.jsp</result>
+		</action>
+		
+		<!-- 录入添加 -->
+		<action name="addResult" class="entrustApplicationApplyAction" method="addResult">
+			<param name="savePath">/upload/project/entrust/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+			<result name="input">/project/entrust/application/apply/addResult.jsp</result>
+		</action>
+		
+		<!-- 进入录入修改页面 -->
+		<action name="toModifyResult" class="entrustApplicationApplyAction" method="toModifyResult">
+			<result>/project/entrust/application/apply/modifyResult.jsp</result>
+		</action>
+		
+		<!-- 录入数据修改 -->
+		<action name="modifyResult" class="entrustApplicationApplyAction" method="modifyResult">
+			<param name="savePath">/upload/project/entrust/app/2009</param>
+			<result name="input">/project/entrust/application/apply/modifyResult.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+		</action>
+		
+		<action name="toUploadFileResult" class="entrustApplicationApplyAction" method="toUploadFileResult">
+		  <result>/project/entrust/application/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="entrustApplicationApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="entrustApplicationApplyAction" method="toView">
+	        <result>/project/entrust/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="entrustApplicationApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+		<!-- 查看上条 -->
+		<action name="prev" class="entrustApplicationApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="entrustApplicationApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下载申请 -->
+		<action name="downloadApply" class="entrustApplicationApplyAction" method="downloadApply">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>	
+	     	
+	   	<action name="validateFile" class="entrustApplicationApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+	  	 
+	  	<!-- 发布 -->
+		<action name="publish" class="entrustApplicationApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="entrustApplicationApplyAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+	<package name="entrustApplicationAudit" extends="main" namespace="/project/entrust/application/applyAudit"> 
+   	   
+        <action name="toAdd" class="entrustApplicationApplyAuditAction" method="toAdd">
+	        <result>/project/entrust/application/applyAudit/popAdd.jsp</result>
+	    </action>
+	    <action name="toModify" class="entrustApplicationApplyAuditAction" method="toModify">
+	        <result>/project/entrust/application/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="add" class="entrustApplicationApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="modify" class="entrustApplicationApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="entrustApplicationApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="entrustApplicationApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="view" class="entrustApplicationApplyAuditAction" method="view">
+	        <result>/project/entrust/application/applyAudit/popView.jsp</result>
+	    </action>
+    </package> 
+    
+	<package name="entrustGranted" extends="main" namespace="/project/entrust/application/granted">
+
+		<action name="toList" class="entrustApplicationGrantedAction" method="toList">
+			<result>/project/entrust/application/granted/list.jsp</result>
+		</action>
+
+		<action name="list" class="entrustApplicationGrantedAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 发布 -->
+		<action name="publish" class="entrustApplicationGrantedAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="entrustApplicationGrantedAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="entrustApplicationGrantedAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="entrustApplicationGrantedAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="entrustApplicationGrantedAction" method="toAdvSearch">
+			<result>/project/entrust/application/granted/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="entrustApplicationGrantedAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="entrustApplicationGrantedAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="entrustApplicationGrantedAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="entrustApplicationGrantedAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="entrustApplicationGrantedAction" method="toAdd">
+			<result>/project/entrust/application/granted/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="entrustApplicationGrantedAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toAddGrantedFee" class="entrustApplicationGrantedAction" method="toAddGrantedFee">
+	        <result>/project/popAddGrantedFee.jsp</result>
+	    </action>
+		
+		<!-- 添加 -->
+		<action name="add" class="entrustApplicationGrantedAction" method="add">
+			<param name="savePath">/upload/project/entrust/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">2</param>
+			</result>
+			<result name="input">/project/entrust/application/granted/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="entrustApplicationGrantedAction" method="toModify">
+			<result>/project/entrust/application/granted/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="entrustApplicationGrantedAction" method="modify">
+			<param name="savePath">/upload/project/entrust/app/2009</param>
+			<result name="input">/project/entrust/application/granted/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">2</param>
+				<param name="update">1</param>
+			</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="entrustApplicationGrantedAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="entrustApplicationGrantedAction" method="toView">
+	        <result>/project/entrust/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="entrustApplicationGrantedAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+		<!-- 查看上条 -->
+		<action name="prev" class="entrustApplicationGrantedAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="entrustApplicationGrantedAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入撤项页面 -->
+		<action name="toSetUpProjectStatus" class="entrustApplicationGrantedAction" method="toSetUpProjectStatus">
+	        <result>/project/entrust/application/granted/popSetUpProjectStatus.jsp</result>
+	    </action>
+	    
+	    <!-- 撤项 -->
+	    <action name="setUpProjectStatus" class="entrustApplicationGrantedAction" method="setUpProjectStatus">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <!-- 导出 -->
+	    <action name="confirmExportOverView" class="entrustApplicationGrantedAction" method="confirmExportOverView">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+
+	   	<action name="exportOverView" class="entrustApplicationGrantedAction" method="exportOverView">
+	   	    <result name="success">/project/entrust/application/granted/popExportOverView.jsp</result>
+	   	</action>
+	   	
+	</package>
+	
+	<package name="entrustApplicationReview" extends="main" namespace="/project/entrust/application/review">
+			
+		<action name="toAddRevExpert" class="entrustApplicationReviewAction" method="toAddRevExpert">
+      		 <result>/project/entrust/application/review/popAddExpert.jsp</result>
+	    </action>
+	    
+	     <action name="addResultExpert" class="entrustApplicationReviewAction" method="addResultExpert">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" >/project/entrust/application/review/popAddExpert.jsp</result>
+		</action>
+		
+		 <action name="getGroupRev" class="entrustApplicationReviewAction" method="getGroupRev">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+			
+		<action name="toList" class="entrustApplicationReviewAction" method="toList">
+			<result>/project/entrust/application/review/list.jsp</result>
+		</action>
+
+		<action name="list" class="entrustApplicationReviewAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="assist" class="entrustApplicationReviewAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="entrustApplicationReviewAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="entrustApplicationReviewAction" method="toAdvSearch">
+			<result>/project/entrust/application/review/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="entrustApplicationReviewAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="entrustApplicationReviewAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="entrustApplicationReviewAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="entrustApplicationReviewAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="viewReview" class="entrustApplicationReviewAction" method="viewReview">
+	    	<result type="redirectAction">
+				<param name="namespace">/project/entrust/application/apply</param>
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+	    </action>
+	    
+	    <action name="toViewReview" class="entrustApplicationReviewAction" method="toViewReview">
+	        <result>/project/entrust/view.jsp</result>
+	    </action>
+	
+		<action name="prev" class="entrustApplicationReviewAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="entrustApplicationReviewAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="entrustApplicationReviewAction" method="toAdd">
+	        <result>/project/entrust/application/review/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toAddGroup" class="entrustApplicationReviewAction" method="toAddGroup">
+	        <result>/project/entrust/application/review/popAddGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toAddResult" class="entrustApplicationReviewAction" method="toAddResult">
+	        <result>/project/entrust/application/review/popAddResult.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="entrustApplicationReviewAction" method="toModify">
+	        <result>/project/entrust/application/review/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyGroup" class="entrustApplicationReviewAction" method="toModifyGroup">
+	        <result>/project/entrust/application/review/popModifyGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyResult" class="entrustApplicationReviewAction" method="toModifyResult">
+	        <result>/project/entrust/application/review/popModifyResult.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="entrustApplicationReviewAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addGroup" class="entrustApplicationReviewAction" method="addGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addResult" class="entrustApplicationReviewAction" method="addResult">
+		 	<result>/project/entrust/application/review/popAddResult.jsp</result>
+		 	<result name="input">/project/entrust/application/review/popAddResult.jsp</result>
+		</action>
+		
+		<action name="modify" class="entrustApplicationReviewAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyGroup" class="entrustApplicationReviewAction" method="modifyGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="entrustApplicationReviewAction" method="modifyResult">
+			<result>/project/entrust/application/review/popModifyResult.jsp</result>
+		 	<result name="input">/project/entrust/application/review/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submit" class="entrustApplicationReviewAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitGroup" class="entrustApplicationReviewAction" method="submitGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="entrustApplicationReviewAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="entrustApplicationReviewAction" method="view">
+	        <result>/project/entrust/application/review/popView.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroup" class="entrustApplicationReviewAction" method="viewGroup">
+	        <result>/project/entrust/application/review/popViewGroup.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroupOpinion" class="entrustApplicationReviewAction" method="viewGroupOpinion">
+	        <result>/project/entrust/application/review/popViewGroupOpinion.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="entrustApplicationReviewAudit" extends="main" namespace="/project/entrust/application/reviewAudit">
+	
+		<action name="toAdd" class="entrustApplicationReviewAuditAction" method="toAdd">
+	        <result>/project/entrust/application/reviewAudit/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="entrustApplicationReviewAuditAction" method="toModify">
+	        <result>/project/entrust/application/reviewAudit/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="entrustApplicationReviewAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modify" class="entrustApplicationReviewAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="entrustApplicationReviewAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="entrustApplicationReviewAuditAction" method="view">
+	        <result>/project/entrust/application/reviewAudit/popView.jsp</result>
+	    </action>
+	    
+	</package>
+</struts>
+

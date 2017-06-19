@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="global" location="10,25" size="170,70" />
+  <include file="struts-Main.xml" location="265,10" size="150,30" />
+  <include file="struts-User.xml" location="20,185" size="150,30" />
+  <include file="struts-Role.xml" location="265,185" size="150,30" />
+  <include file="struts-Right.xml" location="20,290" size="150,30" />
+  <include file="struts-Expert.xml" location="265,290" size="150,30" />
+  <include file="struts-General.xml" location="0,0" size="0,0" />
+  <include file="struts-Publicity.xml" location="0,0" size="0,0" />
+  <include file="struts-Granted.xml" location="0,0" size="0,0" />
+  <include file="struts-Selfspace.xml" location="265,395" size="150,30" />
+  <include file="struts-University.xml" location="0,0" size="0,0" />
+  <include file="struts-Expert.xml" location="265,290" size="150,30" />
+  <include file="struts-Finance.xml" location="265,500" size="150,30" />
+</Struts2Diagram>
+

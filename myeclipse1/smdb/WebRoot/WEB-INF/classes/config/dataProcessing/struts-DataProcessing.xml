@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="dataProcessing" extends="main" namespace="/dataProcessing">
+		
+		<!-- 跳转到配置页面，配置：数据源，数据类型，主表等数据-->
+		<action name="toConfigView" class="sourceToMidTableAction" method="toConfigView">
+			<result>/dataProcessing/fromSourceToMid/createTask.jsp</result>
+		</action>
+		<action name="toPopSelect" class="sourceToMidTableAction" method="toPopSelect">
+			<result>/dataProcessing/fromSourceToMid/popSelect.jsp</result>
+		</action>
+		
+		<!-- 获取xml节点树-->
+		<action name="gainXmlElementTree" class="sourceToMidTableAction" method="gainXmlElementTree">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>		
+
+		<!-- 获取xml文件与数据库字段的对应关系-->
+		<action name="gainXmlFieldMap" class="sourceToMidTableAction" method="gainXmlFieldMap">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 保存设置好的xml字段信息-->
+		<action name="saveXmlFieldMap" class="sourceToMidTableAction" method="saveXmlFieldMap">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 创建一个任务，并让该任务成为一个立即执行的事务，并跳转到事务状态页-->
+		<action name="executeImportXmlInfoToDB" class="sourceToMidTableAction" method="executeImportXmlInfoToDB">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 获取数据源和数据类型信息，返回值是map类型-->
+		<action name="gainSourceNameAndTypeName" class="sourceToMidTableAction" method="gainSourceNameAndTypeName">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 根据数据源名称，获取与该数据源相关的中间表表名-->
+		<action name="gainTableNameBySourceName" class="sourceToMidTableAction" method="gainTableNameBySourceName">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>		
+
+		<!-- 根据表名，获取该表在数据库中间表中的字段名-->
+		<action name="gainDBFieldByTableName" class="sourceToMidTableAction" method="gainDBFieldByTableName">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>	
+		
+	</package>
+
+</struts>

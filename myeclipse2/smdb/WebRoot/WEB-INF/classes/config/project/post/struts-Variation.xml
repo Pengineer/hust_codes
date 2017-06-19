@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="postVariationApply" extends="main" namespace="/project/post/variation/apply">
+
+		<action name="toList" class="postVariationApplyAction" method="toList">
+			<result>/project/post/variation/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="postVariationApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="postVariationApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+
+		<action name="simpleSearch" class="postVariationApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="postVariationApplyAction" method="toAdvSearch">
+			<result>/project/post/variation/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="postVariationApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="postVariationApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="postVariationApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="postVariationApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="postVariationApplyAction" method="toAdd">
+			<result>/project/post/variation/apply/add.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="add" class="postVariationApplyAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+				<param name="selectedTab">variation</param>
+			</result>
+			<result name="input">/project/post/variation/apply/add.jsp</result>
+		</action>
+		<!-- 保存 
+		<action name="save" class="postVariationApplyAction" method="save">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+				<param name="selectedTab">variation</param>
+			</result>
+			<result name="input">/project/post/variation/apply/add.jsp</result>
+		</action>
+		-->
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="postVariationApplyAction" method="toModify">
+			<result>/project/post/variation/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="modify" class="postVariationApplyAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+				<param name="selectedTab">variation</param>
+			</result>
+			<result name="input">/project/post/variation/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 提交 -->
+		<action name="submit" class="postVariationApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="postVariationApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddResult" class="postVariationApplyAction" method="toAddResult">
+		 	 <result>/project/post/variation/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="postVariationApplyAction" method="addResult">
+			<result>/project/post/variation/apply/popAddResult.jsp</result>
+			<result name="input">/project/post/variation/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toAddVarFee" class="postVariationApplyAction" method="toAddVarFee">
+			<result>/project/popAddVarFee.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="postVariationApplyAction" method="toModifyResult">
+		 	 <result>/project/post/variation/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="modifyResult" class="postVariationApplyAction" method="modifyResult">
+			<result>/project/post/variation/apply/popModifyResult.jsp</result>
+			<result name="input">/project/post/variation/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submitResult" class="postVariationApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toUploadFileResult" class="postVariationApplyAction" method="toUploadFileResult">
+		  <result>/project/post/variation/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="postVariationApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下载模板 -->
+		<action name="downloadTemplate" class="postVariationApplyAction" method="downloadTemplate">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetTemplate</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    <action name="validateTemplate" class="postVariationApplyAction" method="validateTemplate">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	    <!-- 下载申请 -->
+	    <action name="downloadApply" class="postVariationApplyAction" method="downloadApply">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+		<action name="validateFile" class="postVariationApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+
+		<!-- 下载延期项目计划书 -->
+	    <action name="downloadPostponement" class="postVariationApplyAction" method="downloadPostponement">
+	    	<result name="success" type="stream">
+				<param name="inputName">postponementFile</param>
+				<param name="contentType">application/msword</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+		<action name="validatePostponementFile" class="postVariationApplyAction" method="validatePostponementFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  
+		<!-- 进入查看页面 -->
+		<action name="toView" class="postVariationApplyAction" method="toView">
+	        <result>/project/post/view.jsp</result>
+	    </action>
+	    
+		<!-- 查看 -->
+		<action name="view" class="postVariationApplyAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看项目负责人详情 -->
+		<action name="viewDir" class="postVariationApplyAction" method="viewDir">
+			<result>/project/post/variation/apply/popViewDir.jsp</result>
+		</action>
+		
+		<!-- 查看变更其他详细信息 -->
+		<action name="viewOther" class="postVariationApplyAction" method="viewOther">
+			<result>/project/post/variation/apply/popViewOther.jsp</result>
+		</action>
+		
+		<!-- 查看变更经费信息 -->
+		<action name="viewFee" class="postVariationApplyAction" method="viewFee">
+			<result>/project/popViewFee.jsp</result>
+		</action>
+		
+		<!-- 查看上条 -->
+		<action name="prev" class="postVariationApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="postVariationApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 导出列表 -->
+	   	<action name="confirmExportOverView" class="postVariationApplyAction" method="confirmExportOverView">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+
+	   	<action name="exportOverView" class="postVariationApplyAction" method="exportOverView">
+	   	    <result name="success">/project/post/variation/apply/popExportOverView.jsp</result>
+	   	</action>
+	   	<!-- 发布 -->
+		<action name="publish" class="postVariationApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="postVariationApplyAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+	<package name="postVariationAudit" extends="main" namespace="/project/post/variation/applyAudit">
+	
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="postVariationApplyAuditAction" method="toAdd">
+			<result name="success">/project/post/variation/applyAudit/popAdd.jsp</result>
+		</action>
+		<!-- 保存 -->
+		<action name="add" class="postVariationApplyAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="postVariationApplyAuditAction" method="toModify">
+			<result>/project/post/variation/applyAudit/popModify.jsp</result>
+		</action>
+		<action name="modify" class="postVariationApplyAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 查看 -->
+		<action name="view" class="postVariationApplyAuditAction" method="view">
+			<result>/project/post/variation/applyAudit/popView.jsp</result>
+		</action>
+		<!-- 提交 -->
+		<action name="submit" class="postVariationApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 退回 -->
+		<action name="back" class="postVariationApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+	
+</struts>

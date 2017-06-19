@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="selectMinistry" extends="main" namespace="/selectMinistry">
+		
+		<action name="toList" class="selectMinistryAction" method="toList">
+			<result>/pop/select/selectMinistry.jsp</result>
+		</action>
+
+		<action name="list" class="selectMinistryAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="selectMinistryAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="selectMinistryAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="selectMinistryAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

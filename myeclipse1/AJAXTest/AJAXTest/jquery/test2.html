@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>一句话搞定颜色交替显示问题</title>	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+  </head>
+  
+  <body>
+    <table border=1 cellspacing=0 cellpadding=10 width=30%>
+    	<tr>
+    		<td>a</td>
+    		<td>b</td>
+    	</tr>
+    	<tr>
+    		<td>c</td>
+    		<td>d</td>
+    	</tr>
+    	<tr>
+    		<td>e</td>
+    		<td>f</td>
+    	</tr>
+    	<tr>
+    		<td>g</td>
+    		<td>h</td>
+    	</tr>
+    	<tr>
+    		<td>i</td>
+    		<td>j</td>
+    	</tr>
+    </table>
+  </body>
+  
+  <script type="text/javascript">
+  	$("table:eq(0) tr:even").css("background","red");
+  	
+  	$("table tr:nth-child(even)").css("background","green");
+  	
+  //	$("table > tr").css("background","green");
+  
+  
+  //toggleClass 样式切换（有class就删除，没class就添加）
+  //hasClass 判断样式的存在
+  </script>
+</html>

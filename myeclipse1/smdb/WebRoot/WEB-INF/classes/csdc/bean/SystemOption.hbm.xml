@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.SystemOption" table="T_SYSTEM_OPTION" >
+ 		<cache usage="nonstrict-read-write"/>
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="systemOption" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_PARENT_ID" length="40" />
+        </many-to-one>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="C_DESCRIPTION" length="800" />
+        </property>
+        <property name="code" type="java.lang.String">
+        	<column name="C_CODE" length="100" not-null="true" />
+        </property>
+        <property name="isAvailable" type="java.lang.Integer">
+        	<column name="C_IS_AVAILABLE" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="standard" type="java.lang.String">
+        	<column name="C_STANDARD" length="80" />
+        </property>
+        <property name="abbr" type="java.lang.String">
+        	<column name="C_ABBR" length="100" />
+        </property>
+        <set name="institutesForResearchType" inverse="true">
+            <key>
+                <column name="C_RESEARCH_TYPE_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.Institute" />
+        </set>
+        <set name="institutesForType" inverse="true">
+            <key>
+                <column name="C_TYPE_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.Institute" />
+        </set>
+        <set name="systemOptions" inverse="true" sort="csdc.tool.comparator.SystemOptionComparator">
+			<cache usage="nonstrict-read-write" /> 
+            <key>
+                <column name="C_PARENT_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.SystemOption" />
+        </set><!--
+        <set name="productType" inverse="true">
+        	<key>
+        		<column name="C_PRODUCT_TYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        --><set name="subType" inverse="true">
+        	<key>
+        		<column name="C_SUBJECT_TYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        <set name="awardGrade" inverse="true">
+        	<key>
+        		<column name="C_GRADE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardGranted" />
+        </set>
+        <set name="awardGradeAdvice" inverse="true">
+        	<key>
+        		<column name="C_GRADE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardReview" />
+        </set>
+          <set name="awardGradeAdvice1" inverse="true">
+        	<key>
+        		<column name="C_REVIEW_GRADE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        <set name="province" inverse="true">
+        	<key>
+        		<column name="C_PROVINCE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Agency" />
+        </set>
+        <set name="city" inverse="true">
+        	<key>
+        		<column name="C_CITY_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Agency" />
+        </set>
+        <set name="publicationLevel" inverse="true">
+        	<key>
+        		<column name="C_PUBLICATION_LEVEL_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Paper" />
+        </set>
+        <set name="ptype" inverse="true">
+        	<key>
+        		<column name="C_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Paper" />
+        </set>
+        <set name="form" inverse="true">
+        	<key>
+        		<column name="C_Form_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Paper" />
+        </set>
+        <set name="projectType" inverse="true">
+        	<key>
+        		<column name="C_PROJECT_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Paper" />
+        </set>
+        <set name="publicationScope" inverse="true">
+        	<key>
+        		<column name="C_PUBLICATION_SCOPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Paper" />
+        </set>
+        <set name="eleType" inverse="true">
+        	<key>
+        		<column name="C_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Electronic" />
+        </set>
+        <set name="eleForm" inverse="true">
+        	<key>
+        		<column name="C_Form_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Electronic" />
+        </set>
+        <set name="eleProjectType" inverse="true">
+        	<key>
+        		<column name="C_PROJECT_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Electronic" />
+        </set>
+        <set name="bookType" inverse="true">
+        	<key>
+        		<column name="C_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Book" />
+        </set>
+        <set name="subtype" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.GeneralApplication" />
+        </set>
+        <set name="researchType" inverse="true">
+        	<key>
+        		<column name="C_RESEARCH_TYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.GeneralApplication" />
+        </set>
+        <set name="generalEndGrade" inverse="true">
+        	<key>
+        		<column name="C_REVIEW_GRADE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.GeneralEndinspection" />
+        </set>
+        <set name="generalEndReviewGrade" inverse="true">
+        	<key>
+        		<column name="C_GRADE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.GeneralEndinspectionReview" />
+        </set>
+        <set name="grantedSubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.GeneralGranted" />
+        </set>
+        <set name="postSubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.PostApplication" />
+        </set>
+        <set name="postTopic" inverse="true">
+        	<key>
+        		<column name="C_TOPIC_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.PostApplication" />
+        </set>
+        <set name="postResearchType" inverse="true">
+        	<key>
+        		<column name="C_RESEARCH_TYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.PostApplication" />
+        </set>
+        <set name="postEndGrade" inverse="true">
+        	<key>
+        		<column name="C_REVIEW_GRADE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.PostEndinspection" />
+        </set>
+        <set name="postEndReviewGrade" inverse="true">
+        	<key>
+        		<column name="C_GRADE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.PostEndinspectionReview" />
+        </set>
+        <set name="postGrantedSubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.PostGranted" />
+        </set>
+        <set name="newsType" inverse="true">
+        	<key>
+        		<column name="C_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.News" />
+        </set>
+        <set name="noticeType" inverse="true">
+        	<key>
+        		<column name="C_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Notice" />
+        </set>
+        <set name="messageType" inverse="true">
+        	<key>
+        		<column name="C_TYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.Message" />
+        </set>
+        <set name="expertType" inverse="true">
+        	<key>
+        		<column name="C_EXPERT_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Academic" />
+        </set>
+        <set name="resProjectType" inverse="true">
+        	<key>
+        		<column name="C_PROJECT_TYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectData" />
+        </set>
+        <set name="researchTypeInstpApp" inverse="true">
+        	<key>
+        		<column name="C_RESEARCH_TYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.InstpApplication" />
+        </set>
+        <set name="subtypeInstpGra" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" not-null="true" />
+        	</key>
+        	<one-to-many class="csdc.bean.InstpGranted" />
+        </set>
+        <set name="instpEndReviewGrade" inverse="true">
+        	<key>
+        		<column name="C_GRADE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.InstpEndinspectionReview" />
+        </set>
+        <set name="computerLevel" inverse="true">
+        	<key>
+        		<column name="C_COMPUTER_LEVEL_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Academic" />
+        </set>
+        <set name="specialGraSubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.SpecialGranted" />
+        </set>
+        <set name="specialGraSubsubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBSUBTYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.SpecialGranted" />
+        </set>
+        <set name="specialAppSubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBTYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.SpecialApplication" />
+        </set>
+        <set name="specialAppSubsubtype" inverse="true">
+        	<key>
+        		<column name="C_SUBSUBTYPE_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.SpecialApplication" />
+        </set>
+    </class>
+    
+</hibernate-mapping>

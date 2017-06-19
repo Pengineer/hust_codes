@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+  <input type="text" name="username" id="username" value=""/>
+  <input type="button" name="button" id="button" value="提交" onclick="jquery2dom()"/>
+  </body>
+  
+  <script type="text/javascript">
+    function test1(){
+	  	//传统取值方式
+	  	alert(document.getElementById("username").value);
+	  	
+	  	//使用jquery取值:$和EL表达式很像(后面的大括号)，表示取值，#后面跟的是标签的id，.val()表示获取标签的value值。
+	  	alert($("#username").val());
+  	}
+  	
+  	//对于已经是一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了。$(DOM对象)
+  	function dom2jquery(){
+  		var element = document.getElementById("username");  //得到dom对象
+  		
+  		var $element = $(element);
+  		alert($element.val());
+  	}
+  	
+  	//jQuery对象转成DOM对象 
+  	function jquery2dom(){
+  		var $element = $("#username");  //得到id为username的jquery对象
+  		
+  		//方法一：jQuery对象是一个数组对象，可以通过[index]的方法，来得到相应的DOM对象
+  		var element1 = $element[0].value;//此处通过id取值，因此数组里面只有一个元素
+  		alert(element1);
+  		
+  		//方法二：通过jQuery本身提供的get(index)方法，得到相应的DOM对象  
+  		var element2 = $element.get(0).value;
+  		alert(element2);
+  	}
+  	
+  	//jquery的9大选择器
+  	
+  	
+  </script>
+  
+</html>

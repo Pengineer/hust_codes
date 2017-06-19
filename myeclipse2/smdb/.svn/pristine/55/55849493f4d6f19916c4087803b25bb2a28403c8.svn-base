@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mobileStatisticCustom" extends="mobileMain" namespace="/mobile/statistic/custom">
+		<action name="view" class="mobileStatisticCustomAction" method="view">
+		<result>/mobile/statistic/view.jsp</result>
+			<!--<result>/test/view.jsp</result>
+			 <result name="input" type="json"><param name="root">jsonMap</param></result>  -->
+		</action>
+
+		<action name="fetchMenu" class="mobileStatisticCustomAction" method="fetchMenu">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="selectUniversity" class="mobileStatisticCustomAction" method="selectUniversity">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="getMdxToView" class="mobileStatisticCustomAction" method="getMdxToView">
+	    	<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="mdx">${mdx}</param>
+				<param name="statistic_parm">${statistic_parm}</param>
+				<param name="statisticType">${statisticType}</param>
+				<param name="chartConfig">${chartConfig}</param>
+			</result>
+	    </action>
+
+		<action name="toPage" class="mobileStatisticCustomAction" method="toPage">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+</struts>

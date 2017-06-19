@@ -1,0 +1,270 @@
+// ========================================================================
+// 文件名：validate.js
+//
+// 文件说明：添加修改项目变更的前台校验
+//
+// 历史记录：
+// 2010-12-19  周中坚    添加文件
+// 2012-9-7    肖雅         修改文件
+// ========================================================================
+define(function(require, exports, module) {
+	require('validate');
+	
+	var valid = function(){
+		$(function() {
+			$("#form_apply").validate({
+				errorElement: "span",
+				event: "blur",
+				rules: {
+					"selectIssue":{required: true},
+					"file":{required:function(){return($(".uploadify-queue-item").size()==0);}},
+//					"postponementPlanFile":{required:function(){return($(".uploadify-queue-item").size()<2);}},
+//					"file":{required:function(){
+//						return($("#varId").val().length == 0 && $("input[name='fileIds']").length==0);
+//						}
+//					},
+//					"file":{required:function(){return($(".progressWrapper").size()==0);}
+//					},
+					"otherInfo":{required: function(){//变更其他
+						return $("input[name='selectIssue'][type='checkbox'][value='20']").attr("checked");
+					},
+					maxlength:200
+					},
+					"varResult":{required:true},
+					"varDate":{required:true,dateISO:true},
+					"varImportedOpinion":{maxlength:200},
+					"varOpinionFeedback":{maxlength:200}
+				},
+				errorPlacement: function(error, element){
+					var fieldName=element.attr("name");
+					var errorInfo = "";
+					if(fieldName=="selectProductType"){
+						error.appendTo( element.parent().parent().parent().parent().parent().next("td")); 
+					}else if(fieldName=="productTypeOther"){
+						error.appendTo( element.parent().parent().next("td") );
+					}else if(fieldName=="selectIssue"){
+						error.appendTo( element.parent().parent().parent().parent().parent().next("td")); 
+					}else if(fieldName=="varSelectIssue"){
+						error.appendTo( element.parent().parent().parent().parent().parent().next("td")); 
+					}else if(fieldName.match(/.*memberType.*/g)){
+						errorInfo = "<div><span class='error'>请输入</span></div>";
+						element.addClass("input_error");
+						element.parents(".table_td12").next("td").html(errorInfo);
+					}else if(fieldName.match(/.*memberName.*/g)){
+						errorInfo = "<div><span class='error'>请输入</span></div>";
+						element.addClass("input_error");
+						element.parents(".table_td12").next("td").html(errorInfo);
+					}else if(fieldName.match(/.*isDirector.*/g)){
+						errorInfo = "<div><span class='error'>请输入</span></div>";
+						element.addClass("input_error");
+						element.parents(".table_td12").next("td").html(errorInfo);
+					}else if(fieldName.match(/.*university.id.*/g)){
+						errorInfo = "<div><span class='error'>请输入</span></div>";
+						element.parent().addClass("input_error");
+						element.parents(".table_td12").next("td").html(errorInfo);
+					}
+					else 
+						error.appendTo( element.parents(".table_td12").next("td") );
+				}
+			});
+			initValid();
+		});
+	};
+	
+	//编辑标志位 1：走流程	2：录入
+	var editFlag = $("#editFlag").val();
+
+	var initValid = function (){
+		if(editFlag == 1){
+			valid_changeMember1();
+		}else if(editFlag == 2){
+			valid_changeMember2();
+		}
+		valid_changeAgency();
+		valid_changeName();
+		valid_postponement($("#variation5").val());
+		valid_productType();
+	};
+
+	//用于申请者申请
+	var valid_changeMember1 = function(){
+		if ($("input[name='selectIssue'][type='checkbox'][value='01']").attr("checked")){//变更项目成员
+			$("#cD .table_valid").each(function(){
+				$(":input[name*='idcardType']", $(this)).rules("add", {selected:true});
+				$(":input[name*='idcardNumber']", $(this)).rules("add", {required:true, cardNumber:true});
+				$(":input[name*='memberType']", $(this)).rules("add", {selected:true});
+				$(":input[name*='memberName']", $(this)).rules("add", {required:true, maxlength:80});
+				$(":input[name*='gender']", $(this)).rules("add", {selected:true});
+				$(":input[name*='agencyName']", $(this)).rules("add", {required:true, maxlength:80});
+				$(":input[name*='divisionType']", $(this)).rules("add", {selected:true});
+				$(":input[name*='divisionName']", $(this)).rules("add", {required:true, maxlength:80});
+				$(":input[name*='specialistTitle']", $(this)).rules("add", {selected:true});
+				$(":input[name*='major']", $(this)).rules("add", {maxlength:50});
+				$(":input[name*='workMonthPerYear']", $(this)).rules("add", {required:true, number:true, digits:true, range:[0,12]});
+				$(":input[name*='workDivision']", $(this)).rules("add", {maxlength:200});
+				$(":input[name*='isDirector']", $(this)).rules("add", {selected:true});
+			});
+		} else {
+			$("#cD .table_valid").each(function(){
+				$(":input[name*='idcardType']", $(this)).rules("remove");
+				$(":input[name*='idcardNumber']", $(this)).rules("remove");
+				$(":input[name*='memberType']", $(this)).rules("remove");
+				$(":input[name*='memberName']", $(this)).rules("remove");
+				$(":input[name*='gender']", $(this)).rules("remove");
+				$(":input[name*='agencyName']", $(this)).rules("remove");
+				$(":input[name*='divisionType']", $(this)).rules("remove");
+				$(":input[name*='divisionName']", $(this)).rules("remove");
+				$(":input[name*='specialistTitle']", $(this)).rules("remove");
+				$(":input[name*='major']", $(this)).rules("remove");
+				$(":input[name*='workMonthPerYear']", $(this)).rules("remove");
+				$(":input[name*='workDivision']", $(this)).rules("remove");
+				$(":input[name*='isDirector']", $(this)).rules("remove");
+			});
+		}
+	};
+	//用于教育部录入
+	var valid_changeMember2 = function(){
+		if ($("input[name='selectIssue'][type='checkbox'][value='01']").attr("checked")){//变更项目成员
+			$("#cD .table_valid tbody tr").each(function(){
+				var $isDirector = $(":input[name*='isDirector']", $(this)).val();
+				if($isDirector==1){
+					$(":input[name*='memberType']", $(this)).rules("add", {selected:true});
+					$(":input[name*='memberName']", $(this)).rules("add", {required:true});
+					$(":input[name*='university.id']", $(this)).rules("add", {required:true});
+					//$(":input[name*='member.id']", $(this)).rules("add", {required:true});
+					//$(":input[name*='major']", $(this)).rules("add", {maxlength:50});
+					//$(":input[name*='specialistTitle']", $(this)).rules("add", {selected:true});
+					//$(":input[name*='workMonthPerYear']", $(this)).rules("add", {required:true, number:true, digits:true, range:[0,12]});
+					//$(":input[name*='workDivision']", $(this)).rules("add", {maxlength:200});
+					$(":input[name*='isDirector']", $(this)).rules("add", {selected:true});
+				} else {
+					$(":input[name*='memberType']", $(this)).rules("add", {selected:true});
+					//$(":input[name*='member.id']", $(this)).rules("add", {required:true});
+					$(":input[name*='memberName']", $(this)).rules("add", {required:true});
+					$(":input[name*='isDirector']", $(this)).rules("add", {selected:true});
+				}
+			});
+		} else {
+			$("#cD .table_valid tbody tr").each(function(){
+				$(":input[name*='memberType']", $(this)).rules("remove");
+				$(":input[name*='member.id']", $(this)).rules("remove");
+				$(":input[name*='specialistTitle']", $(this)).rules("remove");
+				$(":input[name*='major']", $(this)).rules("remove");
+				$(":input[name*='workMonthPerYear']", $(this)).rules("remove");
+				$(":input[name*='workDivision']", $(this)).rules("remove");
+				$(":input[name*='isDirector']", $(this)).rules("remove");
+			});
+		}
+	};
+	
+	var valid_changeAgency = function(){
+		if ($("input[name='selectIssue'][type='checkbox'][value='02']").attr("checked")){//变更机构
+			$("input[name='deptInstId']").rules("add", {required:true, notEqualTo: "#oldDeptInstId"});
+		} else {
+			$("input[name='deptInstId']").rules("remove");
+		}
+	};
+	
+	var valid_changeName = function(){//变更项目名称
+		if($("input[name='selectIssue'][type='checkbox'][value='04']").attr("checked")){
+			$("input[name='chineseName']").rules("add", {required:true, notEqualTo: "#projectName"});
+			$("input[name='englishName']").rules("add", {maxlength:50});
+		}else{
+			$("input[name='chineseName']").rules("remove");
+			$("input[name='englishName']").rules("remove");
+		}
+	};
+	
+	var valid_postponement = function(currendDate){ //currendDate和limitedDate是2002-12-18格式 ,currendDate为当前输入时间,limitedDate为限制时间
+		if($("input[name='selectIssue'][type='checkbox'][value='06']").attr("checked")){
+			$("input[name='newDate1']").rules("add", {required:true, dateISO: true, notEqualTo: "#planEndDate"});
+			//延期时间限制
+//			var cdate, ldate, pdate;
+//			if(limitedDate != null && limitedDate != ""){
+//				cdate = currendDate.replace(/-/g, "/"); 
+//				ldate = limitedDate.replace(/-/g, "/"); 
+//				pdate = $("#planEndDate").val().replace(/-/g, "/"); 
+//				cdate = new Date(cdate);
+//				ldate = new Date(ldate);
+//				pdate = new Date(pdate);
+//				var days1 = ldate.getTime() - cdate.getTime();			
+//				var days2 = cdate.getTime() - pdate.getTime();
+//				var time1 = parseInt(days1/(1000 * 60 * 60 * 24));
+//				var time2 = parseInt(days2/(1000 * 60 * 60 * 24));
+//				if(time1 < 0){
+//					alert("延期时间不可超过一年！");
+//					return false;
+//				}
+//				if(time2 < 0){
+//					alert("延期时间不可小于计划时间！");
+//					return false;
+//				}
+//			}
+			var cdate, pdate;
+			if($("#planEndDate").val() != null && $("#planEndDate").val() != ""){
+				cdate = currendDate.replace(/-/g, "/"); 
+				pdate = $("#planEndDate").val().replace(/-/g, "/"); 
+				cdate = new Date(cdate);
+				pdate = new Date(pdate);
+				var days2 = cdate.getTime() - pdate.getTime();
+				var time2 = parseInt(days2/(1000 * 60 * 60 * 24));
+				if(time2 < 0){
+					alert("延期时间不可小于计划时间！");
+					return false;
+				}
+			}
+//			if(editFlag == 1){
+//				$("input[name='postponementPlanFile']").rules("add", {required:true});
+//			}
+			return true;
+		}else{
+			$("input[name='newDate1']").rules("remove");
+			if(editFlag == 1){
+				$("input[name='postponementPlanFile']").rules("remove");
+			}
+			return true;
+		}
+	};
+	
+	var valid_productType = function(){
+		if($("input[name='selectIssue'][type='checkbox'][value='03']").attr("checked")){//变更成果形式
+			$("input[name='selectProductType']").rules("add",  {required:true});
+			var $other = $("input[name='selectProductType'][type='checkbox'][value='06']");
+			if($other.attr("checked") == true){
+				$("input[name='productTypeOther']").rules("add", {required:true, maxlength:100, keyWords:true });
+			}else{
+				$("input[name='productTypeOther']").rules("remove");
+			}
+		}else{
+			$("input[name='selectProductType']").rules("remove");
+		}
+		var $other = $("input[name='selectProductType'][type='checkbox'][value='06']");
+		if($other.attr("checked") == true){
+			$("input[name='productTypeOther']").rules("add", {required:true, maxlength:100, keyWords:true });
+		}else{
+			$("input[name='productTypeOther']").rules("remove");
+		}
+	};
+	
+	exports.valid = function() {
+		valid();
+	};
+	exports.valid_changeAgency = function() {
+		valid_changeAgency();
+	};
+	exports.valid_productType = function() {
+		valid_productType();
+	};
+	exports.valid_changeName = function() {
+		valid_changeName();
+	};
+	exports.valid_postponement = function(date) {
+		return valid_postponement(date);
+	};
+	exports.valid_changeMember1 = function() {
+		valid_changeMember1();
+	};
+	exports.valid_changeMember2 = function() {
+		valid_changeMember2();
+	};
+});

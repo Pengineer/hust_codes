@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Expert">
+	<insert id="insert"  parameterType="Expert"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_EXPERT 
+	   		(
+	   		 C_ID,
+	   		 C_NAME,
+	   		 C_USED_NAME,
+	   		 C_GENDER, 
+			 C_ETHNIC,
+			 C_BIRTHDAY,
+			 C_IDCARD_TYPE,
+			 C_IDCARD_NUMBER,
+			 C_MOBILE_PHONE,
+			 C_EMAIL,
+			 C_HOMEPAGE,
+			 C_HOME_PHONE,
+			 C_HOME_FAX,
+			 C_HOME_ADDRESS,
+			 C_HOME_POSTCODE,
+			 C_OFFICE_PHONE,
+			 C_OFFICE_FAX,
+			 C_OFFICE_ADDRESS,
+			 C_OFFICE_POSTCODE,
+			 C_COMPANY,
+			 C_DEPARTMENT,
+			 C_JOB,
+			 C_SPECIALITY_TITLE,
+			 C_POSTDOCTOR,
+			 C_PARTTIME,
+			 C_LAST_EDUCATION,
+			 C_DEGREE,
+			 C_FOREIGN_LANGUAGE,
+			 C_RESEARCH_FIELD,
+			 C_DISCIPLINE,
+			 C_INTRODUCTION,
+			 C_BANK_NAME,
+			 C_BANK_BRANCH,
+			 C_BANK_CUP_NUMBER,
+			 C_BANK_ACCOUNT_NAME,
+			 C_CREATE_DATE
+	   		 )
+        	values 
+            (
+             #{id},
+             #{name},
+             #{usedname,jdbcType=VARCHAR},
+             #{gender,jdbcType=VARCHAR},
+             #{ethnic,jdbcType=VARCHAR},
+             #{birthday,jdbcType=DATE},
+             #{idcardType,jdbcType=VARCHAR},
+             #{idcardNumber,jdbcType=VARCHAR},
+             #{mobilePhone,jdbcType=VARCHAR},
+             #{email,jdbcType=VARCHAR},
+             #{homepage,jdbcType=VARCHAR},
+             #{homePhone,jdbcType=VARCHAR},
+             #{homeFax,jdbcType=VARCHAR},
+             #{homeAddress,jdbcType=VARCHAR},
+             #{homePostcode,jdbcType=VARCHAR},
+             #{officePhone,jdbcType=VARCHAR},
+             #{officeFax,jdbcType=VARCHAR},
+             #{officeAddress,jdbcType=VARCHAR},
+             #{officePostcode,jdbcType=VARCHAR},
+             #{company,jdbcType=VARCHAR},
+             #{department,jdbcType=VARCHAR},
+             #{job,jdbcType=VARCHAR},
+             #{specialityTitle,jdbcType=VARCHAR},
+             #{postdoctor,jdbcType=INTEGER},
+             #{parttime,jdbcType=VARCHAR},
+             #{lastEducation,jdbcType=VARCHAR},
+             #{degree,jdbcType=VARCHAR},
+             #{foreignLanguage,jdbcType=VARCHAR},
+             #{researchField,jdbcType=VARCHAR},
+             #{discipline,jdbcType=VARCHAR},
+             #{introduction,jdbcType=VARCHAR},
+             #{bankName,jdbcType=VARCHAR},
+             #{bankBranch,jdbcType=VARCHAR},
+             #{bankCupNumber,jdbcType=VARCHAR},
+             #{bankAccountName,jdbcType=VARCHAR},
+             #{createDate}
+        	)
+     </insert>
+     
+     <update id="update" parameterType="string">
+		update T_EXPERT set
+	   		 C_NAME = #{name,jdbcType=VARCHAR},
+	   		 C_USED_NAME = #{usedname,jdbcType=VARCHAR},
+	   		 C_GENDER = #{gender,jdbcType=VARCHAR},
+			 C_ETHNIC = #{ethnic,jdbcType=VARCHAR},
+			 C_BIRTHDAY = #{birthday,jdbcType=DATE},
+			 C_IDCARD_TYPE = #{idcardType,jdbcType=VARCHAR},
+			 C_IDCARD_NUMBER = #{idcardNumber,jdbcType=VARCHAR},
+			 C_MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+			 C_EMAIL = #{email,jdbcType=VARCHAR},
+			 C_HOMEPAGE = #{homepage,jdbcType=VARCHAR},
+			 C_HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+			 C_HOME_FAX = #{homeFax,jdbcType=VARCHAR},
+			 C_HOME_ADDRESS = #{homeAddress,jdbcType=VARCHAR},
+			 C_HOME_POSTCODE = #{homePostcode,jdbcType=VARCHAR},
+			 C_OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+			 C_OFFICE_FAX = #{officeFax,jdbcType=VARCHAR},
+			 C_OFFICE_ADDRESS = #{officeAddress,jdbcType=VARCHAR},
+			 C_OFFICE_POSTCODE = #{officePostcode,jdbcType=VARCHAR},
+			 C_COMPANY = #{company,jdbcType=VARCHAR},
+			 C_DEPARTMENT = #{department,jdbcType=VARCHAR},
+			 C_JOB = #{job,jdbcType=VARCHAR},
+			 C_SPECIALITY_TITLE = #{specialityTitle,jdbcType=VARCHAR},
+			 C_POSTDOCTOR = #{postdoctor,jdbcType=INTEGER},
+			 C_PARTTIME = #{parttime,jdbcType=VARCHAR},
+			 C_LAST_EDUCATION = #{lastEducation,jdbcType=VARCHAR},
+			 C_DEGREE = #{degree,jdbcType=VARCHAR},
+			 C_FOREIGN_LANGUAGE = #{foreignLanguage,jdbcType=VARCHAR},
+			 C_RESEARCH_FIELD = #{researchField,jdbcType=VARCHAR},
+			 C_DISCIPLINE = #{discipline,jdbcType=VARCHAR},
+			 C_INTRODUCTION = #{introduction,jdbcType=VARCHAR},
+			 C_BANK_NAME = #{bankName,jdbcType=VARCHAR},
+			 C_BANK_BRANCH = #{bankBranch,jdbcType=VARCHAR},
+			 C_BANK_CUP_NUMBER = #{bankCupNumber,jdbcType=VARCHAR},
+			 C_BANK_ACCOUNT_NAME = #{bankAccountName,jdbcType=VARCHAR},
+			 C_UPDATE_DATE = #{updateDate}
+		where C_ID = #{id}
+	</update>
+     
+     <delete id="delete" parameterType="java.lang.String">
+     	delete from t_expert where c_id = #{id}
+     </delete>
+
+	<select id="load" parameterType="String" resultMap="expertResult">
+		SELECT
+			expert.C_ID as expert_id,
+			expert.C_NAME as expert_name,
+			expert.C_USED_NAME as expert_usedname,
+			expert.C_GENDER as expert_gender,
+			expert.C_ETHNIC as expert_ethnic,
+			expert.C_BIRTHDAY as expert_birthday,
+			expert.C_IDCARD_TYPE as expert_idcardType,
+			expert.C_IDCARD_NUMBER as expert_idcardNumber,
+			expert.C_MOBILE_PHONE as expert_mobilePhone,
+			expert.C_EMAIL as expert_email,
+			expert.C_HOMEPAGE as expert_homepage,
+			expert.C_HOME_PHONE as expert_homePhone,
+			expert.C_HOME_FAX as expert_homeFax,
+			expert.C_HOME_ADDRESS as expert_homeAddress,
+			expert.C_HOME_POSTCODE as expert_homePostcode,
+			expert.C_OFFICE_PHONE as expert_officePhone,
+			expert.C_OFFICE_FAX as expert_officeFax,
+			expert.C_OFFICE_ADDRESS as expert_officeAddress,
+			expert.C_OFFICE_POSTCODE as expert_officePostcode,
+			expert.C_COMPANY as expert_company,
+			expert.C_DEPARTMENT as expert_department,
+			expert.C_JOB as expert_job,
+			expert.C_SPECIALITY_TITLE as expert_specialityTitle,
+			expert.C_POSTDOCTOR as expert_postdoctor,
+			expert.C_PARTTIME as expert_parttime,
+			expert.C_LAST_EDUCATION as expert_lastEducation,
+			expert.C_DEGREE as expert_degree,
+			expert.C_FOREIGN_LANGUAGE as expert_foreignLanguage,
+			expert.C_RESEARCH_FIELD as expert_researchField,
+			expert.C_DISCIPLINE as expert_discipline,
+			expert.C_INTRODUCTION as expert_introduction,
+			expert.C_BANK_NAME as expert_bankName,
+			expert.C_BANK_BRANCH as expert_bankBranch,
+			expert.C_BANK_CUP_NUMBER as expert_bankCupNumber,
+			expert.C_BANK_ACCOUNT_NAME as expert_bankAccountName,
+			expert.C_CREATE_DATE as expert_createDate,
+			expert.C_UPDATE_DATE as expert_updateDate
+		FROM T_EXPERT expert
+		where expert.C_ID = #{id}
+	</select>
+	    
+	<select id="list" parameterType="map" resultMap="expertResult">
+		SELECT
+			expert.C_ID as expert_id,
+			expert.C_NAME as expert_name,
+			expert.C_USED_NAME as expert_usedname,
+			expert.C_GENDER as expert_gender,
+			expert.C_ETHNIC as expert_ethnic,
+			expert.C_BIRTHDAY as expert_birthday,
+			expert.C_IDCARD_TYPE as expert_idcardType,
+			expert.C_IDCARD_NUMBER as expert_idcardNumber,
+			expert.C_MOBILE_PHONE as expert_mobilePhone,
+			expert.C_EMAIL as expert_email,
+			expert.C_HOMEPAGE as expert_homepage,
+			expert.C_HOME_PHONE as expert_homePhone,
+			expert.C_HOME_FAX as expert_homeFax,
+			expert.C_HOME_ADDRESS as expert_homeAddress,
+			expert.C_HOME_POSTCODE as expert_homePostcode,
+			expert.C_OFFICE_PHONE as expert_officePhone,
+			expert.C_OFFICE_FAX as expert_officeFax,
+			expert.C_OFFICE_ADDRESS as expert_officeAddress,
+			expert.C_OFFICE_POSTCODE as expert_officePostcode,
+			expert.C_COMPANY as expert_company,
+			expert.C_DEPARTMENT as expert_department,
+			expert.C_JOB as expert_job,
+			expert.C_SPECIALITY_TITLE as expert_specialityTitle,
+			expert.C_POSTDOCTOR as expert_postdoctor,
+			expert.C_PARTTIME as expert_parttime,
+			expert.C_LAST_EDUCATION as expert_lastEducation,
+			expert.C_DEGREE as expert_degree,
+			expert.C_FOREIGN_LANGUAGE as expert_foreignLanguage,
+			expert.C_RESEARCH_FIELD as expert_researchField,
+			expert.C_DISCIPLINE as expert_discipline,
+			expert.C_INTRODUCTION as expert_introduction,
+			expert.C_BANK_NAME as expert_bankName,
+			expert.C_BANK_BRANCH as expert_bankBranch,
+			expert.C_BANK_CUP_NUMBER as expert_bankCupNumber,
+			expert.C_BANK_ACCOUNT_NAME as expert_bankAccountName,
+			expert.C_CREATE_DATE as expert_createDate,
+			expert.C_UPDATE_DATE as expert_updateDate
+		FROM T_EXPERT expert 
+	</select>
+	
+	<resultMap id="expertResult" type="Expert" >
+		<id property="id" column="expert_id" />
+		<result property="name" column="expert_name" />
+		<result property="usedname" column="expert_usedname" />
+		<result property="gender" column="expert_gender" />
+		<result property="ethnic" column="expert_ethnic" />
+		<result property="birthday" column="expert_birthday" />
+		<result property="idcardType" column="expert_idcardType" />
+		<result property="idcardNumber" column="expert_idcardNumber" />
+		<result property="mobilePhone" column="expert_mobilePhone" />
+		<result property="email" column="expert_email" />
+		<result property="homepage" column="expert_homepage" />
+		<result property="homePhone" column="expert_homePhone" />
+		<result property="homeFax" column="expert_homeFax" />
+		<result property="homeAddress" column="expert_homeAddress" />
+		<result property="homePostcode" column="expert_homePostcode" />
+		<result property="officePhone" column="expert_officePhone" />
+		<result property="officeFax" column="expert_officeFax" />
+		<result property="officeAddress" column="expert_officeAddress" />
+		<result property="officePostcode" column="expert_officePostcode" />
+		<result property="company" column="expert_company" />
+		<result property="department" column="expert_department" />
+		<result property="job" column="expert_job" />
+		<result property="specialityTitle" column="expert_specialityTitle" />
+		<result property="postdoctor" column="expert_postdoctor" />
+		<result property="parttime" column="expert_parttime" />
+		<result property="lastEducation" column="expert_lastEducation" />
+		<result property="degree" column="expert_degree" />
+		<result property="foreignLanguage" column="expert_foreignLanguage" />
+		<result property="researchField" column="expert_researchField" />
+		<result property="discipline" column="expert_discipline" />
+		<result property="introduction" column="expert_introduction" />
+		<result property="bankName" column="expert_bankName" />
+		<result property="bankBranch" column="expert_bankBranch" />
+		<result property="bankCupNumber" column="expert_bankCupNumber" />
+		<result property="bankAccountName" column="expert_bankAccountName" />
+		<result property="createDate" column="expert_createDate" />
+		<result property="updateDate" column="expert_updateDate" />
+	</resultMap>
+</mapper> 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="statistic" extends="main" namespace="/statistic">
+		<action name="showChart" class="baseStatisticAction" method="showChart"></action>
+	    
+	    <action name="drillDown" class="baseStatisticAction" method="drillDown">
+  			<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="list" class="baseStatisticAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="changePageSize" class="baseStatisticAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="baseStatisticAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="drillLevel" class="baseStatisticAction" method="drillLevel">
+  			<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="updateDW" class="baseStatisticAction" method="updateDW">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="generateImage" class="baseStatisticAction" method="generateImage">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="downloadImage" class="baseStatisticAction" method="downloadImage">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetImage</param>
+				<param name="contentType">image/jpeg</param>
+				<param name="contentDisposition">attachment;filename="${filepath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	     <action name="exportExcel" class="baseStatisticAction" method="exportExcel">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+	</package>
+</struts>

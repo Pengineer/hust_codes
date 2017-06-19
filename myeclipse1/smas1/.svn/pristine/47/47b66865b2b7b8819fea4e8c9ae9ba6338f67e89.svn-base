@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="awardGroupMatch" extends="global" namespace="/award/moeSocial/awardGroupMatch">
+	
+		<!-- 进入列表 -->
+		<action name="toList" class="awardGroupMatchAction" method="toList">
+			<result>/award/moeSocial/awardGroupMatch/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="awardGroupMatchAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="awardGroupMatchAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="awardGroupMatchAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变显示条目 -->
+		<action name="changePageSize" class="awardGroupMatchAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="awardGroupMatchAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 上一页 -->
+		<action name="prev" class="awardGroupMatchAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一页 -->
+		<action name="next" class="awardGroupMatchAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="awardGroupMatchAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="createExpertTree" class="awardGroupMatchAction" method="createExpertTree">
+			<result type="json"><param name="root">nodesInfo</param></result>
+		</action>
+		
+
+		<action name="toSelectExpert" class="awardGroupMatchAction" method="toSelectExpert">
+		 	<result>/award/moeSocial/selectReviewer.jsp</result>
+		</action>
+		
+		<action name="searchExpert" class="awardGroupMatchAction" method="searchExpert">
+			<result>/award/moeSocial/expertTree.jsp</result>
+		</action>
+		
+		<action name="showExpertTree" class="awardGroupMatchAction" method="showExpertTree">
+			<result>/award/moeSocial/expertTree.jsp</result>
+		</action>
+		
+		<!-- 自动匹配 -->
+		<action name="matchExpert" class="awardGroupMatchAction" method="matchExpert">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			 	<param name="isReviewable">1</param>
+			</result>
+		</action>
+		
+		<!-- 手工匹配专家 -->
+		<action name="reMatchExpert" class="awardGroupMatchAction" method="reMatchExpert">
+			<result name="one" type="redirectAction">
+				<param name="actionName">toView</param>
+			 	<param name="entityId">${entityId}</param>
+			 	<param name="update">1</param>
+			 	<param name="listType">1</param>
+			 	<param name="isReviewable">${isReviewable}</param>
+			 	<!-- businessType是否一定需要 ？？？ -->
+			 	<param name="businessType">${businessType}</param>
+			</result>
+			<result name="more" type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			 	<param name="entityId">${entityId}</param>
+			 	<param name="listType">1</param>
+			 	<param name="isReviewable">${isReviewable}</param>
+			 	<param name="businessType">${businessType}</param>
+			</result>
+		</action>
+		
+		<!-- 清空匹配 -->
+		<action name="toDeleteMatches" class="awardGroupMatchAction" method="toDeleteMatches">
+			<result>/award/moeSocial/popDeleteMatches.jsp</result>
+		</action>
+		<action name="deleteMatches" class="awardGroupMatchAction" method="deleteMatches">
+			<result type="redirectAction">
+			    <param name="actionName">toList</param>
+			    <param name="update">1</param>
+			    <param name="listType">1</param>
+			    <param name="isReviewable">1</param>
+			</result>
+		</action>
+		
+		<!-- 弹出层导出 -->
+		<action name="popExport" class="awardGroupMatchAction" method="popExport">
+			<result>/award/moeSocial/popExport.jsp</result>
+		</action>
+		
+		<!-- 导出奖励评审信息 -->
+		<action name="exportAwardReviewer" class="awardGroupMatchAction" method="exportAwardReviewer">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">awardReviewerFile</param>
+			</result>
+		</action>
+		
+		<!-- 导出匹配更新 -->
+		<action name="exportMatchUpdate" class="awardGroupMatchAction" method="exportMatchUpdate">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">matchUpdateFile</param>
+			</result>
+		</action>
+		
+		
+	</package>		
+</struts>

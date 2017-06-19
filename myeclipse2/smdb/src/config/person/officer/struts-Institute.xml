@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="instituteOfficer" extends="main" namespace="/person/instituteOfficer">
+
+		<action name="toList" class="instituteOfficerAction" method="toList">
+			<result>/person/officer/institute/list.jsp</result>
+		</action>
+
+		<action name="list" class="instituteOfficerAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="instituteOfficerAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="instituteOfficerAction" method="toAdvSearch"> -->
+<!-- 			<result>/person/officer/institute/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="instituteOfficerAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instituteOfficerAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="instituteOfficerAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="instituteOfficerAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toAdd" class="instituteOfficerAction" method="toAdd">
+			<result>/person/officer/institute/add.jsp</result>
+		</action>
+
+		<action name="add" class="instituteOfficerAction" method="add">
+			<result type="redirect">/person/instituteOfficer/toView.action?entityId=${entityId}</result>
+			<result name="input">/person/officer/institute/add.jsp</result>
+		</action>
+
+		<action name="delete" class="instituteOfficerAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toView" class="instituteOfficerAction" method="toView">
+			<result>/person/officer/institute/view.jsp</result>
+		</action>
+
+		<action name="view" class="instituteOfficerAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="instituteOfficerAction" method="toModify">
+			<result>/person/officer/institute/modify.jsp</result>
+		</action>
+		<action name="modify" class="instituteOfficerAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/officer/institute/modify.jsp</result>
+		</action>
+
+		<action name="prev" class="instituteOfficerAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="instituteOfficerAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toggleKey" class="instituteOfficerAction" method="toggleKey">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 人员合并 -->
+		<action name="toMerge" class="instituteOfficerAction" method="toMerge">
+			<result>/person/officer/institute/merge.jsp</result>
+		</action>
+		
+		<action name="fetchMergeData" class="instituteOfficerAction" method="fetchMergeData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="merge" class="instituteOfficerAction" method="merge">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/officer/institute/merge.jsp</result>
+		</action>
+		
+		<action name="checkIfIsOfficer" class="instituteOfficerAction" method="checkIfIsOfficer">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+
+</struts>

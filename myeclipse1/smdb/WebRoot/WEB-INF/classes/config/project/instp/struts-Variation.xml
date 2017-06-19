@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="instpVariationApply" extends="main" namespace="/project/instp/variation/apply">
+
+		<action name="toList" class="instpVariationApplyAction" method="toList">
+			<result>/project/instp/variation/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="instpVariationApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="instpVariationApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+
+		<action name="simpleSearch" class="instpVariationApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="instpVariationApplyAction" method="toAdvSearch">
+			<result>/project/instp/variation/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="instpVariationApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpVariationApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="instpVariationApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="instpVariationApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="instpVariationApplyAction" method="toAdd">
+			<result>/project/instp/variation/apply/add.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="add" class="instpVariationApplyAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+				<param name="selectedTab">variation</param>
+			</result>
+			<result name="input">/project/instp/variation/apply/add.jsp</result>
+		</action>
+		<!-- 保存 -->
+		<action name="save" class="instpVariationApplyAction" method="save">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+				<param name="selectedTab">variation</param>
+			</result>
+			<result name="input">/project/instp/variation/apply/add.jsp</result>
+		</action>
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="instpVariationApplyAction" method="toModify">
+			<result>/project/instp/variation/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="modify" class="instpVariationApplyAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+				<param name="selectedTab">variation</param>
+			</result>
+			<result name="input">/project/instp/variation/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 提交 -->
+		<action name="submit" class="instpVariationApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="instpVariationApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddResult" class="instpVariationApplyAction" method="toAddResult">
+		 	 <result>/project/instp/variation/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="instpVariationApplyAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="choose" type="json"><param name="root">jsonMap</param></result>
+			<result name="input">/project/instp/variation/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toAddVarFee" class="instpVariationApplyAction" method="toAddVarFee">
+			<result>/project/popAddVarFee.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="instpVariationApplyAction" method="toModifyResult">
+		 	 <result>/project/instp/variation/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="modifyResult" class="instpVariationApplyAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="choose" type="json"><param name="root">jsonMap</param></result>
+			<result name="input">/project/instp/variation/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submitResult" class="instpVariationApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toUploadFileResult" class="instpVariationApplyAction" method="toUploadFileResult">
+		  <result>/project/instp/variation/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="instpVariationApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下载模板 -->
+		<action name="downloadTemplate" class="instpVariationApplyAction" method="downloadTemplate">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetTemplate</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    <action name="validateTemplate" class="instpVariationApplyAction" method="validateTemplate">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	    <!-- 下载申请 -->
+	    <action name="downloadApply" class="instpVariationApplyAction" method="downloadApply">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+		<action name="validateFile" class="instpVariationApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  	
+	  	<!-- 下载延期项目计划书 -->
+	    <action name="downloadPostponement" class="instpVariationApplyAction" method="downloadPostponement">
+	    	<result name="success" type="stream">
+				<param name="inputName">postponementFile</param>
+				<param name="contentType">application/msword</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+		<action name="validatePostponementFile" class="instpVariationApplyAction" method="validatePostponementFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  
+		<!-- 进入查看页面 -->
+		<action name="toView" class="instpVariationApplyAction" method="toView">
+	        <result>/project/instp/view.jsp</result>
+	    </action>
+	    
+		<!-- 查看 -->
+		<action name="view" class="instpVariationApplyAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看项目负责人详情 -->
+		<action name="viewDir" class="instpVariationApplyAction" method="viewDir">
+			<result>/project/instp/variation/apply/popViewDir.jsp</result>
+		</action>
+		
+		<!-- 查看变更其他详细信息 -->
+		<action name="viewOther" class="instpVariationApplyAction" method="viewOther">
+			<result>/project/instp/variation/apply/popViewOther.jsp</result>
+		</action>
+		
+		<!-- 查看变更经费信息 -->
+		<action name="viewFee" class="instpVariationApplyAction" method="viewFee">
+			<result>/project/popViewFee.jsp</result>
+		</action>
+		
+		<!-- 查看上条 -->
+		<action name="prev" class="instpVariationApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="instpVariationApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 导出列表 -->
+
+	   	<action name="exportOverView" class="instpVariationApplyAction" method="exportOverView">
+	   	    <result name="success">/project/instp/variation/apply/popExportOverView.jsp</result>
+	   	</action>
+	   	
+	   	<action name="confirmExportOverView" class="instpVariationApplyAction" method="confirmExportOverView">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	   	
+	   	<!-- 发布 -->
+		<action name="batchPublish" class="instpVariationApplyAction" method="batchPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toBatchPublish" class="instpVariationApplyAction" method="toBatchPublish">
+			<result >/project/popPublish.jsp</result>
+		</action>
+		<!-- 改变发布状态 -->
+		<action name="switchPublish" class="instpVariationApplyAction" method="switchPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toPopEditMember" class="instpVariationApplyAction" method="toPopEditMember">
+			<result>/project/instp/variation/apply/popMemberDetail.jsp</result>
+		</action>
+	</package>
+	
+	<package name="instpVariationAudit" extends="main" namespace="/project/instp/variation/applyAudit">
+	
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="instpVariationApplyAuditAction" method="toAdd">
+			<result name="success">/project/instp/variation/applyAudit/popAdd.jsp</result>
+		</action>
+		<!-- 保存 -->
+		<action name="add" class="instpVariationApplyAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="instpVariationApplyAuditAction" method="toModify">
+			<result>/project/instp/variation/applyAudit/popModify.jsp</result>
+		</action>
+		<action name="modify" class="instpVariationApplyAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 查看 -->
+		<action name="view" class="instpVariationApplyAuditAction" method="view">
+			<result>/project/instp/variation/applyAudit/popView.jsp</result>
+		</action>
+		<!-- 提交 -->
+		<action name="submit" class="instpVariationApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 退回 -->
+		<action name="back" class="instpVariationApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+	
+</struts>

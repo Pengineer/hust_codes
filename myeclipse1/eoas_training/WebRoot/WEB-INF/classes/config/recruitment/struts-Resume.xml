@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="resume" extends="default" namespace="/resume">
+		<!-- 创建简历 -->
+		<action name="toAddResume" class="resumeAction" method="toAddResume">
+			<result>/jsp/recruitment/resume/addResume.jsp</result>
+		</action>
+		
+		<action name="addResume" class="resumeAction" method="addResume">
+			<result>/jsp/recruitment/resume/listMyResume.jsp</result>
+		</action>
+		
+		<!-- 删除简历 -->
+		<action name="deleteResume" class="resumeAction" method="deleteResume">
+			<result>/jsp/recruitment/resume/list.jsp</result>
+		</action>
+		
+		<!-- 修改简历 -->
+		<action name="toModifyResume" class="resumeAction" method="toModifyResume">
+			<result>/jsp/recruitment/resume/modifyMyResume.jsp</result>
+		</action>
+		<action name="modifyResume" class="resumeAction" method="modifyResume">
+			<result>/jsp/recruitment/resume/listMyResume.jsp</result>
+		</action>
+
+		<!-- 查看我的简历详情 -->
+		<action name="view" class="resumeAction" method="view">
+			<result>/jsp/recruitment/resume/view.jsp</result>
+		</action>
+		
+		<!-- 进入我的简历列表 -->
+		<action name="toListMyResume" class="resumeAction" method="toListMyResume">
+			<result>/jsp/recruitment/resume/listMyResume.jsp</result>
+		</action>
+		<action name="listMyResume" class="resumeAction" method="listMyResume">
+			<result type="json" >
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<!-- 进入所有简历列表 -->
+		<action name="toList" class="resumeAction" method="toList">
+			<result>/jsp/recruitment/resume/list.jsp</result>
+		</action>
+		<action name="list" class="resumeAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<!--  -->
+		<action name="listPositionResume" class="positionResumeAction" method="listPositionResume">
+			<result>/jsp/recruitment/resume/listPositionResume.jsp</result>
+		</action>
+		<action name="toListInnerTalent" class="resumeAction" method="toListInnerTalent">
+			<result>/jsp/recruitment/resume/listInnerTalent.jsp</result>
+		</action>
+		<action name="listInnerTalent" class="resumeAction" method="listInnerTalent">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		<action name="listOuterTalent" class="resumeAction" method="listOuterTalent">
+			<result>/jsp/recruitment/resume/listOuterTalent.jsp</result>
+		</action>
+		<action name="addTalent" class="resumeAction" method="addTalent">
+			<result>/jsp/recruitment/record/listRecord.jsp</result>
+		</action>
+	</package>
+</struts>

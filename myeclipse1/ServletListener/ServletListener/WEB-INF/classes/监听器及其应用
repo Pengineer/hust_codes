@@ -1,0 +1,20 @@
+最早接触监听器是在编写GUI时用到的，这里介绍的是Servlet监听器；
+
+监听器的注册：在web.xml文件中注册
+
+ServletListener可以监听三个域：
+  1，ServletContext域，由ServletContextListner接口监听（Context的建立与销毁）。
+     应用：（1）在有框架的web工程中，框架都要随着web应用程序的启动而启动，因此我们可以把框架的启动放在Context监听器里面。
+                 （2）web应用程序启动后，每隔一段时间都要执行一段代码，这时web里面就会使用定时器，而定时器就是写在这个监听器里面（非常实用）。
+                 （3）数据库表的创建，项目初始化等等。
+                 
+  2，HttpSession域，由HttpSessionListener接口监听（Session的创建与销毁）。
+  	粗略统计在线人数
+  
+  
+  3，HttpServletRequest域，由ServletRequestListener接口监听（Request的创建与销毁）。
+  	监测网站的访问次数
+  	
+  	
+Servlet还可以监听三个域的属性的变化。
+  

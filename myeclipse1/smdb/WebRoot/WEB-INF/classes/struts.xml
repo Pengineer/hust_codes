@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<include file="config/struts-ToIndex.xml" />
+	<include file="config/struts-Login.xml" />
+	<include file="config/struts-NavigationAction.xml" />
+	<include file="config/struts-Swfupload.xml" />
+	<include file="config/struts-Upload.xml" />
+	
+	<include file="config/struts-Selfspace.xml" />
+
+	<include file="config/system/struts-Log.xml" />
+	<include file="config/system/struts-LogEmbed.xml" />
+	
+	<include file="config/system/monitor/struts-Visitor.xml" />
+	
+	<include file="config/system/news/struts-Inner.xml" />
+	<include file="config/system/news/struts-Outer.xml" />
+	
+	<include file="config/system/notice/struts-Inner.xml" />
+	<include file="config/system/notice/struts-Outer.xml" />
+	
+	<include file="config/system/struts-InBox.xml" />
+	
+	<include file="config/system/message/struts-Inner.xml" />
+	<include file="config/system/message/struts-Outer.xml" />
+	
+	<include file="config/system/search/struts-TotalSearch.xml" />
+	
+	<include file="config/system/struts-Mail.xml" />
+
+	<include file="config/system/struts-SystemOption.xml" />
+	<include file="config/system/struts-SystemConfig.xml" />
+	
+	<include file="config/system/struts-Execution.xml" />
+	<include file="config/system/struts-Query.xml" />
+	
+	<include file="config/system/interfaces/struts-SinossServer.xml" />
+	<include file="config/system/interfaces/struts-SinossClient.xml" />
+	
+	<include file="config/system/doc/struts-Doc.xml"/>
+	
+	<include file="config/dm/struts-UniversityVariation.xml" />
+	<include file="config/dm/struts-DupCheck.xml" />
+	
+	<include file="config/dataProcessing/struts-DataImporter.xml" />
+	<include file="config/dataProcessing/struts-DataProcessing.xml" />
+	
+	<include file="config/taskConfig/struts-TaskConfig.xml" />
+	
+	<include file="config/pop/struts-View.xml" />
+	
+	<include file="config/system/business/struts-Business.xml" />
+	
+	<include file="config/pop/select/struts-Ministry.xml" />
+	<include file="config/pop/select/struts-Province.xml" />
+	<include file="config/pop/select/struts-University.xml" />
+	<include file="config/pop/select/struts-MinistryGroup.xml" />
+	<include file="config/pop/select/struts-ProvinceGroup.xml" />
+	<include file="config/pop/select/struts-UniversityGroup.xml" />
+	<include file="config/pop/select/struts-Department.xml" />
+	<include file="config/pop/select/struts-Institute.xml" />
+	<include file="config/pop/select/struts-Expert.xml" />
+	<include file="config/pop/select/struts-Teacher.xml" />
+	<include file="config/pop/select/struts-Student.xml" />
+	<include file="config/pop/select/struts-Officer.xml" />
+	<include file="config/pop/select/struts-Project.xml" />
+	<include file="config/pop/select/struts-Topic.xml" />
+	<include file="config/pop/select/struts-DisciplineType.xml" />
+	<include file="config/pop/select/struts-RelyDisciplines.xml" />
+	<include file="config/pop/select/struts-EthnicLanguage.xml" />
+	<include file="config/pop/select/struts-ForeignLanguage.xml" />
+	<include file="config/pop/select/struts-IndexType.xml" />
+	<include file="config/pop/select/struts-Publication.xml" />
+	<include file="config/pop/select/struts-ProductType.xml" />
+	<include file="config/pop/select/struts-UngrantedProject.xml" />
+	<include file="config/pop/select/struts-UniversitySubjection.xml" />
+	
+	<include file="config/pop/edit/struts-ProductType.xml" />
+	
+	<include file="config/security/struts-Role.xml" />
+	<include file="config/security/struts-Right.xml" />
+	<include file="config/security/struts-Passport.xml" />
+	
+	<include file="config/security/account/ministry/struts-Main.xml" />
+	<include file="config/security/account/ministry/struts-Sub.xml" />
+	<include file="config/security/account/province/struts-Main.xml" />
+	<include file="config/security/account/province/struts-Sub.xml" />
+	<include file="config/security/account/university/struts-Main.xml" />
+	<include file="config/security/account/university/struts-Sub.xml" />
+	<include file="config/security/account/department/struts-Main.xml" />
+	<include file="config/security/account/department/struts-Sub.xml" />
+	<include file="config/security/account/institute/struts-Main.xml" />
+	<include file="config/security/account/institute/struts-Sub.xml" />
+	<include file="config/security/account/struts-Expert.xml" />
+	<include file="config/security/account/struts-Teacher.xml" />
+	<include file="config/security/account/struts-Student.xml" />
+	
+	<include file="config/person/officer/struts-Ministry.xml" />
+	<include file="config/person/officer/struts-Province.xml" />
+	<include file="config/person/officer/struts-University.xml" />
+	<include file="config/person/officer/struts-Department.xml" />
+	<include file="config/person/officer/struts-Institute.xml" />
+	<include file="config/person/struts-Expert.xml" />
+	<include file="config/person/struts-Teacher.xml" />
+	<include file="config/person/struts-Student.xml" />
+	<include file="config/person/struts-Linkedin.xml" />
+	
+	<include file="config/unit/agency/struts-Ministry.xml" />
+	<include file="config/unit/agency/struts-Province.xml" />
+	<include file="config/unit/agency/struts-University.xml" />
+	<include file="config/unit/struts-Institute.xml" />
+	<include file="config/unit/struts-Department.xml" />
+	<include file="config/unit/struts-Selfspace.xml" />
+	
+	<include file="config/funding/struts-Funding.xml" />
+	<include file="config/funding/struts-FundingList.xml" />
+	<include file="config/funding/struts-FundingBatch.xml" />
+	<include file="config/funding/struts-AgencyFunding.xml" />
+	
+	<include file="config/project/struts-Project.xml" />
+	
+	<include file="config/project/general/struts-Application.xml" />
+	<include file="config/project/general/struts-Anninspection.xml" />
+	<include file="config/project/general/struts-Midinspection.xml" />
+	<include file="config/project/general/struts-Endinspection.xml" />
+	<include file="config/project/general/struts-Variation.xml" />
+	
+	<include file="config/project/key/struts-TopicSelection.xml" />
+	<include file="config/project/key/struts-Application.xml" />
+	<include file="config/project/key/struts-Anninspection.xml" />
+	<include file="config/project/key/struts-Midinspection.xml" />
+	<include file="config/project/key/struts-Endinspection.xml" />
+	<include file="config/project/key/struts-Variation.xml" />
+	
+	<include file="config/project/instp/struts-Application.xml" />
+	<include file="config/project/instp/struts-Anninspection.xml" />
+	<include file="config/project/instp/struts-Midinspection.xml" />
+	<include file="config/project/instp/struts-Endinspection.xml" />
+	<include file="config/project/instp/struts-Variation.xml" />
+	
+	<include file="config/project/post/struts-Application.xml" />
+	<include file="config/project/post/struts-Anninspection.xml" />
+	<include file="config/project/post/struts-Endinspection.xml" />
+	<include file="config/project/post/struts-Variation.xml" />
+	
+	<include file="config/project/entrust/struts-Application.xml" />
+	<include file="config/project/entrust/struts-Endinspection.xml" />
+	<include file="config/project/entrust/struts-Variation.xml" />
+	
+	<include file="config/project/special/struts-Application.xml" />
+	<include file="config/project/special/struts-Anninspection.xml" />
+	<include file="config/project/special/struts-Midinspection.xml" />
+	<include file="config/project/special/struts-Endinspection.xml" />
+	<include file="config/project/special/struts-Variation.xml" />
+	
+	<include file="config/product/struts-Product.xml" />
+	<include file="config/product/struts-Paper.xml" />
+	<include file="config/product/struts-Book.xml" />
+	<include file="config/product/struts-Consultation.xml" />
+	<include file="config/product/struts-Electronic.xml" />
+	<include file="config/product/struts-Patent.xml" />
+	<include file="config/product/struts-OtherProduct.xml" />
+	
+	<include file="config/award/struts-Award.xml" />
+	<include file="config/award/moesocial/struts-Application.xml" />
+	
+	<include file="config/statistic/struts-Statistic.xml" />
+	<include file="config/statistic/struts-Common.xml" />
+	<include file="config/statistic/struts-Custom.xml" />
+	<include file="config/statistic/custom/struts-Project.xml" />
+	<include file="config/statistic/custom/struts-Award.xml" />
+	<include file="config/statistic/custom/struts-Person.xml" />
+	<include file="config/statistic/custom/struts-Unit.xml" />
+	<include file="config/statistic/custom/struts-Product.xml" />
+	<include file="config/statistic/analysis/struts-Project.xml" />
+	
+	<include file="config/dataMining/struts-DataMingResult.xml" />
+	<include file="config/dataMining/hotspot/struts-Hotspot.xml" />
+	<include file="config/dataMining/association/struts-Association.xml" />
+	<include file="config/dataMining/classification/struts-Classification.xml" />
+	
+	<include file="config/comprehensiveAuxiliary/struts-Person.xml" />
+	<include file="config/comprehensiveAuxiliary/struts-Unit.xml" />
+	
+	
+    <include file="config/selfspace/struts-Memo.xml" />
+    
+	<include file="config/mobile/struts-Login.xml" />
+	<include file="config/mobile/struts-Activate.xml" />
+	<include file="config/mobile/struts-Selfspace.xml" />
+	<include file="config/mobile/struts-Setting.xml" />
+	<include file="config/mobile/basis/struts-Person.xml" />
+	<include file="config/mobile/basis/struts-Unit.xml" />
+	<include file="config/mobile/basis/struts-Project.xml" />
+	<include file="config/mobile/basis/struts-Product.xml" />
+	<include file="config/mobile/basis/struts-Award.xml" />
+	<include file="config/mobile/statistic/struts-Common.xml" />
+	<include file="config/mobile/statistic/struts-Custom.xml" />
+	<include file="config/mobile/statistic/struts-Report.xml" />
+	<include file="config/mobile/info/struts-News.xml" />
+	<include file="config/mobile/info/struts-Notice.xml" />
+	<include file="config/mobile/info/struts-Message.xml" />
+	<include file="config/mobile/funding/struts-Funding.xml" />
+	<include file="config/mobile/funding/struts-AgencyFunding.xml" />
+	<include file="config/mobile/funding/struts-FundingList.xml" />
+	<include file="config/mobile/funding/struts-FundingBatch.xml" />
+	
+	<include file="config/struts-Validate.xml" />
+
+	<include file="config/other/struts-Nsfc.xml" />
+	<include file="config/other/struts-Nssf.xml" />
+	
+	<include file="config/portal/struts-Recruit.xml" />
+	
+	<include file="config/management/struts-Management.xml" />
+	<include file="config/management/recruit/struts-Applicant.xml" />
+	<include file="config/management/recruit/struts-Job.xml" />
+	<include file="config/management/recruit/struts-Template.xml" />
+
+	<!--json-default是继承至struts-default的,只是多定义了json相关的result结果和相应拦截器-->
+	<package name="main" extends="json-default">
+
+		<!--定义自己的拦截器,这里是日志拦截器-->
+		<interceptors>
+			<interceptor name="logInterceptor" class="logInterceptor" />
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="logInterceptor" />
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="timer" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="myInterceptorStack" /><!--设为默认-->
+		
+		<global-results>
+			<result name="error">/unknowError.jsp</result>
+			<result name="sqlError">/unknowError.jsp</result>
+			<result name="input">/unknowError.jsp</result>
+			<result name="login" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">toIndex</param>
+			</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="sqlError" exception="java.sql.SQLException" />
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
+	</package>
+
+</struts>

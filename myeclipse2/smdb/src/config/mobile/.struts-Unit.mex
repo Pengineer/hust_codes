@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="mobileUnit" location="50,50" size="170,692">
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="10,520" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+</Struts2Diagram>
+

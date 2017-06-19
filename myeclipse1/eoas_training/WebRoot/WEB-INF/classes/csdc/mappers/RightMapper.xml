@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="csdc.bean.Right">
+
+	<resultMap id="rightResultMap" type="Right" >
+		<id property="id" column="C_ID" />
+		<result property="name" column="C_NAME" />
+		<result property="description" column="C_DESCRIPTION" />
+		<result property="code" column="C_CODE"/>
+		<result property="nodeValue" column="C_NODE_VALUE"/>
+	</resultMap>
+	
+	<!-- id:sql的唯一标示 parameterType:参数类型 resultType:结果类型 -->
+	<!-- 插入一条数据 ById -->
+	<insert id="insert" parameterType="Right" useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_RIGHT (C_ID,C_NAME,C_DESCRIPTION, C_CODE, C_NODE_VALUE) values (#{id,jdbcType=VARCHAR},#{name},#{description},#{code}, #{nodeValue})
+	</insert>
+
+	<!-- 删除Right根据id -->
+	<delete id="delete" parameterType="string">
+		delete from T_RIGHT where C_ID = #{id}
+	</delete>
+
+	<!-- 根据id修改数据 -->
+	<update id="update" parameterType="Right">
+		update T_RIGHT set
+			C_NAME = #{name},
+			C_DESCRIPTION = #{description},
+			C_CODE = #{code},
+			C_NODE_VALUE = #{nodeValue}
+			where C_ID = #{id}
+	</update>
+
+	<!-- 查询所有Right -->
+	<select id="listAll" resultMap="rightResultMap">
+		select * from T_RIGHT
+	</select>
+
+	<!-- 根据ID查询 -->
+	<select id="load" parameterType="string" resultMap="rightResultMap">
+		select * from T_RIGHT where C_ID = #{id}
+	</select>
+	
+	<select id="loadByNodeValue" parameterType="map" resultMap="rightResultMap" >
+		select * from T_RIGHT where C_NODE_VALUE = #{nodeValue}
+	</select>
+	<!-- 查询角色的权限 -->
+	<select id="list" parameterType="map" resultMap="rightResultMap">
+		select * from T_RIGHT 
+			<if test = "roleId != null">
+				where T_RIGHT.C_ID
+			in (select T_ROLE_RIGHT.C_RIGHT_ID from T_ROLE_RIGHT where T_ROLE_RIGHT.C_ROLE_ID = #{roleId})
+			</if>
+			order by T_RIGHT.C_NODE_VALUE asc
+	</select>
+	<!-- 查询帐号的权限 -->
+	<select id="findByMap" parameterType="java.util.Map" resultType="string">
+		select  T_RIGHT.C_CODE from T_RIGHT, T_ROLE_RIGHT, T_ACCOUNT_ROLE
+		  where T_ACCOUNT_ROLE.C_ACCOUNT_ID = #{accountId}
+		  and T_ACCOUNT_ROLE.C_ROLE_ID = T_ROLE_RIGHT.C_ROLE_ID 
+		  and T_ROLE_RIGHT.C_RIGHT_ID = T_RIGHT.C_ID
+	</select>
+
+</mapper>

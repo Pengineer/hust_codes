@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:core="http://jax-ws.dev.java.net/spring/core"
+    xmlns:servlet="http://jax-ws.dev.java.net/spring/servlet"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://jax-ws.dev.java.net/spring/core
+    http://jax-ws.dev.java.net/spring/core.xsd
+    http://jax-ws.dev.java.net/spring/servlet
+    http://jax-ws.dev.java.net/spring/servlet.xsd">
+    
+    <!-- 自动清除垃圾session -->
+	<bean name="clearSessionsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="csdc.tool.SessionContext.ClearIdleSessionsJob" />
+	</bean>
+	
+	<bean id="clearSessionsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="clearSessionsJob" />
+		<property name="cronExpression" value="0 0/5 * * * ?" />
+	</bean>
+
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="clearSessionsTrigger" />
+			</list>
+		</property> 
+	</bean>
+
+	<bean id="logInterceptor" class="csdc.tool.interceptor.LogInterceptor">
+	</bean>
+	
+	<bean id="statisticLogInterceptor" class="csdc.tool.interceptor.StatisticLogInterceptor">
+	</bean>
+	
+ 	<!-- 配置Service -->
+	<bean id="baseService" class="csdc.service.imp.BaseService">
+	</bean>
+
+	<!-- sql版本的baseService(部分方法未实现) -->
+	<bean id="sqlBaseService" class="csdc.service.imp.BaseService">
+		<property name="baseDao" ref="sqlBaseDao" />
+	</bean>
+	
+	<!-- 系统日志 -->
+	<bean id="logService" class="csdc.service.imp.LogService">
+	</bean>
+	
+	<!-- 接口管理 -->
+	<bean id="interfaceService" class="csdc.service.imp.InterfaceService">
+	</bean>
+	
+	<!-- webService管理 -->
+	<bean id="webServiceService" class="csdc.service.webService.client.WebServiceService">
+	</bean>
+	
+	<!-- 新闻管理 -->
+	<bean id="newsService" class="csdc.service.imp.NewsService">
+	</bean>
+	
+	<!-- 通知管理 -->
+	<bean id="noticeService" class="csdc.service.imp.NoticeService">
+	</bean>
+	
+	<!-- 留言管理 -->
+	<bean id="messageService" class="csdc.service.imp.MessageService">
+	</bean>
+	
+	<!-- 站内信管理 -->
+	<bean id="inBoxService" class="csdc.service.imp.InBoxService">
+	</bean>
+	
+	<!-- 邮件管理 -->
+	<bean id="mailService" class="csdc.service.imp.MailService">
+	</bean>
+	
+	<!-- 业务管理 -->
+	<bean id="businessService" class="csdc.service.imp.BusinessService">
+	</bean>
+	
+	<!-- 角色管理 -->
+	<bean id="roleService" class="csdc.service.imp.RoleService">
+	</bean>
+	
+	<!-- 权限管理 -->
+	<bean id="rightService" class="csdc.service.imp.RightService">
+	</bean>
+	
+	<!-- 账号管理 -->
+	<bean id="accountService" class="csdc.service.imp.AccountService">
+	</bean>
+	
+	<!-- 通行证管理 -->
+	<bean id="passportService" class="csdc.service.imp.PassportService">
+	</bean>
+	
+	<!-- 账号管理对外接口 -->
+	<bean id="accountExtService" class="csdc.service.imp.AccountService">
+	</bean>
+	
+	<!-- 人员管理 -->
+	<bean id="personService" class="csdc.service.imp.PersonService">
+	</bean>
+	
+	<!-- 人员管理对外接口 -->
+	<bean id="personExtService" class="csdc.service.imp.PersonService">
+	</bean>
+	
+	<!-- 机构管理-->
+	<bean id="unitService" class="csdc.service.imp.UnitService">
+	</bean>
+	
+	<!-- 机构管理对外接口-->
+	<bean id="unitExtService" class="csdc.service.imp.UnitService">
+	</bean>
+	
+	<!-- 项目管理 -->
+	<bean id="projectService" class="csdc.service.imp.ProjectService">
+	</bean>
+	
+	<!-- 项目管理对外接口 -->
+	<bean id="projectExtService" class="csdc.service.imp.ProjectService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<!-- 一般项目 -->
+	<bean id="generalService" class="csdc.service.imp.GeneralService">
+	</bean>
+	
+	<!-- 重大攻关项目 -->
+	<bean id="keyService" class="csdc.service.imp.KeyService">
+	</bean>
+	
+	<!-- 基地项目 -->
+	<bean id="instpService" class="csdc.service.imp.InstpService">
+	</bean>
+	
+	<!-- 后期资助项目 -->
+	<bean id="postService" class="csdc.service.imp.PostService">
+	</bean>
+	
+	<!-- 委托应急课题 -->
+	<bean id="entrustService" class="csdc.service.imp.EntrustService">
+	</bean>
+	
+	<!-- 成果管理 -->
+	<bean id="productService" class="csdc.service.imp.ProductService">
+	</bean>
+	
+	<!-- 奖励管理 -->
+	<bean id="awardService" class="csdc.service.imp.AwardService">
+	</bean>
+	
+	<!-- 供其它模块的查看 -->
+	<bean id="viewService" class="csdc.service.imp.ViewService">
+	</bean>
+	
+	<!-- 统计分析 -->
+	<bean id="statisticService" class="csdc.service.imp.StatisticService">
+	</bean>
+	
+	<!-- 数据挖掘父业务层 -->
+	<bean id="dataMiningService" class="csdc.service.imp.DataMiningService" />
+	
+	<!-- 数据挖掘之领域热点分析业务层 -->
+	<bean id="hotspotService" class="csdc.service.imp.HotspotService" />
+	
+	<!-- 数据挖掘之关联规则挖掘业务层 -->
+	<bean id="associationService" class="csdc.service.imp.AssociationService" />
+	
+	<!-- 数据挖掘之分类预测挖掘业务层 -->
+	<bean id="classificationService" class="csdc.service.imp.ClassificationService" />
+	
+	<!-- 我的备忘录-->
+	<bean id="memoService" class="csdc.service.imp.MemoService">
+	</bean>
+
+	<!-- mobile管理 -->
+	<bean id="mobileService" class="csdc.service.imp.MobileService">
+	</bean>
+		
+	<!-- mobile人员管理 -->
+	<bean id="mobilePersonService" class="csdc.service.imp.MobilePersonService">
+	</bean>
+	
+	<!-- mobile项目管理 -->
+	<bean id="mobileProjectService" class="csdc.service.imp.MobileProjectService">
+	</bean>
+	
+	<!-- mobile统计分析 -->
+	<bean id="mobileStatisticService" class="csdc.service.imp.MobileStatisticService">
+	</bean>
+	
+	<!-- 基地合并器 -->
+	<bean id="instituteMerger" class="csdc.tool.merger.InstituteMerger" scope="prototype" />
+
+	<!-- 院系合并器 -->
+	<bean id="departmentMerger" class="csdc.tool.merger.DepartmentMerger" scope="prototype" />
+	
+	<!-- 机构合并器 -->
+	<bean id="agencyMerger" class="csdc.tool.merger.AgencyMerger" scope="prototype" />
+
+	<!-- 人员合并器 -->
+	<bean id="personMerger" class="csdc.tool.merger.PersonMerger" scope="prototype" />
+	
+	<!-- 管理人员合并器 -->
+	<bean id="officerMerger" class="csdc.tool.merger.OfficerMerger" scope="prototype" />
+	
+	<!-- 学生合并器 -->
+	<bean id="studentMerger" class="csdc.tool.merger.StudentMerger" scope="prototype" />
+	
+	<!-- 教师合并器 -->
+	<bean id="teacherMerger" class="csdc.tool.merger.TeacherMerger" scope="prototype" />
+	
+	<!-- 外部专家合并器 -->
+	<bean id="expertMerger" class="csdc.tool.merger.ExpertMerger" scope="prototype" />
+			
+	<!-- 拨款管理 -->
+	<bean id="projectFundService" class="csdc.service.imp.ProjectFundService">
+	</bean>
+	
+	<!-- 清单管理 -->
+	<bean id="fundListService" class="csdc.service.imp.FundListService">
+	</bean>
+	
+	<!-- 信息辅助接口 -->
+	<bean id="messageAuxiliaryService" class="csdc.service.imp.MessageAuxiliaryService">
+	</bean>
+	
+	<bean id="auxiliaryService" class="csdc.service.imp.AuxiliaryService">
+	</bean>
+	
+	<!-- DMSS上传接口 -->
+	<bean id="dmssServcie" class="org.csdc.service.imp.DmssService" init-method="connect">
+		<property name="on" value="${dmss.on}" />
+		<property name="url" value="${dmss.url}" />
+		<property name="username" value="${dmss.username}" />
+		<property name="password" value="${dmss.password}" />
+		<property name="timeout" value="${dmss.timeout}" />
+	</bean>
+
+ 	 <bean id="services" class="csdc.service.webService.server.WebServices" scope="prototype">
+   		<property name="sinossWebService" ref="sinossWebService" />
+   		<property name="accountService" ref="accountService" />
+   		<property name="interfaceService" ref="interfaceService" />
+   		<property name="smasWebService" ref="smasWebService" />
+   	</bean> 
+   
+   	<!-- Web服务 -->
+	<bean id="baseWebService" class="csdc.service.webService.server.BaseWebService" />
+	<bean id="sinossWebService" class="csdc.service.webService.server.SinossWebService" />
+	<bean id="smasWebService" class="csdc.service.webService.server.SmasWebService" />
+	
+	<servlet:binding url="/service/webService/*">
+		<servlet:service>
+ 			<core:service bean="#services">  
+                <core:handlers>  
+                    <bean class="csdc.tool.webService.AuthenticationHandler"/>
+                    <bean class="csdc.tool.webService.ServerSignHandler"/> 
+                </core:handlers>   
+            </core:service>  	
+		</servlet:service>
+	</servlet:binding>  
+	
+</beans>

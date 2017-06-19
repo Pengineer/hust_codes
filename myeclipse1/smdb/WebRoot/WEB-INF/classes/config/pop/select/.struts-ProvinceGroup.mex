@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="selectProvinceGroup" location="10,10" size="525,315">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="selectProvinceGroup.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="65,222" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="sort" location="310,222" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="310,117" size="150,62">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="selectProvinceGroup.jsp" path="/pop/select/selectProvinceGroup.jsp" location="589,30" size="150,55" />
+</Struts2Diagram>
+

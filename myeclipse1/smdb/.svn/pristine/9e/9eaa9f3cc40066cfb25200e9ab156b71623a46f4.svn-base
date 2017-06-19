@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="keyAnninspectionAudit" extends="main" namespace="/project/key/anninspection/applyAudit">
+	
+		<action name="toAdd" class="keyAnninspectionApplyAuditAction" method="toAdd">
+	        <result>/project/key/anninspection/applyAudit/popAdd.jsp</result>
+	    </action> 
+	    <action name="add" class="keyAnninspectionApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="toModify" class="keyAnninspectionApplyAuditAction" method="toModify">
+	        <result>/project/key/anninspection/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="modify" class="keyAnninspectionApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="keyAnninspectionApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="keyAnninspectionApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	    <action name="view" class="keyAnninspectionApplyAuditAction" method="view">
+	        <result>/project/key/anninspection/applyAudit/popView.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="keyAnninspectionApply" extends="main" namespace="/project/key/anninspection/apply">
+		
+		<action name="toList" class="keyAnninspectionApplyAction" method="toList">
+			<result>/project/key/anninspection/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="keyAnninspectionApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="keyAnninspectionApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+
+		<action name="simpleSearch" class="keyAnninspectionApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="keyAnninspectionApplyAction" method="toAdvSearch">
+			<result>/project/key/anninspection/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="keyAnninspectionApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="keyAnninspectionApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="keyAnninspectionApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="keyAnninspectionApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="downloadTemplate" class="keyAnninspectionApplyAction" method="downloadTemplate">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetTemplate</param>
+				<param name="contentType">application/zip</param>
+				<param name="contentDisposition">attachment;filename="${filepath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="validateTemplate" class="keyAnninspectionApplyAction" method="validateTemplate">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	    
+		<action name="downloadApply" class="keyAnninspectionApplyAction" method="downloadApply">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filepath}"</param>  
+	 	  	</result>
+	 	  	<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	
+		<action name="validateFile" class="keyAnninspectionApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  	
+	  	<action name="toAdd" class="keyAnninspectionApplyAction" method="toAdd">
+		 	 <result>/project/key/anninspection/apply/popAdd.jsp</result>
+		 	 <result name="input">/project/key/anninspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="add" class="keyAnninspectionApplyAction" method="add">
+			<result>/project/key/anninspection/apply/popAdd.jsp</result>
+			<result name="input">/project/key/anninspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="toAddAnnFee" class="keyAnninspectionApplyAction" method="toAddAnnFee">
+			 <result>/project/popAddAnnFee.jsp</result>
+		</action>
+		
+		<action name="toModify" class="keyAnninspectionApplyAction" method="toModify">
+		 	 <result>/project/key/anninspection/apply/popModify.jsp</result>
+		 	 <result name="input">/project/key/anninspection/apply/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="keyAnninspectionApplyAction" method="modify">
+			<result>/project/key/anninspection/apply/popModify.jsp</result>
+			<result name="input">/project/key/anninspection/apply/popModify.jsp</result>
+		</action>
+
+	   	<action name="submit" class="keyAnninspectionApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   			
+	   	<action name="delete" class="keyAnninspectionApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+	   	
+	   	<action name="toAddResult" class="keyAnninspectionApplyAction" method="toAddResult">
+		  <result>/project/key/anninspection/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="keyAnninspectionApplyAction" method="toModifyResult">
+		  <result>/project/key/anninspection/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="keyAnninspectionApplyAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="keyAnninspectionApplyAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="keyAnninspectionApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toUploadFileResult" class="keyAnninspectionApplyAction" method="toUploadFileResult">
+		  <result>/project/key/anninspection/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="keyAnninspectionApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    
+	    <action name="toView" class="keyAnninspectionApplyAction" method="toView">
+	        <result>/project/key/view.jsp</result>
+	    </action>
+	    
+	    <action name="view" class="keyAnninspectionApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	   
+		<action name="prev" class="keyAnninspectionApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="keyAnninspectionApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

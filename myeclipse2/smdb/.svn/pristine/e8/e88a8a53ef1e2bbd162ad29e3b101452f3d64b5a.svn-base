@@ -1,0 +1,147 @@
+package csdc.tool.webService;
+
+import java.security.cert.Certificate;
+import java.util.Date;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.xml.namespace.QName;
+import javax.xml.soap.SOAPBody;
+import javax.xml.soap.SOAPElement;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPHeader;
+import javax.xml.soap.SOAPMessage;
+import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.handler.soap.SOAPHandler;
+import javax.xml.ws.handler.soap.SOAPMessageContext;
+
+public class AuthenticationHandler implements SOAPHandler<SOAPMessageContext>{
+	
+	public boolean handleMessage(SOAPMessageContext ctx) {
+		HttpServletRequest request = (HttpServletRequest)ctx.get(SOAPMessageContext.SERVLET_REQUEST); 
+		HttpSession session = request.getSession();
+		Map<String, String> soapInfo = SOAPEnvTool.getSoapInfo(session);
+		Boolean out_b= (Boolean) ctx.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
+		if (!out_b) {
+			try {
+				SOAPMessage msg = ctx.getMessage();
+				SOAPHeader hdr = msg.getSOAPHeader();
+				SOAPBody bdy = msg.getSOAPBody();
+				if (hdr == null){
+					return SOAPEnvTool.genErrorSOAP(session, soapInfo, "缺少header头信息,协议有误！");					
+				}
+				//检测握手标志
+				String reconTag = null;
+				if(hdr.getElementsByTagName("ReconTag").item(0) != null){
+					reconTag = hdr.getElementsByTagName("ReconTag").item(0).getFirstChild().getTextContent();
+				}
+				else{
+					return SOAPEnvTool.genErrorSOAP(session, soapInfo, "协议有误！");
+				}
+				int reConn_i = Integer.parseInt(reconTag);
+				//保存握手标志---C端
+				WSSecurityTool.reConn_tab = reConn_i;
+				switch (reConn_i) {
+				case 0:
+					SOAPElement authElement = null;
+					if(hdr.getElementsByTagName("AuthClientPortPass").item(0) != null){
+						authElement = (SOAPElement) hdr.getElementsByTagName("AuthClientPortPass").item(0);
+					}
+					else return SOAPEnvTool.genErrorSOAP(session, soapInfo, "缺少AuthClientPortPass元素，协议有误，匹配失败！");
+					String username = null;
+					String password = null;
+					if(authElement.getElementsByTagName("Passport").item(0) != null){
+						username = authElement.getElementsByTagName("Passport").item(0).getTextContent();
+					}else return SOAPEnvTool.genErrorSOAP(session, soapInfo, "未检测到用户名/密码信息元素信息，匹配失败！");
+					if(authElement.getElementsByTagName("Password").item(0) != null){
+						password = authElement.getElementsByTagName("Password").item(0).getTextContent();
+					}else return SOAPEnvTool.genErrorSOAP(session, soapInfo, "未检测到用户名/密码信息元素信息，匹配失败！");
+
+					if( username == null || username.isEmpty() || password == null || password.isEmpty()) 
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "用户名或密码(空)信息无效，匹配失败！");
+					String username2 = WSSecurityTool.DESDecry(username, WSSecurityTool.getSecretKey());
+					String password2= WSSecurityTool.DESDecry(password, WSSecurityTool.getSecretKey());
+					if(username2 != null && password2 != null){
+						soapInfo.put("username", username2);
+						soapInfo.put("password", password2); 
+					}else{
+						System.out.println("解密失败！");
+					}
+					//对一般服务请求body下的内容进行签名验证
+					String signGenReq = null;
+					if(hdr.getElementsByTagName("ClientDS").item(0) != null){
+						signGenReq = hdr.getElementsByTagName("ClientDS").item(0).getFirstChild().getTextContent();
+					}else return SOAPEnvTool.genErrorSOAP(session, soapInfo, "一般服务请求报文：缺少ClientDS元素，协议有误，匹配失败！");
+
+					String textCodeGenReq = SOAPEnvTool.getRequestContent(bdy);
+					if(textCodeGenReq == null){
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "缺少相关内容！");
+					}
+					if(!WSSKeyStoTool.verifySign(textCodeGenReq, signGenReq, WSSKeyStoTool.getClientCerReceive())){
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "C提供信息传输中发生变化，拒绝提供服务！");
+					}
+					//对一般服务请求body下的内容进行解密替换
+					String textClearGenReq = WSSecurityTool.DESDecry(textCodeGenReq, WSSecurityTool.getSecretKey());
+					bdy.removeChild(bdy.getChildNodes().item(0));
+					QName operate = new QName("http://server.webService.service.csdc/", "operate");
+					SOAPElement operateElement = bdy.addChildElement(operate);
+					QName arg0 = new QName("http://csdc.info/", "arg0");
+					operateElement.addChildElement(arg0).addTextNode(textClearGenReq);
+					msg.saveChanges();
+					break;
+                case 1:
+                	//握手，蜜月交互，先C身份验证，完整性验证
+                	String cerstr = null;
+                	if(hdr.getElementsByTagName("ClientCer").item(0) != null){
+                		cerstr = hdr.getElementsByTagName("ClientCer").item(0).getFirstChild().getTextContent();
+                	}else return SOAPEnvTool.genErrorSOAP(session, soapInfo, "缺少ClientCer元素，协议有误，匹配失败！");
+                	
+					if(cerstr == null){
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "客户端证书为空，匹配失败！");
+					}
+					Certificate certificate = WSSKeyStoTool.getCertificateFromStr(cerstr);
+					Date TimeNow=new Date();
+					if(!WSSKeyStoTool.verifyClientCert(TimeNow, certificate)){
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "此证书不被信任，匹配失败！");
+					}
+					//完整性验证
+					WSSKeyStoTool.setClientCerReceive(certificate);
+					String sign = null;
+					if(hdr.getElementsByTagName("ClientDS").item(0) != null){
+						sign = hdr.getElementsByTagName("ClientDS").item(0).getFirstChild().getTextContent();
+                	}else return SOAPEnvTool.genErrorSOAP(session, soapInfo, "握手服务请求报文：缺少ClientDS元素，协议有误，匹配失败！");
+					
+					String textString = SOAPEnvTool.getRequestContent(bdy);
+					if(textString == null){
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "缺少相关内容！");
+					}
+					if(!WSSKeyStoTool.verifySign(textString, sign, WSSKeyStoTool.getClientCerReceive())){
+						return SOAPEnvTool.genErrorSOAP(session, soapInfo, "C提供信息传输中发生变化，拒绝提供服务！");
+					}
+					break;
+				default:
+					break;
+				}
+			} catch (SOAPException e) {
+				System.err.println(e);
+			}
+		} 
+		session.setAttribute("soapInfo", soapInfo);//传递
+		return true; 
+	}
+	
+	public void close(MessageContext messageContext) {
+	
+	}
+
+	public boolean handleFault(SOAPMessageContext ctx) {
+        return true;  
+	}
+
+	public Set<QName> getHeaders() {
+		return null;
+	}
+   
+}

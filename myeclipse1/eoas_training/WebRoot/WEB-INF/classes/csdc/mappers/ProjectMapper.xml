@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Project">
+	<resultMap id="projectResult" type="Project">
+		<id property="id" column="project_id" />
+		<result property="processInstanceId" column="project_processInstanceId" />
+		<result property="startTime" column="project_startTime" />
+		<result property="endTime" column="project_endTime" />
+		<result property="attachment" column="project_attachment" />
+		<result property="attachmentName" column="project_attachmentName" />
+		<result property="name" column="project_name" />
+		<result property="year" column="project_year" />
+		<result property="applyDate" column="project_applyDate" />
+		<result property="planEndDate" column="project_planEndDate" />
+		<result property="number" column="project_number" />
+		<result property="type" column="project_type" />
+		<result property="source" column="project_source" />
+		<result property="department" column="project_department" />
+		<result property="phase" column="project_phase" />
+		<result property="director" column="project_director" />
+		<result property="initiator" column="project_initiator" />
+		<result property="projectmember" column="project_projectmember" />
+		<result property="expectedexpert" column="project_expectedexpert" />
+		<result property="participatedexpert" column="project_participatedexpert" />
+		<result property="completion" column="project_completion" />
+		<result property="resource" column="project_resource" />
+		<result property="budget" column="project_budget" />
+		<result property="fee" column="project_fee" />
+		<association property="account" javaType="Account">
+			<id property="id" column="account_id"/>
+			<result property="email" column="account_email"/>
+			<result property="password" column="account_password"/>
+			<result property="belongId" column="account_belongId"/>
+			<result property="name" column="account_name"/>
+		</association>
+	</resultMap>
+	
+	<insert id="insert">
+	  <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+	      SELECT seguence.NEXTVAL AS ID FROM DUAL
+	  </selectKey>
+	  insert into T_PROJECT values 
+		  (#{id,jdbcType=VARCHAR}, 
+		  #{processInstanceId,jdbcType=VARCHAR}, 
+		  #{account.id,jdbcType=VARCHAR}, 
+		  #{startTime,jdbcType=VARCHAR},
+		  #{endTime,jdbcType=DATE}, 
+		  #{attachment,jdbcType=DATE}, 
+		  #{attachmentName,jdbcType=VARCHAR}, 
+		  #{name,jdbcType=VARCHAR}, 
+		  #{year,jdbcType=VARCHAR}, 
+		  #{applyDate,jdbcType=DATE},
+		  #{planEndDate,jdbcType=DATE},	  
+		  #{number,jdbcType=VARCHAR},
+		  #{type,jdbcType=VARCHAR},
+		  #{source,jdbcType=VARCHAR},
+		  #{department,jdbcType=VARCHAR},	  
+		  #{phase,jdbcType=VARCHAR},
+		  #{director,jdbcType=VARCHAR},
+		  #{initiator,jdbcType=VARCHAR},
+		  #{projectmember,jdbcType=VARCHAR},
+		  #{expectedexpert,jdbcType=VARCHAR},
+		  #{participatedexpert,jdbcType=VARCHAR},
+		  #{completion,jdbcType=VARCHAR},
+		  #{resource,jdbcType=VARCHAR},
+		  #{budget,jdbcType=VARCHAR},
+		  #{fee,jdbcType=VARCHAR} 
+		  )
+	</insert>
+	
+	<select id="list" parameterType="map" resultMap="projectResult">
+		select 
+			project.C_ID as project_id, 
+			project.C_PROCESS_INSTANCE_ID as project_processInstanceId, 
+			project.C_START_TIME as project_startTime, 
+			project.C_END_TIME as project_endTime, 
+			project.C_ATTACHMENT as project_attachment, 
+			project.C_ATTACHMENT_NAME as project_attachmentName, 
+			project.C_NAME as project_name,
+			project.C_YEAR as project_year,
+			project.C_APPLY_DATE as project_applyDate,
+			project.C_PLAN_END_DATE as project_planEndDate,	
+			project.C_NUMBER as project_number,
+			project.C_TYPE as project_type,
+			project.C_SOURCE as project_source,
+			project.C_DEPARTMENT as project_department,
+			project.C_PHASE as project_phase,
+			project.C_DIRECTOR as project_director,
+			project.C_INITIATOR as project_initiator,
+			project.C_PROJECT_MEMBER as project_projectmember,
+			project.C_EXPECTED_EXPERT as project_expectedexpert,
+			project.C_PARTICIPATED_EXPERT as project_participatedexpert,
+			project.C_COMPLETION as project_completion,
+			project.C_RESOURCE as project_resource,
+			project.C_BUDGET as project_budget,
+			project.C_FEE as project_fee,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_BELONG_ID as account_belongId,
+			account.C_NAME as account_name
+		from T_PROJECT project
+			left outer join T_ACCOUNT account on project.C_ACCOUNT_ID = account.C_ID
+		<where>
+			<if test="businessKey != null">
+				project.C_ID = #{businessKey}
+			</if>
+		</where>
+	</select>
+	
+	<select id="load" parameterType="java.lang.String" resultMap="projectResult">
+		select 
+			project.C_ID as project_id, 
+			project.C_PROCESS_INSTANCE_ID as project_processInstanceId, 
+			project.C_START_TIME as project_startTime, 
+			project.C_END_TIME as project_endTime, 
+			project.C_ATTACHMENT as project_attachment, 
+			project.C_ATTACHMENT_NAME as project_attachmentName, 
+			project.C_NAME as project_name,
+			project.C_YEAR as project_year,
+			project.C_APPLY_DATE as project_applyDate,
+			project.C_PLAN_END_DATE as project_planEndDate,	
+			project.C_NUMBER as project_planEndDate,
+			project.C_TYPE as project_type,
+			project.C_SOURCE as project_source,
+			project.C_DEPARTMENT as project_department,
+			project.C_PHASE as project_phase,
+			project.C_DIRECTOR as project_director,
+			project.C_INITIATOR as project_initiator,
+			project.C_PROJECT_MEMBER as project_projectmember,
+			project.C_EXPECTED_EXPERT as project_expectedexpert,
+			project.C_PARTICIPATED_EXPERT as project_participatedexpert,
+			project.C_COMPLETION as project_completion,
+			project.C_RESOURCE as project_resource,
+			project.C_BUDGET as project_budget,
+			project.C_FEE as project_fee,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_BELONG_ID as account_belongId,
+			account.C_NAME as account_name
+		from T_PROJECT project
+			left outer join T_ACCOUNT account on project.C_ACCOUNT_ID = account.C_ID
+		<where>
+			<if test="_parameter != null">
+				project.C_ID = #{_parameter,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+</mapper> 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.Address" table="T_ADDRESS" >
+		<id name="id" type="java.lang.String">
+	        <column name="C_ID" length="40" />
+	        <generator class="uuid.hex" />
+	    </id>
+	    
+	    <property name="ids" type="java.lang.String">
+	        <column name="C_IDS" length="40" />
+	    </property>
+	    <property name="sn" type="java.lang.Integer">
+	        <column name="C_SN"/>
+	    </property>
+	    <property name="address" type="java.lang.String">
+	        <column name="C_ADDRESS" length="200" />
+	    </property>
+	    <property name="postCode" type="java.lang.String">
+	        <column name="C_POSTCODE" length="40"/>
+	    </property>
+	    <property name="isDefault" type="java.lang.Integer">
+	        <column name="C_IS_DEFAULT" precision="1" scale="0" not-null="true"/>
+	    </property>
+	    <property name="createMode" type="java.lang.Integer">
+	        <column name="C_CREATE_MODE" precision="1" scale="0" />
+	    </property>
+	    <property name="createDate" type="java.util.Date">
+	        <column name="C_CREATE_DATE" length="7"/>
+	    </property>
+	    <property name="updateDate" type="java.util.Date">
+	        <column name="C_UPDATE_DATE" length="7"/>
+	    </property>
+	</class>
+
+</hibernate-mapping>

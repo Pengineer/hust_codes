@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Role">
+	<resultMap id="roleMap" type="Role" >
+		<id property="id" column="C_ID" />
+		<result property="name" column="C_NAME" />
+		<result property="description" column="C_DESCRIPTION" />
+	</resultMap>
+	
+	<resultMap id="roleRightMap" type="RoleRight" >
+		<id property="id" column="C_ID" />
+		<result property="right" column="C_RIGHT_ID" />
+		<result property="role" column="C_ROLE_ID" />
+	</resultMap>
+	
+	<sql id="someColumns">
+		C_ID,C_NAME,C_DESCRIPTION
+	</sql>
+	
+	<!-- id:sql的唯一标示 parameterType:参数类型 resultType:结果类型 -->
+	<!-- 插入一条数据 ById -->
+	<insert id="insert" parameterType="Role" useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ROLE (
+		C_ID,
+		C_NAME,
+		C_DESCRIPTION) values (
+		#{id,jdbcType=VARCHAR},
+		#{name},
+		#{description})
+	</insert>
+
+	<!-- 删除Role根据id -->
+	<delete id="delete" parameterType="string">
+		delete from T_ROLE where C_ID = #{id}
+	</delete>
+
+	<!-- 根据id修改数据 -->
+	<update id="update" parameterType="Role">
+		update T_ROLE set 
+		C_NAME = #{name},
+		C_DESCRIPTION = #{description} where
+		C_ID = #{id}
+	</update>
+
+	<!-- 查询所有User -->
+	<select id="listAll" resultMap="roleMap">
+		select * from T_ROLE
+	</select>
+
+	<!-- 根据ID查询 -->
+	<select id="load" parameterType="string" resultMap="roleMap">
+		select * from T_ROLE where C_ID = #{id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="roleMap">
+		select * from T_ROLE 
+		<where>
+			<if test="name != null">
+				C_NAME= #{name}
+			</if>
+			<if test="accountId != null">
+				 T_ROLE.C_ID in
+			(select T_ACCOUNT_ROLE.C_ROLE_ID from T_ACCOUNT_ROLE where T_ACCOUNT_ROLE.C_ACCOUNT_ID = #{accountId})
+			</if>
+		</where>
+	</select>
+
+<!-- 	<select id="selectByAccount" parameterType="string" resultMap="roleMap">
+		select * from T_ROLE where T_ROLE.C_ID in
+			(select T_ACCOUNT_ROLE.C_ROLE_ID from T_ACCOUNT_ROLE where T_ACCOUNT_ROLE.C_ACCOUNT_ID = #{account.id})
+	</select> -->
+	
+	<select id="listRoleByNotAccount" parameterType="string" resultMap="roleMap">
+		select * from T_ROLE where T_ROLE.C_ID not in
+			(select T_ACCOUNT_ROLE.C_ROLE_ID from T_ACCOUNT_ROLE where T_ACCOUNT_ROLE.C_ACCOUNT_ID = #{accountId})
+	</select>
+</mapper>

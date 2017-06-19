@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Expert" table="T_EXPERT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="person" class="csdc.bean.Person" fetch="select">
+            <column name="C_PERSON_ID" length="40" not-null="true" />
+        </many-to-one>
+        <property name="agencyName" type="java.lang.String">
+        	<column name="C_AGENCY_NAME" length="200" not-null="true" />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+        	<column name="C_DIVISION_NAME" length="200" />
+        </property>
+        <property name="position" type="java.lang.String">
+        	<column name="C_POSITION" length="80" />
+        </property>
+         <property name="type" type="java.lang.String">
+        	<column name="C_TYPE" length="40" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mobileSelfspace" extends="mobileMain" namespace="/mobile/selfspace">
+	
+		<action name="viewMyself" class="mobileSelfspaceAction" method="viewMyself">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="modifyMyself" class="mobileSelfspaceAction" method="modifyMyself">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="viewMyToDo" class="mobileSelfspaceAction" method="viewMyToDo">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewMyProject" class="mobileSelfspaceAction" method="viewMyProject">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>		
+
+		<action name="viewMyProduct" class="mobileSelfspaceAction" method="viewMyProduct">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="viewMyAward" class="mobileSelfspaceAction" method="viewMyAward">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+				
+	</package>
+	
+</struts>
+

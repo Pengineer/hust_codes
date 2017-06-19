@@ -1,0 +1,28 @@
+function:防止刷新浏览器时，表单重复提交
+
+浏览器输入：http://localhost:8080/Struts2Demo3/struts2form.jsp
+        点击提交按钮，form数据会自动注入edu.hust.action.PersonAction的属性里面
+        同时会执行PersonAction里面的execute方法，根据返回值（返回值是success，缺省name的result的name值就是success）跳转到/WEB-INF/page/message.jsp
+        刷新浏览器页面，这时又提交一次表单，表单中struts.token的只会发生变化，此时系统的token拦截器判断struts.token发生变化就会根据struts.xml配置文件跳转到指定的JSP页面（回到登陆页面）
+        
+http://bbs.csdn.net/topics/390109464
+http://bbs.csdn.net/topics/390385886(PersonAction必须继承ActionSupport，但是网上好像说和spring整合会出问题http://bbs.csdn.net/topics/360203509)
+对于重复提交、重复刷新、防止后退等等都是属于系统为避免重复记录而需要解决的
+
+问题，在客户端去处理需要针对每一种的可能提出相应的解决方案，然而在服务器端
+
+看来只不过是对于数据真实性的检验问题，基于令牌的处理就是一劳永逸的方法。
+
+同时我们也看到，从不同的角度去看待问题，其解决的方法也是不同的。客户端更追
+
+求的是用户的操作，而服务端则将注意力放在了数据的处理上，所以在某个对于服务
+
+器端看似容易的问题上，用客户端来解决却麻烦了很多！反之依然。所以在某些问题
+
+的处理上我们需要综合考虑和平衡，是用客户端来解决？还是用服务器端来处理？
+
+继承ActionSupport的好处在于：
+1、能够使用struts预设的返回字符串，如SUCCESS,INPUT等等。
+2、重写方法，更方便的实现验证、国际化等等功能。
+3、与struts的功能结合紧密，方便开发。
+        

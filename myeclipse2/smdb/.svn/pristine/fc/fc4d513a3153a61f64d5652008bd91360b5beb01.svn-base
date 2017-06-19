@@ -1,0 +1,213 @@
+package csdc.tool.webService;
+
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyAgreement;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.DHParameterSpec;
+
+/**
+ * WebService安全工具
+ * @author zhangnan
+ * @version v1.0
+ * 2014-4-3
+ * 握手;加密；解密
+ */
+public class WSSecurityTool {
+	/*
+	 * 握手状态及反馈标志
+	 * 取值范围：1，0
+	 * 发送1：握手动作，验证C身份,完整性(C签名)
+	 * 发送0：不握手，加解密
+	 * 反馈1：C验证S身份,完整性
+	 * 反馈0：不对S验证，C检验消息完整性(S签名)，加解密
+	 */
+	public static int reConn_tab;
+	private static byte[] clPK;
+	private static byte[] srPK;
+	private static byte[] srSK;
+	private static byte[] secretKey;
+	private static final String targetNamespace = "http://server.webService.service.csdc/";
+	/**
+	 * 握手
+	 * 成功 返回结果str
+	 * 失败 返回null
+	 * @throws IOException 
+	 */
+    public static String  doHandsShake(BigInteger ctP, BigInteger ctG, int ctL,byte[] ctPK ){
+    	reConn_tab = 1;//握手前初始化（已经从C端初始化）
+		KeyPairGenerator kpg;
+		String end = null;
+		try {
+			clPK = ctPK;
+			kpg = KeyPairGenerator.getInstance("DH");
+			DHParameterSpec dhSpec = new DHParameterSpec(ctP, ctG, ctL);
+			kpg.initialize(dhSpec);
+			KeyPair kp = kpg.generateKeyPair();
+			srPK = kp.getPublic().getEncoded();
+			srSK = kp.getPrivate().getEncoded();
+			KeyAgreement ka = KeyAgreement.getInstance("DH");
+			ka.init(kp.getPrivate());
+			KeyFactory kf = KeyFactory.getInstance("DH");
+			X509EncodedKeySpec x509Spec = new X509EncodedKeySpec(ctPK);
+			PublicKey pk = kf.generatePublic(x509Spec);
+			ka.doPhase(pk, true);//-----error
+			WSSecurityTool.secretKey = ka.generateSecret();
+			end = byteArray2HexStr(srPK);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (InvalidAlgorithmParameterException e) {
+			e.printStackTrace();
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			e.printStackTrace();
+		}
+		return end;
+	}
+    /**
+     * 解密
+     * @param code
+     * @param secretKey
+     * @return 
+     * @return 
+     * 失败返回null
+     * 成功返回明文
+     * @throws IOException 
+     */
+	public static String DESDecry (String code, byte[] secretKey){
+		String clear_str = null;
+		try {
+			SecretKeyFactory skf = SecretKeyFactory.getInstance("DES");
+			DESKeySpec desSpec;
+			desSpec = new DESKeySpec(secretKey);
+			SecretKey key = skf.generateSecret(desSpec);
+			Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+			cipher.init(Cipher.DECRYPT_MODE, key);
+			byte[] clear = cipher.doFinal(hexStr2ByteArray(code));
+			clear_str = new String(clear);
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		} 
+		return clear_str;
+	}
+	/**
+	 * 加密
+	 * @param clear
+	 * @param secretKey
+	 * @return 
+	 *  失败返回null
+	 *  成功返回密文
+	 * @throws IOException 
+	 */
+	public static String DESEncry(String clear, byte[] secretKey){
+		String coder_str = null;
+		try {
+			SecretKeyFactory skf = SecretKeyFactory.getInstance("DES");
+			DESKeySpec desSpec = new DESKeySpec(secretKey);
+			SecretKey secret_key = skf.generateSecret(desSpec);
+			//加密
+			Cipher c;
+			c = Cipher.getInstance("DES/ECB/PKCS5Padding");
+			byte[] clear_byte = clear.getBytes();
+			c.init(Cipher.ENCRYPT_MODE, secret_key);
+			byte[] coder = c.doFinal(clear_byte);
+			coder_str = byteArray2HexStr(coder);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (InvalidKeySpecException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		}
+		return coder_str;
+	}
+	public static byte[] hexStr2ByteArray(String hexStr) {
+		if (hexStr.length() < 1)
+			return null;
+		byte[] result = new byte[hexStr.length() / 2];
+		for (int i = 0; i < hexStr.length() / 2; i++) {
+			int high = Integer.parseInt(hexStr.substring(i * 2, i * 2 + 1), 16);
+			int low = Integer.parseInt(hexStr.substring(i * 2 + 1, i * 2 + 2),
+					16);
+			result[i] = (byte) (high * 16 + low);
+		}
+		return result;
+	}	
+	public static String byteArray2HexStr(byte[] byteArray) {
+		char[] hexDigits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+				'A', 'B', 'C', 'D', 'E', 'F' };
+		char[] resultCharArray = new char[byteArray.length * 2];
+		int index = 0;
+		for (byte b : byteArray) {
+			resultCharArray[index++] = hexDigits[b >>> 4 & 0xf];
+			resultCharArray[index++] = hexDigits[b & 0xf];
+		}
+		return new String(resultCharArray);
+	}
+	public static byte[] getSecretKey() {
+		return secretKey;
+	}
+	public static void setSecretKey(byte[] secretKey) {
+		WSSecurityTool.secretKey = secretKey;
+	}
+	public static int getReConn_tab() {
+		return reConn_tab;
+	}
+	public static void setReConn_tab(int reConn_tab) {
+		WSSecurityTool.reConn_tab = reConn_tab;
+	}
+	public static byte[] getClPK() {
+		return clPK;
+	}
+	public static void setClPK(byte[] clPK) {
+		WSSecurityTool.clPK = clPK;
+	}
+	public static byte[] getSrPK() {
+		return srPK;
+	}
+	public static void setSrPK(byte[] srPK) {
+		WSSecurityTool.srPK = srPK;
+	}
+	public static byte[] getSrSK() {
+		return srSK;
+	}
+	public static void setSrSK(byte[] srSK) {
+		WSSecurityTool.srSK = srSK;
+	}
+	public static String getLocalNameSpace() {
+		return targetNamespace;
+	}
+}

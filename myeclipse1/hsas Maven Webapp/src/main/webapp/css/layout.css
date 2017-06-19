@@ -1,0 +1,53 @@
+/* 主页样式 */
+.quick-channels .list-group { border-radius: 9px; box-shadow: 1px 1px 8px rgba(152, 173, 200, 0.9); margin-bottom: 10px; }
+.quick-channels .list-group-item { position: relative; display: block; padding: 10px 15px; margin-bottom: -1px; background-color: #fff; border: 1px solid #ddd; border-left: 0px; border-right: 0; }
+.quick-channels .list-group-item:hover { background-color: #274472; color: #fff; }
+
+/* 新闻查看 */
+.sidebar1 { width: 21%; }
+.sidebar2 { width: 79%; }
+.pager > li > a { width: 140px; padding: 10px 20px; text-align: center; border-radius: 30px; }
+.pager { margin-bottom: 20px; text-align: left; margin-top: 10px; max-width: 300px; text-align: center; display: table-cell; }
+.pager-nav { display: table; margin-bottom: 10px; }
+
+/* 列表样式 */
+.view-table-container { border: 1px solid lightgray; border-radius: 3px; margin-bottom: 10px; }
+.view-table tr { background-color: #f9f9f9; }
+.view-table td { border-top: 0 !important; }
+.view-controler { margin-bottom: 10px; }
+.addTable { padding: 0 20px; padding-bottom: 10px; }
+.addTable tr td { padding: 5px 0px; }
+.btn_bar1 { text-align: center; }
+.btn_bar1 input { margin: 0 20px 10px; }
+.table_title_tr td { position: relative; }
+.up_css:after { position: absolute; content: "\e155"; top: 8px; right: 8px; font-family: 'Glyphicons Halflings'; opacity: 0.5; }
+.down_css:after { position: absolute; content: "\e156"; top: 8px; right: 8px; font-family: 'Glyphicons Halflings'; opacity: 0.5; }
+#keyword { margin-right: 5px; }
+#simple_search { margin-bottom: 3px; }
+#list_table { margin-bottom: 5px; font-size: 13px; }
+#list_first { cursor: pointer; }
+#list_previous { cursor: pointer; }
+#list_next { cursor: pointer; }
+#list_last { cursor: pointer; }
+.table-search { margin-top: 3px; margin-bottom: 0; }
+#adv_search {padding-bottom: 3px;background:background: linear-gradient(top, #fff, rgba(211, 211, 211, 0.43)); background: -moz-linear-gradient(top, #fff, rgba(211, 211, 211, 0.43)); background: -webkit-linear-gradient(top, #fff, rgba(211, 211, 211, 0.43)); background: -o-linear-gradient(top, #fff, rgba(211, 211, 211, 0.43)); ;padding-bottom: 3px; }
+#list { margin-bottom: 3px; }
+a { cursor: pointer; }
+
+/* 面包屑导航*/
+.mybreadcrumb { margin-bottom: 10px; position: relative; top: -15px }
+
+/* 加载弹层 */
+.isloading-wrapper.isloading-right { margin-left: 10px; }
+.isloading-overlay { position: relative; text-align: center; }
+.isloading-overlay .isloading-wrapper { background: #FFFFFF; -webkit-border-radius: 7px; -webkit-background-clip: padding-box; -moz-border-radius: 7px; -moz-background-clip: padding; border-radius: 7px; background-clip: padding-box; display: inline-block; margin: 0 auto; padding: 10px 20px; top: 10%; z-index: 9000; }
+
+/* 详情页面 */
+.main-content { min-height: 400px; }
+.view-table { background-color: #f9f9f9; margin-bottom: 0; }
+.view-table .glyphicon { color: #337ab7; }
+.panel-view
+.panel-view .panel-body { padding: 10px; }
+.td-tree { vertical-align: top !important; }
+.tree { background-color: transparent; }
+.tree tr td { padding: 0; }

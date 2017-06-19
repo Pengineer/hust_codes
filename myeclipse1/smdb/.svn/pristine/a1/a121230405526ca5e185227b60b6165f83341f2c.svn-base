@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="agencyFunding" extends="main" namespace="/funding/agencyFunding">
+		<action name="toList" class="agencyFundingAction" method="toList">
+			<result>/fund/listFundingListByAgency.jsp</result>
+		</action>
+		<action name="list" class="agencyFundingAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="agencyFundingAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="agencyFundingAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="agencyFundingAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="agencyFundingAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="updateAgencyFee" class="agencyFundingAction" method="updateAgencyFee">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toExport" class="agencyFundingAction" method="toExport">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	</package>
+</struts>

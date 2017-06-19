@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.AwardApplicationReview" table="T_AWARD_APPLICATION_REVIEW">
+		<id name="id" type="java.lang.Integer">
+			<column name="C_ID" precision="20"  scale="0"/>
+			<generator class="increment" />
+		</id>
+		<many-to-one name="award" class="csdc.bean.AwardApplication" fetch="select">
+			<column name="C_AWARD_ID" length="40" not-null="true" />
+		</many-to-one>
+		<many-to-one name="reviewer" class="csdc.bean.Expert" fetch="select">
+			<column name="C_REVIEWER_ID" length="40" not-null="true" />
+		</many-to-one>
+		<property name="isManual" type="java.lang.Integer">
+			<column name="C_IS_MANUAL"  precision="1" scale="0" />
+		</property>
+		<property name="year" type="java.lang.Integer">
+			<column name="C_YEAR" />
+		</property>
+		<property name="matchTime" type="java.sql.Timestamp">
+			<column name="C_MATCH_TIME" />
+		</property>
+		<property name="priority" type="java.lang.Integer">
+			<column name="C_PRIORITY"  precision="10" scale="0" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="C_TYPE" length="40" />
+		</property>
+        <property name="score" type="java.lang.Double">
+            <column name="C_SCORE" precision="5" scale="2" />
+        </property>
+        <property name="grade" type="java.lang.String">
+            <column name="C_GRADE" length="10" />
+        </property>
+        <property name="opinion" type="java.lang.String">
+            <column name="C_OPINION"/>
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="C_DATE" length="7" />
+        </property>
+        <property name="qualitativeOpinion" type="java.lang.String">
+            <column name="C_QUALITATIVE_OPINION" length="80" />
+        </property>
+        <property name="reviewerName" type="java.lang.String">
+            <column name="C_REVIEWER_NAME" length="200" />
+        </property>
+        <property name="agencyName" type="java.lang.String">
+            <column name="C_AGENCY_NAME" length="200" />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+            <column name="C_DIVISION_NAME" length="200" />
+        </property>
+        <property name="reviewerType" type="java.lang.Integer">
+            <column name="C_REVIEWER_TYPE" precision="1" scale="0" />
+        </property>
+        <property name="idcardType" type="java.lang.String">
+            <column name="C_IDCARD_TYPE" length="40" />
+        </property>
+        <property name="idcardNumber" type="java.lang.String">
+            <column name="C_IDCARD_NUMBER" length="40" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="C_GENDER" length="40" />
+        </property>
+        <property name="divisionType" type="java.lang.Integer">
+            <column name="C_DIVISION_TYPE" precision="1" scale="0" />
+        </property>
+        <property name="innovationScore" type="java.lang.Double">
+            <column name="C_INNOVATION_SCORE" precision="4" scale="2"/>
+        </property>
+         <property name="scientificScore" type="java.lang.Double">
+            <column name="C_SCIENTIFIC_SCORE" precision="4" scale="2"/>
+        </property>
+         <property name="benefitScore" type="java.lang.Double">
+            <column name="C_BENEFIT_SCORE" precision="4" scale="2"/>
+        </property>
+	</class>
+</hibernate-mapping>

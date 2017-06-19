@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="instpMidinspection" extends="global" namespace="/project/instp/midinspection">
+		<!-- 进入列表 -->
+		<action name="toList" class="instpMidinspectionAction" method="toList">
+			<result>/project/instp/midinspection/list.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="instpMidinspectionAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="instpMidinspectionAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpMidinspectionAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="instpMidinspectionAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="instpMidinspectionAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="instpMidinspectionAction" method="toView">
+			<result>/project/instp/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="instpMidinspectionAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="instpMidinspectionAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="instpMidinspectionAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 审核弹出层 -->
+		<action name="popAudit" class="instpMidinspectionAction" method="popAudit">
+			<result>/project/instp/midinspection/popAudit.jsp</result>
+		</action>
+		
+		<!-- 提交审核 -->
+		<action name="audit" class="instpMidinspectionAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看审核详情 -->
+		<action name="auditView" class="instpMidinspectionAction" method="auditView">
+			<result>/project/instp/midinspection/popAuditView.jsp</result>
+		</action>
+		
+		<!-- 审核修改弹出层 -->
+		<action name="toAuditModify" class="instpMidinspectionAction" method="toAuditModify">
+			<result>/project/instp/midinspection/popAuditModify.jsp</result>
+		</action>		
+		
+		<!-- 提交审核修改 -->
+		<action name="auditModify" class="instpMidinspectionAction" method="auditModify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 添加中检弹出层 -->
+		<action name="toAddResult" class="instpMidinspectionAction" method="toAddResult">
+		  <result>/project/instp/midinspection/popAddResult.jsp</result>
+		</action>
+		
+		<!-- 提交添加中检 -->
+		<action name="addResult" class="instpMidinspectionAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 添加中检经费 -->
+		<action name="toAddMidFee" class="instpMidinspectionAction" method="toAddMidFee">
+			<result>/project/instp/midinspection/popModifyFee.jsp</result>
+		</action>
+	</package>
+</struts>

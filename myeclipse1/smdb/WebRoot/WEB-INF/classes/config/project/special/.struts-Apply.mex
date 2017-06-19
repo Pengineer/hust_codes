@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="generalApply" location="380,10" size="1505,665">
+    <action name="toSimpleSearch" location="555,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="555,432" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="changePageSize" location="310,432" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="310,327" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="deleteGeneralApply" location="310,222" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="backToList" location="65,222" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="downloadApply" location="65,512" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="800,502" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdvSearch" location="800,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="1045,57" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toBackToList" location="1045,572" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="prev" location="1290,572" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="1290,467" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/project/general/application/apply/list.jsp" location="25,555" size="150,55" />
+  <webResource name="advSearch.jsp" path="/project/general/application/apply/advSearch.jsp" location="10,30" size="150,55" />
+</Struts2Diagram>
+

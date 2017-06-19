@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Role" table="T_ROLE" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="account" class="csdc.bean.Account" fetch="select">
+        	<column name="C_ACCOUNT_ID" length="40" not-null="true" />
+        </many-to-one>
+         <property name="isPrincipal" type="java.lang.Integer">
+        	<column name="C_IS_PRINCIPAL" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="parentId" type="java.lang.String">
+            <column name="C_PARENT_ID" length="40" not-null="true" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" unique="true" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="C_DESCRIPTION" length="800" not-null="true" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="C_CODE" length="100" />
+        </property>
+        <property name="defaultAccountType" type="java.lang.String">
+            <column name="C_DEFAULT_ACCOUNT_TYPE" length="40" not-null="true" />
+        </property>
+        <set name="accountRole" inverse="true" cascade="all">
+            <key>
+                <column name="C_ROLE_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.AccountRole" />
+        </set>
+        <set name="roleAgency" inverse="true" cascade="all">
+            <key>
+                <column name="C_ROLE_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.RoleAgency" />
+        </set>
+        <set name="roleRight" inverse="true" cascade="all">
+            <key>
+                <column name="C_ROLE_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.RoleRight" />
+        </set>
+    </class>
+</hibernate-mapping>

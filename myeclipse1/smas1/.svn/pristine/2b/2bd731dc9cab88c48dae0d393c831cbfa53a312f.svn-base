@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.UserRole" table="T_USER_ROLE">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<many-to-one name="role" class="csdc.bean.Role" fetch="join">
+			<column name="C_ROLE_ID" length="40" not-null="true" />
+		</many-to-one>
+		<many-to-one name="user" class="csdc.bean.User" fetch="join">
+			<column name="C_USER_ID" length="40" not-null="true" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

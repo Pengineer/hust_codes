@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "csdc.bean.PositionResume">
+		
+	<resultMap type="PositionResume" id="positionResumeResult">
+		<id property="id" column="C_ID" />
+		<result property="applyDate" column="C_APPLY_DATE" />
+		<result property="admitStatus" column="C_ADMIT_STATUS" />
+		<result property="positionStatus" column="C_POSITION_STATUS" />
+		<result property="applyStatus" column="C_APPLY_STATUS" />
+		<association property="position" column="C_POSITION_ID" javaType="Position" resultMap="positionResult" />
+		<association property="resume" column="C_RESUME_ID" javaType="Resume" resultMap="resumeResult" />
+	</resultMap>
+	
+	<resultMap type="Position" id="positionResult">
+		<id property = "id" column="c_p_id" />
+		<result property="place" column="C_PLACE" />
+		<result property="name" column="C_P_NAME" />
+		<result property="releaseTime" column="C_RELEASE_TIME" />
+		<result property="number" column="C_NUMBER" />
+		<result property="responsibility" column="C_RESPONSIBILITY" />
+		<result property="requirement" column="C_REQUIREMENT" />
+	</resultMap>
+	
+	<resultMap id="resumeResult" type="Resume">
+		<id property="id" column="c_r_id" />
+		<result property="type" column="C_TYPE" />
+		<result property="resumeName" column="C_RESUME_NAME" />
+		<result property="name" column="C_R_NAME" />
+		<result property="gender" column="C_GENDER" />
+		<result property="birthday" column="C_BIRTHDAY" />
+		<result property="mobilephone" column="C_MOBILE_PHONE" />
+		<result property="hometown" column="C_HOMETOWN" />
+		<result property="idcardType" column="C_IDCARD_TYPE" />
+		<result property="idcardNumber" column="C_IDCARD_NUMBER" />
+		<result property="photo" column="C_PHOTO" />
+		<result property="scholarship" column="C_SCHOLARSHIP" />
+		<result property="award" column="C_AWARD" />
+		<result property="leaderExperience" column="C_LEADER_EXPERIENCE" />
+		<result property="note" column="C_NOTE" />
+		<result property="eleresume" column="C_ELERESUME" />
+		<result property="production" column="C_PRODUCTION" />
+		<result property="otherAttachment" column="C_OTHER_ATTACHMENT" />
+		<result property="createDate" column="C_CREATEDATE" />
+		<result property="modifyDate" column="C_MODIFYDATE" />
+		<result property="isTalent" column="C_IS_TALENT" />
+		<result property="eleresumeName" column="C_ELERESUME_NAME" />
+		<result property="otherAttachmentName" column="C_OTHER_ATTACHMENT_NAME" />
+		<result property="productionName" column="C_PRODUCTION_NAME" />
+		<association property="account" column="C_ACCOUNT_ID" javaType="Account" resultMap="accountResult" />
+		<collection property="education" ofType="Education" resultMap="educationResult" />
+		<collection property="experience" ofType="Experience" resultMap="experienceResult" />
+	</resultMap>
+	
+	<resultMap id="accountResult" type="Account">
+		<id property="id" column="C_ID" />
+		<result property="email" column="C_EMAIL" />
+		<result property="password" column="C_PASSWORD" />
+		<result property="accountType" column="C_ACCOUNT_TYPE" />
+	</resultMap>
+	
+	<resultMap id="educationResult" type="Education">
+		<id property="id" column="C_EDU_ID" />
+		<result property="education" column="C_EDUCATION" />
+		<result property="degree" column="C_DEGREE" />
+		<result property="school" column="C_SCHOOL" />
+		<result property="stime" column="C_STIME" />
+		<result property="etime" column="C_ETIME" />
+		<result property="major" column="C_MAJOR" />
+		<result property="description" column="C_DESCRIPTION" />
+	</resultMap>
+
+	<resultMap id="experienceResult" type="Experience">
+		<id property="id" column="C_EXP_ID" />
+		<result property="company" column="C_COMPANY" />
+		<result property="companyStime" column="C_COMPANY_STIME" />
+		<result property="companyEtime" column="C_COMPANY_ETIME" />
+		<result property="position" column="C_POSITION" />
+		<result property="positionDescription" column="C_POSITION_DESCRIPTION" />
+		<result property="project" column="C_PROJECT" />
+		<result property="projectStime" column="C_PROJECT_STIME" />
+		<result property="projectEtime" column="C_PROJECT_ETIME" />
+		<result property="dutyDescription" column="C_DUTY_DESCRIPTION" />
+	</resultMap>
+	
+	<!-- 职位申请 、收藏-->
+	<insert id="insert" parameterType="PositionResume" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType = "java.lang.String" keyProperty = "id" order = "BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_POSITION_RESUME
+		(
+		C_ID,
+		C_POSITION_ID,
+		C_RESUME_ID,
+		C_APPLY_DATE,
+		C_ADMIT_STATUS,
+		C_POSITION_STATUS,
+		C_APPLY_STATUS
+
+		)
+		values
+		(
+		#{id,jdbcType=VARCHAR},
+		#{position.id},
+		#{resume.id},
+		#{applyDate, jdbcType=DATE},
+		#{admitStatus, jdbcType=NUMERIC},
+		#{positionStatus, jdbcType=NUMERIC},
+		#{applyStatus, jdbcType=NUMERIC}
+		)
+	</insert>
+	
+	<!-- 删除职位 -->
+	<delete id="delete" parameterType="java.lang.String" >
+		delete  from T_POSITION_RESUME where C_ID = #{id}
+	</delete>
+	<update id="update" parameterType="java.lang.String">
+		update T_POSITION_RESUME 
+			<set>
+				<if test="applyDate != null and applyDate != ''">
+					C_APPLY_DATE = #{applyDate},
+				</if>
+				<if test="admitStatus != null and admitStatus != ''">
+					C_ADMIT_STATUS = #{admitStatus},
+				</if>
+				<if test="positionStatus != null and positionStatus != ''">
+					C_POSITION_STATUS = #{positionStatus},
+				</if>
+				<if test="applyStatus != null and applyStatus != ''">
+					C_APPLY_STATUS = #{applyStatus},
+				</if>
+			</set>
+			where C_ID = #{id}
+	</update>
+	<!-- 查看职位简历中间表 -->
+	<select id="load" parameterType="java.lang.String" resultMap="positionResumeResult">
+		select pr.C_ID, pr.C_APPLY_DATE, pr.C_ADMIT_STATUS, pr.C_POSITION_STATUS, pr.C_APPLY_STATUS, pr.C_POSITION_ID, pr.C_RESUME_ID, 
+			p.c_id as c_p_id, p.C_PLACE, p.C_NAME as C_P_NAME, p.C_RELEASE_TIME, p.C_NUMBER, p.C_RESPONSIBILITY, p.C_REQUIREMENT, p.C_TYPE, p.C_EXPIRE_TIME, p.C_VIEW_COUNT,
+			r.c_id as c_r_id, r.C_NAME as C_R_NAME, r.C_MOBILE_PHONE
+			 from T_POSITION_RESUME pr
+ 			join T_POSITION p on  p.C_ID = pr.C_POSITION_ID 
+     		join T_RESUME r on r.C_ID = pr.c_resume_id
+			where pr.C_ID = #{id}
+	</select>
+	<!-- 所有申请 -->
+	<select id="listAllApply" resultMap="positionResumeResult">
+		select pr.C_ID,pr.C_POSITION_ID,pr.C_RESUME_ID,pr.C_APPLY_DATE,pr.C_ADMIT_STATUS,pr.C_POSITION_STATUS,pr.C_APPLY_STATUS,
+				p.C_ID as c_p_id,p.C_PLACE,p.C_NAME as C_P_NAME,p.C_RELEASE_TIME,p.C_NUMBER,p.C_RESPONSIBILITY,p.C_REQUIREMENT,p.C_TYPE,p.C_EXPIRE_TIME,p.C_VIEW_COUNT,
+				r.C_ID as c_r_id,r.C_NAME as C_R_NAME,r.C_RESUME_NAME
+			from T_POSITION_RESUME pr
+     		join T_POSITION p on  p.C_ID = pr.C_POSITION_ID 
+     		join T_RESUME r on r.C_ID = pr.c_resume_id
+			where  pr.C_APPLY_STATUS = 1
+	</select>
+	
+	<!-- 所有收藏 -->
+	<select id="listAllCollect" resultMap="positionResumeResult">
+		select * from T_POSITION_RESUME 
+     		join T_POSITION on  T_POSITION.C_ID = T_POSITION_RESUME.C_POSITION_ID 
+     		join T_RESUME on T_RESUME.C_ID = T_POSITION_RESUME.c_resume_id
+			where  T_POSITION_RESUME.C_COLLECT_STATUS = 1
+	</select>
+	
+	<!-- 根据职位选择中间表 -->
+<!-- 	<select id="selectPositionResumeByPosition" parameterType="java.lang.String" resultMap="positionResumeResult">
+		SELECT * FROM T_POSITION_RESUME WHERE C_POSITION_ID = #{positionId}
+	</select> -->
+	<!-- 根据职位简历选择中间表 -->
+	<select id="list" parameterType="map" resultMap="positionResumeResult">
+		SELECT * FROM T_POSITION_RESUME 
+		<where>
+            <if test="positionId != null">
+                C_POSITION_ID = #{positionId} 
+             </if>
+             <if test="resumeId != null">
+             	and C_RESUME_ID = #{resumeId}
+             </if>
+        </where>
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="generalMidinspection" extends="global" namespace="/project/general/midinspection">
+		<!-- 进入列表 -->
+		<action name="toList" class="generalMidinspectionAction" method="toList">
+			<result>/project/general/midinspection/list.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="generalMidinspectionAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalMidinspectionAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="generalMidinspectionAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="generalMidinspectionAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="generalMidinspectionAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="generalMidinspectionAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalMidinspectionAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalMidinspectionAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalMidinspectionAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="popAudit" class="generalMidinspectionAction" method="popAudit">
+			<result>/project/general/midinspection/popAudit.jsp</result>
+		</action>
+		
+		<action name="audit" class="generalMidinspectionAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="auditView" class="generalMidinspectionAction" method="auditView">
+			<result>...jsp</result>
+		</action>
+		
+		<action name="toAuditModify" class="generalMidinspectionAction" method="toAuditModify">
+			<result>...jsp</result>
+		</action>		
+		
+		<action name="auditModify" class="generalMidinspectionAction" method="auditModify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddResult" class="generalMidinspectionAction" method="toAddResult">
+		  <result>/project/general/midinspection/popAddResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="generalMidinspectionAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 后台要增加经费修改的跳转页面 -->
+		<action name="toAddMidFee" class="generalMidinspectionAction" method="toAddMidFee">
+			<result>/project/general/midinspection/popModifyFee.jsp</result>
+		</action>
+		
+	</package>
+</struts>

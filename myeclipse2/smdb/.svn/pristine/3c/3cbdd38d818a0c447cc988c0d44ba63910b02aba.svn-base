@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.Nssf" table="T_NSSF">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="number" type="java.lang.String">
+			<column name="c_number" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="c_type" />
+		</property>
+		<property name="disciplineType" type="java.lang.String">
+			<column name="c_discipline_Type" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="c_name" />
+		</property>
+		<property name="startDate" type="java.util.Date">
+			<column name="c_start_Date" />
+		</property>
+		<property name="applicant" type="java.lang.String">
+			<column name="c_applicant" />
+		</property>
+		<property name="specialityTitle" type="java.lang.String">
+			<column name="c_speciality_Title" />
+		</property>
+		<property name="unit" type="java.lang.String">
+			<column name="c_unit" />
+		</property>
+		<property name="unitType" type="java.lang.String">
+			<column name="c_unit_Type" />
+		</property>
+		<property name="province" type="java.lang.String">
+			<column name="c_province" />
+		</property>
+		<property name="belongSystem" type="java.lang.String">
+			<column name="c_belong_System" />
+		</property>
+		<property name="productName" type="java.lang.String">
+			<column name="c_product_Name" />
+		</property>
+		<property name="productType" type="java.lang.String">
+			<column name="c_product_Type" />
+		</property>
+		<property name="productLevel" type="java.lang.String">
+			<column name="c_product_Level" />
+		</property>
+		<property name="endDate" type="java.util.Date">
+			<column name="c_end_Date" />
+		</property>
+		<property name="certificate" type="java.lang.String">
+			<column name="c_certificate" />
+		</property>
+		<property name="press" type="java.lang.String">
+			<column name="c_press" />
+		</property>
+		<property name="publishDate" type="java.util.Date">
+			<column name="c_publish_Date" />
+		</property>
+		<property name="author" type="java.lang.String">
+			<column name="c_author" />
+		</property>
+		<property name="prizeObtained" type="java.lang.String">
+			<column name="c_prize_Obtained" />
+		</property>
+		<property name="importDate" type="java.util.Date">
+			<column name="c_import_Date" />
+		</property>
+		<property name="isDupCheckGeneral" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_GENERAL" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="isDupCheckInstp" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_INSTP" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="singleSubject" type="java.lang.String">
+			<column name="c_SINGLE_SUBJECT" />
+		</property>
+		<property name="subject" type="java.lang.String">
+			<column name="c_SUBJECT" />
+		</property>
+		<property name="topic" type="java.lang.String">
+			<column name="c_TOPIC" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="c_DESCRIPTION" />
+		</property>
+		<property name="report" type="java.lang.String">
+			<column name="c_REPORT" />
+		</property>
+		<property name="experts" type="java.lang.String">
+			<column name="c_EXPERTS" />
+		</property>
+		<property name="noIdentifyReason" type="java.lang.String">
+			<column name="c_NO_IDENTIFY_REASON" />
+		</property>
+		<property name="university" type="java.lang.String">
+			<column name="c_UNIVERSITY" />
+		</property>
+		<property name="universityId" type="java.lang.String">
+			<column name="c_UNIVERSITY_ID" />
+		</property>
+		<property name="applicantNew" type="java.lang.String">
+			<column name="c_APPLICANT_NEW" />
+		</property>
+		<property name="planEndDate" type="java.util.Date">
+			<column name="c_plan_end_Date" />
+		</property>
+		<property name="status" type="java.lang.Integer">
+            <column name="C_status" precision="1" scale="0" not-null="true" />
+        </property>
+	</class>
+
+</hibernate-mapping>

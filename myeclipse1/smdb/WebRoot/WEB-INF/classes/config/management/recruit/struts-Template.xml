@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="template" extends="main" namespace="/management/recruit/template">
+	
+		<action name="toAdd" class="templateAction" method="toAdd">
+			<result>/management/recruit/template/add.jsp</result>
+		</action>
+		
+		<action name="add" class="templateAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+		
+		<action name="toModify" class="templateAction" method="toModify">
+			<result>/management/recruit/template/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="templateAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+		
+		<action name="toView" class="templateAction" method="toView">
+			<result>/management/recruit/template/view.jsp</result>
+		</action>
+		
+		<action name="view" class="templateAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="templateAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="templateAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toList" class="templateAction" method="toList">
+			<result>/management/recruit/template/list.jsp</result>
+		</action>
+		
+		<action name="list" class="templateAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="templateAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="templateAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="templateAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="templateAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="templateAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="delete" class="templateAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="validateFile" class="templateAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	  	</action>
+	  	
+		<action name="download" class="templateAction" method="download">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filePath}"</param>  
+	 	  	</result>
+	 	</action>
+	 	
+	</package>
+</struts>

@@ -1,0 +1,143 @@
+/* 用于设置主页面是否为定宽模式，设置宽度为定宽模式，不设为满屏模式 */
+#main_body {
+	background-image:url("../image/background.png");
+}
+.container {width:1024px; margin:0 auto;}
+
+/******************* top ***********************/
+.top {width:100%;margin-bottom: -3px;}
+.top_bar {width:1024px; height:113px; overflow:hidden;}
+.top_pic {margin-top: -10px;height:80px;width:100%;background-color:white;background-image:url("../image/top_pic.png");}
+.top_txt {color:white;font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;font-weight: bold;font-size: 20pt;margin-left: 25px;margin-top: 10px;margin-bottom: 10px; padding: 20px 5px;}
+
+/******************* center ***********************/
+/*.center {overflow:hidden; clear:both;}*/
+.center {background:url(../image/left_line.gif) repeat-y; overflow:hidden; clear:both;}
+.center_away {overflow:hidden; border:rgb(172,134,211) solid; border-width:0 0 0 1px;}
+.left_menu {float:left; width:160px;background-color: #E6F0F7;}
+
+/******************* right***********************/
+.right {position:relative;background:#FFF; margin-top: -35px; border: 1px solid #D3D9E2;}
+
+/******************* footer ***********************/
+.footer {clear:both; background:#f4f4f4; height:80px; color:#666;border-top:3px solid #5F718E; }
+.footer .bnk {background:#ebebeb; height:10px;}
+.footer .footer_l_txt {float:left; margin-top:15px; margin-left:12px; *margin-left:14px; _margin-left:7px; padding-left:60px; background:url(../image/s_logo.png) no-repeat left center; line-height:22px;}
+.footer .footer_r_txt {text-align:center; margin-top:15px; padding-right:20px; line-height:22px}
+
+/* li {
+	word-break: break-all;
+	line-height: 180%;
+	font-size: 10pt;
+} */
+
+img {
+	border: 0;
+}
+
+/* a标签链接不同状态下的样式 */
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}
+
+/* 帧容器 */
+.div_main {
+	width: 100%;
+	height: 100%;
+}
+
+/* 空的区域 */
+.div_nav1 {
+	width: 100%;
+	height: 15pt;
+	background-color: rgb(100, 181, 228);
+}
+
+ /* 一级菜单 */
+/*.menu1 {
+	background-color:#E6F0F7;
+	border-bottom:1px solid #DCDCDC;
+	cursor:pointer;
+	font-weight:bold;
+	margin-left:20px;
+	margin-top:15px;
+	width:100px;
+}
+
+二级菜单
+.menu2 {
+	border-bottom:1px solid #DCDCDC;
+	cursor:pointer;
+	margin-left:35px;
+	margin-top:10px;
+}
+
+三级菜单
+.menu3 {
+	margin-left:48px;
+	margin-top:5px;
+	margin-bottom:8px;
+	width:100px;
+} */
+
+/* 加载提示信息样式 */
+.loading {position:relative; z-index:-1; top: 0px; overflow:hidden; width:180px; padding:3px; background:url(../image/t_bg.png);}
+.loading_background {background:url(../image/loading.gif) no-repeat scroll 15px 2px #E6F0F7; border:#89809D solid 1px;}
+.loading_background span {line-height:22px; margin-left:36px; color:#6C6C96;}
+
+/* 排序 */
+.up_css {background:url(../image/up.gif) no-repeat right; padding-right:12px;}
+.down_css {background:url(../image/down.gif) no-repeat right; padding-right:12px;}
+
+/* 已选学科 */
+.table_xk {border-collapse:collapse; text-align:center;}
+.table_xk thead td {border:solid #999; border-width:0 1px 1px 0; line-height:20px;}
+.table_xk tbody td {border:solid #999; border-width:0 1px 1px 0; height:16px; line-height:16px;}
+
+/* 遮罩层 */
+#mask {
+	background-color:#666;
+	position:absolute;
+	z-index:99;
+	left:0;
+	top:0;
+	display:none;
+	width:100%;
+	height:100%;
+	opacity:0.5;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+}
+.mask_box {
+	position:absolute;
+	overflow:hidden;
+	width:180px;
+	padding:3px;
+	background:url(../image/t_bg.png);
+	left:50%;
+	height:auto;
+	z-index:100;
+	padding:1px;
+}
+
+.mask_background {
+	background:url(../image/loading.gif) no-repeat scroll 15px 2px #E6F0F7; 
+	border:#89809D solid 1px;
+}
+
+.mask_background span {line-height:22px; margin-left:36px; color:#6C6C96;}

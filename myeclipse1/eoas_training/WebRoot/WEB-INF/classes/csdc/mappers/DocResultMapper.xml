@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.DocResult">
+	<resultMap id="docResultMap" type="DocResult">
+		<id property="id" column="docResult_id" />
+		<result property="opinion" column="docResult_opinion" />
+		<result property="opinion" column="docResult_dateTime" />
+		<result property="opinion" column="docResult_status" />
+		<association property = "auditor" javaType = "Account" column="docResult_auditorId" >
+			<id property="id" column="auditor_id" />
+			<result property="accountType" column="auditor_id" />
+			<result property="email" column="auditor_email" />
+			<result property="accountType" column="auditor_accountType" />
+			<result property="belongId" column="auditor_belongId"/>
+		</association>
+		<association property = "document" javaType = "Document" column="docResult_documentId" >
+			<id property="id" column="doc_id" />
+			<result property="serialNumber" column="doc_serialNumber" />
+			<result property="title" column="doc_title" />
+			<result property="level" column="doc_level" />
+			<result property="subject" column="doc_subject" />
+			<result property="dateTime" column="doc_dateTime" />
+			<result property="type" column="doc_type" />
+			<result property="priority" column="doc_priority" />
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="DocResult" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_DOC_RESULT (
+			C_ID,
+			C_OPINION,
+			C_DATETIME,
+			C_AUDITOR_ID,
+			C_STATUS,
+			C_DOCUMENT_ID
+		) values (
+			#{id,jdbcType=VARCHAR},
+			#{opinion,jdbcType=VARCHAR},
+			#{dateTime,jdbcType=VARCHAR},
+			#{auditor.id,jdbcType=NUMERIC},
+			#{status,jdbcType=NUMERIC},
+			#{document.id,jdbcType=NUMERIC}
+		)
+	</insert>
+	
+	<delete id = "delete">
+		delete from T_DOC_RESULT where C_ID = #{id}
+	</delete>
+	
+	<select id="list" parameterType="map" resultMap="docResultMap">
+		select
+			docResult.C_ID as docResult_id,
+			docResult.C_OPINION as docResult_opinion,
+			docResult.C_DATETIME as docResult_dateTime,
+			docResult.C_AUDITOR_ID as docResult_auditorId,
+			docResult.C_STATUS as docResult_status,
+			docResult.C_DOCUMENT_ID as docResult_documentId,
+			auditor.C_ID as auditor_id,
+			auditor.C_EMAIL as auditor_email,
+			auditor.C_PASSWORD as auditor_password,
+			auditor.C_ACCOUNT_TYPE as auditor_accountType,
+			auditor.C_BELONG_ID as auditor_belongId,
+			doc.C_ID as doc_id,
+			doc.C_SERIALNUMBER as doc_serialNumber,
+			doc.C_TITLE as doc_title,
+			doc.C_LEVEL as doc_level,
+			doc.C_PRIORITY as doc_priority,
+			doc.C_SENDER_ID as doc_senderId,
+			doc.C_RECIEVER_ID as doc_recieverId,
+			doc.C_SUBJECT as doc_subject,
+			doc.C_DATETIME as doc_dateTime,
+			doc.C_TYPE as doc_type
+		from T_DOC_RESULT docResult
+		left outer join T_ACCOUNT auditor on docResult.C_AUDITOR_ID = auditor.C_ID
+		left outer join T_DOCUMENT doc on docResult.C_DOCUMENT_ID = doc.C_ID
+	</select>
+	
+	
+<!-- 	<select id="list" parameterType="map" resultMap="aaa">
+		select
+			docResult.C_ID as docResult_id,
+			docResult.C_OPINION as docResult_opinion,
+			docResult.C_DATETIME as docResult_dateTime,
+			docResult.C_AUDITOR_ID as docResult_auditorId,
+			docResult.C_STATUS as docResult_status,
+			docResult.C_DOCUMENT_ID as docResult_documentId
+		from T_DOC_RESULT docResult
+		<where>
+			<if test="documentId != null">
+				T_DOCUMENT_ID = #{documentId}
+			</if>
+		</where>
+	</select> -->
+	
+
+</mapper>

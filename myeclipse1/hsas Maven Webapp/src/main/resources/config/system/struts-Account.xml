@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="account" extends="main" namespace="/account">
+	
+		<action name="toList" class="accountAction" method="toList">
+			<result>/jsp/system/account/administrator/list.jsp</result>
+		</action>
+
+		<action name="list" class="accountAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toView" class="accountAction" method="toView">
+			<result>/jsp/system/account/administrator/view.jsp</result>
+		</action>
+
+		<action name="view" class="accountAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="delete" class="accountAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toAdd" class="accountAction" method="toAdd">
+			<result>/jsp/system/account/administrator/toAdd.jsp</result>
+		</action>
+		
+		<action name="add" class="accountAction" method="add">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		
+		<action name="toModify" class="accountAction" method="toModify">
+			<result >/jsp/system/account/administrator/modify.jsp </result>
+		</action>
+		
+		<action name="modify" class="accountAction" method="modify">
+			<result  type="json" >
+			<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="toEnable" class="accountAction" method="toEnable">
+			<result >/jsp/system/account/administrator/enable.jsp </result>
+		</action>
+		
+		<action name="enable" class="accountAction" method="enable">
+			<result  type="json" >
+			<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name="disable" class="accountAction" method="disable">
+			<result  type="json" >
+			<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		
+		
+		<action name="prev" class="accountAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="accountAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		
+		<action name="simpleSearch" class="accountAction" method="simpleSearch">
+			<result type = "chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="accountAction" method="advSearch">
+			<result type = "chain">list</result>
+		</action>
+		
+		
+		
+		<action name="changePageSize" class="accountAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+
+		<action name="toPage" class="accountAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="accountAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+
+</struts>

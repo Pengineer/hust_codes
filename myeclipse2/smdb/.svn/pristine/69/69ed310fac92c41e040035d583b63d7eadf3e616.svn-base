@@ -1,0 +1,357 @@
+package csdc.tool.webService;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.InvalidKeyException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import csdc.tool.ApplicationContainer;
+
+/**
+ * web服务库管理工具
+ * @author zhangnan
+ * @version v1.0
+ * 2014-4-3
+ * 获取证书，获取私钥，判别证书，数据签名，验证签名
+ */
+public class WSSKeyStoTool {
+	private static String securityWSPath = ApplicationContainer.sc.getRealPath("/keypair");
+	//服务端的信任裤密钥裤及密码配置
+	public static final String serverTrustStorePath = securityWSPath +"/CSDC.truststore";
+	public static final String serverTrustStorePass = "MOECSDC";
+	// 服务端证书位置
+	private static final String serverCertificatePath = securityWSPath +"/CSDC.cer";
+	// 服务端的密钥裤及密码配置-签名
+	public static final String serverKeyStorePath = securityWSPath +"/CSDC.keystore";
+	public static final String serverKeyStorePass = "MOECSDC";
+	private static final String serverKeyAlias = "CSDC";// 密钥别名
+	private static final String serverKeyPass = "MOECSDC";// 密码
+    public static final String KEY_STORE = "JKS";//Java Key Store
+    public static final String X509 = "X.509";
+    public static final String KEY_ALGORITHM = "RSA";//密钥算法
+    public static final String SIGNATURE_ALGORITHM = "MD5withRSA";//数字签名\验算法
+    private static Certificate clientCerReceive;
+	public static  Map<String,Object> keyStoSession = new HashMap<String,Object>(7);
+    static {
+	    keyStoSession.put("keyStorePath", serverKeyStorePath);
+		keyStoSession.put("keyStorePassword", serverKeyStorePass);
+		keyStoSession.put("trustStorePath", serverTrustStorePath);
+		keyStoSession.put("trustStorePassword", serverTrustStorePass);
+		keyStoSession.put("serverCertificatePath",serverCertificatePath );
+		keyStoSession.put("serverKeyAlias", serverKeyAlias);
+		keyStoSession.put("serverKeyPass", serverKeyPass);
+    }
+    
+	/**
+	 * 获得S私钥
+	 * @param alias
+	 * @param aliasPassword
+	 * @return
+	 * @throws Exception
+	 */
+	private static PrivateKey getPrivateKey( String alias, String aliasPassword)throws Exception {
+		KeyStore ks = getKeyStore();
+		PrivateKey key = (PrivateKey) ks.getKey(alias,aliasPassword.toCharArray());
+		return key;
+	}
+	private static KeyStore getKeyStore()throws Exception {
+		FileInputStream is = new FileInputStream((String)keyStoSession.get("keyStorePath"));
+		KeyStore ks = KeyStore.getInstance(KEY_STORE);
+		String password = (String)keyStoSession.get("keyStorePassword");
+		ks.load(is, password.toCharArray());
+		is.close();
+		return ks;
+	}
+	private static KeyStore getTrustStore()throws Exception {
+		FileInputStream is = new FileInputStream((String)keyStoSession.get("trustStorePath"));
+		KeyStore ks = KeyStore.getInstance(KEY_STORE);
+		String password = (String)keyStoSession.get("trustStorePassword");
+		ks.load(is, password.toCharArray());
+		is.close();
+		return ks;
+	}
+	/**
+	 * 检索信任证书
+	 * @param alias
+	 * @return
+	 * 无返回null
+	 * 有返回此别名证书
+	 */
+	public static Certificate getCertificateByNameFromTrust(String alias){
+		Certificate cert = null;
+		try {
+			KeyStore trustStore = getTrustStore();
+			if(!trustStore.containsAlias(alias)){
+				return cert;
+			}else{
+				cert = getCertificateFromTrustStore(alias);
+			}
+		} catch (KeyStoreException e1) {
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return cert;
+	}
+	/**
+	 * 获取S证书
+	 * @param alias
+	 * @return
+	 * 成功返回证书
+	 * 失败返回null
+	 */
+	public static Certificate getCertificateFromKeyStore(String alias){
+		Certificate certificate = null;
+		try {
+			KeyStore ks = getKeyStore();
+			certificate = ks.getCertificate(alias);
+		} catch (Exception e) {
+			System.out.println("密钥库加载失败！");
+			e.printStackTrace();
+		}
+		return certificate;
+	}
+	/**
+	 * 信任裤中获得指定信任证书
+	 * @param alias
+	 * @return
+	 * @throws Exception
+	 * 成功返回证书；失败返回null
+	 */
+	public static Certificate getCertificateFromTrustStore(String alias) throws Exception {
+		Certificate certificate = null;
+		try {
+			KeyStore ks = getTrustStore();
+			certificate = ks.getCertificate(alias);
+		} catch (Exception e) {
+			System.out.println("信任库加载失败！");
+			e.printStackTrace();
+		}
+		return certificate;
+	}
+	/**
+	 * 验证C身份
+	 * @param date
+	 * @param certClient
+	 * @return
+	 * 合法返回true
+	 * 非法返回false
+	 * @throws IOException 
+	 */
+	public static boolean verifyClientCert(Date date, Certificate certClient){
+		X509Certificate x509CertClient = (X509Certificate)certClient;
+		String ClientDN = x509CertClient.getSubjectDN().getName();
+		KeyStore trustStore = null;
+		boolean value_b = false;
+		try {
+			trustStore = getTrustStore();
+			 Enumeration<String> e=trustStore.aliases();
+			 while (e.hasMoreElements()) {
+			  String aliasString = (String)e.nextElement();
+			  Certificate certTrusted = getCertificateFromTrustStore(aliasString);
+			  X509Certificate x509CertTrusted = (X509Certificate)certTrusted;
+			  if(x509CertTrusted.getSubjectDN().getName() == ClientDN ){//信任裤中存在此证书
+				  if(verifyCertificate(date,certClient,certTrusted)){
+					  value_b = true;
+					  break;
+				  }
+			  }
+		    }
+		} catch (Exception e) {
+			System.out.println("\n客户端证书验证--->信任库加载失败！");
+			value_b = false;
+			e.printStackTrace();
+		}
+		return value_b;
+	}
+	/**
+	 * 服务端调用ca对客户端证书验证（扩展待用）
+	 * @param date
+	 * @param certificate
+	 * @param caPath
+	 * @return 
+	 * @throws IOException 
+	 */
+	public static boolean verifyCertificate(Date date, Certificate certificate,String caPath ) {
+		return verifyCertificate(date, certificate, getExportedCertificate(caPath));
+	}
+	/**
+	 * 验证客户端证书
+	 * @param date
+	 * @param certificate
+	 * @param caCert
+	 * @return
+	 */
+	public static boolean verifyCertificate(Date date, Certificate certificate,Certificate caCert ) {
+		boolean status = true;
+		X509Certificate x509Certificate = (X509Certificate)certificate;
+		try {
+			x509Certificate.checkValidity(date);
+		} catch (Exception e) {
+			status = false;
+		}
+		if(status == true){
+		    PublicKey caPK = caCert.getPublicKey();
+			try {
+				certificate.verify(caPK);
+				status = true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				status = false;
+			}
+		}
+		return status;
+	}
+	/**
+	 * 获取到处的证书
+	 * @param path
+	 * @return
+	 * 成功返回证书;
+	 * 失败返回null
+	 * @throws IOException 
+	 */
+	public static Certificate getExportedCertificate(String path){
+		//ca证书，或者客户端证书
+		Certificate certificate = null;
+		CertificateFactory certificateFactory;
+		try {
+			certificateFactory = CertificateFactory.getInstance(X509);
+			FileInputStream in = new FileInputStream(path);
+			 certificate = certificateFactory.generateCertificate(in);
+		} catch (CertificateException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return certificate;
+	}
+	/**
+	 *利用密钥库中别名alias的私钥 对text进行数字签名
+	 * @param text
+	 * @param alias
+	 * @param aliasPassword
+	 * @return
+	 * @throws IOException 
+	 */
+	public static String signText(String text , String alias, String aliasPassword ){
+		byte[] sign = null;
+		try {
+			PrivateKey privateKey = getPrivateKey(alias, aliasPassword);
+			Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);//实例化签名算法
+			signature.initSign(privateKey);
+			signature.update(text.getBytes());//执行签名
+			sign = signature.sign();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sign==null?null:byteArray2HexStr(sign);
+	}
+	/**
+	 * 对签名进行验证
+	 * @param text 签名实体
+	 * @param signStr 签名值
+	 * @param certificate 缓存的证书
+	 * @return  验证结果
+	 * @throws IOException 
+	 */
+	public static boolean verifySign(String text, String signStr ,Certificate certificate){
+		boolean value = false;
+		try {
+		 PublicKey publicKey = certificate.getPublicKey();
+		 Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);//实例化签名对象
+		 signature.initVerify(publicKey);
+		 signature.update(text.getBytes());
+		 value = signature.verify(hexStr2ByteArray(signStr));
+		} catch (SignatureException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
+	/**
+	 * 转换证书
+	 * @param cerStr
+	 * @return
+	 * 成功 返回证书
+	 * 失败 返回null
+	 * @throws IOException 
+	 */
+	public static Certificate getCertificateFromStr(String cerStr){
+		Certificate cerCge = null ;
+		byte[] cerbyte =WSSKeyStoTool.hexStr2ByteArray(cerStr);
+		 ByteArrayInputStream stream = new ByteArrayInputStream(cerbyte);
+		 InputStream iptStream = (InputStream)stream;
+		try {
+			CertificateFactory certificateFactory = CertificateFactory.getInstance(WSSKeyStoTool.X509);
+			cerCge = certificateFactory.generateCertificate(iptStream);
+		} catch (CertificateException e) {
+			e.printStackTrace();
+		}
+		return cerCge;
+	}
+    //十六进制转换为字节流
+	public static byte[] hexStr2ByteArray(String hexStr) {
+		if (hexStr.length() < 1)
+			return null;
+		byte[] result = new byte[hexStr.length() / 2];
+		for (int i = 0; i < hexStr.length() / 2; i++) {
+			int high = Integer.parseInt(hexStr.substring(i * 2, i * 2 + 1), 16);
+			int low = Integer.parseInt(hexStr.substring(i * 2 + 1, i * 2 + 2),
+					16);
+			result[i] = (byte) (high * 16 + low);
+		}
+		return result;
+	}
+	//字节流转换为十六进制
+	public static String byteArray2HexStr(byte[] byteArray) {
+		char[] hexDigits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+				'A', 'B', 'C', 'D', 'E', 'F' };
+    	char[] resultCharArray = new char[byteArray.length * 2];
+		int index = 0;
+		for (byte b : byteArray) {
+			resultCharArray[index++] = hexDigits[b >>> 4 & 0xf];
+			resultCharArray[index++] = hexDigits[b & 0xf];
+		}
+		return new String(resultCharArray);
+	}
+	public static void setClientCerReceive(Certificate serverCerReceive) {
+		WSSKeyStoTool.clientCerReceive = serverCerReceive;
+	}
+	public static Certificate getClientCerReceive() {
+		return clientCerReceive;
+	}
+	 public static String getServletContextPath(){
+		 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();  
+         if (classLoader == null) {  
+             classLoader = ClassLoader.getSystemClassLoader();  
+         }  
+         java.net.URL url = classLoader.getResource("");  
+         String ROOT_CLASS_PATH = url.getPath()+"/";  
+         File rootFile = new File(ROOT_CLASS_PATH);
+         String WEB_INFO_DIRECTORY_PATH = rootFile.getParent()+"/";  
+         File webInfoDir = new File(WEB_INFO_DIRECTORY_PATH);  
+         String SERVLET_CONTEXT_PATH = webInfoDir.getParent();  
+         return SERVLET_CONTEXT_PATH;
+	 }
+}

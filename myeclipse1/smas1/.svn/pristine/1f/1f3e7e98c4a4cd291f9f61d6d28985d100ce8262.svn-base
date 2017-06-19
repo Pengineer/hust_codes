@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>${mail.host}</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+		<property name="username">
+			<value>${mail.username}</value>
+		</property>
+		<property name="password">
+			<value>${mail.password}</value>
+		</property>
+	</bean>
+	
+	<bean id="mailController" class="csdc.tool.mail.MailController" init-method="init">
+		<constructor-arg index="0">
+			<value>${mail.sendingThreadNumber}</value>
+		</constructor-arg>
+		<property name="txTemplateRequiresNew" ref="txTemplateRequiresNew" />
+	</bean>
+	
+	<bean id="mailTask" class="csdc.tool.mail.MailTask" scope="prototype" />
+
+	<bean id="sendUndoneMails" class="csdc.tool.mail.SendUndoneMails" scope="prototype" />
+	
+	
+    <!-- 自动发送未完成的邮件 -->
+<!-- 	<bean id="sendUndoneMailsJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> -->
+<!-- 		<property name="targetObject" ref="sendUndoneMails" /> -->
+<!-- 		<property name="targetMethod" value="send" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="sendUndoneMailsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
+<!-- 		<property name="jobDetail" ref="sendUndoneMailsJob" /> -->
+<!--  		<property name="cronExpression" value="0 0 1,13 * * ?"/> -->
+<!-- 	   		<property name="cronExpression" value="0 34 * * * ?" />    -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> -->
+<!-- 		<property name="triggers"> -->
+<!-- 			<list> -->
+<!-- 				<ref bean="sendUndoneMailsTrigger" /> -->
+<!-- 			</list> -->
+<!-- 		</property>  -->
+<!-- 	</bean>	 -->
+	
+</beans>

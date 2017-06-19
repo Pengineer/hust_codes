@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="projectFundingList" extends="main" namespace="/funding/fundingList/project">
+		<action name="toList" class="projectFundingListAction" method="toList">
+			<result>/funding/researchProjectFee/projectFundingList/list.jsp</result>
+		</action>
+		<action name="list" class="projectFundingListAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="projectFundingListAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="projectFundingListAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="projectFundingListAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="projectFundingListAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="toAdd" class="projectFundingListAction" method="toAdd">
+			<result>/funding/researchProjectFee/projectFundingList/add.jsp</result>
+		</action>
+		<action name="add" class="projectFundingListAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+		<action name="toView" class="projectFundingListAction" method="toView">
+			<result>/funding/researchProjectFee/projectFundingList/view.jsp</result>
+		</action>
+		<action name="view" class="projectFundingListAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModify" class="projectFundingListAction" method="toModify">
+			<result>/funding/researchProjectFee/projectFundingList/modify.jsp</result>
+		</action>
+		<action name="modify" class="projectFundingListAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModifyFee" class="projectFundingListAction" method="toModifyFee">
+			<result>/funding/researchProjectFee/projectFundingList/modifyFee.jsp</result>
+		</action>
+		<action name="modifyFee" class="projectFundingListAction" method="modifyFee">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="audit" class="projectFundingListAction" method="audit">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>		
+		</action>
+		<action name="delete" class="projectFundingListAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="prev" class="projectFundingListAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="next" class="projectFundingListAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	<package name="workFundingList" extends="main" namespace="/funding/fundingList/work">
+		<action name="toList" class="workFundingListAction" method="toList">
+			<result>/funding/noneResearchProjectFee/workFund/list.jsp</result>
+		</action>	
+		<action name="list" class="workFundingListAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="workFundingListAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="workFundingListAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="workFundingListAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="workFundingListAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="toAdd" class="workFundingListAction" method="toAdd">
+			<result>/funding/noneResearchProjectFee/workFund/add.jsp</result>
+		</action>
+		<action name="add" class="workFundingListAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+		<action name="toView" class="workFundingListAction" method="toView">
+			<result>/funding/noneResearchProjectFee/workFund/view.jsp</result>
+		</action>
+		<action name="view" class="workFundingListAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModify" class="workFundingListAction" method="toView">
+			<result>/funding/noneResearchProjectFee/workFund/modify.jsp</result>
+		</action>
+		<action name="modify" class="workFundingListAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="delete" class="workFundingListAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="prev" class="workFundingListAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="next" class="workFundingListAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	<package name="fundingListAction" extends="main" namespace="/funding/fundingList">
+		<action name="toList" class="fundingListAction" method="toList">
+			<result>/fund/listFundingListByType.jsp</result>
+		</action>
+		<action name="toPopFundingListByAgency" class="fundingListAction" method="toPopFundingListByAgency">
+			<result>/fund/popListFundingListByType.jsp</result>
+		</action>		
+		<action name="list" class="fundingListAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="fundingListAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="fundingListAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="FundingListAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="FundingListAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="delete" class="FundingListAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="prev" class="FundingListAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="next" class="FundingListAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

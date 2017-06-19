@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+    <description>A tag library exercising SimpleTag handlers.</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>hust</short-name>      <!-- 自定义标签前缀，或则叫标签库名，一般和文件名相同 -->
+    <uri>http://www.hust.edu.cn</uri>  <!-- 所有的自定义标签要绑定到一个URI地址上 -->
+    
+    <tag>
+        <name>viewIP</name>
+        <tag-class>edu.hust.web.customtag.ViewIPTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    
+    <tag>
+        <name>tagDemo1</name>
+        <tag-class>edu.hust.web.customtag.TagDemo1</tag-class>
+        <body-content>JSP</body-content>   <!-- 涉及到标签体时，这里面的内容必须是大写的JSP -->
+    </tag>
+    
+    <tag>
+        <name>tagDemo2</name>
+        <tag-class>edu.hust.web.customtag.TagDemo2</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    
+    <tag>
+        <name>tagDemo3</name>
+        <tag-class>edu.hust.web.customtag.TagDemo3</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+    
+    <tag>
+        <name>tagDemo4</name>
+        <tag-class>edu.hust.web.customtag.TagDemo4</tag-class>
+        <body-content>JSP</body-content>
+    </tag>
+    
+    
+</taglib>

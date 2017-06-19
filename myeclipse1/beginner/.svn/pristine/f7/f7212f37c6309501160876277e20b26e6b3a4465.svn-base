@@ -1,0 +1,367 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：global.css
+ *
+ * 文件说明：
+ *     主要用于right帧中页面样式的定义，该帧页面整体大致划分为top、middle、
+ * bottom三个div，这三个div又位于main这个主div中。其中top主要用于页面导航、
+ * 及操作，middle主要用于页面查询功能、bottom主要用于页面显示内容。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 页面整体布局
+ ***************************************************************/
+
+/* 全局设置所有元素继承 */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 宋体, Verdana, Arial, Helvetica, Sans-serif;
+    font-size: 10pt;
+}
+
+/* 页面正文容器 */
+#container {
+}
+
+/* 页面导航容器 */
+#top {
+    margin-top: 2px;
+    height: 20px;
+    background-color: rgb(247, 247, 247);
+}
+
+/* 页面操作容器 */
+#mid {
+	margin-top: 5px;
+    height: 19px;
+}
+
+/* 页面内容容器 */
+#bottom {
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+/****************************************************************
+ * top样式特点，由一个宽高占满的table填充，只有一行，左侧内容为导航信
+ * 息，右侧内容为操作按钮。导航信息文字与间隔符号之间以及操作按钮之间
+ * 留一个空格(&nbsp)，不要按空格键空格。
+ ***************************************************************/
+
+/* 大小占满父元素，内容垂直居中的table */
+.table_bar {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+	vertical-align: middle;
+}
+
+/* 初级检索关键字输入框宽度 */
+.keyword {
+	*height: 17px;
+	width: 100px;
+	background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+    font-weight: normal;
+}
+
+/****************************************************************
+ * 页面公共样式
+ ***************************************************************/
+
+/* 后台错误提示 */
+#inputtip {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 400px;
+	color: #FF0000;
+}
+
+/* input输入框 */
+.input {
+    background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+	height: 17px;
+    font-weight: normal;
+}
+
+/* 文件上传输入框 */
+.input1 {
+    background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+	height: 23px;
+    font-weight: normal;
+	width: 90%;
+}
+
+/* select下拉框 */
+.select {
+    background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+	height: 19px;
+    font-weight: normal;
+}
+
+/* 按钮 */
+.btn {
+	background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+    font-weight: normal;
+	cursor: pointer;
+}
+
+/* 突出显示文字为红色并加粗 */
+.text_red {
+    color: #FF7400;
+    font-weight: bold;
+}
+
+img {
+	border: 0;
+}
+
+/* 列表中截掉多于文字 */
+.td_cut {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/****************************************************************
+ * 设置水平对齐。
+ ***************************************************************/
+
+/* 居左 */
+.wd_left {
+	text-align:left;
+}
+
+/* 居中 */
+.wd_center {
+	text-align:center;
+}
+
+/* 居右 */
+.wd_right {
+	text-align:right;
+}
+
+/* 靠上  */
+.top {
+	padding-top: 5px;
+	vertical-align: top;
+}
+
+/****************************************************************
+ * 设置表格绘制时的边框。
+ ***************************************************************/
+
+.border0 {
+	border: solid #999;
+    border-width: 1px 1px 1px 0;
+}
+
+.border1 {
+	border: solid #999;
+	border-width: 1px 0 1px 0;
+}
+
+/****************************************************************
+ * 列表页面样式
+ ***************************************************************/
+
+/* 列表table */
+.table_list {
+	margin-top: 2px;
+	margin-bottom 2px;
+    width: 100%;
+    border-collapse: collapse;
+	vertical-align: middle;
+}
+
+/* 用于固定列表列的宽度 */
+.fixed {
+	table-layout: fixed;
+}
+
+
+/* 列表行高 */
+.table_list tr {
+	height: 31px;
+}
+
+/* 列表表头行 */
+.tr_list1 {
+	background-color: rgb(230, 240, 247);
+}
+
+.tr_list1 td {
+	padding-left: 5px;
+}
+
+/* 列表内容行 */
+.tr_list2 {
+}
+
+.tr_list2 td {
+	border: solid #999;
+    border-width: 1px 0 1px 0;
+	padding-left: 5px;
+}
+
+.tr_list2:hover {
+    background-color: rgb(230, 240, 247);
+}
+
+/****************************************************************
+ * 编辑页面样式，非fck页面查看于此同，fck查看自定义
+ ***************************************************************/
+
+.table_edit {
+	border-collapse: collapse;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.table_edit tr {
+	height: 31px;
+}
+
+.table_edit th {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.table_edit td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+/* 表头 */
+.thhead {
+	text-align: left;
+	background-color: rgb(230, 240, 247);
+	padding-left: 5px;
+}
+
+.tdfck_name {
+	width: 100px;
+	padding-right: 5px;
+	text-align: right;
+	background-color: rgb(230, 230, 230);
+}
+
+.tdfck_value {
+	padding-left: 5px;
+}
+
+/****************************************************************
+ * 高级检索
+ ***************************************************************/
+
+.table_hsearch {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table_hsearch tr {
+	height: 31px;
+}
+
+.table_hsearch td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.tdsearch_name {
+	width: 100px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.tdsearch_value {
+	padding-left: 5px;
+}
+
+/****************************************************************
+ * 编辑检索的提交与取消
+ ***************************************************************/
+
+.table_sub {
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+.table_sub .td_sub {
+	width: 100px;
+	text-align: center;
+}
+
+/* 复选框 */
+.wd0 {
+    width: 28px;
+	text-align: center;
+}
+
+/* 序号 */
+.wd1 {
+    width: 36px;
+	text-align: center;
+}
+
+/* 列表伸缩列 */
+.wd_auto {
+	width: *;
+}
+
+/* 初级检索输入框 */
+.wd2 {
+	width: 100px;
+}
+
+/* struts2 optionselected标签 */
+.optbutton {
+	width: 50pt;
+}
+
+.optelement {
+	width: 100pt;
+	text-align: center;
+	height: 150pt;
+	padding-top: 10pt;
+}
+
+/* a标签链接不同状态下的样式 */
+
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}

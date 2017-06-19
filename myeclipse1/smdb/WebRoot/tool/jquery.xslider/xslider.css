@@ -1,0 +1,91 @@
+/* -- STYLING THE COMPONENTS (xSlider doesn't requires these) */
+/* Blocks layout */
+#slide-wrapper {
+  overflow: hidden;
+  padding: 10px 10px 0 10px;
+  width: 620px;
+  margin: auto;
+  position: relative;
+  float: left; 
+}
+/* The xSlider wrapper */
+#slide-wrapper .xslider {
+  position: relative;
+}
+/* The xSlider slide container */
+#slide-wrapper .xslider-container {
+  padding: 9px;
+  background: #fff;
+  border: 1px solid #e7ebec;
+}
+/* Slide items */
+#slide ul {
+  list-style: none;
+  height: 300px;
+  padding: 0;
+  margin: 0;
+}
+#slide li {
+  position: relative;
+}
+#slide li,
+#slide li img {
+  display: block;
+}
+/* Slide previous & next */
+#slide-wrapper .xslider .prev,
+#slide-wrapper .xslider .next {
+  display: block;
+  width: 24px;
+  height: 45px;
+  position: absolute;
+  top: 140px;
+  background-image: url(../../image/controls.png);
+  background-repeat: no-repeat;
+  text-indent: -131313px;
+  z-index: 6;
+}
+#slide-wrapper .xslider .prev {
+  left: -5px;
+}
+#slide-wrapper .xslider .next {
+  right: -5px;
+  background-position: -28px 0;
+}
+/* Slide navigation */
+#slide-wrapper .xslider nav {
+  overflow: hidden;
+  margin-top: 5px;
+  float: right;
+}
+#slide-wrapper .xslider nav ul {
+  margin: 0;
+  padding: 0;
+}
+#slide-wrapper .xslider nav li {
+  display: inline;
+  float: left;
+  margin-left: 3px;
+}
+#slide-wrapper .xslider nav a {
+  width: 13px;
+  height: 13px;
+  display: block;
+  background: url(../../image/controls.png) -26px -45px no-repeat;
+  text-indent: -131313px;
+}
+#slide-wrapper .xslider nav a.current {
+  background-position: -39px -45px;
+}
+
+/* -- PAGE ELEMENTS (not related to xSlider) */
+#slide-wrapper #slide .caption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, .5);
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  display: none;
+  z-index:10
+}

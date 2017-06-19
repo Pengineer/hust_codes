@@ -1,0 +1,5 @@
+edu\hust\service\imp\UserRegisterService.class
+edu\hust\dao\HibernateDao.class
+edu\hust\model\User.class
+edu\hust\action\RegisterAction.class
+edu\hust\service\IUserRegisterService.class

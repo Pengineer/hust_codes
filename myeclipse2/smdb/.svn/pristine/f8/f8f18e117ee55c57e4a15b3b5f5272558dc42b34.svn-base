@@ -1,0 +1,10 @@
+package csdc.service;
+
+
+/**
+ * 数据挖掘：数据挖掘的父接口
+ * @author fengcl
+ */
+public interface IDataMiningService extends IBaseService{
+	
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Applicant" table="T_APPLICANT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="birthplace" type="java.lang.String">
+            <column name="C_BIRTHPLACE" length="80" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="C_GENDER" length="40" />
+        </property>
+        <property name="ethnic" type="java.lang.String">
+        	<column name="C_ETHNIC" length="80" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="C_BIRTHDAY" length="7" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="C_EMAIL" length="400" />
+        </property>
+        <property name="membership" type="java.lang.String">
+            <column name="C_MEMBERSHIP" />
+        </property>
+        <property name="mobilePhone" type="java.lang.String">
+            <column name="C_MOBILE_PHONE" length="400" />
+        </property>
+        <property name="qq" type="java.lang.String">
+            <column name="C_QQ" length="40" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="C_ADDRESS" />
+        </property>
+        <property name="photoFile" type="java.lang.String">
+            <column name="C_PHOTO_FILE" length="100" />
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE" length="100" />
+        </property>
+        <property name="dfs" type="java.lang.String">
+            <column name="C_DFS" length="200" />
+        </property>
+        <property name="idCardNumber" type="java.lang.String">
+            <column name="C_IDCARD_NUMBER" length="40" />
+        </property>
+        <property name="education" type="java.lang.String">
+            <column name="C_EDUCATION" />
+        </property>
+        <property name="major" type="java.lang.String">
+        	<column name="C_MAJOR" />
+        </property>
+        <property name="applicantDate" type="java.util.Date">
+        	<column name="C_APPLICANT_DATE" />
+        </property>
+         <property name="auditDate" type="java.util.Date">
+        	<column name="C_AUDIT_DATE" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+        	<column name="C_STATUS" />
+        </property>
+        <many-to-one name="job" class="csdc.bean.Job" fetch="join">
+            <column name="C_JOB_ID"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

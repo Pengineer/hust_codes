@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>6.html</title>	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <script type="text/javascript">
+    	function openDialog(){
+    		vReturnValue=window.showModalDialog("reference.html",window,"status:no;resizable:no;dialogHeight:130px;dialogWidth:340px;unadorne:yes");
+    	}
+    </script>
+  </head>
+  
+  <!-- 显示弹出窗口：语法——vReturnValue=window.showModalDialog(sURL,vArguments,sFeature)
+                     参数说明：sURL：必选参数，用来指定对话框要显示的文档的URL。
+              vArguments：可选参数，用来向对话框传递参数。传递的参数类型不限，包括数组等。对话框通过window.dialogArguments
+                                                                            来取得传递进来的参数。传入的window代表本页面（6.html）
+              sFeature：可选参数，用来描述对话框的外观等信息，可以使用一个或多个，用分号“；”隔开。
+   -->
+  
+  <body>
+    username：<input type="text" name="username" value="" id="username"/><br>
+    _company：<input type="text" name="company" value="" id="company" /><br>
+            
+             <input type="button" name="button" value="浏览..." id="button" onclick="openDialog()"/>
+      </body>
+</html>

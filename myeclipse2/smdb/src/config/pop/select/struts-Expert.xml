@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="selectExpert" extends="main" namespace="/selectExpert">
+		
+		<action name="toList" class="selectExpertAction" method="toList">
+			<result>/pop/select/selectExpert.jsp</result>
+		</action>
+
+		<action name="list" class="selectExpertAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="selectExpertAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="selectExpertAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="selectExpertAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

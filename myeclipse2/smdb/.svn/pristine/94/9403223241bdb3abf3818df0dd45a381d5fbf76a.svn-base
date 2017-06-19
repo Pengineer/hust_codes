@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="instpApplicationGrantedApplyAudit" extends="main" namespace="/project/instp/application/granted/applyAudit">
+		<action name="toAdd" class="instpApplicationGrantedApplyAuditAction" method="toAdd">
+        	<result>/project/instp/application/granted/applyAudit/popAdd.jsp</result>
+	    </action> 
+	    
+		 <action name="add" class="instpApplicationGrantedApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+		<action name="toModify" class="instpApplicationGrantedApplyAuditAction" method="toModify">
+	        <result>/project/instp/application/granted/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="modify" class="instpApplicationGrantedApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="instpApplicationGrantedApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="instpApplicationGrantedApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	    <action name="view" class="instpApplicationGrantedApplyAuditAction" method="view">
+	        <result>/project/instp/application/granted/applyAudit/popView.jsp</result>
+	    </action>
+	</package>
+
+    <package name="instpApplicationAudit" extends="main" namespace="/project/instp/application/applyAudit"> 
+   	    
+   	    <action name="toAdd" class="instpApplicationApplyAuditAction" method="toAdd">
+	        <result>/project/instp/application/applyAudit/popAdd.jsp</result>
+	    </action>
+	    <action name="toModify" class="instpApplicationApplyAuditAction" method="toModify">
+	        <result>/project/instp/application/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="add" class="instpApplicationApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="modify" class="instpApplicationApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="instpApplicationApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="instpApplicationApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+   	    <action name="view" class="instpApplicationApplyAuditAction" method="view">
+       		<result>/project/instp/application/applyAudit/popView.jsp</result>
+        </action>
+    </package> 
+     
+	<package name="instpApplicationApply" extends="main" namespace="/project/instp/application/apply">
+		
+		<action name="toList" class="instpApplicationApplyAction" method="toList">
+			<result>/project/instp/application/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="instpApplicationApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="instpApplicationApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="instpApplicationApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="instpApplicationApplyAction" method="toAdvSearch">
+			<result>/project/instp/application/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="instpApplicationApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpApplicationApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="instpApplicationApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="instpApplicationApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="instpApplicationApplyAction" method="toAdd">
+			<result>/project/instp/application/apply/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="instpApplicationApplyAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toAddGrantedFee" class="instpApplicationApplyAction" method="toAddGrantedFee">
+	        <result>/project/popAddGrantedFee.jsp</result>
+	    </action>
+		
+		<!-- 添加 -->
+		<action name="add" class="instpApplicationApplyAction" method="add">
+			<param name="savePath">/upload/project/instp/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+			<result name="input">/project/instp/application/apply/add.jsp</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="instpApplicationApplyAction" method="toModify">
+			<result>/project/instp/application/apply/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="instpApplicationApplyAction" method="modify">
+			<param name="savePath">/upload/project/instp/app/2009</param>
+			<result name="input">/project/instp/application/apply/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+		</action>
+		
+		<action name="submit" class="instpApplicationApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="instpApplicationApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入添加录入页面 -->
+		<action name="toAddResult" class="instpApplicationApplyAction" method="toAddResult">
+			<result>/project/instp/application/apply/addResult.jsp</result>
+		</action>
+		
+		<!-- 录入添加 -->
+		<action name="addResult" class="instpApplicationApplyAction" method="addResult">
+			<param name="savePath">/upload/project/instp/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+			<result name="input">/project/instp/application/apply/addResult.jsp</result>
+		</action>
+		
+		<!-- 进入录入修改页面 -->
+		<action name="toModifyResult" class="instpApplicationApplyAction" method="toModifyResult">
+			<result>/project/instp/application/apply/modifyResult.jsp</result>
+		</action>
+		
+		<!-- 录入数据修改 -->
+		<action name="modifyResult" class="instpApplicationApplyAction" method="modifyResult">
+			<param name="savePath">/upload/project/instp/app/2009</param>
+			<result name="input">/project/instp/application/apply/modifyResult.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">1</param>
+				<param name="update">1</param>
+				<param name="selectedTab">"application"</param>
+			</result>
+		</action>
+		
+		<action name="toUploadFileResult" class="instpApplicationApplyAction" method="toUploadFileResult">
+		  <result>/project/instp/application/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="instpApplicationApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="instpApplicationApplyAction" method="toView">
+	        <result>/project/instp/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="instpApplicationApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+		<!-- 查看上条 -->
+		<action name="prev" class="instpApplicationApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="instpApplicationApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下载申请 -->
+		<action name="downloadApply" class="instpApplicationApplyAction" method="downloadApply">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>	
+	     	
+	   	<action name="validateFile" class="instpApplicationApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+	  	 
+	  	 <!-- 发布 -->
+		<action name="publish" class="instpApplicationApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="instpApplicationApplyAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+	<package name="instpGranted" extends="main" namespace="/project/instp/application/granted">
+
+		<action name="toList" class="instpApplicationGrantedAction" method="toList">
+			<result>/project/instp/application/granted/list.jsp</result>
+		</action>
+
+		<action name="list" class="instpApplicationGrantedAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="instpApplicationGrantedAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 发布 -->
+		<action name="publish" class="instpApplicationGrantedAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 取消发布 -->
+		<action name="notPublish" class="instpApplicationGrantedAction" method="notPublish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="instpApplicationGrantedAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="instpApplicationGrantedAction" method="toAdvSearch">
+			<result>/project/instp/application/granted/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="instpApplicationGrantedAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpApplicationGrantedAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="instpApplicationGrantedAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="instpApplicationGrantedAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+				<!-- 教育部录入数据 -->
+		<action name="toAddResult" class="instpApplicationGrantedAction" method="toAddResult">
+			<result>/project/general/application/granted/popAddResult.jsp</result>
+		</action>
+		<action name="addResult" class="instpApplicationGrantedAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModifyResult" class="instpApplicationGrantedAction" method="toModifyResult">
+		  <result>/project/general/application/apply/granted/popModifyResult.jsp</result>
+		</action>
+		<action name="modifyResult" class="instpApplicationGrantedAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="instpApplicationGrantedAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 下载立项计划书 -->
+		<action name="downloadApply" class="instpApplicationGrantedAction" method="downloadApply">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${savePath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>	
+	     	
+	   	<action name="validateFile" class="instpApplicationGrantedAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAddGra" class="instpApplicationGrantedAction" method="toAddGra">
+			<result>/project/general/application/granted/popAdd.jsp</result>
+		</action>
+		<action name="addGra" class="instpApplicationGrantedAction" method="addGra">
+			<result>/project/general/application/granted/popAdd.jsp</result>
+			<result name="input">/project/general/application/granted/popAdd.jsp</result>
+		</action>
+		<!-- 修改 -->
+		<action name="toModifyGra" class="instpApplicationGrantedAction" method="toModifyGra">
+		 	 <result>/project/general/application/granted/popModify.jsp</result>
+		 	 <result name="input">/project/general/application/granted/popModify.jsp</result>
+		</action>
+		
+		<action name="modifyGra" class="instpApplicationGrantedAction" method="modifyGra">
+			<result>/project/general/application/granted/popModify.jsp</result>
+			<result name="input">/project/general/application/granted/popModify.jsp</result>
+		</action>
+		<!-- 提交 -->
+		<action name="submit" class="instpApplicationGrantedAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>
+	   	</action>
+		<!-- 删除 -->
+		<action name="deleteGra" class="instpApplicationGrantedAction" method="deleteGra">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="instpApplicationGrantedAction" method="toAdd">
+			<result>/project/instp/application/granted/add.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="add" class="instpApplicationGrantedAction" method="add">
+			<param name="savePath">/upload/project/instp/app/2009</param>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">2</param>
+			</result>
+			<result name="input">/project/instp/application/granted/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="instpApplicationGrantedAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toAddGrantedFee" class="instpApplicationGrantedAction" method="toAddGrantedFee">
+	        <result>/project/popAddGrantedFee.jsp</result>
+	    </action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="instpApplicationGrantedAction" method="toModify">
+			<result>/project/instp/application/granted/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="instpApplicationGrantedAction" method="modify">
+			<param name="savePath">/upload/project/instp/app/2009</param>
+			<result name="input">/project/instp/application/granted/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">2</param>
+				<param name="update">1</param>
+			</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="instpApplicationGrantedAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看页面 -->
+		<action name="toView" class="instpApplicationGrantedAction" method="toView">
+	        <result>/project/instp/view.jsp</result>
+	    </action>
+	    
+	    <!-- 查看 -->
+	    <action name="view" class="instpApplicationGrantedAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+		<!-- 查看上条 -->
+		<action name="prev" class="instpApplicationGrantedAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="instpApplicationGrantedAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入撤项页面 -->
+		<action name="toSetUpProjectStatus" class="instpApplicationGrantedAction" method="toSetUpProjectStatus">
+	        <result>/project/instp/application/granted/popSetUpProjectStatus.jsp</result>
+	    </action>
+	    
+	    <!-- 撤项 -->
+	    <action name="setUpProjectStatus" class="instpApplicationGrantedAction" method="setUpProjectStatus">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    <!-- 导出 -->
+	    <action name="confirmExportOverView" class="instpApplicationGrantedAction" method="confirmExportOverView">
+        	<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+
+	   	<action name="exportOverView" class="instpApplicationGrantedAction" method="exportOverView">
+	   	    <result name="success">/project/instp/application/granted/popExportOverView.jsp</result>
+	   	</action>
+	    
+	</package>
+	
+	<package name="instpApplicationReview" extends="main" namespace="/project/instp/application/review">
+	
+	  	<action name="toAddRevExpert" class="instpApplicationGrantedAction" method="toAddRevExpert">
+	        <result>/project/instp/application/review/popAddExpert.jsp</result>
+	    </action>
+	    
+	     <action name="addResultExpert" class="instpApplicationGrantedAction" method="addResultExpert">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" >/project/instp/endinspection/review/popAddExpert.jsp</result>
+		</action>
+		
+		 <action name="getGroupRev" class="instpApplicationReviewAction" method="getGroupRev">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+			
+		<action name="toList" class="instpApplicationReviewAction" method="toList">
+			<result>/project/instp/application/review/list.jsp</result>
+		</action>
+
+		<action name="list" class="instpApplicationReviewAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="assist" class="instpApplicationReviewAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="instpApplicationReviewAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="instpApplicationReviewAction" method="toAdvSearch">
+			<result>/project/instp/application/review/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="instpApplicationReviewAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpApplicationReviewAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="instpApplicationReviewAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="instpApplicationReviewAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="viewReview" class="instpApplicationReviewAction" method="viewReview">
+	    	<result type="redirectAction">
+				<param name="namespace">/project/instp/application/apply</param>
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+	    </action>
+	    
+	    <action name="toViewReview" class="instpApplicationReviewAction" method="toViewReview">
+	        <result>/project/instp/view.jsp</result>
+	    </action>
+	
+		<action name="prev" class="instpApplicationReviewAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="instpApplicationReviewAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="instpApplicationReviewAction" method="toAdd">
+	        <result>/project/instp/application/review/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toAddGroup" class="instpApplicationReviewAction" method="toAddGroup">
+	        <result>/project/instp/application/review/popAddGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toAddResult" class="instpApplicationReviewAction" method="toAddResult">
+	        <result>/project/instp/application/review/popAddResult.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="instpApplicationReviewAction" method="toModify">
+	        <result>/project/instp/application/review/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyGroup" class="instpApplicationReviewAction" method="toModifyGroup">
+	        <result>/project/instp/application/review/popModifyGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyResult" class="instpApplicationReviewAction" method="toModifyResult">
+	        <result>/project/instp/application/review/popModifyResult.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="instpApplicationReviewAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addGroup" class="instpApplicationReviewAction" method="addGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addResult" class="instpApplicationReviewAction" method="addResult">
+		 	<result>/project/instp/application/review/popAddResult.jsp</result>
+		 	<result name="input">/project/instp/application/review/popAddResult.jsp</result>
+		</action>
+		
+		<action name="modify" class="instpApplicationReviewAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyGroup" class="instpApplicationReviewAction" method="modifyGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="instpApplicationReviewAction" method="modifyResult">
+			<result>/project/instp/application/review/popModifyResult.jsp</result>
+		 	<result name="input">/project/instp/application/review/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submit" class="instpApplicationReviewAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitGroup" class="instpApplicationReviewAction" method="submitGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="instpApplicationReviewAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="instpApplicationReviewAction" method="view">
+	        <result>/project/instp/application/review/popView.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroup" class="instpApplicationReviewAction" method="viewGroup">
+	        <result>/project/instp/application/review/popViewGroup.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroupOpinion" class="instpApplicationReviewAction" method="viewGroupOpinion">
+	        <result>/project/instp/application/review/popViewGroupOpinion.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="instpApplicationReviewAudit" extends="main" namespace="/project/instp/application/reviewAudit">
+	
+		<action name="toAdd" class="instpApplicationReviewAuditAction" method="toAdd">
+	        <result>/project/instp/application/reviewAudit/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="instpApplicationReviewAuditAction" method="toModify">
+	        <result>/project/instp/application/reviewAudit/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="instpApplicationReviewAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modify" class="instpApplicationReviewAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="instpApplicationReviewAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="instpApplicationReviewAuditAction" method="view">
+	        <result>/project/instp/application/reviewAudit/popView.jsp</result>
+	    </action>
+	    
+	</package>
+
+</struts>
+

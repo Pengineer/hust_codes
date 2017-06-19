@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="doc" extends="main" namespace="/system/doc">
+		<!-- 进入文档管理页面 -->
+		<action name="toView" class="docManagementAction" method="toView">
+			<result>/system/doc/toView.jsp</result>
+		</action>
+		<action name="view" class="docManagementAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toUpload" class="docManagementAction" method="toUpload">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="upload" class="docManagementAction" method="upload">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="obtain" class="docManagementAction" method="obtain">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="mail" extends="default" namespace="/mail">
+		
+		<!-- 创建邮件 -->
+		<action name="createMail" class="mailerAction" method="createMail">
+			<result type="redirect">${redir}</result>
+			<result name="error" type="redirect">${redir}</result>
+		</action>
+		
+		<action name="toAdd" class="mailAction" method="toAdd">
+			<result>/jsp/oa/mail/add.jsp</result>
+		</action>
+		
+		<action name="add" class="mailAction" method="add">
+			<result>/jsp/oa/mail/add.jsp</result>
+			<result name="input">/system/mail/add.jsp</result>
+		</action>
+		
+		<action name="delete" class="mailAction" method="delete">
+			<result>/jsp/oa/mail/list.jsp</result>
+		</action>		
+		
+		<action name="view" class="mailAction" method="view">
+			<result>/jsp/oa/mail/view.jsp</result>
+		</action>
+		
+		<action name="toList" class="mailAction" method="toList">
+			<result>/jsp/oa/mail/list.jsp</result>
+		</action>
+		
+		<action name="list" class="mailAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+	</package>
+
+</struts>

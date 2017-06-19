@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Education">
+	<resultMap id="educationResult" type="Education" >
+		<id property="id" column="C_EDU_ID" />
+		<result property="education" column="C_EDUCATION" />
+		<result property="degree" column="C_DEGREE" />
+		<result property="school" column="C_SCHOOL" />
+		<result property="stime" column="C_STIME" />
+		<result property="etime" column="C_ETIME" />
+		<result property="major" column="C_MAJOR" />
+		<result property="description" column="C_DESCRIPTION" />
+		<association property="resume" column="C_RESUME_ID" javaType="Resume" resultMap="resumeResult"/>
+		
+	</resultMap>
+	
+	<resultMap id="resumeResult" type="Resume">
+		<id property="id" column="C_ID" />
+		<result property="type" column="C_TYPE" />
+		<result property="resumeName" column="C_RESUME_NAME" />
+		<result property="name" column="C_NAME" />
+		<result property="gender" column="C_GENDER" />
+		<result property="birthday" column="C_BIRTHDAY" />
+		<result property="mobilephone" column="C_MOBILE_PHONE" />
+		<result property="hometown" column="C_HOMETOWN" />
+		<result property="idcardType" column="C_IDCARD_TYPE" />
+		<result property="idcardNumber" column="C_IDCARD_NUMBER" />
+		<result property="photo" column="C_PHOTO" />
+		<result property="scholarship" column="C_SCHOLARSHIP" />
+		<result property="award" column="C_AWARD" />
+		<result property="leaderExperience" column="C_LEADER_EXPERIENCE" />
+		<result property="note" column="C_NOTE" />
+		<result property="eleresume" column="C_ELERESUME" />
+		<result property="production" column="C_PRODUCTION" />
+		<result property="otherAttachment" column="C_OTHER_ATTACHMENT" />
+		<result property="createDate" column="C_CREATEDATE" />
+		<result property="modifyDate" column="C_MODIFYDATE" />
+		<result property="isTalent" column="C_IS_TALENT" />
+		<result property="eleresumeName" column="C_ELERESUME_NAME" />
+		<result property="otherAttachmentName" column="C_OTHER_ATTACHMENT_NAME" />
+		<result property="productionName" column="C_PRODUCTION_NAME" />
+	</resultMap>
+	
+	<insert id="insert"  parameterType="Resume"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_Education 
+	   		(
+	   		 C_EDU_ID,
+	   		 C_EDUCATION,
+	   		 C_DEGREE,
+	   		 C_SCHOOL,
+	   		 C_STIME, 
+	   		 C_ETIME, 
+	   		 C_MAJOR, 
+	   		 C_DESCRIPTION,
+	   		 C_RESUME_ID
+	   		 )
+        	values 
+            (
+             #{id,jdbcType=VARCHAR},
+             #{education,jdbcType=VARCHAR},
+             #{degree,jdbcType=VARCHAR},
+             #{school,jdbcType=VARCHAR},
+             #{stime,jdbcType=DATE},
+             #{etime,jdbcType=DATE},
+             #{major,jdbcType=VARCHAR},
+             #{description,jdbcType=VARCHAR},
+             #{resume.id,jdbcType=VARCHAR}
+        	)
+     </insert>
+     <delete id="delete" parameterType="java.lang.String">
+     	delete from t_education where c_edu_id = #{id}
+     </delete>
+     <update id="update" parameterType="java.lang.String">
+     	update t_education set
+	   		 C_EDUCATION = #{education,jdbcType=VARCHAR},
+	   		 C_DEGREE = #{degree,jdbcType=VARCHAR},
+	   		 C_SCHOOL = #{school,jdbcType=VARCHAR},
+	   		 C_STIME = #{stime,jdbcType=DATE},
+	   		 C_ETIME = #{etime,jdbcType=DATE},
+	   		 C_MAJOR = #{major,jdbcType=VARCHAR},
+	   		 C_DESCRIPTION = #{description,jdbcType=VARCHAR}
+	   		where C_RESUME_ID = #{id}
+     </update>
+     
+     <select id="list" parameterType="map" resultMap="educationResult">
+        select * from t_education
+        <where>
+            <if test="resumeId!=null">
+                c_resume_id = #{resumeId} 
+            </if>
+        </where>
+         <if test="sort!=null">
+             order by ${sort}
+             <if test="order!=null">
+                 ${order}
+             </if>
+         </if>
+    </select>
+</mapper> 

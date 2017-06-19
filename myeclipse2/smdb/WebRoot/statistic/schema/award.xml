@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Award">
+<Cube name="Award">
+  <Table name="S_S_AWARD"/>
+  <Dimension name="奖励维度" foreignKey="C_D_AWARD_ID">
+		<Hierarchy hasAll="true" name="成果名称" primaryKey="C_ID">
+		  <Table name="S_D_AWARD"/>
+		  <Level name="成果名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="学科门类" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_AWARD"/>
+		  <Level name="学科门类" column="C_DISCIPLINE" uniqueMembers="true"/>
+		</Hierarchy>   
+		<Hierarchy hasAll="true" name="成果类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_AWARD"/>
+		  <Level name="成果类型" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>   
+		<Hierarchy hasAll="true" name="获奖等级" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_AWARD"/>
+		  <Level name="获奖等级" column="C_GRADE" uniqueMembers="true"/>
+		</Hierarchy>   
+		<Hierarchy hasAll="true" name="届次" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_AWARD"/>
+		  <Level name="届次" column="C_SESSION" uniqueMembers="true"/>
+		</Hierarchy>  
+		<Hierarchy hasAll="true" name="年度" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_AWARD"/>
+		  <Level name="年度" column="C_YEAR" uniqueMembers="true"/>
+		</Hierarchy>  
+  </Dimension>
+  <Dimension name="机构维度" foreignKey="C_D_UNIT_ID">
+		<Hierarchy hasAll="true" name="高校名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="省份名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="省份名称" column="C_PROVINCE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="办学类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="办学类型" column="C_STYLE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="性质类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="性质类别" column="C_CATEGORY" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="高校类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校类别" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="举办者" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="举办者" column="C_ORGANIZER" uniqueMembers="true"/>
+		</Hierarchy>
+  </Dimension>
+  <Measure name="award_totalScore" column="C_SCORE" aggregator="sum"/>
+  <Measure name="award_totalCount" column="C_SCORE" aggregator="count"/>
+  <Measure name="第一届"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_SESSION ='第1届') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="第二届"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_SESSION ='第2届') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="第三届"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_SESSION ='第3届') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="第四届"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_SESSION ='第4届') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="第五届"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_SESSION ='第5届') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+  <Measure name="award_0_prize"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_GRADE ='特等奖') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+  <Measure name="award_1_prize"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_GRADE ='一等奖') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="award_2_prize"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_GRADE ='二等奖') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="award_3_prize"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_GRADE ='三等奖') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="award_4_prize"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_AWARD.C_GRADE ='普及奖') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+</Cube>
+</Schema>

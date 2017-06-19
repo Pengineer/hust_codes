@@ -1,0 +1,394 @@
+package csdc.bean;
+
+import java.util.Date;
+import java.util.Set;
+
+import org.apache.struts2.json.annotations.JSON;
+
+public class AwardApplication {
+	private String id;//奖励申请id
+	private String number;//成果编号
+	private String shelfNumber;//上架号
+	private String unitCode;//高校代码
+	private String group;//分组
+	private String awardCatalog;//奖项种类
+
+	private String productName;//成果名称
+	private String productType;//成果类型
+	private String productLanguage;//成果语种
+	private String bookType;//著作类型
+	private String originalLanguage;//原著语言
+	private String disciplinePrimitive;//学科类别（原始）
+	private String discipline;//学科门类[多个用英文分号与空格隔开，如：教育学; 经济学]
+	private String disciplineCode;//学科代码[多个用英文分号与空格隔开，如：720/哲学; 220/林学]
+	private String publishUnit;//出版、发表或使用单位
+	private String publishDate;//出版、发表或使用时间
+	private String journalNumber;//出版年度-期刊号
+	private double wordNumber;//成果字数（千字）
+	private String applicantName;//申请者
+	private String firstAuthor;//第一作者
+	private String gender;//性别
+	private Date birthday;//出生日期
+	private String position;//行政职务
+	private String specialistTitle;//职称[教授、副教授、讲师、助教、初级Ⅰ、初级Ⅱ、辅助人员]
+	private int isUnitLeader;//是否校领导[1：是；0：否]
+	private String idcardType;//证件类型[身份证、军官证、护照、其他]
+	private String idcardNumber;//证件号码[身份证号可包含数字、大写字母]
+	private String divisionName;//工作单位
+	private String nationality;//国籍
+	private String humanRelationship;//人事关系
+	private int isFirstAuthor;//是否是第一作者[1：是；0：否]
+	private String applicationType;//申请类型
+	private String officePhone;//办公电话[0开头区号-电话号码，0开头区号共3或4字节，电话号码6-8字节]
+	private String homePhone;//住宅电话[0开头区号-电话号码，0开头区号共3或4字节，电话号码6-8字节]
+	private String mobilePhone;//手机[数字，1开头，11字节]
+	private String email;//邮箱[参考电子邮箱格式]
+	private String address;//通信地址
+	private String authors;//主要作者（含申请人）
+	private int isPassed;//是否合格[1：是；0：否]
+	private String note;//备注
+	private int isTracked;//是否需要跟踪[1：是；0：否]
+	private String auditOpinion;//审核意见
+	private int createMode;//数据创建模式[0：系统流程创建；1：系统录入创建；2：外部导入创建]
+	private Date createDate;//创建时间
+	private Date updateDate;//数据更新时间
+	private int isReviewable;//是否参评
+	private int session;//申请届次
+	
+	private Integer year;	//年份
+	private String warningReviewer;	//评审警告信息
+	private String type;//奖励类型 [moeSocial]
+
+
+	private Set<AwardApplicationReview> awardApplicationReview;
+	private Set<AwardApplicationReviewUpdate> awardApplicationReviewUpdate;
+	
+
+	public AwardApplication() {
+		//默认构造
+	}
+	public AwardApplication(String awardID) {
+		this.id = awardID;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	public String getShelfNumber() {
+		return shelfNumber;
+	}
+	public void setShelfNumber(String shelfNumber) {
+		this.shelfNumber = shelfNumber;
+	}
+	public String getUnitCode() {
+		return unitCode;
+	}
+	public void setUnitCode(String unitCode) {
+		this.unitCode = unitCode;
+	}
+	public String getGroup() {
+		return group;
+	}
+	public void setGroup(String group) {
+		this.group = group;
+	}
+	public String getAwardCatalog() {
+		return awardCatalog;
+	}
+	public void setAwardCatalog(String awardCatalog) {
+		this.awardCatalog = awardCatalog;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	public String getProductLanguage() {
+		return productLanguage;
+	}
+	public void setProductLanguage(String productLanguage) {
+		this.productLanguage = productLanguage;
+	}
+	public String getBookType() {
+		return bookType;
+	}
+	public void setBookType(String bookType) {
+		this.bookType = bookType;
+	}
+	public String getOriginalLanguage() {
+		return originalLanguage;
+	}
+	public void setOriginalLanguage(String originalLanguage) {
+		this.originalLanguage = originalLanguage;
+	}
+	public String getDisciplinePrimitive() {
+		return disciplinePrimitive;
+	}
+	public void setDisciplinePrimitive(String disciplinePrimitive) {
+		this.disciplinePrimitive = disciplinePrimitive;
+	}
+	public String getDiscipline() {
+		return discipline;
+	}
+	public void setDiscipline(String discipline) {
+		this.discipline = discipline;
+	}
+	public String getDisciplineCode() {
+		return disciplineCode;
+	}
+	public void setDisciplineCode(String disciplineCode) {
+		this.disciplineCode = disciplineCode;
+	}
+	public String getPublishUnit() {
+		return publishUnit;
+	}
+	public void setPublishUnit(String publishUnit) {
+		this.publishUnit = publishUnit;
+	}
+	public String getPublishDate() {
+		return publishDate;
+	}
+	public void setPublishDate(String publishDate) {
+		this.publishDate = publishDate;
+	}
+	public String getJournalNumber() {
+		return journalNumber;
+	}
+	public void setJournalNumber(String journalNumber) {
+		this.journalNumber = journalNumber;
+	}
+	public double getWordNumber() {
+		return wordNumber;
+	}
+	public void setWordNumber(double wordNumber) {
+		this.wordNumber = wordNumber;
+	}
+	public String getApplicantName() {
+		return applicantName;
+	}
+	public void setApplicantName(String applicantName) {
+		this.applicantName = applicantName;
+	}
+	public String getFirstAuthor() {
+		return firstAuthor;
+	}
+	public void setFirstAuthor(String firstAuthor) {
+		this.firstAuthor = firstAuthor;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public String getSpecialistTitle() {
+		return specialistTitle;
+	}
+	public void setSpecialistTitle(String specialistTitle) {
+		this.specialistTitle = specialistTitle;
+	}
+	public int getIsUnitLeader() {
+		return isUnitLeader;
+	}
+	public void setIsUnitLeader(int isUnitLeader) {
+		this.isUnitLeader = isUnitLeader;
+	}
+	public String getIdcardType() {
+		return idcardType;
+	}
+	public void setIdcardType(String idcardType) {
+		this.idcardType = idcardType;
+	}
+	public String getIdcardNumber() {
+		return idcardNumber;
+	}
+	public void setIdcardNumber(String idcardNumber) {
+		this.idcardNumber = idcardNumber;
+	}
+	public String getDivisionName() {
+		return divisionName;
+	}
+	public void setDivisionName(String divisionName) {
+		this.divisionName = divisionName;
+	}
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+	public String getHumanRelationship() {
+		return humanRelationship;
+	}
+	public void setHumanRelationship(String humanRelationship) {
+		this.humanRelationship = humanRelationship;
+	}
+	public int getIsFirstAuthor() {
+		return isFirstAuthor;
+	}
+	public void setIsFirstAuthor(int isFirstAuthor) {
+		this.isFirstAuthor = isFirstAuthor;
+	}
+	public String getApplicationType() {
+		return applicationType;
+	}
+	public void setApplicationType(String applicationType) {
+		this.applicationType = applicationType;
+	}
+	public String getOfficePhone() {
+		return officePhone;
+	}
+	public void setOfficePhone(String officePhone) {
+		this.officePhone = officePhone;
+	}
+	public String getHomePhone() {
+		return homePhone;
+	}
+	public void setHomePhone(String homePhone) {
+		this.homePhone = homePhone;
+	}
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getAuthors() {
+		return authors;
+	}
+	public void setAuthors(String authors) {
+		this.authors = authors;
+	}
+	public int getIsPassed() {
+		return isPassed;
+	}
+	public void setIsPassed(int isPassed) {
+		this.isPassed = isPassed;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
+	public int getIsTracked() {
+		return isTracked;
+	}
+	public void setIsTracked(int isTracked) {
+		this.isTracked = isTracked;
+	}
+	public String getAuditOpinion() {
+		return auditOpinion;
+	}
+	public void setAuditOpinion(String auditOpinion) {
+		this.auditOpinion = auditOpinion;
+	}
+	public int getCreateMode() {
+		return createMode;
+	}
+	public void setCreateMode(int createMode) {
+		this.createMode = createMode;
+	}
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+	public int getIsReviewable() {
+		return isReviewable;
+	}
+	public void setIsReviewable(int isReviewable) {
+		this.isReviewable = isReviewable;
+	}
+	public int getSession() {
+		return session;
+	}
+	public void setSession(int session) {
+		this.session = session;
+	}
+	
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getWarningReviewer() {
+		return warningReviewer;
+	}
+	public void setWarningReviewer(String warningReviewer) {
+		this.warningReviewer = warningReviewer;
+	}
+
+	@JSON(serialize=false)
+	public Set<AwardApplicationReview> getAwardApplicationReview() {
+		return awardApplicationReview;
+	}
+	public void setAwardApplicationReview(
+			Set<AwardApplicationReview> awardApplicationReview) {
+		this.awardApplicationReview = awardApplicationReview;
+	}
+	@JSON(serialize=false)
+	public Set<AwardApplicationReviewUpdate> getAwardApplicationReviewUpdate() {
+		return awardApplicationReviewUpdate;
+	}
+	public void setAwardApplicationReviewUpdate(
+			Set<AwardApplicationReviewUpdate> awardApplicationReviewUpdate) {
+		this.awardApplicationReviewUpdate = awardApplicationReviewUpdate;
+	}
+}

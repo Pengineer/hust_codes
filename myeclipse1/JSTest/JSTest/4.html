@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>4.html</title>	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 	
+  </head>
+  <style type="text/css">
+	.table{
+       position:absolute;
+       left:500px;
+       top: 200px; 
+    }
+    
+    .td3{
+    	width: 120px;
+    	color:#696969;
+    }
+    
+    .opt{
+    	font-size: 15px;
+    	font-style: oblique;
+    	color: #4682B4;
+    }
+    
+    .button{
+        width:80px;
+    	background: transparent url('bg_button_a.gif') no-repeat scroll top right;
+	    color: #444;
+	    display: block;
+	    float: left;
+	    font: normal 12px arial, sans-serif;
+	    height: 24px;
+	    margin-right: 6px;
+	    padding-right: 18px; /* sliding doors padding */
+	    text-decoration: none;
+    }
+    
+    #add{color:red;}
+  </style>
+   
+  <body>
+  <table width="450" height="169" border="0" align="left" cellspacing="0" style="margin:15px" class="table">
+  	<tr>
+  	  <td align="left">
+	    <!-- size:下拉选长度，一般多于实际选项  ；  multiple：能同时选择多个   ；    -->
+	    <select name="first" size="10" multiple="multiple" class="td3" id="first" height="150">
+	    	<option value="选项1" class="opt">选项1</option>
+	    	<option value="选项2" class="opt">选项2</option>
+	    	<option value="选项3" class="opt">选项3</option>
+	    	<option value="选项4" class="opt">选项4</option>
+	    	<option value="选项5" class="opt">选项5</option>
+	    	<option value="选项6" class="opt">选项6</option>
+	    	<option value="选项7" class="opt">选项7</option>
+	    	<option value="选项8" class="opt">选项8</option>
+	    	<option value="选项9" class="opt">选项9</option>    	
+	    </select>
+	   </td>
+	   <td align="center" width="150px">
+	   	 <input type="button" name="add" value="-->" class="button" id="add"/><br>
+	   	 <input type="button" name="adds" value="==>" class="button" id="adds"/><br>
+	   	 <input type="button" name="remove" value="<--" class="button" id="remove"/><br>
+	   	 <input type="button" name="removes" value="<==" class="button" id="removes"/><br>
+	   </td>
+	   <td align="left">
+	   	 <select name="second" size="10" multiple="multiple" class="td3" id="second" height="150">
+	   	 </select>
+	   </td>
+    </table>
+  </body>
+  
+  <script type="text/javascript">
+     document.getElementById("add").onclick=function(){
+	  	 var firstElement = document.getElementById("first");
+	  	 var secondElement = document.getElementById("second");
+	  	 
+	  	 var firstOptionElements = firstElement.getElementsByTagName("option");
+	  	 //firstElement.selectedIndex返回被选中的第一个option的角标
+	  	 secondElement.appendChild(firstOptionElements[firstElement.selectedIndex]);
+	  	 	
+	  	 
+	  }
+	  document.getElementById("adds").onclick=function(){
+	  	 var firstElement = document.getElementById("first");
+	  	 var secondElement = document.getElementById("second");
+	  	 
+	  	 var firstOptionElements = firstElement.getElementsByTagName("option");
+	  	 //firstOptionElements.length返回选中的个数
+	  	 var len=firstOptionElements.length;
+	  	 for(var i=0; i<len; i++){
+	  	 //	if(firstElement.selectedIndex!=-1){
+	  	        //每读取一次firstElement.selectedIndex，其值就会自动更新为下一个被选中的option的角标
+	  	 		secondElement.appendChild(firstOptionElements[firstElement.selectedIndex]);
+	  	 //	}
+	  	 }
+	  }
+  	</script>
+</html>

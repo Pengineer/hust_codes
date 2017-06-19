@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="view" extends="main" namespace="/view">
+
+		<!-- 查看账号相关信息 -->
+		<action name="viewAccount" class="viewAction" method="viewAccount">
+			<result>/pop/view/viewAccount.jsp</result>
+		</action>
+		
+		<!-- 查看通行证相关信息 -->
+		<action name="viewPassport" class="viewAction" method="viewPassport">
+			<result>/pop/view/viewPassport.jsp</result>
+		</action>
+		
+		<!-- 查看人员相关信息 -->
+		<action name="viewPerson" class="viewAction" method="viewPerson">
+			<result>/pop/view/viewPerson.jsp</result>
+		</action>
+
+
+		<!-- 查看机构相关信息 -->
+		<action name="viewAgency" class="viewAction" method="viewAgency">
+			<result name="viewAgency">/pop/view/viewAgency.jsp</result>
+			<result name="viewDepartment">/pop/view/viewDepartment.jsp</result>
+			<result name="viewInstitute">/pop/view/viewInstitute.jsp</result>
+		</action>
+		
+		<!-- 查看项目相关信息 -->
+		<action name="viewProject" class="viewAction" method="viewProject">
+			<result>/pop/view/viewProject.jsp</result>
+		</action>
+		
+		<!-- 查看日志相关信息 -->
+		<action name="viewLog" class="viewAction" method="viewLog">
+			<result>/pop/view/viewLog.jsp</result>
+		</action>
+		
+		<!-- 备忘提醒信息 -->
+		<action name="viewMemo" class="viewAction" method="viewMemo">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="toPop">/pop/view/viewMemo.jsp</result>
+		</action>
+		
+		<!-- 查看团队相关信息 -->
+		<action name="viewOrganization" class="viewAction" method="viewOrganization">
+			<result>/pop/view/viewOrganization.jsp</result>
+		</action>
+	</package>
+</struts>

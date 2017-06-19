@@ -1,0 +1,18 @@
+package csdc.service.webService.server;
+
+import java.util.Map;
+
+import org.dom4j.DocumentException;
+
+import csdc.bean.Account;
+
+public interface IBaseWebService {
+
+
+	public String requestHandShake(String content);
+	public Map parseMethod(String content) throws DocumentException;
+	public String responseContent(String type ,String info );
+	public String getPeerByAccount(Account account);
+	//下面这个，也需要修改（待）
+//	public String reminderInfo(String reminder);
+}

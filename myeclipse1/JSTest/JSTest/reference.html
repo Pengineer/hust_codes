@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>reference.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  
+  <script type="text/javascript">
+	  function viewData(cname,ccompany){
+	  	var sdata = window.dialogArguments;  //获取6.html页面
+	  	
+	  	//赋值操作也可以在6.html的函数中实现，然后在这里调用
+	  	
+	  	sdata.document.getElementById("username").value=cname;
+	  	sdata.document.getElementById("company").value=ccompany;
+	    
+	    window.close();
+	  }  
+  </script>  
+  <body>
+    <table width="300" height="100" border="1" align="center" cellspacing="0">
+    	<tr> 
+    	    <td>operation</td>
+    		<td>name</td>
+    		<td>company</td>	
+    	</tr>
+    	
+    	<tr>                                                                       <!-- 里面参数要加单引号 -->
+    	    <td><input type="button" value="option" id="button1" onclick="viewData('zhangsan','alibaba')"/></td>
+    		<td>zhangsan</td>
+    		<td>alibaba</td>	
+    	</tr>
+    	
+    	<tr>
+    	    <td><input type="button" value="option" id="button1" onclick="viewData('lisi','baidu')"/></td>
+    		<td>lisi</td>
+    		<td>baidu</td>
+    	</tr>
+    </table>
+  </body>
+</html>

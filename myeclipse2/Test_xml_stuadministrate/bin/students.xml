@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<exam>
+	<student examid="456" idcard="123">
+		<name>张三</name>
+		<location>北京</location>
+		<score>80</score>
+	</student>
+	
+	<student examid="654" idcard="321">
+		<name>李四</name>
+		<location>武汉</location>
+		<score>90</score>
+	</student>
+	
+	
+</exam>

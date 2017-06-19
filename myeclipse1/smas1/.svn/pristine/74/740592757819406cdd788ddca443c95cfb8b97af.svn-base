@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="reviewstatic" location="297,10" size="280,525">
+    <action name="listUniversity" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listUniversity.jsp" />
+      </result>
+    </action>
+    <action name="sortUniversity" location="65,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listUniversity.jsp" />
+      </result>
+    </action>
+    <action name="listExpert" location="65,337" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listExpert.jsp" />
+      </result>
+    </action>
+    <action name="sortExpert" location="65,442" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listExpert.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="listUniversity.jsp" path="/reviewstatic/listUniversity.jsp" location="10,135" size="150,55" />
+  <webResource name="listExpert.jsp" path="/reviewstatic/listExpert.jsp" location="57,310" size="150,55" />
+</Struts2Diagram>
+

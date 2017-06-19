@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.GeneralSpecial" table="T_GENERAL_SPECIAL">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="number" type="java.lang.String">
+			<column name="c_number" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="c_type" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="c_name" />
+		</property>
+		<property name="applicant" type="java.lang.String">
+			<column name="c_applicant" />
+		</property>
+		<property name="unit" type="java.lang.String">
+			<column name="c_unit" />
+		</property>
+		<property name="importDate" type="java.util.Date">
+			<column name="c_import_Date" />
+		</property>
+		<property name="isDupCheckGeneral" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_GENERAL" precision="1" scale="0" not-null="true" />
+        </property>
+		<property name="topic" type="java.lang.String">
+			<column name="c_TOPIC" />
+		</property>
+		<property name="year" type="java.lang.String">
+			<column name="c_YEAR" />
+		</property>
+		<property name="university" type="java.lang.String">
+			<column name="c_UNIVERSITY" />
+		</property>
+		<property name="universityId" type="java.lang.String">
+			<column name="c_UNIVERSITY_ID" />
+		</property>
+	</class>
+
+</hibernate-mapping>

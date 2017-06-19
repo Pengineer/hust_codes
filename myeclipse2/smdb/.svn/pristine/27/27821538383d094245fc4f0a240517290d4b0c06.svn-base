@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="instpVariationApply" location="305,10" size="3570,1260">
+    <action name="toList" location="65,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="65,327" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="310,337" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="310,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="3355,57" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sort" location="3355,162" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="3110,162" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="3110,267" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toAdd" location="3110,407" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="3110,502" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="save" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="2865,512" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="2865,607" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="submit" location="380,607" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="380,957" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAddResult" location="625,967" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAddResult.jsp" />
+      </result>
+    </action>
+    <action name="addResult" location="870,957" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAddResult.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popAddResult.jsp" />
+      </result>
+    </action>
+    <action name="toModifyResult" location="1115,967" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyResult.jsp" />
+      </result>
+    </action>
+    <action name="modifyResult" location="1360,957" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyResult.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popModifyResult.jsp" />
+      </result>
+    </action>
+    <action name="submitResult" location="1745,957" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="downloadTemplate" location="1745,852" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="validateTemplate" location="1500,852" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="downloadApply" location="1500,747" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="validateFile" location="2550,747" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toView" location="2550,1177" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="2305,1167" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="viewDir" location="2060,1072" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popViewDir.jsp" />
+      </result>
+    </action>
+    <action name="viewOther" location="1745,1072" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popViewOther.jsp" />
+      </result>
+    </action>
+    <action name="prev" location="1500,1062" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="1500,1167" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="instpVariationAudit" location="317,1935" size="770,560">
+    <action name="toAdd" location="555,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="add" location="555,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModify" location="555,267" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="555,362" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="310,372" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+    <action name="submit" location="65,362" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="back" location="65,467" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/project/instp/variation/apply/list.jsp" location="63,205" size="150,55" />
+  <webResource name="advSearch.jsp" path="/project/instp/variation/apply/advSearch.jsp" location="9,30" size="150,55" />
+  <webResource name="add.jsp" path="/project/instp/variation/apply/add.jsp" location="236,1745" size="150,55" />
+  <webResource name="modify.jsp" path="/project/instp/variation/apply/modify.jsp" location="509,1640" size="150,55" />
+  <webResource name="popAddResult.jsp" path="/project/instp/variation/apply/popAddResult.jsp" location="1121,1535" size="150,55" />
+  <webResource name="popModifyResult.jsp" path="/project/instp/variation/apply/popModifyResult.jsp" location="1605,1430" size="150,55" />
+  <webResource name="view.jsp" path="/project/instp/view.jsp" location="2862,1325" size="150,55" />
+  <webResource name="popViewDir.jsp" path="/project/instp/variation/apply/popViewDir.jsp" location="2318,1325" size="150,55" />
+  <webResource name="popViewOther.jsp" path="/project/instp/variation/apply/popViewOther.jsp" location="1996,1325" size="150,55" />
+  <webResource name="popAdd.jsp" path="/project/instp/variation/applyAudit/popAdd.jsp" location="16,1955" size="150,55" />
+  <webResource name="popModify.jsp" path="/project/instp/variation/applyAudit/popModify.jsp" location="9,2165" size="150,55" />
+  <webResource name="popView.jsp" path="/project/instp/variation/applyAudit/popView.jsp" location="574,2550" size="150,55" />
+</Struts2Diagram>
+

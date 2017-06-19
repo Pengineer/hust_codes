@@ -1,0 +1,4 @@
+url:
+（1）jdbc:mysql://192.168.88.176:3306/test_1                        数据库名
+（2）jdbc:oracle:thin:@192.168.88.176:1521:orcl                     实例名
+（3）jdbc:microsoft:sqlserver://127.0.0.1:1433;databaseName=school  数据库名

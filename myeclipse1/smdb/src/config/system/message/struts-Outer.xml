@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="messageOuter" extends="main" namespace="/message/outer">
+
+		<action name="toAdd" class="messageOuterAction" method="toAdd">
+			<result>/system/message/outer/add.jsp</result>
+		</action>
+	
+		<action name="add" class="messageOuterAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toView" class="messageOuterAction" method="toView">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="view" class="messageOuterAction" method="view">
+			<result>/system/message/outer/view.jsp</result>
+		</action>
+		
+		<action name="prev" class="messageOuterAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="messageOuterAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toList" class="messageOuterAction" method="toList">
+			<result>/system/message/outer/list.jsp</result>
+		</action>
+
+		<action name="list" class="messageOuterAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="messageOuterAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="messageOuterAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="messageOuterAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	</package>
+
+</struts>

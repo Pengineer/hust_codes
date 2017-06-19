@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.ProjectVariation" table="T_PROJECT_VARIATION">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE" length="100" />
+        </property>
+        <property name="applicantSubmitDate" type="java.util.Date">
+            <column name="C_APPLICANT_SUBMIT_DATE" length="7" />
+        </property>
+        <property name="variationReason" type="java.lang.String">
+            <column name="C_VARIATION_REASON" />
+        </property>
+        <property name="changeMember" type="java.lang.Integer">
+            <column name="C_CHANGE_MEMBER" precision="1" scale="0" />
+        </property>
+        <property name="oldMembers" type="java.lang.String">
+            <column name="C_OLD_MEMBERS" length="1000" />
+        </property>
+        <property name="newMembers" type="java.lang.String">
+            <column name="C_NEW_MEMBERS" />
+        </property>
+        <property name="changeAgency" type="java.lang.Integer">
+            <column name="C_CHANGE_AGENCY" precision="1" scale="0" />
+        </property>
+        <property name="oldAgencyName" type="java.lang.String">
+            <column name="C_OLD_AGENCY_NAME" length="200" />
+        </property>
+        <property name="newAgencyName" type="java.lang.String">
+            <column name="C_NEW_AGENCY_NAME" length="200" />
+        </property>
+        <property name="changeProductType" type="java.lang.Integer">
+            <column name="C_CHANGE_PRODUCT_TYPE" precision="1" scale="0" />
+        </property>
+        <property name="oldProductType" type="java.lang.String">
+            <column name="C_OLD_PRODUCT_TYPE" length="400" />
+        </property>
+        <property name="oldProductTypeOther" type="java.lang.String">
+            <column name="C_OLD_PRODUCT_TYPE_OTHER" length="200" />
+        </property>
+        <property name="newProductType" type="java.lang.String">
+            <column name="C_NEW_PRODUCT_TYPE" length="400" />
+        </property>
+        <property name="newProductTypeOther" type="java.lang.String">
+            <column name="C_NEW_PRODUCT_TYPE_OTHER" length="200" />
+        </property>
+        <property name="changeName" type="java.lang.Integer">
+            <column name="C_CHANGE_NAME" precision="1" scale="0" />
+        </property>
+        <property name="oldName" type="java.lang.String">
+            <column name="C_OLD_NAME" length="200" />
+        </property>
+        <property name="newName" type="java.lang.String">
+            <column name="C_NEW_NAME" length="200" />
+        </property>
+        <property name="changeContent" type="java.lang.Integer">
+            <column name="C_CHANGE_CONTENT" precision="1" scale="0" />
+        </property>
+        <property name="postponement" type="java.lang.Integer">
+            <column name="C_POSTPONEMENT" precision="1" scale="0" />
+        </property>
+        <property name="oldOnceDate" type="java.util.Date">
+            <column name="C_OLD_ONCE_DATE" length="7" />
+        </property>
+        <property name="newOnceDate" type="java.util.Date">
+            <column name="C_NEW_ONCE_DATE" length="7" />
+        </property>
+        <property name="stop" type="java.lang.Integer">
+            <column name="C_STOP" precision="1" scale="0" />
+        </property>
+        <property name="withdraw" type="java.lang.Integer">
+            <column name="C_WITHDRAW" precision="1" scale="0" />
+        </property>
+        <property name="other" type="java.lang.Integer">
+            <column name="C_OTHER" precision="1" scale="0" />
+        </property>
+        <property name="otherInfo" type="java.lang.String">
+            <column name="C_OTHER_INFO" length="800" />
+        </property>
+        <property name="postponementPlanFile" type="java.lang.String">
+            <column name="C_POSTPONEMENT_PLAN_FILE" length="100" />
+        </property>
+        <property name="changeFee" type="java.lang.Integer">
+            <column name="C_CHANGE_FEE" precision="1" scale="0" />
+        </property>
+        <many-to-one name="oldProjectFee" class="csdc.bean.ProjectFee" lazy="false">
+            <column name="C_OLD_PROJECTFEE_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="newProjectFee" class="csdc.bean.ProjectFee" lazy="false">
+            <column name="C_NEW_PROJECTFEE_ID" length="40" />
+        </many-to-one>
+        <property name="finalAuditResult" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditResultDetail" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_RES_DETAIL" length="40" />
+        </property>
+        <property name="finalAuditDate" type="java.util.Date">
+            <column name="C_FINAL_AUDIT_DATE" length="7" />
+        </property>
+        <property name="finalAuditOpinion" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION" length="800" />
+        </property>
+        <property name="finalAuditOpinionFeedback" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION_FEEDBACK" length="800" />
+        </property>
+        <property name="finalAuditorName" type="java.lang.String">
+            <column name="C_FINAL_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="importedDate" type="java.util.Date">
+            <column name="C_IMPORTED_DATE" length="7" />
+        </property>
+         <property name="universityAuditResultDetail" type="java.lang.String">
+            <column name="C_UNIVERSITY_AUDIT_RES_DETAIL" length="40" />
+        </property>
+        <property name="provinceAuditResultDetail" type="java.lang.String">
+            <column name="C_PROVINCE_AUDIT_RES_DETAIL" length="40" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="C_TYPE" length="40" />
+        </property>
+	    <many-to-one name="granted" class="csdc.bean.ProjectGranted" fetch="join">
+            <column name="C_GRANTED_ID" length="40" not-null="true" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>

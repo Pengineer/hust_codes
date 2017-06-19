@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Log" table="T_LOG" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="user" class="csdc.bean.User" fetch="select">
+            <column name="C_USER_ID" length="40" />
+        </many-to-one>
+        <property name="username" type="java.lang.String">
+            <column name="C_USERNAME" length="40" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="C_DATE" length="7" not-null="true" />
+        </property>
+        <property name="ip" type="java.lang.String">
+            <column name="C_IP" length="40" not-null="true" />
+        </property>
+        <property name="eventCode" type="java.lang.String">
+            <column name="C_EVENT_CODE" length="100" />
+        </property>
+        <property name="eventDescription" type="java.lang.String">
+        	<column name="C_EVENT_DESCRIPTION" length="800" not-null="true" />
+        </property>
+        <property name="isStatistic" type="java.lang.Integer">
+        	<column name="C_IS_STATISTIC" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="data" type="java.lang.String">
+            <column name="C_DATA" />
+        </property>
+        <property name="request" type="java.lang.String">
+            <column name="C_REQUEST" />
+        </property>
+        <property name="response" type="java.lang.String">
+            <column name="C_RESPONSE" />
+        </property>
+    </class>
+</hibernate-mapping>

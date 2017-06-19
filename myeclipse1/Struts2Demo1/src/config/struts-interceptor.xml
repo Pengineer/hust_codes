@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>	 
+	<!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+     
+    <constant name="struts.action.extension" value="action,do,html"></constant>
+	
+	<!-- 拦截器的定义写在总配置文件中，当前配置文件只需要引入就可以了（此处Action使用了通配符，可以在浏览器请求时指定执行什么方法） --> 
+	<package name="interceptor" namespace="/test4" extends="main">	
+		<action name="interceptor_*" class="edu.hust.action.interceptor.BusinessCode" method="{1}">
+			<interceptor-ref name="permissionStack"></interceptor-ref>
+		</action>
+	</package>
+	
+</struts>

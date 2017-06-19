@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-body>
+	<province name="beijing">
+		<city>东城区</city>
+		<city>西城区</city>
+		<city>海淀</city>
+		<city>常德</city>
+		<city>朝阳</city>
+	</province>
+	
+	<province name="shanghai">
+		<city>浦东</city>
+		<city>淞沪</city>
+		<city>沪西</city>
+	</province>
+	
+	<province name="hubei">
+		<city>武汉</city>
+		<city>黄冈</city>
+		<city>仙桃</city>
+		<city>宜昌</city>
+	</province>
+</xml-body>

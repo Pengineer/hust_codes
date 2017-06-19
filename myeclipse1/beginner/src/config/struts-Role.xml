@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="role" extends="main" namespace="/role">
+		<!-- 角色列表 -->
+		<action name="listRole" class="roleAction" method="listRole">
+			<result>/roleright/listRole.jsp</result>
+		</action>
+		
+		<!-- 添加角色 -->
+		<action name="toAddRole" class="roleAction" method="toAddRole">
+			<result>/roleright/addRole.jsp</result>
+		</action>
+		
+		<action name="addRole" class="roleAction" method="addRole">
+			<result type="redirectAction">
+				<param name="actionName">viewRole</param>
+				<param name="roleid">${roleid}</param>
+			</result>
+			<result name="input">/roleright/addRole.jsp</result>
+		</action>
+		
+		<!-- 删除角色 -->
+		<action name="deleteRole" class="roleAction" method="deleteRole">
+			<result type="redirectAction">listRole</result>
+		</action>
+		
+		<!-- 群删角色 -->
+		<action name="groupDeleteRoles" class="roleAction" method="groupDeleteRoles">
+			<result type="redirectAction">listRole</result>
+		</action>
+		
+		<!-- 查看角色信息 -->
+		<action name="viewRole" class="roleAction" method="viewRole">
+			<result>/roleright/viewRole.jsp</result>
+		</action>
+		
+		<!-- 修改角色 -->
+		<action name="loadRole" class="roleAction" method="loadRole">
+			<result>/roleright/modifyRole.jsp</result>
+		</action>
+		
+		<action name="modifyRole" class="roleAction" method="modifyRole">
+			<result type="redirectAction">
+				<param name="actionName">viewRole</param>
+				<param name="roleid">${roleid}</param>
+			</result>
+			<result name="input">/roleright/modifyRole.jsp</result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prevRole" class="roleAction" method="prevRole">
+			<result type="redirectAction">
+	        	<param name="actionName">viewRole</param>
+	           <param name="roleid">${roleid}</param>
+	        </result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="nextRole" class="roleAction" method="nextRole">
+			<result type="redirectAction">
+	        	<param name="actionName">viewRole</param>
+	           <param name="roleid">${roleid}</param>
+	        </result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sortRole" class="roleAction" method="sortRole">
+			<result>/roleright/listRole.jsp</result>
+		</action>
+		
+		<!-- 检索 -->
+		<action name="simpleSearch" class="roleAction" method="simpleSearch">
+			<result>/roleright/listRole.jsp</result>
+		</action>
+		
+		<!-- 查看用户角色 -->
+		<action name="viewUserRole" class="roleAction" method="viewUserRole">
+			<result>/roleright/userRole.jsp</result>
+		</action>
+		
+		<!-- 分配角色 -->
+		<action name="userRole" class="roleAction" method="userRole">
+			<result type="redirectAction">
+				<param name="actionName">listUser</param>
+				<param name="namespace">/user</param>
+				<param name="userstatus">${userstatus}</param>
+			</result>
+		</action>
+	</package>
+</struts>

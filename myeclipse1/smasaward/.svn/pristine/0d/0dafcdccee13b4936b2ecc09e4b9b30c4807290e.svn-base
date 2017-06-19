@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="statisticExpertReviewer" extends="global" namespace="/statistic/review/expertReviewer">
+		<!-- 进入列表 -->
+		<action name="toList" class="expertReviewerSticAction" method="toList">
+			<result>/reviewstatic/listExpertReviewer.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="expertReviewerSticAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="expertReviewerSticAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="expertReviewerSticAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="expertReviewerSticAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="expertReviewerSticAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="namespace">/expert</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="expertReviewerSticAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="namespace">/expert</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+<!-- 		<action name="exportExpertStatistic" class="expertReviewerSticAction" method="exportExpertStatistic"/>
+ -->
+
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="expertReviewerSticAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<!-- 高级检索 -->
+		<action name="advSearch" class="expertReviewerSticAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+
+	</package>
+</struts>

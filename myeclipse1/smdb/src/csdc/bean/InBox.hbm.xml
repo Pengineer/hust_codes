@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.InBox" table="T_INBOX" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        
+        <many-to-one name="sendId" class="csdc.bean.Account" fetch="select">
+            <column name="C_SEND_ID" length="40" />
+        </many-to-one>
+        
+        <property name="sendName" type="java.lang.String">
+            <column name="C_SEND_NAME" length="200"  />
+        </property>
+        
+        <property name="theme" type="java.lang.String">
+            <column name="C_THEME" length="200"  />
+        </property>
+        
+        <property name="person" type="java.lang.String">
+            <column name="C_PERSON_ID" length="40"  />
+        </property>
+        
+        <property name="friend" type="java.lang.String">
+            <column name="C_FRIEND" length="40"  />
+        </property>
+        
+         <many-to-one name="recId" class="csdc.bean.Account" fetch="select">
+            <column name="C_REC_ID" length="40" />
+        </many-to-one>
+        
+         <property name="accountType">
+        	<column name="C_TYPE" length="40" not-null="true"></column>
+        	<type name="org.hibernate.type.EnumType">
+        		<param name="enumClass">csdc.tool.bean.AccountType</param>
+         		<param name="type">12</param><!-- 12 is java.sql.Types.VARCHAR -->
+      		  	<param name="useNamed">true</param>  
+       		</type>
+        </property>
+        
+        
+         <property name="isPrincipal" type="java.lang.Integer">
+        	<column name="C_IS_PRINCIPAL" precision="1" scale="0" not-null="true" />
+        </property>
+         <property name="sendType" type="java.lang.Integer">
+        	<column name="C_SEND_TYPE" precision="1" scale="0" not-null="true" />
+        </property>
+        
+        <property name="recName" type="java.lang.String">
+            <column name="C_REC_NAME" length="200"  />
+        </property>
+        
+        <property name="message" type="java.lang.String">
+            <column name="C_MESSAGE" />
+        </property>
+        
+        <property name="pDate" type="java.sql.Timestamp">
+            <column name="C_PDATE" length="7" not-null="true" />
+        </property>
+        
+        <property name="status" type="java.lang.Integer">
+        	<column name="C_STATUS" precision="1" scale="0" />
+        </property>
+        
+         <property name="viewStatus" type="java.lang.Integer">
+        	<column name="C_VIEW_STATUS" precision="1" scale="0" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

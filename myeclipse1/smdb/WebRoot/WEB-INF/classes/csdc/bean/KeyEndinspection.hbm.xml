@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<joined-subclass name="csdc.bean.KeyEndinspection" extends="csdc.bean.ProjectEndinspection" table="T_KEY_ENDINSPECTION">
+		<key column="C_ID"/>
+        <many-to-one name="granted" class="csdc.bean.KeyGranted" fetch="join">
+            <column name="C_GRANTED_ID" length="40" not-null="true" />
+        </many-to-one>
+        <set name="keyEndinspectionReview" inverse="true" cascade="all">
+            <key>
+                <column name="C_ENDINSPECTION_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.KeyEndinspectionReview" />
+        </set>
+        
+	</joined-subclass>
+
+</hibernate-mapping>

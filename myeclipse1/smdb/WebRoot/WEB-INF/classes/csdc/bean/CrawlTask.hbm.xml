@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.CrawlTask" table="T_CRAWL_TASK">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="taskType" type="java.lang.String">
+			<column name="C_TASK_TYPE" />
+		</property>
+		<property name="arguments" type="java.lang.String">
+			<column name="C_ARGUMENTS" />
+		</property>
+		<property name="progress" type="java.lang.String">
+			<column name="C_PROGRESS" />
+		</property>
+		<property name="assignTime" type="java.util.Date">
+			<column name="C_ASSIGN_TIME" />
+		</property>
+		<property name="finishTime" type="java.util.Date">
+			<column name="C_FINISH_TIME" />
+		</property>
+		<property name="log" type="java.lang.String">
+			<column name="C_LOG" />
+		</property>
+	</class>
+</hibernate-mapping>

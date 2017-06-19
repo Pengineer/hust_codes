@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="fundingAction" extends="main" namespace="/funding/funding">
+		<action name="toList" class="fundingAction" method="toList">
+			<result>/fund/popFundList.jsp</result>
+		</action>
+		<action name="list" class="fundingAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="fundingAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="fundingAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="fundingAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="fundingAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	</package>
+	<package name="projectFundingAction" extends="main" namespace="/funding/funding/project">
+		<action name="toList" class="projectFundingAction" method="toList">
+			<result>/funding/project/list.jsp</result>
+		</action>
+		<action name="list" class="projectFundingAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="projectFundingAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="projectFundingAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="projectFundingAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="projectFundingAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="delete" class="projectFundingAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="modifyFee" class="projectFundingAction" method="modifyFee">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModifyFee" class="projectFundingAction" method="toModifyFee">
+			<result>/funding/project/modifyFee.jsp</result>
+		</action>
+	</package>
+	<package name="workFundingAction" extends="main" namespace="/funding/funding/work">
+		<action name="toList" class="workFundingAction" method="toList">
+			<result>/funding/work/list.jsp</result>
+		</action>
+		<action name="list" class="workFundingAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="workFundingAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="workFundingAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="workFundingAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="workFundingAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="delete" class="workFundingAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="modifyFee" class="workFundingAction" method="modifyFee">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModifyFee" class="workFundingAction" method="toModifyFee">
+			<result>/funding/work/modifyFee.jsp</result>
+		</action>
+	</package>
+	<package name="projectFundAction" extends="main" namespace="/funding/projectFund">
+		<action name="toList" class="projectFundAction" method="toList">
+			<result>/funding/researchProjectFee/projectFund/list.jsp</result>
+		</action>
+		<action name="list" class="projectFundAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="projectFundAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="projectFundAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="projectFundAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="projectFundingAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	</package>
+</struts>

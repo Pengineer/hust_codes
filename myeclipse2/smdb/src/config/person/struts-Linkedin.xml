@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="linkedin" extends="main" namespace="/linkedin">
+
+		<action name="toList" class="linkedinAction" method="toList">
+			<result>/person/linkedin/list.jsp</result>
+		</action>
+
+		<action name="list" class="linkedinAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="linkedinAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+	
+		<action name="sort" class="linkedinAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="linkedinAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="linkedinAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="checkToAddFriend" class="linkedinAction" method="checkToAddFriend">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toAddFriend" class="linkedinAction" method="toAddFriend">
+			<result>/person/linkedin/addFriend.jsp</result>
+		</action>
+
+		<action name="addFriend" class="linkedinAction" method="addFriend">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="checkFriend" class="linkedinAction" method="checkFriend">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="refuse" class="linkedinAction" method="refuse">
+			<result>/person/linkedin/refuse.jsp</result>
+		</action>
+		
+		
+		<action name="toSend" class="linkedinAction" method="toSend">
+			<result>/person/linkedin/send.jsp</result>
+		</action>
+		
+		<action name="view" class="linkedinAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="send" class="linkedinAction" method="send">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		
+		
+		
+	</package>
+	
+	
+	<package name="chat" extends="main" namespace="/chat">
+
+		<action name="toList" class="chatAction" method="toList">
+			<result>/system/chat/list.jsp</result>
+		</action>
+
+		<action name="list" class="chatAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+		<action name="view" class="chatAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="send" class="chatAction" method="send">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+
+
+
+
+
+
+
+
+		<action name="simpleSearch" class="chatAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+	
+		<action name="sort" class="chatAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="chatAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="chatAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toAddFriend" class="chatAction" method="toAddFriend">
+			<result>/person/linkedin/addFriend.jsp</result>
+		</action>
+
+		<action name="addFriend" class="chatAction" method="addFriend">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="checkFriend" class="chatAction" method="checkFriend">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		
+		
+	</package>
+
+
+
+</struts>

@@ -1,0 +1,24 @@
+@charset "utf-8";
+body {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; background:#FFF;}
+body,ul,li,select,input,form {margin:0px; padding:0px;}
+textarea {border:solid 1px #aaa; background:#FFF;}
+li {list-style:none;}
+img {border:0px;}
+a {color:#6c6c96; text-decoration:none;}
+a:hover {color:#ff6600; text-decoration:underline;}
+hr {margin:0;}
+
+.select {border:solid 1px #aaa; height:20px; background:url(../image/input_bg.gif) repeat-x;}
+
+.btn1 {cursor:pointer; background:url(../image/btn_bg02.gif) no-repeat; width:58px; height:22px; border:none; color:#444; *padding-top:2px; _padding-top:2px;}
+.btn2 {cursor:pointer; background:url(../image/btn_bg03.gif) no-repeat; width:70px; height:22px; border:none; color:#444; *padding-top:2px; _padding-top:2px;}
+.btn4 {cursor:pointer; width:70px; height:22px; color:#444; *padding-top:2px; _padding-top:2px;}
+.btn3 {margin-left:2px; font-size:8pt; height:20px;}/*上传文件时取消上传按钮*/
+.color1 {color:#e4751b;}/*橙色*/
+.color2 {color:#B15BFF;}/*橙色*/
+
+.choose {width:50%;}
+.choose1 {width:30%; background-color:#f4f4f4;}
+.choose span {margin-left:10px;}
+.disable {color:gray;}
+/*CSS品质校验http://csslint.net/*/

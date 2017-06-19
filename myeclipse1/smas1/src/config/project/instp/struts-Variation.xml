@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="instpVariation" extends="global" namespace="/project/instp/variation">
+		<!-- 进入列表 -->
+		<action name="toList" class="instpVariationAction" method="toList">
+			<result>/project/instp/variation/list.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="instpVariationAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="instpVariationAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpVariationAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="instpVariationAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="instpVariationAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="instpVariationAction" method="toView">
+			<result>/project/instp/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="instpVariationAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="instpVariationAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="instpVariationAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 审核弹出层 -->
+		<action name="popAudit" class="instpVariationAction" method="popAudit">
+			<result>/project/instp/variation/popAudit.jsp</result>
+		</action>
+		
+		<!-- 提交审核 -->
+		<action name="audit" class="instpVariationAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看审核详情 -->
+		<action name="auditView" class="instpVariationAction" method="auditView">
+			<result>/project/instp/variation/popAuditView.jsp</result>
+		</action>
+		
+		<!-- 审核修改弹出层 -->
+		<action name="toAuditModify" class="instpVariationAction" method="toAuditModify">
+			<result>/project/instp/variation/popAuditModify.jsp</result>
+		</action>
+		
+		<!-- 提交审核修改 -->
+		<action name="auditModify" class="instpVariationAction" method="auditModify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 添加变更弹出层 -->
+		<action name="toAddResult" class="instpVariationAction" method="toAddResult">
+		  <result>/project/instp/variation/popAddResult.jsp</result>
+		</action>
+		
+		<!-- 提交添加变更 -->
+		<action name="addResult" class="instpVariationAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddFee" class="instpVariationAction" method="toAddVarFee">
+			<result>/project/instp/variation/popAddFee.jsp</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="accountTeacher" extends="main" namespace="/account/teacher">
+		
+		<action name="toAdd" class="accountTeacherAction" method="toAdd">
+			<result>/security/account/teacher/add.jsp</result>
+		</action>
+		
+		<action name="getUserName" class="accountTeacherAction" method="getUserName">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="add" class="accountTeacherAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageInfo">${pageInfo}</param>
+			</result>
+			<result name="input">/security/account/teacher/add.jsp</result>
+		</action>
+
+		<action name="toView" class="accountTeacherAction" method="toView">
+			<result>/security/account/teacher/view.jsp</result>
+		</action>
+		
+		<action name="view" class="accountTeacherAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="accountTeacherAction" method="toModify">
+			<result>/security/account/teacher/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="accountTeacherAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/security/account/teacher/modify.jsp</result>
+		</action>
+
+		<action name="delete" class="accountTeacherAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="accountTeacherAction" method="toList">
+			<result>/security/account/teacher/list.jsp</result>
+		</action>
+		
+		<action name="list" class="accountTeacherAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="accountTeacherAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="accountTeacherAction" method="toAdvSearch"> -->
+<!-- 			<result>/security/account/teacher/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="accountTeacherAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="accountTeacherAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="accountTeacherAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="accountTeacherAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="accountTeacherAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="accountTeacherAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toEnable" class="accountTeacherAction" method="toEnable">
+			<result>/security/account/popEnable.jsp</result>
+		</action>
+
+		<action name="enable" class="accountTeacherAction" method="enable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="disable" class="accountTeacherAction" method="disable">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAssignRole" class="accountTeacherAction" method="toAssignRole">
+			<result>/security/account/popAssignRole.jsp</result>
+		</action>
+
+		<action name="assignRole" class="accountTeacherAction" method="assignRole">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="retrieveCode" class="accountTeacherAction" method="retrieveCode">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModifyPassword" class="accountTeacherAction" method="toModifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<action name="modifyPassword" class="accountTeacherAction" method="modifyPassword">
+			<result>/security/account/popModifyPassword.jsp</result>
+			<result name="input">/security/account/popModifyPassword.jsp</result>
+		</action>
+		
+		<!-- 对外接口 -->
+		<action name="extIfToAdd" class="accountTeacherAction" method="extIfToAdd">
+			<result>/security/account/extIf/popAdd.jsp</result>
+		</action>
+		
+		<action name="extIfAdd" class="accountTeacherAction" method="extIfAdd">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 教师账号注册 -->
+		<action name="toRegister" class="accountTeacherAction" method="toRegister">
+			<result>/security/account/register.jsp</result>
+		</action>
+		
+		<action name="universityJSON" class="accountTeacherAction" method="universityJSON">
+			<result type="json"><param name="root">laData</param></result>
+		</action>
+		
+		<!-- 教师账号注册 -->
+		<action name="registerSuccess" class="accountTeacherAction" method="registerSuccess">
+			<result>/security/account/registerSuccess.jsp</result>
+		</action>
+		
+		<!--检测用户名是否可用--> 
+		<action name="checkUsername" class="accountTeacherAction" method="checkUsername">
+			<result type="json"><param name="root">valid</param></result>
+		</action>
+
+		<!--检测邮箱是否可用--> 
+		<action name="checkEmail" class="accountTeacherAction" method="checkEmail">
+			<result type="json"><param name="root">valid</param></result>
+		</action>
+		
+		<action name="register" class="accountTeacherAction" method="register">
+			<result>/security/account/registerSuccess.jsp</result>
+			<result name="input">/security/account/register.jsp</result>
+		</action>
+	</package>
+
+</struts>

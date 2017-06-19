@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="mobileLogin" extends="mobileMain" namespace="/mobile/login">
+	
+	    <action name="login" class="mobileLoginAction" method="login">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="logout" class="mobileLoginAction" method="logout">
+			<result type="json"><param name="root"></param></result>
+		</action>
+
+		<action name="toSelectAccount" class="mobileLoginAction" method="toSelectAccount">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toSwitchAccount" class="mobileLoginAction" method="toSwitchAccount">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="selectAccount" class="mobileLoginAction" method="selectAccount">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="switchAccount" class="mobileLoginAction" method="switchAccount">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="getCurrentAccount" class="mobileLoginAction" method="getCurrentAccount">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toError" class="mobileLoginAction" method="toError">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+</struts>

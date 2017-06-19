@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="accountDepartmentSub" location="1095,10" size="2485,1540">
+    <action name="toAdd" location="2270,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="2270,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="2025,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="2025,362" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="1780,372" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="1535,362" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="1535,257" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toSimpleSearch" location="1290,267" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="toAdvSearch" location="1290,1457" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="65,1457" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="simpleSearch" location="65,1342" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="310,1342" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="changePageSize" location="310,1237" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="65,1237" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toBackToList" location="65,1132" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="backToList" location="555,1132" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="555,1237" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="800,1237" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toEnable" location="800,1037" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popEnable.jsp" />
+      </result>
+    </action>
+    <action name="enable" location="800,922" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="disable" location="1045,922" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAssignRole" location="1045,827" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAssignRole.jsp" />
+      </result>
+    </action>
+    <action name="assignRole" location="1045,432" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="retrieveCode" location="1045,327" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModifyPassword" location="240,337" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="modifyPassword" location="240,712" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyPassword.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popModifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="extIfToAdd" location="65,617" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="extIfAdd" location="65,502" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/security/account/department/sub/add.jsp" location="3304,1745" size="150,55" />
+  <webResource name="modify.jsp" path="/security/account/department/sub/modify.jsp" location="75,135" size="150,55" />
+  <webResource name="view.jsp" path="/security/account/department/sub/view.jsp" location="2811,1605" size="150,55" />
+  <webResource name="list.jsp" path="/security/account/department/sub/list.jsp" location="431,240" size="150,55" />
+  <webResource name="advSearch.jsp" path="/security/account/department/sub/advSearch.jsp" location="2306,1605" size="150,55" />
+  <webResource name="popEnable.jsp" path="/security/account/popEnable.jsp" location="811,1010" size="150,55" />
+  <webResource name="popAssignRole.jsp" path="/security/account/popAssignRole.jsp" location="799,800" size="150,55" />
+  <webResource name="popModifyPassword.jsp" path="/security/account/popModifyPassword.jsp" location="612,415" size="150,55" />
+  <webResource name="popAdd.jsp" path="/security/account/extIf/popAdd.jsp" location="802,590" size="150,55" />
+</Struts2Diagram>
+

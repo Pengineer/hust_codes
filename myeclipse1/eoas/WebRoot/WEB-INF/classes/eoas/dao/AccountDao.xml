@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="eoas.dao.AccountDao">
+	<resultMap id="detailedAccountResultMap" type="Account">
+		<id property = "id" column = "C_ID"/>
+		<result property = "accountType" column = "C_ACCOUNTTYPE"/>
+		<result property = "email" column ="C_EMAIL"/>
+		<result property = "password" column="C_PASSWORD"/>
+	</resultMap>
+
+	<insert id="insert"  parameterType="Account"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_ACCOUNT (C_ID, C_ACCOUNTTYPE, C_EMAIL, C_PASSWORD)
+         values (#{id, jdbcType=VARCHAR},#{accountType, jdbcType=VARCHAR},#{email, jdbcType=VARCHAR},#{password, jdbcType=VARCHAR})
+     </insert>
+     
+     <select id="findByEmail" parameterType="java.lang.String" resultMap="detailedAccountResultMap">
+     	SELECT * FROM T_ACCOUNT WHERE C_EMAIL = #{email}
+     </select>
+     <select id="checkByEmailAndPassword" parameterType="java.lang.String" resultMap="detailedAccountResultMap">
+     	SELECT * FROM T_ACCOUNT WHERE C_EMAIL = #{0} AND C_PASSWORD = #{1}
+     </select>
+</mapper> 

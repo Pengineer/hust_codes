@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="general" extends="global" namespace="/project/general">
+		
+		<!-- 进入列表 -->
+		<action name="toList" class="generalAction" method="toList">
+			<result>/project/general/application/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="generalAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="generalAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="generalAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="generalAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toDeleteMatches" class="generalAction" method="toDeleteMatches">
+			<result>/project/general/popDeleteMatches.jsp</result>
+		</action>
+		
+		<action name="deleteMatches" class="generalAction" method="deleteMatches">
+			<result type="redirectAction">
+			    <param name="actionName">toList</param>
+			    <param name="update">1</param>
+			    <param name="listType">1</param>
+			    <param name="isReviewable">1</param>
+			</result>
+		</action>
+		
+		<action name="toAdd" class="generalAction" method="toAdd">
+			<result>/project/general/add.jsp</result>
+		</action>
+		
+		<action name="add" class="generalAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input">/project/general/add.jsp</result>
+		</action>
+		
+		<action name="toAddApplyFee" class="generalAction" method="toAddApplyFee">
+	        <result>/project/popAddApplyFee.jsp</result>
+	    </action>
+	    
+		<action name="toModify" class="generalAction" method="toModify">
+			<result>/project/general/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="generalAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input">/project/general/modify.jsp</result>
+		</action>
+		
+		<action name="toView" class="generalAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="isReviewable">${isReviewable}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="delete" class="generalAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+
+		<!-- 专家树-->
+		<action name="createExpertTree" class="generalAction" method="createExpertTree">
+			<result type="json"><param name="root">nodesInfo</param></result>
+		</action>
+		
+		<action name="toSelectExpert" class="generalAction" method="toSelectExpert">
+		 	<result name="success">/project/general/selectReviewer.jsp</result>
+		</action>
+		
+		<action name="searchExpert" class="generalAction" method="searchExpert">
+			<result>/project/general/expertTree.jsp</result>
+		</action>
+		
+		<action name="showExpertTree" class="generalAction" method="showExpertTree">
+			<result>/project/general/expertTree.jsp</result>
+		</action>
+
+		<!-- 自动匹配 -->
+		<action name="matchExpert" class="generalAction" method="matchExpert">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			 	<param name="isReviewable">1</param>
+			</result>
+		</action>
+
+		<!-- 批量替换专家 -->
+		<action name="batchReplaceExpert" class="generalAction" method="batchReplaceExpert">
+			<result type="json"><param name="root">flag</param></result>
+		</action>
+		
+		<!-- 指定专家移交 -->
+		<action name="transferMatch" class="generalAction" method="transferMatch">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 显示专家列表 -->
+		<action name="showExpertList" class="generalAction" method="showExpertList">
+			<result>/expert/expertList.jsp</result>
+		</action>
+		
+		<!-- 手工匹配专家 -->
+		<action name="reMatchExpert" class="generalAction" method="reMatchExpert">
+			<result name="one" type="redirectAction">
+				<param name="actionName">toView</param>
+			 	<param name="entityId">${entityId}</param>
+			 	<param name="update">1</param>
+			 	<param name="listType">1</param>
+			 	<param name="isReviewable">${isReviewable}</param>
+			 	<param name="businessType">${businessType}</param>
+			</result>
+			<result name="more" type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+			 	<param name="entityId">${entityId}</param>
+			 	<param name="listType">1</param>
+			 	<param name="isReviewable">${isReviewable}</param>
+			 	<param name="businessType">${businessType}</param>
+			</result>
+		</action>
+		
+		<!-- 参评 -->
+		<action name="enableReview" class="generalAction" method="enableReview">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+				<param name="listType">${listType}</param>
+				<param name="isReviewable">${isReviewable}</param>
+			</result>
+		</action>
+		
+		<!-- 进入退评弹出层 -->		
+		<action name="toDisableReview" class="generalAction" method="toDisableReview">
+			<result>/project/general/popDisableReview.jsp</result>
+		</action>
+		
+		<!-- 退评 -->
+		<action name="disableReview" class="generalAction" method="disableReview">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="granting" class="generalAction" method="granting">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="deleteExpertProjects" class="generalAction" method="deleteExpertProjects">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 弹出层导出 -->
+		<action name="popExport" class="generalAction" method="popExport">
+			<result>/project/general/popExport.jsp</result>
+		</action>
+		
+		<!-- 导出项目模板 -->
+		<action name="projectTemplate" class="generalAction" method="projectTemplate">
+		</action>
+		
+		<!-- 导出项目 -->
+		<action name="exportProject" class="generalAction" method="exportProject">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">projectFile</param>
+			</result>
+		</action>
+		
+		<!-- 导出项目评审信息 -->
+		<action name="exportProjectReviewer" class="generalAction" method="exportProjectReviewer">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">projectReviewerFile</param>
+			</result>
+		</action>
+		
+		<!-- 导出匹配更新 -->
+		<action name="exportMatchUpdate" class="generalAction" method="exportMatchUpdate">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">matchUpdateFile</param>
+			</result>
+		</action>
+
+		<!-- 导出拟立项统计表 -->
+		<action name="exportGrantingSchedule" class="generalAction" method="exportGrantingSchedule">
+		</action>
+		
+		<!-- 导出拟立项（清单）计划表 -->
+		<action name="exportGrantingList" class="generalAction" method="exportGrantingList">
+		</action>
+	
+		<!-- 数据入库-->
+		<action name="importData" class="generalAction" method="importData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 审核弹出层  -->
+		<action name="popAudit" class="generalAction" method="popAudit">
+			<result>/project/general/application/popAudit.jsp</result><!-- 返回JSP页面 -->
+		</action>
+		<!-- 项目评审审核 -->
+		<action name="audit" class="generalAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="auditView" class="generalAction" method="auditView">
+		<!-- TODO -->
+	        <result>.....jsp</result>
+	    </action>
+	</package>
+</struts>

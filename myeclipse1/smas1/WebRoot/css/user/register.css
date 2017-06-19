@@ -1,0 +1,313 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：register.css
+ *
+ * 文件说明：
+ *     主要用于user模块中注册及修改信息页面样式的定义。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ * 2010-03-17  周中坚：修改文件使验证信息出现在文本框下方且无撑开的动作。
+ * 2013-08-23  徐江伟：修改文件中背景颜色，整体布局，外观显示等。
+ *************************************************************************/
+
+/****************************************************************
+ * 与页面整体布局相关的样式。
+ ***************************************************************/
+
+/* 默认边距及字体属性 */
+* {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* 页面容器 */
+.container {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* 页面头部 */
+.head {
+	width: 100%;
+	height: 60px;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #115e8a;
+	background-color: #536A8E;
+	color:white;
+	font-family: 宋体, Arial;
+	font-weight:bold;
+	font-size: 25pt;
+	line-height: 60px;
+	min-width: 1024px;
+    overflow: hidden;
+}
+.head p {
+	margin-left:50px;
+}
+
+/* 页面主体 */
+.main {
+	width: 100%;
+	background-color:#D8DDE6;
+	margin: 0 auto;
+    min-width: 1024px;
+    width: 100%;
+    border: 1px solid #D8DDE6;
+}
+
+/* 返回主页菜单 */
+.menu {
+	width: 100%;
+	height: 20px;
+	text-align:right;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	margin-top: -40px;
+	color:white;
+}
+.menu a {
+	text-decoration: none;
+	color:white;
+	margin-right:100px;
+}
+
+/* 注册及修改步骤 */
+.steplogo {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	width: 100%;
+	height: 20px;
+	background-color: rgb(247, 247, 247);
+	text-align: left;
+	vertical-align: middle;
+	background-color:#D8DDE6;
+}
+
+/* 导航信息颜色 */
+.stepping {
+	color: #FF7400;
+	font-weight: bold;
+}
+
+/* 主体内容 */
+.center {
+	width: 550px;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+	border: 1px solid #E5E5E5;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	background-color: #C9D1DD;
+}
+.register_txt {
+	margin-top:10px;
+	margin-left: 10px;
+	width:100px;
+	float:left;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13pt;
+	font-weight:bold;
+	color:#536A8E;
+}
+.register_form{
+	margin-top:10px;
+}
+
+/* 人员信息table */
+.table_center {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	width: 340px;
+}
+.table_center tr{
+	height:50px;
+}
+
+.table_btn {
+	width: 100%;
+}
+
+/* 找回密码 */
+.retrieve_pass_center {
+	background-color:#D8DDE6;
+	height: 500px;
+	margin: 0 auto;
+    min-width: 1024px;
+    width: 100%;
+}
+.retrievepassword {
+	margin-left: auto;
+	margin-right: auto;
+	width: 340px;
+	color: #FF0000;
+	text-align: center;
+}
+
+/* 字段名 */
+.td_right {
+	width: 100px;
+	text-align: right;
+	padding-top:8px;
+	padding-right: 5px;
+	vertical-align:top;
+}
+
+/* 字段值 */
+.td_value {
+	height: 34px;
+	padding-left: 5px;
+	vertical-align:top;
+}
+
+/* 输入框必填 */
+.text_red {
+	color: #FF0000;
+}
+
+/* 找密码 */
+.retrievepassword {
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+}
+
+/* 激活信息 */
+.infor {
+	margin: 5pt;
+	margin-top: 20pt;
+	font-family: 宋体, Arial;
+	text-align: center;
+	font-size: 12pt;
+}
+
+/* 教育背景单元格 */
+
+.td2 {
+	width: 150px;
+	text-align: left;
+	height: 34px;
+}
+
+.td3 {
+	width: 100px;
+	text-align: left;
+	height: 34px;
+}
+
+.td4 {
+	width: 50px;
+	text-align: left;
+	height: 34px;
+}
+
+/* 教育背景按钮区 */
+.th_button {
+	width:50%;
+}
+
+.th_left {
+	text-align: left;
+}
+
+/* .th_center {
+	text-align: center;
+}
+ */
+.th_right {
+	text-align: right;
+}
+
+/* 按钮 */
+.btn {
+	border-radius: 3px 3px 3px 3px;
+	background-color: #FF7A01;
+    border: 1px solid #7AC4EA;
+    color: #D8DDE6;
+    font-weight: normal;
+	cursor: pointer;
+	height:30px;
+	width: 80px;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11pt;
+}
+.btn:hover {
+	background-color: #FFAD09;
+}
+
+/* 使输入框不上下移动 */
+.input0 {
+	height: 30px;
+	margin: auto;
+}
+
+/* 字段输入框 */
+.input2 {
+	border-radius: 3px 3px 3px 3px;
+    background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+    line-height: 30px;
+	height: 30px;
+    font-weight: normal;
+	width: 200px;
+}
+.input2:hover {
+    border: 1px solid #FFAD09;
+}
+
+/* 文件上传输入框 */
+.input1 {
+	border-radius: 3px 3px 3px 3px;
+    background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+	height: 30px;
+	line-height: 30px;
+    font-weight: normal;
+	width: 200px;
+}
+.input1:hover{
+    border: 1px solid #FFAD09;
+}
+
+/* select下拉框 */
+.select {
+    background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+	height: 30px;
+	padding:5px;
+    font-weight: normal;
+    text-align: center;
+    width: 100px;
+}
+.select:hover {
+    border: 1px solid #FFAD09;
+}
+.login_footer{
+	background:none repeat scroll 0 0 #F4F4F4;
+	border-top:3px solid #5F718E;
+	clear:both;
+	color:#666666;
+	height:80px;
+	font-family: 宋体,Verdana,Arial,Helvetica,sans-serif;
+	font-size:10pt;
+	text-align: center;
+}
+.login_footer_txt{
+	line-height:22px;
+	background-color: #F4F4F4;
+	margin-top:15px;
+	padding-right:20px;
+	text-align:center;
+}
+

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="selfspace" location="1025,10" size="1715,1085">
+    <action name="toRetrievePassword" location="1290,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="retrievePassword.jsp" />
+      </result>
+    </action>
+    <action name="retrievePassword" location="1290,992" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="retrievePasswordSuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="retrievePassword.jsp" />
+      </result>
+    </action>
+    <action name="toResetPassword" location="1045,1002" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="resetPassword.jsp" />
+      </result>
+    </action>
+    <action name="resetPassword" location="800,992" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="resetPasswordSuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="resetPassword.jsp" />
+      </result>
+    </action>
+    <action name="viewSelfAccount" location="800,897" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewSelfAccount.jsp" />
+      </result>
+    </action>
+    <action name="toModifySelfAccount" location="800,792" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifySelfAccount.jsp" />
+      </result>
+    </action>
+    <action name="modifySelfAccount" location="555,782" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modifySelfAccount.jsp" />
+      </result>
+    </action>
+    <action name="viewSelfInfo" location="555,677" size="150,62">
+      <result name="admin">
+        <resourceEdge source="admin" routing="0" target="adminInfo.jsp" />
+      </result>
+      <result name="success" />
+    </action>
+    <action name="checkIfNeedModifyPassword" location="310,572" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModifyPassword" location="65,582" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="modifyPassword" location="65,467" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="mFlag" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toSimpleSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toBackToList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="backToList" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="retrievePassword.jsp" path="/selfspace/retrievePassword.jsp" location="2596,1255" size="150,55" />
+  <webResource name="retrievePasswordSuccess.jsp" path="/selfspace/retrievePasswordSuccess.jsp" location="2260,1150" size="150,55" />
+  <webResource name="resetPassword.jsp" path="/selfspace/resetPassword.jsp" location="50,135" size="150,55" />
+  <webResource name="resetPasswordSuccess.jsp" path="/selfspace/resetPasswordSuccess.jsp" location="1779,1150" size="150,55" />
+  <webResource name="viewSelfAccount.jsp" path="/selfspace/viewSelfAccount.jsp" location="744,870" size="150,55" />
+  <webResource name="modifySelfAccount.jsp" path="/selfspace/modifySelfAccount.jsp" location="318,240" size="150,55" />
+  <webResource name="adminInfo.jsp" path="/adminInfo.jsp" location="617,345" size="150,55" />
+  <webResource name="modifyPassword.jsp" path="/selfspace/modifyPassword.jsp" location="782,450" size="150,55" />
+  <webResource name="adminInfo.jsp" path="/selfspace/adminInfo.jsp" location="0,0" size="0,0" />
+  <webResource name="list.jsp" path="/selfspace/myMemo/list.jsp" location="0,0" size="0,0" />
+  <webResource name="view.jsp" path="/selfspace/myMemo/view.jsp" location="0,0" size="0,0" />
+  <webResource name="add.jsp" path="/selfspace/myMemo/add.jsp" location="0,0" size="0,0" />
+  <webResource name="modify.jsp" path="/selfspace/myMemo/modify.jsp" location="0,0" size="0,0" />
+  <webResource name="advSearch.jsp" path="/system/mail/advSearch.jsp" location="0,0" size="0,0" />
+  <webResource name="advSearch.jsp" path="/selfspace/myMemo/advSearch.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

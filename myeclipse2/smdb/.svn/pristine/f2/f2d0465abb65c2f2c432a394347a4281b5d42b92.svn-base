@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="Consultation" extends="main" namespace="/product/consultation">
+	
+		<action name="toList" class="ConsultationAction" method="toList">
+			<result>/product/consultation/list.jsp</result>
+		</action>
+
+		<action name="list" class="ConsultationAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="ConsultationAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="ConsultationAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="ConsultationAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="ConsultationAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="ConsultationAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdd" class="ConsultationAction" method="toAdd">
+			<result>/product/consultation/add.jsp</result>
+		</action>
+		
+    	<action name="add" class="ConsultationAction" method="add"> 
+       		<param name="savePath">/upload/product/consultation</param>
+       		<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="actionName">toView</param>	
+	        </result>
+	        <result name="finish" type="json"><param name="root">jsonMap</param></result>
+        	<result name="input">${inputView}</result>
+    	</action>
+    		  	 
+	 	<action name="toModify" class="ConsultationAction" method="toModify">
+	    	<result>/product/consultation/modify.jsp</result>
+	    	<result name="finish">/product/extIf/popModifyConsultation.jsp</result>
+	   	</action>
+	   	
+	 	<action name="modify" class="ConsultationAction" method="modify">
+ 	    	<param name="savePath">/upload/product/consultation</param>
+ 	    	<result type="redirectAction">
+		 		<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="update">1</param>
+			 	<param name="actionName">toView</param>	
+	      	</result>
+	      	<result name="finish" type="json"><param name="root">jsonMap</param></result>
+      		<result name="input">/product/consultation/modify.jsp</result>
+	   	</action>
+	   	
+		<action name="delete" class="ConsultationAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toView" class="ConsultationAction" method="toView">
+			<result>/product/consultation/view.jsp</result>
+			<result name="popView">/product/extIf/popViewConsultation.jsp</result>
+		</action>
+		
+		<action name="view" class="ConsultationAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="ConsultationAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="ConsultationAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="ConsultationAction" method="toAudit">
+			<result>/product/popAudit.jsp</result>
+		</action>
+		
+		<action name="audit" class="ConsultationAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewAudit" class="ConsultationAction" method="viewAudit">
+			<result>/product/popViewAudit.jsp</result>
+		</action>
+	
+		<action name="toAddApply" class="ConsultationAction" method="toAddApply">
+			<result>/product/popAddApply.jsp</result>
+		</action>
+		
+		<action name="toModifyApply" class="ConsultationAction" method="toModifyApply">
+			<result>/product/popModifyApply.jsp</result>
+		</action>
+		
+	    <action name="download" class="ConsultationAction" method="download">
+      		<result type="stream">   		 
+ 				<param name="inputName">targetFile</param> 
+ 				<param name="bufferSize">4096</param>
+ 				<param name="contentType">application/octet-stream</param>
+	 			<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>  
+	 		</result>
+	 	</action>
+	 	
+	   	<action name="validateFile" class="ConsultationAction" method="validateFile">
+   			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+
+	   	<action name="exAdd" class="ConsultationAction" method="exAdd">
+   			<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	   	</action>
+	   	
+	</package>
+</struts>

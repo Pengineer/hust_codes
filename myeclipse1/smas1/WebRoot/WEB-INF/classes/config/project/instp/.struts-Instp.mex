@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="institute" location="10,220" size="1400,1155">
+    <action name="list" location="1185,407" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="showExpert" location="1185,512" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="createExpertTree" location="940,513" size="150,40" />
+    <action name="matchPatch" location="695,513" size="150,40" />
+    <action name="toSelectExpert" location="695,687" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="selectReviewer.jsp" />
+      </result>
+    </action>
+    <action name="matchExpert" location="450,687" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="exportProjectReviewer" location="450,583" size="150,40" />
+    <action name="simpleSearch" location="205,582" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="view" location="205,862" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="sort" location="205,967" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="reMatchExpert" location="450,957" size="150,62">
+      <result name="one" />
+      <result name="more" />
+    </action>
+    <action name="prev" location="450,1072" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="next" location="65,1072" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toAdd" location="65,337" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="65,222" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="load" location="310,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="1045,232" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="delete" location="1045,57" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="groupDelete" location="555,57" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="enableReview" location="555,162" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="disableReview" location="800,162" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/project/institute/list.jsp" location="1453,695" size="150,55" />
+  <webResource name="selectReviewer.jsp" path="/project/institute/selectReviewer.jsp" location="1458,870" size="150,55" />
+  <webResource name="view.jsp" path="/project/institute/view.jsp" location="1453,1045" size="150,55" />
+  <webResource name="add.jsp" path="/project/institute/add.jsp" location="1456,520" size="150,55" />
+  <webResource name="modify.jsp" path="/project/institute/modify.jsp" location="292,65" size="150,55" />
+</Struts2Diagram>
+

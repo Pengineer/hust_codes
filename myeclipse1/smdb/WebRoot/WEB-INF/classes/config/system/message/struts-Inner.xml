@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="messageInner" extends="main" namespace="/message/inner">
+	
+		<action name="toList" class="messageInnerAction" method="toList">
+			<result>/system/message/inner/list.jsp</result>
+		</action>
+
+		<action name="list" class="messageInnerAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="messageInnerAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="messageInnerAction" method="toAdvSearch"> -->
+<!-- 			<result>/system/message/inner/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="messageInnerAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="messageInnerAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="messageInnerAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="messageInnerAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdd" class="messageInnerAction" method="toAdd">
+			<result>/system/message/inner/add.jsp</result>
+		</action>
+		
+		<action name="add" class="messageInnerAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/system/message/inner/add.jsp</result>
+		</action>
+		
+		<action name="toModify" class="messageInnerAction" method="toModify">
+			<result>/system/message/inner/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="messageInnerAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/system/message/inner/modify.jsp</result>
+		</action>
+		
+		<action name="toView" class="messageInnerAction" method="toView">
+			<result>/system/message/inner/view.jsp</result>
+		</action>
+		
+		<action name="view" class="messageInnerAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="messageInnerAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="messageInnerAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="delete" class="messageInnerAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="messageInnerAction" method="toList">
+			<result>/system/message/inner/list.jsp</result>
+		</action>
+
+		<action name="list" class="messageInnerAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="messageInnerAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="messageInnerAction" method="toAdvSearch"> -->
+<!-- 			<result>/system/message/inner/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="messageInnerAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="messageInnerAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="messageInnerAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="messageInnerAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toggleOpen" class="messageInnerAction" method="toggleOpen">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="messageInnerAction" method="toAudit">
+			<result>/system/message/inner/popAudit.jsp</result>
+		</action>
+
+		<action name="audit" class="messageInnerAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+
+
+</struts>

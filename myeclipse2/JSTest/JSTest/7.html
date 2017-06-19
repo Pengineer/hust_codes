@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>7.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  <script type="text/javascript">
+  	function checkInfo(){
+  		var realname = document.getElementById("name").value;
+  		if(realname==null || realname.trim()=="" || realname==undefined){
+  			alert("您的姓名不能为空");
+  			document.getElementById("name").focus();
+  			return false;
+  		}
+  		
+  		var realage = document.getElementById("age").value;
+  		if(realage>150 || realage<=0){
+  			alert("您输入的年龄不是合法年龄");
+  			document.getElementById("age").focus();
+  			return false;
+  		}
+  		
+  		var realsex = document.getElementsByName("sex");
+  		var flag = false;
+  		for(var i=0; i<realsex.length; i++){
+  			if(realsex[i].checked){
+  				flag = true;
+  				break;
+  			}
+  		}
+  		if(!flag){
+  			alert("您输入的性别不是合法性别");
+  			return false;
+  		}
+  		
+  	}
+  </script>
+   
+  <body>
+    <table border=1 cellspacing=0 cellpadding=5>
+    <caption>人员信息表</caption>
+    	<tr>
+    		<td>
+    			姓名（不能为空）
+    		</td>
+    		<td>
+    			<input type="text" name="name" id="name"/>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td>
+    			年龄（0-150）
+    		</td>
+    		<td>
+    			<input type="text" name="age" id="age"/>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td>
+    			性别（‘男’或‘女’）
+    		</td>
+    		<td>
+    			<input type="radio" name="sex" value="male" />男
+    			<input type="radio" name="sex" value="female"/>女
+    		</td>
+    	</tr>
+    	<tr >
+    		<th colspan="2">
+    			<input type="button" value="提交" onclick="checkInfo()"/>
+    		</th>
+    	</tr>
+    </table>
+  </body>
+</html>

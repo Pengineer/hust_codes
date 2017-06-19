@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.ProjectApplication" table="T_PROJECT_APPLICATION">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="number" type="java.lang.String">
+			<column name="C_NUMBER" length="40" />
+		</property>
+		<property name="sinossID" type="java.lang.String">
+			<column name="C_SINOSS_ID" length="40" />
+		</property>
+		<property name="members" type="java.lang.String">
+			<column name="C_MEMBERS" />
+		</property>
+		<property name="idcard" type="java.lang.String">
+			<column name="C_IDCARD" length="40" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="C_EMAIL" length="100" />
+		</property>
+		<property name="mobile" type="java.lang.String">
+			<column name="C_MOBILE" length="20" />
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="C_PHONE" length="20" />
+		</property>
+		<property name="postcode" type="java.lang.String">
+			<column name="C_POSTCODE" length="20" />
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="C_ADDRESS" length="100" />
+		</property>
+		<property name="foreign" type="java.lang.String">
+			<column name="C_FOREIGN" length="20" />
+		</property>
+		<property name="degree" type="java.lang.String">
+			<column name="C_DEGREE" length="20" />
+		</property>
+		<property name="education" type="java.lang.String">
+			<column name="C_EDUCATION" length="20" />
+		</property>
+		<property name="job" type="java.lang.String">
+			<column name="C_JOB" length="20" />
+		</property>
+		<property name="department" type="java.lang.String">
+			<column name="C_DEPARTMENT" length="40" />
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="C_TITLE" length="20" />
+		</property>
+		<property name="birthday" type="java.sql.Timestamp">
+			<column name="C_BIRTHDAY" length="7" />
+		</property>
+		<property name="gender" type="java.lang.String">
+			<column name="C_GENDER" length="10" />
+		</property>
+		<property name="director" type="java.lang.String">
+			<column name="C_DIRECTOR" length="40" />
+		</property>
+		<property name="finalResultType" type="java.lang.String">
+			<column name="C_FINAL_RESULT_TYPE" length="100" />
+		</property>
+		<property name="productType" type="java.lang.String">
+            <column name="C_PRODUCT_TYPE" length="400" />
+        </property>
+        <property name="productTypeOther" type="java.lang.String">
+            <column name="C_PRODUCT_TYPE_OTHER" length="200" />
+        </property>
+		<property name="otherFee" type="java.lang.String">
+			<column name="C_OTHER_FEE" length="20" />
+		</property>
+		<property name="applyFee" type="java.lang.String">
+			<column name="C_APPLY_FEE" length="20" />
+		</property>
+		<property name="approveFee" type="java.lang.String">
+			<column name="C_APPROVE_FEE" length="20" />
+		</property>
+		<property name="planEndDate" type="java.sql.Timestamp">
+			<column name="C_PLAN_END_DATE" length="7" />
+		</property>
+		<property name="researchType" type="java.lang.String">
+			<column name="C_RESEARCH_TYPE" length="20" />
+		</property>
+		<property name="discipline" type="java.lang.String">
+			<column name="C_DISCIPLINE" length="150" />
+		</property>
+		<property name="applyDate" type="java.sql.Timestamp">
+			<column name="C_APPLY_DATE" length="7" />
+		</property>
+		<property name="disciplineType" type="java.lang.String">
+			<column name="C_DISCIPLINE_TYPE" length="40" />
+		</property>
+		<property name="projectType" type="java.lang.String">
+			<column name="C_PROJECT_TYPE" length="20" />
+		</property>
+		<property name="topic" type="java.lang.String">
+			<column name="C_TOPIC" length="200" />
+		</property>
+		<property name="subType" type="java.lang.String">
+			<column name="C_SUBTYPE" length="20" />
+		</property>
+		<property name="projectName" type="java.lang.String">
+			<column name="C_PROJECT_NAME" length="100" />
+		</property>
+		<property name="universityName" type="java.lang.String">
+			<column name="C_UNIVERSITY_NAME" length="200" />
+		</property>
+		<property name="universityCode" type="java.lang.String">
+			<column name="C_UNIVERSITY_CODE" length="10" />
+		</property>
+		<property name="file" type="java.lang.String">
+			<column name="C_FILE" length="80" />
+		</property>
+		<property name="auditStatus" type="java.lang.String">
+			<column name="C_AUDIT_STATUS" length="20" />
+		</property>
+		<property name="warning" type="java.lang.String">
+			<column name="C_WARNING" length="200" />
+		</property>
+		<property name="warningReviewer" type="java.lang.String">
+			<column name="C_WARNING_REVIEWER" length="200" />
+		</property>
+		<property name="addDate" type="java.sql.Timestamp">
+			<column name="C_ADD_DATE" length="7" />
+		</property>
+		<property name="isReviewable" type="java.lang.Integer">
+			<column name="C_IS_REVIEWABLE" precision="1" scale="0" />
+		</property>
+		<property name="reason" type="java.lang.String">
+			<column name="C_REASON" />
+		</property>
+		<property name="isGranted" type="java.lang.Integer">
+			<column name="C_IS_GRANTED" precision="1" scale="0" />
+		</property>
+		<property name="year" type="java.lang.Integer">
+			<column name="C_YEAR"/>
+		</property>
+		<property name="isGranting" type="java.lang.Integer">
+			<column name="C_IS_GRANTING" precision="1" scale="0" />
+		</property>
+		<property name="score" type="java.lang.Double">
+			<column name="C_SCORE" precision="6" scale="2"/>
+		</property>
+		<property name="voteNumber" type="java.lang.Integer">
+			<column name="C_VOTE_NUMBER" precision="1" scale="0" />
+		</property>
+		<set name="applicationReview" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="C_PROJECT_ID" length="40" not-null="true" />
+			</key>
+			<one-to-many class="csdc.bean.ProjectApplicationReview" />
+		</set>
+		<set name="applicationReviewUpdate" inverse="true" cascade="all-delete-orphan">
+			<key>
+				<column name="C_PROJECT_ID" length="40" not-null="true" />
+			</key>
+			<one-to-many class="csdc.bean.ProjectApplicationReviewUpdate" />
+		</set>
+		<property name="informTitle" type="java.lang.String">
+			<column name="C_INFORM_TITLE" length="100" />
+		</property>
+		<property name="informContent" type="java.lang.String">
+			<column name="C_INFORM_CONTENT" length="1000" />
+		</property>
+		<property name="informer" type="java.lang.String">
+			<column name="C_INFORMER" length="40" />
+		</property>
+		<property name="informerEmail" type="java.lang.String">
+			<column name="C_INFORMER_EMAIL" length="100" />
+		</property>
+		<property name="informerPhone" type="java.lang.String">
+			<column name="C_INFORMER_PHONE" length="20" />
+		</property>
+		<property name="informDate" type="java.sql.Timestamp">
+			<column name="C_INFORM_DATE" length="7" />
+		</property>
+		<property name="publicDate" type="java.sql.Timestamp">
+			<column name="C_PUBLIC_DATE" length="7" />
+		</property>
+		<property name="grantedDate" type="java.sql.Timestamp">
+			<column name="C_GRANTED_DATE" length="7" />
+		</property>
+		<property name="approvalNumber" type="java.lang.String">
+			<column name="C_APPROVAL_NUMBER" length="100" />
+		</property>
+		<property name="firstAuditResult" type="java.lang.String">
+			<column name="C_FIRST_AUDIT_RESULT" />
+		</property>
+		<property name="firstAuditDate" type="java.sql.Timestamp">
+			<column name="C_FIRST_AUDIT_DATE" length="7" />
+		</property>
+		<!-- 部级审核后初评信息字段 -->
+		<many-to-one name="ministryAuditor" class="csdc.bean.User" fetch="join">
+            <column name="C_MINISTRY_AUDITOR_ID" length="40"/>
+        </many-to-one>
+        <property name="ministryAuditStatus" type="java.lang.Integer">
+            <column name="C_MINISTRY_AUDIT_STATUS" precision="1" scale="0" />
+        </property>
+        <property name="ministryAuditResult" type="java.lang.Integer">
+            <column name="C_MINISTRY_AUDIT_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="ministryAuditorName" type="java.lang.String">
+            <column name="C_MINISTRY_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="ministryAuditDate" type="java.util.Date">
+            <column name="C_MINISTRY_AUDIT_DATE" length="7" />
+        </property>
+        <property name="ministryAuditOpinion" type="java.lang.String">
+            <column name="C_MINISTRY_AUDIT_OPINION" length="800" />
+        </property>
+       
+		<property name="note" type="java.lang.String">
+			<column name="C_NOTE" />
+		</property>
+		<property name="instituteName" type="java.lang.String">
+			<column name="C_INSTITUTE_NAME" />
+		</property>
+		<property name="disciplineDirection" type="java.lang.String">
+			<column name="C_DISCIPLINE_DIRECTION" />
+		</property>
+		<property name="directorUniversity" type="java.lang.String">
+			<column name="C_DIRECTOR_UNIVERSITY" />
+		</property>
+		<property name="directorDivisionName" type="java.lang.String">
+			<column name="C_DIRECTOR_DIVISION_NAME" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="C_TYPE" length="40" />
+		</property>
+		<property name="finalAuditResult" type="java.lang.Integer">
+            <column name="C_FINAL_AUDIT_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="finalAuditDate" type="java.util.Date">
+            <column name="C_FINAL_AUDIT_DATE" length="7" />
+        </property>
+        <property name="finalAuditOpinion" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION" length="800" />
+        </property>
+        <property name="finalAuditOpinionFeedback" type="java.lang.String">
+            <column name="C_FINAL_AUDIT_OPINION_FEEDBACK" length="800" />
+        </property>
+        <many-to-one name="finalAuditor" class="csdc.bean.User" fetch="select">
+            <column name="C_FINAL_AUDITOR_ID" length="40"/>
+        </many-to-one>
+        <property name="reviewerName" type="java.lang.String">
+            <column name="C_REVIEWER_NAME" length="200" />
+        </property>
+        <property name="reviewDate" type="java.util.Date">
+            <column name="C_REVIEW_DATE" length="7" />
+        </property>
+        <property name="reviewTotalScore" type="java.lang.Double">
+            <column name="C_REVIEW_TOTAL_SCORE" precision="6" scale="2" />
+        </property>
+        <property name="reviewAverageScore" type="java.lang.Double">
+            <column name="C_REVIEW_AVERAGE_SCORE" precision="5" scale="2" />
+        </property>
+        <property name="reviewWay" type="java.lang.Integer">
+            <column name="C_REVIEW_WAY" precision="1" scale="0" />
+        </property>
+        <property name="reviewResult" type="java.lang.Integer">
+            <column name="C_REVIEW_RESULT" precision="1" scale="0" />
+        </property>        
+        <property name="reviewOpinion" type="java.lang.String">
+            <column name="C_REVIEW_OPINION" length="800" />
+        </property>        
+        <property name="reviewGrade" type="java.lang.String">
+            <column name="C_REVIEW_GRADE" length="10" />
+        </property>        
+        <property name="reviewOpinionQualitative" type="java.lang.String">
+            <column name="C_REVIEW_OPINION_QUALITATIVE" length="80" />
+        </property>
+        <property name="finalAuditorName" type="java.lang.String">
+            <column name="C_FINAL_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" />
+        </property>
+        <property name="importedDate" type="java.util.Date">
+            <column name="C_IMPORTED_DATE" length="7" />
+        </property>
+        <many-to-one name="projectFee" class="csdc.bean.ProjectFee" fetch="select">
+            <column name="C_PROJECT_FEE_ID" length="40" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>

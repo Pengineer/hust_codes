@@ -1,0 +1,298 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：user.css
+ *
+ * 文件说明：
+ *     主要用于user模块中页面样式的定义。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 设置一些列表单元格宽度。
+ ***************************************************************/
+
+.wd11 {
+	width: 100px;
+	padding-left: 5px;
+}
+
+.wd12 {
+	width: 50px;
+	padding-left: 5px;
+}
+
+.wd13 {
+	width: 90px;
+	padding-left: 5px;
+}
+
+/****************************************************************
+ * 设置一些查看单元格宽度。
+ ***************************************************************/
+
+.pad0 {
+	padding-left: 5px;
+}
+
+.wd14 {
+	width: 150px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd15 {
+	width: 400px;
+	padding-left: 5px;
+}
+
+.wd16 {
+	width: 60px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd17 {
+	width: 100px;
+	padding-left: 5px;
+}
+
+/* 子表 */
+.table_view1 {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.table_view1 tr {
+	height: 31px;
+}
+
+.table_view1 th {
+	border: solid #999;
+    border-width: 0 1px 1px 1px;
+	text-align: left;
+	padding-left: 5px;
+	background-color: rgb(230, 240, 247);
+}
+
+.table_view1 td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.wd18 {
+	width: 15%;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd19 {
+	width: 35%;
+	padding-left: 5px;
+}
+
+/* 教育背景 */
+.table_view2 {
+	border-collapse: collapse;
+	text-align: center;
+	width: 100%;
+}
+
+.table_view2 tr {
+	height: 31px;
+}
+
+.table_view2_th {
+	background-color: rgb(230, 230, 230);
+	font-weight: bold;
+}
+
+.table_view2 td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.table_view2 th {
+	text-align: left;
+	background-color: rgb(230, 240, 247);
+	border: solid #999;
+    border-width: 0 1px 1px 1px;
+	padding-left: 5px;
+	font-weight: bold;
+}
+
+/* 教育背景单元格宽度 */
+.wd20 {
+	width: 100px;
+}
+
+.wd21 {
+	width: 150px;
+}
+
+.wd22 {
+	width: 50px;
+}
+
+/* 设置账号有效期的table宽度 */
+.table_basic {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.wd23 {
+	width:150px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+	height: 31px;
+	border: solid #999;
+    border-width: 1px;
+}
+
+.wd24 {
+	padding-left: 5px;
+	border: solid #999;
+    border-width: 1px;
+}
+
+/* 高级检索 */
+.table_advsearch {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.advname {
+	border: solid #999;
+    border-width: 1px;
+	width: 100px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+	height: 31px;
+}
+
+.advvalue {
+	border: solid #999;
+    border-width: 1px;
+	padding-left: 5px;
+	height: 31px;
+}
+
+/* 显示图片 */
+.showpic {
+	text-align: center;
+	vertical-align: middle;
+}
+
+/* 修改页面的样式部分与global冲突 */
+
+/* 人员信息table */
+.table_center {
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	width: 340px;
+}
+
+.table_btn {
+	width: 100%;
+}
+
+.table_auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.table_auto_btn {
+	width: 795px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* 字段名 */
+.td_right {
+	width: 100px;
+	text-align: right;
+	padding-right: 5px;
+}
+
+/* 字段值 */
+.td_value {
+	height: 34px;
+	padding-left: 5px;
+}
+
+/* 教育背景单元格 */
+
+.td2 {
+	width: 150px;
+	text-align: left;
+	height: 34px;
+}
+
+.td3 {
+	width: 100px;
+	text-align: left;
+	height: 34px;
+}
+
+.td4 {
+	width: 50px;
+	text-align: left;
+	height: 34px;
+}
+
+/* 教育背景按钮区 */
+.th_button {
+	width:50%;
+}
+
+.th_left {
+	text-align: left;
+}
+
+.th_center {
+	text-align: center;
+}
+
+.th_right {
+	text-align: right;
+}
+
+/* 使输入框不上下移动 */
+.input0 {
+	height: 19px;
+	margin: auto;
+}
+
+.input2 {
+    background-color: #F5FBFF;
+    border: 1px solid #909FB7;
+    color: #333333;
+    font-size: 13px;
+    height: 19px;
+    line-height: 19px;
+    width: 200px;
+}
+.input2:hover {
+	 border: 1px solid #FF7A01;
+}
+
+.select2 {
+    background-color: #F5FBFF;
+    border: 1px solid #909FB7;
+    color: #333333;
+	height: 19px;
+    font-weight: normal;
+	width: 90%;
+}
+
+.center {
+	width: 800px;
+	margin: 0;
+}

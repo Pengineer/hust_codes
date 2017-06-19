@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="right" extends="global" namespace="/right">
+<!-- 		<interceptors>
+			<interceptor name="rightAuto" class="csdc.interceptor.RightAuthorizationInterceptor" />
+			<interceptor-stack name="rightInterceptorStack">
+				<interceptor-ref name="rightAuto" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="rightInterceptorStack" /> -->
+		
+		<action name="toList" class="rightAction" method="toList">
+			<result>/security/right/list.jsp</result>
+		</action>
+
+		<action name="list" class="rightAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="rightAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="rightAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="rightAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="rightAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdd" class="rightAction" method="toAdd">
+			<result>/security/right/add.jsp</result>
+		</action>
+		
+		<action name="add" class="rightAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/security/right/add.jsp</result>
+		</action>
+		
+		<action name="toModify" class="rightAction" method="toModify">
+			<result>/security/right/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="rightAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/security/right/modify.jsp</result>
+		</action>
+		
+		<action name="toView" class="rightAction" method="toView">
+			<result>/security/right/view.jsp</result>
+		</action>
+		
+		<action name="view" class="rightAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="rightAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="rightAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="delete" class="rightAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+	</package>
+</struts>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="main" extends="global" namespace="/main">
+		<!-- 获取页面显示的相关信息 -->
+        <action name="toIndex" class="mainAction" method="toIndex">
+	        <result>/index.jsp</result>
+	    </action>
+	    
+	    <!-- 生成验证码 -->
+	    <action name="rand" class="mainAction" method="rand">
+	        <result type="stream"> 
+                <param name="contentType">image/jpeg</param>
+                <param name="inputName">inputStream</param>      
+            </result>   
+	    </action>
+	    
+	    <!-- 进入系统配置页面 -->
+	    <action name="toConfig" class="mainAction" method="toConfig">
+	    	<result>/sysconfig/config.jsp</result>
+	    </action>
+	    
+	    <!-- 进入配置上传路径页面 -->
+	    <!-- 
+	    <action name="toConfigUpload" class="mainAction" method="toConfigUpload">
+	    	<result>/sysconfig/uploadConfig.jsp</result>
+	    </action>
+	     -->
+	    <!-- 配置上传路径 -->
+	    <!--  
+	    <action name="configUpload" class="mainAction" method="configUpload">
+	    	<result type="redirectAction">toConfig</result>
+	    </action>
+	    -->
+	    <!-- 进入配置页面大小页面 -->
+	    <action name="toConfigPageSize" class="mainAction" method="toConfigPageSize">
+	    	<result>/sysconfig/pageConfig.jsp</result>
+	    </action>
+	    
+	    <!-- 配置页面大小 -->
+	    <action name="configPageSize" class="mainAction" method="configPageSize">
+	    	<result type="redirectAction">toConfig</result>
+	    </action>
+	    
+	    <!-- 父页面 -->
+	    <action name="page_top" class="mainAction" method="page_top">
+	    	<result name="success">/main/page_top.jsp</result>
+	    </action>
+	    <action name="page_left" class="mainAction" method="page_left">
+	    	<result name="success">/main/page_left.jsp</result>
+	    </action>
+	    <action name="page_right" class="mainAction" method="page_right">
+	    	<result name="success">/main/page_right.jsp</result>
+	    </action>
+	    <action name="page_bottom" class="mainAction" method="page_bottom">
+	    	<result name="success">/main/page_bottom.jsp</result>
+	    </action>
+	</package>
+</struts>

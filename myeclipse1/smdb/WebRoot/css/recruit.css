@@ -1,0 +1,228 @@
+.portal_top_bar {background:url(../image/portal_top_bg.jpg) no-repeat; width:100%; height:113px; overflow:hidden;}
+.portal_top_logo .ico {margin:10px 10px 0 20px;}
+.portal_top_logo .txt {margin:10px 10px 0 10px;}
+
+/*导航条*/
+.recruit_nav {
+  background: url("../image/t_bg01.gif") repeat-x scroll 0% 0% transparent;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+.recruit_nav ul {
+  margin:0;
+  list-style-type: none;
+}
+.recruit_nav ul li {
+  float: left;
+  position: relative;
+}
+.recruit_nav ul li a {
+  display: block;
+  color: #fbfefe;
+  padding: 4px 30px;
+  border-right: 1px solid #aaa;
+  text-decoration: none;
+}
+.recruit_nav ul li a:hover {
+  background: #badae0;
+  color: #454780;
+  text-decoration: none;
+}
+
+/*整体版块样式*/
+.content_right {
+	background:#f4f4f4;
+	margin:5px 0 10px 250px;
+	padding:10px 0 2px;
+	border:1px solid ##f4f4f4; 
+	width:740px;
+	min-height:487px;
+}
+/*公用样式*/
+.form_title {
+	font-weight: bold;
+}
+.emphasize {
+	color: #f00;
+}
+.font_small {
+	font-size: 12px;
+}
+a:hover {
+	text-decoration: none;
+}
+.btn_group1 {padding:10px 55px;}
+.errorInfo {height:20px; color:#f00;}
+.errorInfo p {margin:0;width:100%;text-align:center;}
+/*我的职位申请*/
+.myJobInfo_box {
+  background:#ebebeb;
+  float:left;
+  border: 1px solid #ebebeb; 
+  width: 240px;
+  height: 140px;
+}
+.myJobInfo_box ul li {
+  margin:30px;
+}
+.myJobInfo_box ul li img{
+  float: left;
+  margin-left:
+}
+.myJobInfo_box ul li a{
+  text-decoration: none;
+}
+.myJobInfo_box ul li span {
+  font-size: 18px;
+}
+
+/*联系我们*/
+.joinLinks_box {background:#ebebeb;float:left; border:1px solid #ebebeb; width: 240px;clear:left;height:350px;margin-top:5px;}
+.joinLinks_box ul li {margin-top:15px;}
+
+.join-links_header p {
+  font-size:18px; 
+  font-weight:bold;
+  color:#a882ab; 
+  text-align: center;
+}
+.join-links_content ul li {
+      font-size: 12px;
+      line-height: 30px;
+      text-align: center;
+}
+
+/*职位申请页面*/
+.recruit_input_area_login {}
+.Applicant_input_area {
+  position:relative;
+  font-size: 15px;
+  margin: 40px 50px 10px;
+}
+.recruit_input_area_login ul {
+	margin: 50px 90px 0;
+}
+.recruit_input_area_login ul li,
+.Applicant_input_area ul li {
+  position:relative;
+  margin:15px auto;
+}
+.recruit_btn_box {
+  margin: 30px 120px 0;
+}
+.recruit_btn_box input {
+	display: inline-block;
+	margin-left:20px;
+}
+.recruit_btn_box_self {
+  margin-left: 200px ;
+}
+.recruit_btn_box_apply {
+	margin-left: 300px;
+}
+.recruit_btn_box_self input
+.recruit_btn_box_apply input {
+	display: inline-block;
+	margin-left:20px;
+}
+#recruit_apply_selfInfo {background:#ebebeb;position: relative;margin: 0 50px 0;padding: 10px 0 15px;}
+#recruit_apply_selfInfo ul{margin:0 0 0 100px;font-size:16px;line-height:28px;}
+#recruit_apply_selfInfo ul span {width:105px;display:inline-block;}
+#recruit_apply_selfInfo ul span.emphasize {width:20px;display:inline-block;}
+#recruit_apply_selfInfo ul input {height:20px;width:200px;}
+#recruit_apply_selfInfo ul select {height:20px;width:120px;}
+
+.btn1 {
+	display:inline-block;
+	margin-left:50px;
+}
+/*职位列表*/
+.join_content_head p {
+  margin: 10px 10px 5px;
+  font-size: 15px;
+  color:#555;
+}
+hr {
+	border: 1px solid #aaa;
+}
+table.job_table {
+  margin: 25px 20px 10px;
+  color: #555;
+}
+table.job_table thead td {
+  padding: 2px 5px;
+  text-align: center;
+}
+table.job_table tbody td {
+  font-size: 14px;
+  padding: 5px 10px;
+  text-align: center;
+}
+table.job_table tbody a {
+  text-decoration: none;
+}
+
+/*职位详情*/
+.job_require h2 {
+	margin-left: 10px;
+}
+.job_require table {
+	margin-left: 30px;
+	font-size:15px;
+	line-height:20px;
+	color: #444;
+}
+.job_require table tr td {
+	text-align: left;
+}
+.job_label {
+	font-weight: bold;
+}
+
+/*申请职位个人信息*/
+.recruit_input_area table {
+	font-size: 16px;
+	line-height: 22px;
+	margin-left: 40px;
+}
+.recruit_input_area table td{
+	text-align: left;
+}
+
+/*查看个人信息*/
+#self_message table {
+	font-size: 16px;
+	line-height: 30px;
+
+}
+.content_right table {
+	margin: 10px auto;
+	border: 1px solid #888;
+	border-collapse: collapse;
+	text-align: right;
+	
+}
+
+.form_title{
+	text-align: center;
+	color:white;
+	background: #9f94a8;
+}
+
+/**/
+.login_form {width:50%;margin:100px auto;padding:50px 20px 20px;background:#ebebeb;}
+.login_form ul li {margin:10px 0 10px 75px;}
+.errorMessage li span {margin-left:60px;}
+
+.upload{
+	position:relative;
+	top: 7px;
+
+}
+#modifyApplicant input[type="text"]{
+	width: 100%;
+	heigth:100%;
+}
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="eoas.dao.EducationDao">
+
+	<insert id="insert"  parameterType="Resume"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_Education 
+	   		(
+	   		 C_ID,
+	   		 C_DEGREE,
+	   		 C_SCHOOL,
+	   		 C_STIME, 
+	   		 C_ETIME, 
+	   		 C_SPECIALTY, 
+	   		 C_DESCRIPTION,
+	   		 C_RESUME_ID
+	   		 )
+        	values 
+            (
+             #{id,jdbcType=VARCHAR},
+             #{degree,jdbcType=VARCHAR},
+             #{school,jdbcType=VARCHAR},
+             #{stime,jdbcType=DATE},
+             #{etime,jdbcType=DATE},
+             #{specialty,jdbcType=VARCHAR},
+             #{description,jdbcType=VARCHAR},
+             #{resume.id,jdbcType=VARCHAR}
+        	)
+     </insert>
+</mapper> 

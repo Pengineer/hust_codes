@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Department">
+	<resultMap id="departmentTreeMap" type="map">
+		<id property="id" column="id" />
+		<result property="pId" column="pId" />
+		<result property="name" column="name" />
+	</resultMap>
+	
+	<resultMap id="departmentMap" type="Department">
+		<id property="id" column="department_id" />
+		<result property="name" column="department_name" />
+		<association property="department" column="department_parentId" select="selectDepartmentByParentId"></association>
+	</resultMap>
+
+	<sql id="depColumns">
+        <![CDATA[C_ID,C_NAME,C_PARENT_ID ]]>
+	</sql>
+
+
+	
+	<select id = "selectDepartmentChildren" resultMap = "departmentMap">
+		select
+			department.C_ID as department_id,
+			department.C_NAME as department_name,
+			department.C_PARENT_ID as department_parentId
+		from T_DEPARTMENT department
+		where department.C_PARENT_ID = #{id}
+	</select>
+
+	<!-- id:sql的唯一标示 parameterType:参数类型 resultType:结果类型 -->
+	<!-- 插入一条数据 ById -->
+	<insert id="insert" parameterType="Department" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_DEPARTMENT (
+		C_ID,
+		C_NAME,
+		C_PARENT_ID) values (
+		#{id,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{department.id,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- 删除Department根据id -->
+	<delete id="delete" parameterType="string">
+		delete from T_DEPARTMENT where C_ID = #{id}
+	</delete>
+
+	<!-- 根据id修改数据 -->
+	<update id="update" parameterType="Department">
+		update T_DEPARTMENT set
+		C_NAME = #{name}
+		 where
+		C_ID = #{id}
+	</update>
+
+	<!-- 查询所有User -->
+	<select id="listAll" resultMap="departmentMap">
+		select <include refid="depColumns" /> FROM T_DEPARTMENT
+	</select>
+	
+	<select id="load" parameterType="string" resultMap="departmentMap">
+		select
+			department.C_ID as department_id,
+			department.C_NAME as department_name,
+			department.C_PARENT_ID as department_parentId
+		from T_DEPARTMENT department
+		where department.C_ID = #{id}
+	</select>
+	
+	<select id = "selectDepartmentByParentId" parameterType="string" resultMap = "departmentMap">
+		select
+			department.C_ID as department_id,
+			department.C_NAME as department_name,
+			department.C_PARENT_ID as department_parentId
+		from T_DEPARTMENT department
+		where department.C_ID = #{department.id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="departmentMap">
+		select <include refid="depColumns" /> from T_DEPARTMENT 
+ 		<where>
+			<if test="pId != null">
+				C_PARENT_ID = #{pId}
+			</if>
+		</where> 
+	</select>
+
+	<!-- 查询部门树的所有节点map值 -->	
+	<select id="listDepartmentMap" parameterType="map" resultMap="departmentTreeMap">
+		select C_ID as id,C_NAME as name, C_PARENT_ID as pId from T_DEPARTMENT
+	</select>
+	
+	<!-- 查询部门树的最底层子节点 -->
+	<select id="listDepartmentList" parameterType="map" resultMap="departmentMap">
+		select d1.c_id as id1,d1.c_parent_id as pId1,d1.c_name as name1
+		d2.c_id as id2, d1.c_parent_id as pId2, d2.c_name as name2
+			from t_department d1, t_department d2 where d1.c_parent_id = d2.c_id
+	</select>
+</mapper>

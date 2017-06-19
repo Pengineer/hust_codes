@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="noticeOuter" extends="main" namespace="/notice/outer">
+	
+		<action name="view" class="noticeOuterAction" method="view">
+			<result>/system/notice/outer/view.jsp</result>
+		</action>
+		
+		<action name="download" class="noticeOuterAction" method="download">
+			<result type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${attachmentName}"</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="bufferSize">10240000</param>
+			</result>
+		</action>
+		
+		<action name="toList" class="noticeOuterAction" method="toList">
+			<result>/system/notice/outer/list.jsp</result>
+		</action>
+
+		<action name="list" class="noticeOuterAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="noticeOuterAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="noticeOuterAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="noticeOuterAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	</package>
+
+</struts>

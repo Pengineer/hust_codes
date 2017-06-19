@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="ministry" extends="main" namespace="/unit/agency/ministry">
+
+		<action name="toAdd" class="ministryAction" method="toAdd">
+			<result>/unit/agency/ministry/add.jsp</result>
+		</action>
+
+		<action name="add" class="ministryAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/unit/agency/ministry/add.jsp</result>
+		</action>
+
+		<action name="toView" class="ministryAction" method="toView">
+			<result>/unit/agency/ministry/view.jsp</result>
+		</action>
+		
+		<action name="view" class="ministryAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModify" class="ministryAction" method="toModify">
+			<result>/unit/agency/ministry/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="ministryAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="viewFlag">${viewFlag}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/unit/agency/ministry/modify.jsp</result>
+		</action>
+		
+		<action name="delete" class="ministryAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toList" class="ministryAction" method="toList">
+			<result>/unit/agency/ministry/list.jsp</result>
+		</action>
+		
+		<action name="list" class="ministryAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="ministryAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+	
+		<action name="changePageSize" class="ministryAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="ministryAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="ministryAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="ministryAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toPage" class="ministryAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="ministryAction" method="toAdvSearch"> -->
+<!-- 			<result>/unit/agency/ministry/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="ministryAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 个人空间 -->
+		<action name="toViewSelf" class="ministryAction" method="toViewSelf">
+			<result>/unit/agency/ministry/view.jsp</result>
+		</action>
+		
+		<action name="viewSelf" class="ministryAction" method="viewSelf">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModifySelf" class="ministryAction" method="toModifySelf">
+			<result>/unit/agency/ministry/modify.jsp</result>
+		</action>
+
+		<action name="modifySelf" class="ministryAction" method="modifySelf">
+			<result name="input">/unit/agency/ministry/modify.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="viewFlag">${viewFlag}</param>
+			</result>
+		</action>
+		
+	</package>
+	
+</struts>

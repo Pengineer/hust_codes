@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="csdc.bean.ProjectFee" table="T_PROJECT_FEE">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="bookFee" type="java.lang.Double">
+            <column name="C_BOOK_FEE" not-null="true" />
+        </property>
+        <property name="bookNote" type="java.lang.String">
+            <column name="C_BOOK_NOTE" length="60" />
+        </property>
+        <property name="dataFee" type="java.lang.Double">
+            <column name="C_DATA_FEE" not-null="true" />
+        </property>
+        <property name="dataNote" type="java.lang.String">
+            <column name="C_DATA_NOTE" length="60" />
+        </property>
+        <property name="travelFee" type="java.lang.Double">
+            <column name="C_TRAVEL_FEE" not-null="true" />
+        </property>
+        <property name="travelNote" type="java.lang.String">
+            <column name="C_TRAVEL_NOTE" length="60" />
+        </property>
+        <property name="deviceFee" type="java.lang.Double">
+            <column name="C_DEVICE_FEE" not-null="true" />
+        </property>
+        <property name="deviceNote" type="java.lang.String">
+            <column name="C_DEVICE_NOTE" length="60" />
+        </property>
+        <property name="conferenceFee" type="java.lang.Double">
+            <column name="C_CONFERENCE_FEE" not-null="true" />
+        </property>
+        <property name="conferenceNote" type="java.lang.String">
+            <column name="C_CONFERENCE_NOTE" length="60" />
+        </property>
+        <property name="consultationFee" type="java.lang.Double">
+            <column name="C_CONSULTATION_FEE" not-null="true" />
+        </property>
+        <property name="consultationNote" type="java.lang.String">
+            <column name="C_CONSULTATION_NOTE" length="60" />
+        </property>
+        <property name="laborFee" type="java.lang.Double">
+            <column name="C_LABOR_FEE" not-null="true" />
+        </property>
+        <property name="laborNote" type="java.lang.String">
+            <column name="C_LABOR_NOTE" length="60" />
+        </property>
+        <property name="printFee" type="java.lang.Double">
+            <column name="C_PRINT_FEE" not-null="true" />
+        </property>
+        <property name="printNote" type="java.lang.String">
+            <column name="C_PRINT_NOTE" length="60" />
+        </property>
+        <property name="internationalFee" type="java.lang.Double">
+            <column name="C_INTERNATIONAL_FEE" not-null="true" />
+        </property>
+        <property name="internationalNote" type="java.lang.String">
+            <column name="C_INTERNATIONAL_NOTE" length="60" />
+        </property>
+        <property name="indirectFee" type="java.lang.Double">
+            <column name="C_INDIRECT_FEE" not-null="true" />
+        </property>
+        <property name="indirectNote" type="java.lang.String">
+            <column name="C_INDIRECT_NOTE" length="60" />
+        </property>
+        <property name="otherFee" type="java.lang.Double">
+            <column name="C_OTHER_FEE" not-null="true" />
+        </property>
+        <property name="otherNote" type="java.lang.String">
+            <column name="C_OTHER_NOTE" length="60" />
+        </property>
+        <property name="totalFee" type="java.lang.Double">
+            <column name="C_TOTAL_FEE" not-null="true" />
+        </property>
+        <property name="feeType" type="java.lang.Integer">
+            <column name="C_FEE_TYPE" precision="1" scale="0" />
+        </property>
+        <property name="feeNote" type="java.lang.String">
+            <column name="C_FEE_NOTE" length="200" />
+        </property>
+        <property name="fundedFee" type="java.lang.Double">
+            <column name="C_FUNDED_FEE" not-null="true" />
+        </property>
+        <property name="type" type="java.lang.String">
+			<column name="C_TYPE" length="40" />
+		</property>
+	</class>
+</hibernate-mapping>

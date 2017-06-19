@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="selectOfficer" location="10,10" size="525,315">
+    <action name="toSimpleSearch" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="selectOfficer.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="65,222" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="310,222" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="310,117" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="selectOfficer.jsp" path="/pop/select/selectOfficer.jsp" location="572,30" size="150,55" />
+</Struts2Diagram>
+

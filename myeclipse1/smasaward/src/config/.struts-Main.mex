@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="main" location="294,165" size="1505,1470">
+    <action name="toIndex" location="65,1282" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="rand" location="65,1387" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="changeYear" location="310,1387" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toConfig" location="310,1107" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="config.jsp" />
+      </result>
+    </action>
+    <action name="toConfigPageSize" location="310,932" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="pageConfig.jsp" />
+      </result>
+    </action>
+    <action name="configPageSize" location="555,932" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toConfigSystemStatus" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="systemStatusConfig.jsp" />
+      </result>
+    </action>
+    <action name="configSystemStatus" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="viewConfigGeneral" location="555,757" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewGeneral.jsp" />
+      </result>
+    </action>
+    <action name="toConfigGeneral" location="555,582" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="configGeneral.jsp" />
+      </result>
+    </action>
+    <action name="configGeneral" location="800,582" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toConfigYear" location="800,407" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="yearConfig.jsp" />
+      </result>
+    </action>
+    <action name="configYear" location="1045,407" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="page_top" location="1045,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="page_top.jsp" />
+      </result>
+    </action>
+    <action name="page_left" location="1045,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="page_left.jsp" />
+      </result>
+    </action>
+    <action name="page_right" location="1290,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="page_right.jsp" />
+      </result>
+    </action>
+    <action name="page_bottom" location="1290,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="page_bottom.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.jsp" path="/index.jsp" location="139,1410" size="150,55" />
+  <webResource name="config.jsp" path="/sysconfig/config.jsp" location="75,1235" size="150,55" />
+  <webResource name="pageConfig.jsp" path="/sysconfig/pageConfig.jsp" location="63,1060" size="150,55" />
+  <webResource name="viewGeneral.jsp" path="/reviewconfig/viewGeneral.jsp" location="51,885" size="150,55" />
+  <webResource name="configGeneral.jsp" path="/reviewconfig/configGeneral.jsp" location="10,710" size="150,55" />
+  <webResource name="yearConfig.jsp" path="/sysconfig/yearConfig.jsp" location="63,535" size="150,55" />
+  <webResource name="page_top.jsp" path="/main/page_top.jsp" location="119,360" size="150,55" />
+  <webResource name="page_left.jsp" path="/main/page_left.jsp" location="81,185" size="150,55" />
+  <webResource name="page_right.jsp" path="/main/page_right.jsp" location="1583,10" size="150,55" />
+  <webResource name="page_bottom.jsp" path="/main/page_bottom.jsp" location="1860,290" size="150,55" />
+  <webResource name="systemStatusConfig.jsp" path="/sysconfig/systemStatusConfig.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

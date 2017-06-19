@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="user" location="815,165" size="1575,1785">
+    <action name="login" location="1360,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="main.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="index.jsp" />
+      </result>
+      <result name="inMaintain">
+        <resourceEdge source="inMaintain" routing="0" target="inMaintain.jsp" />
+      </result>
+    </action>
+    <action name="logout" location="1360,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="logout.jsp" />
+      </result>
+    </action>
+    <action name="toRegister" location="1115,232" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="register.jsp" />
+      </result>
+    </action>
+    <action name="register" location="1115,1657" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="registerSuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="register.jsp" />
+      </result>
+    </action>
+    <action name="checkUsername" location="870,1667" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toRetrievePassword" location="310,1387" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="retrievePassword.jsp" />
+      </result>
+    </action>
+    <action name="retrievePassword" location="310,1272" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="retrievePasswordSuccess.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="retrievePassword.jsp" />
+      </result>
+    </action>
+    <action name="retrieveCode" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModifyPassword" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyPassword.jsp" />
+      </result>
+    </action>
+    <action name="modifyPassword" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="checkUserStatus" location="310,1646" size="150,83">
+      <result name="first">
+        <resourceEdge source="first" routing="0" target="listActive.jsp" />
+      </result>
+      <result name="second">
+        <resourceEdge source="second" routing="0" target="listInactive.jsp" />
+      </result>
+      <result name="third">
+        <resourceEdge source="third" routing="0" target="listUnapproved.jsp" />
+      </result>
+    </action>
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="65,1072" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="listUser" location="310,1177" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="listRole" location="65,1177" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="deleteUser" location="65,547" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="groupDeleteUser" location="310,547" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toGroupOperationP" location="310,652" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="groupOperation.jsp" />
+      </result>
+    </action>
+    <action name="groupOperation" location="65,642" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="groupOperation.jsp" />
+      </result>
+    </action>
+    <action name="groupDisableAccount" location="65,757" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="main.jsp" path="/main/main.jsp" location="2437,185" size="150,55" />
+  <webResource name="index.jsp" path="/index.jsp" location="2200,10" size="150,55" />
+  <webResource name="logout.jsp" path="/user/logout.jsp" location="2431,360" size="150,55" />
+  <webResource name="register.jsp" path="/user/register.jsp" location="10,360" size="150,55" />
+  <webResource name="registerSuccess.jsp" path="/user/registerSuccess.jsp" location="2439,1795" size="150,55" />
+  <webResource name="activeUser.jsp" path="/user/activeUser.jsp" location="599,1620" size="150,55" />
+  <webResource name="inactiveUser.jsp" path="/user/inactiveUser.jsp" location="593,1795" size="150,55" />
+  <webResource name="unapprovedUser.jsp" path="/user/unapprovedUser.jsp" location="1112,2005" size="150,55" />
+  <webResource name="retrievePassword.jsp" path="/user/retrievePassword.jsp" location="196,465" size="150,55" />
+  <webResource name="retrievePasswordSuccess.jsp" path="/user/retrievePasswordSuccess.jsp" location="525,1410" size="150,55" />
+  <webResource name="viewUser.jsp" path="/user/viewUser.jsp" location="640,1095" size="150,55" />
+  <webResource name="modify.jsp" path="/user/modify.jsp" location="459,570" size="150,55" />
+  <webResource name="groupOperation.jsp" path="/user/groupOperation.jsp" location="587,780" size="150,55" />
+  <webResource name="inMaintain.jsp" path="/inMaintain.jsp" location="0,0" size="0,0" />
+  <webResource name="popModifyPassword.jsp" path="/user/popModifyPassword.jsp" location="0,0" size="0,0" />
+  <webResource name="main.jsp" path="/server/main.jsp" location="0,0" size="0,0" />
+  <webResource name="listActive.jsp" path="/user/listActive.jsp" location="0,0" size="0,0" />
+  <webResource name="listInactive.jsp" path="/user/listInactive.jsp" location="0,0" size="0,0" />
+  <webResource name="listUnapproved.jsp" path="/user/listUnapproved.jsp" location="0,0" size="0,0" />
+  <webResource name="view.jsp" path="/user/view.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

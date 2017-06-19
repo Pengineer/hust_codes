@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Template" table="T_TEMPLATE" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" />
+        </property>
+        <property name="templateFile" type="java.lang.String">
+            <column name="C_TEMPLATE_FILE" length="100" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="C_DESCRIPTION" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="C_DATE" />
+        </property>
+        <property name="dfs" type="java.lang.String">
+            <column name="C_DFS" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

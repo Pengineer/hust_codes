@@ -1,0 +1,30 @@
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 8.1//EN" "weblogic810-web-jar.dtd">
+
+<weblogic-web-app>
+
+	<session-descriptor>
+		<invalidation-interval-secs>60</invalidation-interval-secs>
+		<timeout-secs>3600</timeout-secs>
+		<cookie-name>JSESSIONID</cookie-name>
+		<cookie-path>/smdb</cookie-path>
+		<cookie-http-only>false</cookie-http-only>
+	</session-descriptor>
+
+	<jsp-descriptor>
+		<keepgenerated>false</keepgenerated>
+		<page-check-seconds>-1</page-check-seconds>
+		<verbose>true</verbose>
+		<debug>true</debug>
+	</jsp-descriptor>
+
+	<container-descriptor>
+<!-- 		<prefer-web-inf-classes>true</prefer-web-inf-classes>
+		<filter-dispatched-requests-enabled>false</filter-dispatched-requests-enabled> -->
+        <prefer-application-packages>  
+            <package-name>javax.persistence.*</package-name>  
+            <package-name>antlr.*</package-name>  
+            <package-name>com.bea.xbean.*</package-name>  
+            <package-name>com.bea.xml.*</package-name>  
+        </prefer-application-packages>  		
+	</container-descriptor>
+</weblogic-web-app>

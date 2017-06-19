@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Person">
+<Cube name="Person">
+	<Table name="S_S_PERSON"/>
+  <Dimension name="人员维度" foreignKey="C_D_PERSON_ID">
+	    <Hierarchy hasAll="true" name="职称" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="职称" column="C_TITLE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy hasAll="true" name="学历" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="学历" column="C_LAST_EDUCATION" uniqueMembers="true"/>
+	    </Hierarchy>
+		<Hierarchy hasAll="true" name="学位" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="学位" column="C_LAST_DEGREE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="年龄段" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="年龄段" column="C_AGE_GROUP" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="性别" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="性别" column="C_GENDER" uniqueMembers="true"/>
+	    </Hierarchy>
+		<Hierarchy name="导师类型" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="导师类型" column="C_TUTOR_TYPE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="项目负责人" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="项目负责人" column="C_IS_DIRECTOR" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="项目成员" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="项目成员" column="C_IS_MEMBER" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="学科门类" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="学科门类" column="C_DISCIPLINE_TYPE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="项目类别" hasAll="true" primaryKey="C_ID" allMemberName="总计">
+	      <Table name="S_D_PERSON"/>
+	      <Level name="项目类别" column="C_PROJECT_TYPE" uniqueMembers="true"/>
+	    </Hierarchy>
+  </Dimension>
+  <Dimension name="机构维度" foreignKey="C_D_UNIT_ID">
+		<Hierarchy hasAll="true" name="高校名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="省份名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="省份名称" column="C_PROVINCE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="办学类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="办学类型" column="C_STYLE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="性质类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="性质类别" column="C_CATEGORY" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="高校类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校类别" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="举办者" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="举办者" column="C_ORGANIZER" uniqueMembers="true"/>
+		</Hierarchy>
+  </Dimension>
+  <Measure name="人员数目" column="C_ID" aggregator="count"/>
+</Cube>
+</Schema>

@@ -1,0 +1,100 @@
+/**
+ * @author 肖雅
+ */
+
+define(function(require, exports, module) {
+	var viewEndinspectionReview = require('javascript/project/project_share/endinspection/review/view');
+	var viewKey = require('javascript/project/key/view');
+	
+	var projectType = "key";
+	
+	//初始化onclick事件
+	exports.initClick = function() {
+		$(".j_addEndReviewExpert").live("click", function(){
+			var data = $(this).attr("endId");
+			viewEndinspectionReview.addEndReviewExpert(data, projectType, viewKey.showProjectDetails)
+		});
+		$(".j_addEndReviewResultPop").live("click", function(){
+			var data = $(this).attr("endId");
+			viewEndinspectionReview.addEndReviewResultPop(data, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_modifyEndReviewResultPop").live("click", function(){
+			var data = $(this).attr("endId");
+			viewEndinspectionReview.modifyEndReviewResultPop(data, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_submitEndReviewResult").live("click", function(){
+			var data = $(this).attr("endId");
+			viewEndinspectionReview.submitEndReviewResult(data, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_addEndReviewPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.addEndReviewPop(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_viewEndReviewPop").live("click", function(){
+			var entityId = $(this).attr("endId");
+			viewEndinspectionReview.viewEndReviewPop(entityId, projectType);
+		});
+		$(".j_modifyEndReviewPop").live("click", function(){
+			var id = $(this).attr("endId");
+			var entityId = $(this).attr("data");
+			viewEndinspectionReview.modifyEndReviewPop(id, entityId, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_submitEndReview").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.submitEndReview(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_addEndGroupReviewPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.addEndGroupReviewPop(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_viewEndGroupReviewPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.viewEndGroupReviewPop(entityId, projectType);
+		});
+		$(".j_modifyEndGroupReviewPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.modifyEndGroupReviewPop(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_submitEndGroupReview").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.submitEndGroupReview(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_addEndReviewAuditPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.addEndReviewAuditPop(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_viewEndReviewAuditPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.viewEndReviewAuditPop(id, projectType);
+		});
+		$(".j_modifyEndReviewAuditPop").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.modifyEndReviewAuditPop(id, projectType, viewKey.showProjectDetails);
+		});
+		$(".j_submitEndReviewAuditResult").live("click", function(){
+			var id = $(this).attr("endId");
+			viewEndinspectionReview.submitEndReviewAuditResult(id, projectType, viewKey.showProjectDetails);
+		});
+		
+		
+		
+		
+		
+		
+//		window.addEndReviewResultPop = function(data){viewEndinspectionReview.addEndReviewResultPop(data, projectType, viewKey.showProjectDetails)};//公共部分
+//		window.modifyEndReviewResultPop = function(data){viewEndinspectionReview.modifyEndReviewResultPop(data, projectType, viewKey.showProjectDetails)};
+//		window.submitEndReviewResult = function(data){viewEndinspectionReview.submitEndReviewResult(data, projectType, viewKey.showProjectDetails)};
+//		window.addEndReviewAuditPop = function(id){viewEndinspectionReview.addEndReviewAuditPop(id, projectType, viewKey.showProjectDetails)};
+//		window.modifyEndReviewAuditPop = function(id){viewEndinspectionReview.modifyEndReviewAuditPop(id, projectType, viewKey.showProjectDetails)};
+//		window.submitEndReviewAuditResult = function(id){viewEndinspectionReview.submitEndReviewAuditResult(id, projectType, viewKey.showProjectDetails)};
+//		window.viewEndReviewAuditPop = function(id){viewEndinspectionReview.viewEndReviewAuditPop(id, projectType)};
+//		window.addEndReviewPop = function(id){viewEndinspectionReview.addEndReviewPop(id, projectType, viewKey.showProjectDetails)};
+//		window.modifyEndReviewPop = function(id, entityId){viewEndinspectionReview.modifyEndReviewPop(id, entityId, projectType, viewKey.showProjectDetails)};//公共部分
+//		window.submitEndReview = function(id){viewEndinspectionReview.submitEndReview(id, projectType, viewKey.showProjectDetails)};
+//		window.viewEndReviewPop = function(){viewEndinspectionReview.viewEndReviewPop(entityId, projectType)};
+//		window.addEndGroupReviewPop = function(id){viewEndinspectionReview.addEndGroupReviewPop(id, projectType, viewKey.showProjectDetails)};
+//		window.modifyEndGroupReviewPop = function(id){viewEndinspectionReview.modifyEndGroupReviewPop(id, projectType, viewKey.showProjectDetails)};
+//		window.submitEndGroupReview = function(id){viewEndinspectionReview.submitEndGroupReview(id, projectType, viewKey.showProjectDetails)};
+//		window.viewEndGroupReviewPop = function(entityId){viewEndinspectionReview.viewEndGroupReviewPop(entityId, projectType)};
+	};
+});

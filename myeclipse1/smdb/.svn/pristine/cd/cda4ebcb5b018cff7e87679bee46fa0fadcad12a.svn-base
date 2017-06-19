@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="dupCheck" extends="main" namespace="/dm/dupCheck">
+		
+		<!-- 进入一般项目查重标记页面 -->
+		<action name="toAddGeneral" class="dupCheckAction" method="toAddGeneral">
+			<result>/dm/dupCheck/general/addGeneral.jsp</result>
+		</action>
+		
+		<!-- 一般项目查重标记清零-->
+		<action name="deleteGeneral" class="dupCheckAction" method="deleteGeneral">
+			<result>/dm/dupCheck/general/addGeneral.jsp</result>
+		</action>
+		
+		<!-- 设置一般项目查重标记 -->
+		<action name="addGeneral" class="dupCheckAction" method="addGeneral">
+			<result>/dm/dupCheck/general/addGeneral.jsp</result>
+		</action>
+		
+		<!-- 查重结果信息导出  -->
+		<action name="exportCheckResult" class="dupCheckAction" method="exportCheckResult">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+		
+		<!-- 进入基地项目查重标记页面 -->
+		<action name="toAddInstp" class="dupCheckAction" method="toAddInstp">
+			<result>/dm/dupCheck/instp/addInstp.jsp</result>
+		</action>
+		
+		<!-- 基地项目查重标记清零 -->
+		<action name="deleteInstp" class="dupCheckAction" method="deleteInstp">
+			<result>/dm/dupCheck/instp/addInstp.jsp</result>
+		</action>
+		
+		<!-- 设置基地项目查重标记 -->
+		<action name="addInstp" class="dupCheckAction" method="addInstp">
+			<result>/dm/dupCheck/instp/addInstp.jsp</result>
+		</action>
+		
+		
+		<!-- 进入专项任务项目查重标记页面 -->
+		<action name="toAddSpecial" class="dupCheckAction" method="toAddSpecial">
+			<result>/dm/dupCheck/special/addSpecial.jsp</result>
+		</action>
+		
+		<!-- 专项任务项目查重标记清零 -->
+		<action name="deleteSpecial" class="dupCheckAction" method="deleteSpecial">
+			<result>/dm/dupCheck/special/addSpecial.jsp</result>
+		</action>
+		
+		<!-- 设置专项任务项目查重标记 -->
+		<action name="addSpecial" class="dupCheckAction" method="addSpecial">
+			<result>/dm/dupCheck/special/addSpecial.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

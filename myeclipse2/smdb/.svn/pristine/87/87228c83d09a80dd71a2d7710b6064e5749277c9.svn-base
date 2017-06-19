@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Unit">
+<Cube name="Unit">
+  <Table name="S_S_UNIT"/>
+  <Dimension name="机构维度" foreignKey="C_D_UNIT_ID">
+		<Hierarchy hasAll="true" name="高校名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="省份名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="省份名称" column="C_PROVINCE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="办学类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="办学类型" column="C_STYLE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="性质类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="性质类别" column="C_CATEGORY" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="高校类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校类别" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="举办者" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="举办者" column="C_ORGANIZER" uniqueMembers="true"/>
+		</Hierarchy>
+  </Dimension>
+  <Measure name="高校总数" column="C_ID" aggregator="count"/>
+  <Measure name="部属高校"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_UNIT.C_TYPE ='部属高校') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+   <Measure name="地方高校"  aggregator="sum">
+	<MeasureExpression>
+		<SQL dialect="oracle">
+		(case when (S_S_UNIT.C_TYPE ='地方高校') then 1 else 0 end)
+		</SQL>
+	</MeasureExpression>
+   </Measure>
+</Cube>
+</Schema>

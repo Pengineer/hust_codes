@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="role" location="235,10" size="770,1295">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="65,267" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="viewUserRole" location="65,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="userRole.jsp" />
+      </result>
+    </action>
+    <action name="userRole" location="65,57" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="listRole.jsp" path="/roleright/listRole.jsp" location="1060,345" size="150,55" />
+  <webResource name="addRole.jsp" path="/roleright/addRole.jsp" location="1063,555" size="150,55" />
+  <webResource name="viewRole.jsp" path="/roleright/viewRole.jsp" location="1060,870" size="150,55" />
+  <webResource name="modifyRole.jsp" path="/roleright/modifyRole.jsp" location="1054,1080" size="150,55" />
+  <webResource name="userRole.jsp" path="/roleright/userRole.jsp" location="10,135" size="150,55" />
+  <webResource name="list.jsp" path="/security/role/list.jsp" location="0,0" size="0,0" />
+  <webResource name="add.jsp" path="/security/role/add.jsp" location="0,0" size="0,0" />
+  <webResource name="modify.jsp" path="/security/role/modify.jsp" location="0,0" size="0,0" />
+  <webResource name="view.jsp" path="/security/role/view.jsp" location="0,0" size="0,0" />
+  <webResource name="userRole.jsp" path="/security/role//userRole.jsp" location="0,0" size="0,0" />
+  <webResource name="userRole.jsp" path="/security/role/userRole.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<context-param>
+		<param-name>data</param-name>
+		<param-value>xxx</param-value>
+	</context-param>
+	
+	
+  <servlet>
+	<servlet-name>ServletDemo1</servlet-name>
+	<servlet-class>edu.whut.ServletDemo1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo2</servlet-name>
+    <servlet-class>edu.whut.ServletDemo2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo3</servlet-name>
+    <servlet-class>edu.whut.ServletDemo3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo4</servlet-name>
+    <servlet-class>edu.whut.ServletDemo4</servlet-class>
+    <init-param>
+   		<param-name>data</param-name>
+   		<param-value>abcd</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo5_1</servlet-name>
+    <servlet-class>edu.whut.ServletDemo5_1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo5_2</servlet-name>
+    <servlet-class>edu.whut.ServletDemo5_2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo5_3</servlet-name>
+    <servlet-class>edu.whut.ServletDemo5_3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo6</servlet-name>
+    <servlet-class>edu.whut.ServletDemo6</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo5_4</servlet-name>
+    <servlet-class>edu.whut.ServletDemo5_4</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo7</servlet-name>
+    <servlet-class>edu.whut.ServletDemo7</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo1</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo2</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo3</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo4</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo4</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo5</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo5</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo6</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo6</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResponseDemo7</servlet-name>
+    <servlet-class>edu.whut.response.ResponseDemo7</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestDemo1</servlet-name>
+    <servlet-class>edu.whut.request.RequestDemo1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestDemo2</servlet-name>
+    <servlet-class>edu.whut.request.RequestDemo2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestDemo3</servlet-name>
+    <servlet-class>edu.whut.request.RequestDemo3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>URLDemo</servlet-name>
+    <servlet-class>edu.whut.url.URLDemo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestDemo4</servlet-name>
+    <servlet-class>edu.whut.request.RequestDemo4</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+  <servlet-mapping>
+	<servlet-name>ServletDemo1</servlet-name>
+	<url-pattern>/ServletDemo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo2</servlet-name>
+    <url-pattern>/ServletDemo2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo3</servlet-name>
+    <url-pattern>/ServletDemo3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo4</servlet-name>
+    <url-pattern>/ServletDemo4</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo5_1</servlet-name>
+    <url-pattern>/ServletDemo5_1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo5_2</servlet-name>
+    <url-pattern>/ServletDemo5_2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo5_3</servlet-name>
+    <url-pattern>/ServletDemo5_3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo6</servlet-name>
+    <url-pattern>/ServletDemo6</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo5_4</servlet-name>
+    <url-pattern>/ServletDemo5_4</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo7</servlet-name>
+    <url-pattern>/ServletDemo7</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo1</servlet-name>
+    <url-pattern>/ResponseDemo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo2</servlet-name>
+    <url-pattern>/ResponseDemo2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo3</servlet-name>
+    <url-pattern>/ResponseDemo3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo4</servlet-name>
+    <url-pattern>/ResponseDemo4</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo5</servlet-name>
+    <url-pattern>/ResponseDemo5</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo6</servlet-name>
+    <url-pattern>/ResponseDemo6</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResponseDemo7</servlet-name>
+    <url-pattern>/ResponseDemo7</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestDemo1</servlet-name>
+    <url-pattern>/RequestDemo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestDemo2</servlet-name>
+    <url-pattern>/RequestDemo2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestDemo3</servlet-name>
+    <url-pattern>/RequestDemo3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>URLDemo</servlet-name>
+    <url-pattern>/URLDemo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestDemo4</servlet-name>
+    <url-pattern>/RequestDemo4</url-pattern>
+  </servlet-mapping>
+	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

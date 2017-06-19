@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Student" table="T_STUDENT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="department" class="csdc.bean.Department" fetch="join">
+            <column name="C_DEPARTMENT_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="institute" class="csdc.bean.Institute" fetch="join">
+            <column name="C_INSTITUTE_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="university" class="csdc.bean.Agency" fetch="join">
+            <column name="C_UNIVERSITY_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tutor" class="csdc.bean.Person" fetch="select">
+            <column name="C_TUTOR_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="person" class="csdc.bean.Person" fetch="select">
+            <column name="C_PERSON_ID" length="40" not-null="true" />
+        </many-to-one>
+        <property name="status" type="java.lang.String">
+            <column name="C_STATUS" length="40" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="C_TYPE" length="40" not-null="true" />
+        </property>
+        <property name="excellentGrade" type="java.lang.String">
+            <column name="C_EXCELLENT_GRADE" length="40" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="C_START_DATE" length="7" />
+        </property>
+        <property name="endDate" type="java.util.Date">
+            <column name="C_END_DATE" length="7" />
+        </property>
+        <property name="project" type="java.lang.String">
+            <column name="C_PROJECT" length="2000" />
+        </property>
+        <property name="thesisTitle" type="java.lang.String">
+            <column name="C_THESIS_TITLE" length="200" />
+        </property>
+        <property name="studentCardNumber" type="java.lang.String">
+            <column name="C_STUDENT_CARD_NUMBER" length="40" />
+        </property>
+        <property name="isExcellent" type="java.lang.Integer">
+            <column name="C_IS_EXCELLENT" />
+        </property>
+        <property name="excellentYear" type="java.lang.Integer">
+            <column name="C_EXCELLENT_YEAR" precision="4" scale="0" />
+        </property>
+        <property name="excellentSession" type="java.lang.String">
+            <column name="C_EXCELLENT_SESSION" length="40" />
+        </property>
+        <property name="thesisFee" type="java.lang.Integer">
+            <column name="C_THESIS_FEE" precision="9" scale="0" />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+            <column name="C_DIVISION_NAME" />
+        </property>
+        <property name="agencyName" type="java.lang.String">
+            <column name="C_AGENCY_NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

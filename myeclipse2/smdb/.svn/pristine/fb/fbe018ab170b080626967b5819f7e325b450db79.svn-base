@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="EntrustGrantedFundList" extends="main" namespace="/fundList/entrust/granted">
+	
+		<action name="toList" class="EntrustGrantedFundListAction" method="toList">
+			<result>/fundList/entrust/granted/list.jsp</result>
+		</action>
+
+		<action name="list" class="EntrustGrantedFundListAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="EntrustGrantedFundListAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="searchForUnitFundList" class="EntrustGrantedFundListAction" method="searchForUnitFundList">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="advSearch" class="EntrustGrantedFundListAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="EntrustGrantedFundListAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="EntrustGrantedFundListAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="EntrustGrantedFundListAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="EntrustGrantedFundListAction" method="toAdd">
+			<result>/fundList/entrust/add.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="add" class="EntrustGrantedFundListAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="EntrustGrantedFundListAction" method="toModify">
+			<result>/fundList/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="EntrustGrantedFundListAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入修改金额页面 -->
+		<action name="toModifyFee" class="EntrustGrantedFundListAction" method="toModifyFee">
+			<result>/fundList/entrust/granted/modifyFee.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modifyFee" class="EntrustGrantedFundListAction" method="modifyFee">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看-->
+		<action name="toView" class="EntrustGrantedFundListAction" method="toView">
+			<result>/fundList/entrust/granted/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+	    <action name="view" class="EntrustGrantedFundListAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <!-- 删除 -->
+	    <action name="delete" class="EntrustGrantedFundListAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看上条 -->
+		<action name="prev" class="EntrustGrantedFundListAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="EntrustGrantedFundListAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="fundListDelete" class="EntrustGrantedFundListAction" method="fundListDelete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="EntrustGrantedFundListAction" method="toAudit">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

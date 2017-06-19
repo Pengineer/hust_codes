@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="KeyGrantedFundList" extends="main" namespace="/fundList/key/granted">
+	
+		<action name="toList" class="KeyGrantedFundListAction" method="toList">
+			<result>/fundList/key/granted/list.jsp</result>
+		</action>
+
+		<action name="list" class="KeyGrantedFundListAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="KeyGrantedFundListAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="searchForUnitFundList" class="KeyGrantedFundListAction" method="searchForUnitFundList">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="advSearch" class="KeyGrantedFundListAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="KeyGrantedFundListAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="KeyGrantedFundListAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="KeyGrantedFundListAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入添加页面 -->
+		<action name="toAdd" class="KeyGrantedFundListAction" method="toAdd">
+			<result>/fundList/key/add.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="add" class="KeyGrantedFundListAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="KeyGrantedFundListAction" method="toModify">
+			<result>/fundList/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="KeyGrantedFundListAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入修改金额页面 -->
+		<action name="toModifyFee" class="KeyGrantedFundListAction" method="toModifyFee">
+			<result>/fundList/key/granted/modifyFee.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modifyFee" class="KeyGrantedFundListAction" method="modifyFee">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 进入查看-->
+		<action name="toView" class="KeyGrantedFundListAction" method="toView">
+			<result>/fundList/key/granted/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+	    <action name="view" class="KeyGrantedFundListAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <!-- 删除 -->
+	    <action name="delete" class="KeyGrantedFundListAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看上条 -->
+		<action name="prev" class="KeyGrantedFundListAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看下条 -->
+		<action name="next" class="KeyGrantedFundListAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="fundListDelete" class="KeyGrantedFundListAction" method="fundListDelete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="KeyGrantedFundListAction" method="toAudit">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

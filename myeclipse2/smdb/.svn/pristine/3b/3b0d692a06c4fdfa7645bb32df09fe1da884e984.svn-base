@@ -1,0 +1,41 @@
+package csdc.action.mobile.info;
+
+import java.util.HashMap;
+
+import csdc.action.mobile.MobileAction;
+
+/**
+ * mobile通知模块
+ * @author suwb
+ *
+ */
+public class MobileNoticeAction extends MobileAction{
+
+	private static final long serialVersionUID = 7233242173420091499L;
+	private static final String PAGENAME = "mobileNoticePage"; 
+	
+	public String simpleSearch(){
+		StringBuffer hql = new StringBuffer();
+		HashMap map = new HashMap();
+		hql.append("select n.id, n.title, sys.name, n.isOpen, a.id, p.name, n.createDate, n.viewCount, n.accountBelong from Notice n left join n.account a left join n.type sys left join a.passport p");
+		hql.append(" order by n.createDate desc");
+		search(hql, map);
+		return SUCCESS;
+	}
+	
+	public String view(){
+		StringBuffer hql = new StringBuffer();
+		HashMap map = new HashMap();
+		hql.append("select n from Notice n left join fetch n.type sys left join fetch n.account a where ");
+		hql.append(" n.id = :noticeId");
+		map.put("noticeId", entityId);
+		view(hql, map);
+		return SUCCESS;
+	}
+	
+	@Override
+	public String pageName() {
+		return PAGENAME;
+	}
+
+}

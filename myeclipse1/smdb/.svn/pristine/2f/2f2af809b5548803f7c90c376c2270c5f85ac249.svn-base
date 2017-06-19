@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<joined-subclass name="csdc.bean.GeneralGranted" extends="csdc.bean.ProjectGranted" table="T_GENERAL_GRANTED">
+		<key column="C_ID"/>
+        <many-to-one name="application" class="csdc.bean.GeneralApplication" fetch="select">
+            <column name="C_APPLICATION_ID" length="40" />
+        </many-to-one>
+        <set name="generalAnninspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.GeneralAnninspection" />
+        </set>
+        <set name="generalVariation" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.GeneralVariation" />
+        </set>
+        <set name="generalMidinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.GeneralMidinspection" />
+        </set>
+        <set name="generalEndinspection" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.GeneralEndinspection" />
+        </set>
+        <set name="generalFunding" inverse="true" cascade="all">
+            <key>
+                <column name="C_GRANTED_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.GeneralFunding" />
+        </set>
+	</joined-subclass>
+
+</hibernate-mapping>

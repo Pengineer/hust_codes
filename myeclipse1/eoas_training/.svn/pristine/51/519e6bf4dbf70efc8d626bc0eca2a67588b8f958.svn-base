@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Document">
+	<resultMap id="documentMap" type="Document">
+		<id property="id" column="doc_id" />
+		<result property="serialNumber" column="doc_serialNumber" />
+		<result property="title" column="doc_title" />
+		<result property="level" column="doc_level" />
+		<result property="subject" column="doc_subject" />
+		<result property="dateTime" column="doc_dateTime" />
+		<result property="type" column="doc_type" />
+		<result property="priority" column="doc_priority" />
+		<association property="sender" column="doc_sender" javaType = "Account">
+			<id property = "id" column = "sender_id" />
+			<result property="email" column="sender_email" />
+			<result property="password" column="sender_password" />
+			<result property="accountType" column="sender_accountType" />
+			<result property="belongId" column="sender_belongId" />
+		</association>
+		<association property="reciever" column="doc_reciever" javaType = "Account">
+			<id property = "id" column = "reciever_id" />
+			<result property="email" column="reciever_email" />
+			<result property="password" column="reciever_password" />
+			<result property="accountType" column="reciever_accountType" />
+			<result property="belongId" column="reciever_belongId" />
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="Document" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_DOCUMENT (
+			C_ID,
+			C_SERIALNUMBER,
+			C_TITLE,
+			C_LEVEL,
+			C_PRIORITY,
+			C_SENDER_ID,
+			C_RECIEVER_ID,
+			C_SUBJECT,
+			C_DATETIME,
+			C_TYPE
+		) values (
+			#{id,jdbcType=VARCHAR},
+			#{serialNumber,jdbcType=VARCHAR},
+			#{title,jdbcType=VARCHAR},
+			#{level,jdbcType=NUMERIC},
+			#{priority,jdbcType=NUMERIC},
+			#{sender.id,jdbcType=VARCHAR},
+			#{reciever.id,jdbcType=VARCHAR},
+			#{subject,jdbcType=VARCHAR},
+			#{dateTime,jdbcType=DATE},
+			#{type,jdbcType=NUMERIC}
+		)
+	</insert>
+	
+	<update id="update" >
+		update T_DOCUMENT set
+			C_SERIALNUMBER = #{serialNumber,jdbcType=VARCHAR},
+			C_TITLE = #{title,jdbcType=VARCHAR},
+			C_LEVEL = #{level,jdbcType=NUMERIC},
+			C_PRIORITY = #{priority,jdbcType=NUMERIC},
+			C_SUBJECT = #{subject,jdbcType=VARCHAR},
+			C_TYPE = #{type,jdbcType=NUMERIC}
+		where C_ID = #{id}
+	</update>
+
+	<delete id = "delete">
+		delete from T_DOCUMENT where C_ID = #{id}
+	</delete>
+	
+	<select id="load" parameterType="string" resultMap="documentMap">
+		select
+			doc.C_ID as doc_id,
+			doc.C_SERIALNUMBER as doc_serialNumber,
+			doc.C_TITLE as doc_title,
+			doc.C_LEVEL as doc_level,
+			doc.C_PRIORITY as doc_priority,
+			doc.C_SENDER_ID as doc_senderId,
+			doc.C_RECIEVER_ID as doc_recieverId,
+			doc.C_SUBJECT as doc_subject,
+			doc.C_DATETIME as doc_dateTime,
+			doc.C_TYPE as doc_type,
+			sender.C_ID as sender_id,
+			sender.C_EMAIL as sender_email,
+			sender.C_PASSWORD as sender_password,
+			sender.C_ACCOUNT_TYPE as sender_accountType,
+			reciever.C_ID as reciever_id,
+			reciever.C_EMAIL as reciever_email,
+			reciever.C_PASSWORD as reciever_password,
+			reciever.C_ACCOUNT_TYPE as reciever_accountType,			
+			reciever.C_BELONG_ID as reciever_belongId
+		from T_DOCUMENT doc
+		left outer join T_ACCOUNT sender on doc.C_SENDER_ID = sender.C_ID
+		left outer join T_ACCOUNT reciever on doc.C_RECIEVER_ID = reciever.C_ID
+		where doc.C_ID = #{id}
+	</select>	
+	
+	<select id="list" parameterType="map" resultMap="documentMap">
+		select
+			doc.C_ID as doc_id,
+			doc.C_SERIALNUMBER as doc_serialNumber,
+			doc.C_TITLE as doc_title,
+			doc.C_LEVEL as doc_level,
+			doc.C_PRIORITY as doc_priority,
+			doc.C_SENDER_ID as doc_senderId,
+			doc.C_RECIEVER_ID as doc_recieverId,
+			doc.C_SUBJECT as doc_subject,
+			doc.C_DATETIME as doc_dateTime,
+			doc.C_TYPE as doc_type,
+			sender.C_ID as sender_id,
+			sender.C_EMAIL as sender_email,
+			sender.C_PASSWORD as sender_password,
+			sender.C_ACCOUNT_TYPE as sender_accountType,
+			reciever.C_ID as reciever_id,
+			reciever.C_EMAIL as reciever_email,
+			reciever.C_PASSWORD as reciever_password,
+			reciever.C_ACCOUNT_TYPE as reciever_accountType,			
+			reciever.C_BELONG_ID as reciever_belongId
+		from T_DOCUMENT doc
+		left outer join T_ACCOUNT sender on doc.C_SENDER_ID = sender.C_ID
+		left outer join T_ACCOUNT reciever on doc.C_RECIEVER_ID = reciever.C_ID
+	</select>
+
+</mapper>

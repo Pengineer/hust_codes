@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>hdfs://master:9000/hbase</value>
+  </property>
+  <property>
+     <name>hbase.cluster.distributed</name>
+     <value>true</value>
+  </property>
+  <property>
+     <name>hbase.master</name>
+     <value>hdfs://master:60000</value>
+  </property>
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>master,node1,node2</value>
+  </property>
+</configuration>

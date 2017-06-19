@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name = "customer" extends = "default" namespace = "/customer">
+		<action name="toList" class="customerAction" method="toList">
+			<result>/jsp/oa/customer/list.jsp</result>
+		</action>
+		<action name="list" class="customerAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name = "toAdd" class = "customerAction" method = "toAdd">
+			<result>/jsp/oa/customer/add.jsp</result>
+		</action>
+		
+		<action name = "add" class = "customerAction" method = "add">
+			<result>/jsp/oa/customer/add.jsp</result>
+		</action>
+		
+		<action name = "delete" class = "customerAction" method = "delete">
+			<result>/jsp/oa/customer/list.jsp</result>
+		</action>
+		
+		<action name = "view" class = "customerAction" method = "view">
+			<result>/jsp/oa/customer/view.jsp</result>
+		</action>
+		
+		<action name = "toModify" class = "customerAction" method = "toModify">
+			<result>/jsp/oa/customer/modify.jsp</result>
+		</action>
+		
+		<action name = "modify" class = "customerAction" method = "modify">
+			<result>/jsp/oa/customer/view.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,2 @@
+struts.enable.DynamicMethodInvocation=true
+struts.multipart.maxSize=2048000000

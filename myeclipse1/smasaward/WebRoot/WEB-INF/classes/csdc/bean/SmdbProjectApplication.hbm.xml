@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.SmdbProjectApplication" table="T_SMDB_PROJECT_APPLICATION">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="smdbApplID" type="java.lang.String">
+			<column name="C_SMDB_APPLICATION_ID" length="40" />
+		</property>
+		<property name="smasApplID" type="java.lang.String">
+			<column name="C_SMAS_APPLICATION_ID" length="40" />
+		</property>
+		<property name="isAdded" type="java.lang.Integer">
+			<column name="C_IS_ADDED" precision="1" scale="0" />
+		</property>
+		<property name="importedDate" type="java.util.Date">
+			<column name="C_IMPORTED_DATE" />
+		</property>
+		<property name="importPerson" type="java.lang.String">
+			<column name="C_IMPORT_PERSON" />
+		</property>
+	</class>
+</hibernate-mapping>

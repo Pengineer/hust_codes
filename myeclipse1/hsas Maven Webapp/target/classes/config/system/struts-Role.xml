@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="role" extends="main" namespace="/role">
+
+		
+		<action name="toList" class="roleAction" method="toList">
+			<result>/jsp/system/role/list.jsp</result>
+		</action>
+
+		<action name="list" class="roleAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toView" class="roleAction" method="toView">
+			<result>/jsp/system/role/view.jsp</result>
+		</action>
+
+		<action name="view" class="roleAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="toModify" class="roleAction" method="toModify">
+			<result>/jsp/system/role/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="roleAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="delete" class="roleAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toAdd" class="roleAction" method="toAdd">
+			<result>/jsp/system/role/add.jsp</result>
+		</action>
+		
+		<action name="add" class="roleAction" method="add">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+
+		<action name="toPage" class="roleAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="roleAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="roleAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="roleAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+	</package>
+
+</struts>

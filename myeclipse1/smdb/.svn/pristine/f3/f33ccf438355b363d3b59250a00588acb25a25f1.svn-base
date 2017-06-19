@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.UniversityVariation" table="T_UNIVERSITY_VARIATION">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="type" type="java.lang.Integer">
+            <column name="C_type" precision="1" scale="0" not-null="true" />
+        </property>
+		<property name="nameOld" type="java.lang.String">
+			<column name="c_name_old" />
+		</property>
+		<property name="codeOld" type="java.lang.String">
+			<column name="c_code_old" />
+		</property>
+		<property name="nameNew" type="java.lang.String">
+			<column name="c_name_New" />
+		</property>
+		<property name="codeNew" type="java.lang.String">
+			<column name="c_code_New" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="c_DESCRIPTION" />
+		</property>
+		 <property name="variationDate" type="java.util.Date">
+            <column name="C_VARIATION_DATE" length="7" />
+        </property>
+        <property name="date" type="java.util.Date">
+            <column name="C_DATE" length="7" />
+        </property>
+	</class>
+
+</hibernate-mapping>

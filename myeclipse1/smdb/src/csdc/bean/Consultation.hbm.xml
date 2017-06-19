@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	
+	<joined-subclass name="csdc.bean.Consultation" extends="csdc.bean.Product" table="T_CONSULTATION">
+		<key column="C_ID"/>
+		<property name="isTranslation" type="java.lang.Integer">
+			<column name="C_IS_TRANSLATION" precision="1" scale="0" />
+		</property>
+		<property name="wordNumber" type="java.lang.Double">
+			<column name="C_WORD_NUMBER" precision="4" scale="1" />
+		</property>
+		<property name="useUnit" type="java.lang.String">
+			<column name="C_USE_UNIT" length="400" />
+		</property>
+		<property name="publicationDate" type="java.util.Date">
+			<column name="C_PUBLICATION_DATE" length="7" />
+		</property>
+		<property name="adoptType" type="java.lang.String">
+			<column name="C_ADOPT_TYPE" length="200" />
+		</property>
+		<property name="supportProject" type="java.lang.String">
+			<column name="C_SUPPORT_PROJECT" length="400" />
+		</property>
+		<property name="evaluation" type="java.lang.String">
+			<column name="C_EVALUATION" />
+		</property>
+		<property name="isSecret" type="java.lang.Integer">
+			<column name="C_IS_SECRET" precision="1" scale="0" />
+		</property>
+		<property name="isAccepted" type="java.lang.Integer">
+			<column name="C_IS_ACCEPTED" precision="1" scale="0" />
+		</property>
+	</joined-subclass>
+</hibernate-mapping>

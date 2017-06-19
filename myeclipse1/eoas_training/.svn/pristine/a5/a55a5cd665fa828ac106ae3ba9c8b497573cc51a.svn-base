@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Assess">
+	<resultMap id="assessResult" type="Assess">
+		<id property="id" column="a_id" />
+		<result property="ascores" column="a_ascores" />
+		<result property="pscores" column="a_pscores" />
+		<result property="total" column="a_total" />
+		<result property="createTime" column="a_createTime" />
+		<result property="status" column="a_status" />
+		<result property="auditTime" column="a_auditTime" />
+		<result property="type" column="a_type" />
+		<result property="note" column="a_note" />
+		<association property="account" column="a_account" javaType="Account">
+			<id property="id" column="account_id" />
+			<result property="email" column="account_email" />
+			<result property="password" column="account_password" />
+			<result property="accountType" column="account_accountType" />
+			<result property="belongId" column="account_belongId" />
+		</association>
+		<association property="auditor" column="a_auditor" javaType="Account">
+			<id property="id" column="auditor_id" />
+			<result property="email" column="auditor_email" />
+			<result property="password" column="auditor_password" />
+			<result property="accountType" column="auditor_accountType" />
+			<result property="belongId" column="auditor_belongId" />
+		</association>		
+	</resultMap>
+	
+	<insert id="insert" parameterType="Assess" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ASSESS
+		(C_ID,
+		C_ACCOUNT_ID,
+		C_AUDITOR_ID,
+		C_ASCORES,
+		C_PSCORES,
+		C_TOTAL,
+		C_CREATE_TIME,
+		C_STATUS,
+		C_AUDIT_TIME,
+		C_TYPE,
+		C_NOTE
+		)
+		values
+		(
+		#{id,jdbcType=VARCHAR},
+		#{account.id,jdbcType=VARCHAR},
+		#{auditor.id,jdbcType=VARCHAR},
+		#{ascores,jdbcType=VARCHAR},
+		#{pscores,jdbcType=VARCHAR},
+		#{total,jdbcType=VARCHAR},
+		#{createTime,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{auditTime,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{note,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<delete id="delete" parameterType = "string">
+		delete from T_ASSESS where C_ID = #{id}
+	</delete>
+	
+	<select id="load" parameterType="string" resultMap="assessResult">
+		SELECT
+			a.C_ID as a_id,
+			a.C_ACCOUNT_ID as a_account,
+			a.C_AUDITOR_ID as a_auditor,
+			a.C_ASCORES as a_ascores,
+			a.C_PSCORES as a_pscores,
+			a.C_TOTAL as a_total,
+			a.C_CREATE_TIME as a_createTime,
+			a.C_STATUS as a_status,
+			a.C_AUDIT_TIME as a_auditTime,
+			a.C_TYPE as a_type,
+			a.C_NOTE as a_note,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_ACCOUNT_TYPE as account_accountType,
+			account.C_BELONG_ID as account_belongId,
+			auditor.C_ID as auditor_id,
+			auditor.C_EMAIL as auditor_email,
+			auditor.C_PASSWORD as auditor_password,
+			auditor.C_ACCOUNT_TYPE as auditor_accountType,
+			auditor.C_BELONG_ID as auditor_belongId
+		FROM T_ASSESS a
+			left outer join T_ACCOUNT account on a.C_ACCOUNT_ID = account.c_id
+			left outer join T_ACCOUNT auditor on a.C_AUDITOR_ID = auditor.c_id
+		WHERE a.C_ID = #{id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="assessResult">
+		SELECT
+			a.C_ID as a_id,
+			a.C_ACCOUNT_ID as a_account,
+			a.C_AUDITOR_ID as a_auditor,
+			a.C_ASCORES as a_ascores,
+			a.C_PSCORES as a_pscores,
+			a.C_TOTAL as a_total,
+			a.C_CREATE_TIME as a_createTime,
+			a.C_STATUS as a_status,
+			a.C_AUDIT_TIME as a_auditTime,
+			a.C_TYPE as a_type,
+			a.C_NOTE as a_note,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_ACCOUNT_TYPE as account_accountType,
+			account.C_BELONG_ID as account_belongId,
+			auditor.C_ID as auditor_id,
+			auditor.C_EMAIL as auditor_email,
+			auditor.C_PASSWORD as auditor_password,
+			auditor.C_ACCOUNT_TYPE as auditor_accountType,
+			auditor.C_BELONG_ID as auditor_belongId
+		FROM T_ASSESS a
+			left outer join T_ACCOUNT account on a.C_ACCOUNT_ID = account.c_id
+			left outer join T_ACCOUNT auditor on a.C_AUDITOR_ID = auditor.c_id
+	</select>
+	
+	<select id="listByAccountOrAuditor" parameterType="map" resultMap="assessResult">
+		SELECT
+			a.C_ID as a_id,
+			a.C_ACCOUNT_ID as a_account,
+			a.C_AUDITOR_ID as a_auditor,
+			a.C_ASCORES as a_ascores,
+			a.C_PSCORES as a_pscores,
+			a.C_TOTAL as a_total,
+			a.C_CREATE_TIME as a_createTime,
+			a.C_STATUS as a_status,
+			a.C_AUDIT_TIME as a_auditTime,
+			a.C_TYPE as a_type,
+			a.C_NOTE as a_note,
+			account.C_ID as account_id,
+			account.C_EMAIL as account_email,
+			account.C_PASSWORD as account_password,
+			account.C_ACCOUNT_TYPE as account_accountType,
+			account.C_BELONG_ID as account_belongId,
+			auditor.C_ID as auditor_id,
+			auditor.C_EMAIL as auditor_email,
+			auditor.C_PASSWORD as auditor_password,
+			auditor.C_ACCOUNT_TYPE as auditor_accountType,
+			auditor.C_BELONG_ID as auditor_belongId
+		FROM T_ASSESS a
+			left outer join T_ACCOUNT account on a.C_ACCOUNT_ID = account.c_id
+			left outer join T_ACCOUNT auditor on a.C_AUDITOR_ID = auditor.c_id
+		<where> 
+			<if test="accountId != null">
+				a.C_ACCOUNT_ID = #{accountId}
+			</if> 
+			<if test="auditorId != null">
+			    OR a.C_AUDITOR_ID = #{auditorId}
+			</if>
+		</where>
+	</select>
+</mapper>

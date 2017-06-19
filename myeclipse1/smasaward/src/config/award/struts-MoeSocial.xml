@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="moeSocial" extends="global" namespace="/award/moeSocial">
+	
+		<!-- 进入列表 -->
+		<action name="toList" class="moeSocialAction" method="testList">
+			<result>/award/moeSocial/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="moeSocialAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="moeSocialAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="moeSocialAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,114 @@
+高级检索修改方案(以论文为例，大家可先熟悉一下，再看一下其前后台代码)：
+
+原理：原来的后台方法均不需改动，只需完成前台显示和保存检索条件的功能。修改分为五个部分：后台action、配置文件、jsp、js、其他
+
+1、后台的修改步骤
+
+       列表高级检索对应的子action，重写saveAdvSearchQuery方法，将检索条件保存到searchQuery中。
+
+2、配置文件的修改
+
+        相应配置文件中advSearch的跳转action改为list（原来是toList）。
+
+3、JSP的修改步骤
+
+1)、list.jsp页面在<div class="main_content">下include检索页面
+	<div class="table_main_tr_adv">
+		<s:include value="/product/paper/advSearch.jsp"/>
+	</div>
+	
+2)、所有列表的添加按钮统一移到列表删除按钮的左边
+
+3)、修改相应列表的advSearch.jsp，内嵌页面只需留下<s:form id="advSearch"></s:form>内的主代码与相应js，并用<div id="adv_search" style="display:none;"></div>包住。
+
+4)、将初级检索的form移植到相应列表的advSearch.jsp，并以<div id="simple_search"></div>包住，以此将初高级检索统一到一个页面。
+
+5)、初级检索form
+
+	保存检索条件：在name后面添加value="%{searchQuery.searchType}"  value="%{searchQuery.keyword}"  用于返回列表时显示初级检索条件。
+	将原“高级检索”按钮替换为“更多条件”按钮，具体写法：
+	<td width="80"><input id="list_search_more" type="button" value="<s:text name='i18n_MoreTerms'/>" class="btn2"/></td>
+
+6)、高级检索form
+
+	保存检索条件：每个高级检索条件的值需存入searchQuery中，如：<s:textfield name="paper.authorName" value="%{searchQuery.authorName}" cssClass="input_css"/>，
+	同时，添加检索类型标识符advFlag，如：<s:hidden id="advFlag" value="%{searchQuery.advFlag}"/>，用于标识列表是否显示检索区域。
+		还要添加下面两行
+		<s:hidden id="startDate" name="startDate" value="%{searchQuery.startDate}"/>
+		<s:hidden id="endDate" name="endDate" value="%{searchQuery.endDate}" />   
+		用hidden来传时间   并且把原来的时间那里的name改为id例如：
+		<td class="adv_td2"><s:textfield id="startDate1" value="%{searchQuery.startDate}" cssClass="input_css_self date_hint FloraDatepick" disabled="disabled" size="10" />
+ 
+	修改样式：将原来一行一个检索条件的形式改为一行两个检索条件；首行6个td，前5个定宽，可视具体情况增减宽度；最后一行的td样式和其他行的不一样。
+
+	增加高级检索及隐藏条件按钮，统一写法：
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table_td_padding">
+	     <tr style="height:36px;">
+			  <td align="right"></td>
+			  <td width="60"><input id="list_button_advSearch" type="button" value="<s:text name='i18n_Search'/>" class="btn1"/></td>
+			  <td width="80"><input id="list_search_hide" type="button" value="<s:text name='i18n_HideTerms'/>" class="btn2" /></td>
+	     </tr>
+	</table>
+
+7)、如果检索条件还有时间的话，为了保证click事件可以正常的运行要在adv_serach.jsp里面加上DOM READY的判断也即是：
+		seajs.use('javascript/system/news/inner/adv_search.js', function(adv_search) {
+			$(function(){
+				adv_search.init();
+			})
+		});
+
+4、修改adv_search.js
+
+1) 若检索条件含有弹层按钮，则需要注意增加显示检索条件的js
+        例如“学科门类”的写法：
+	var initPop = function(){
+		var discipline = document.getElementById("dispName").value;
+		doWithXX(discipline, "dispName", "disptr");
+	};
+	其他的弹层按钮，可参照修改页面对应js中保存条件的方法。
+	
+2)	$("#submit").click(function(){ 
+	});
+	替换为：
+	$("#list_button_advSearch").click(function(){ 
+	});
+	高级检索提交按钮不再是以前的“submit”
+3) 若检索条件还有时间的话就将adv_search.js修改为如下的方式
+	var init = function() {
+		init_hint();
+		$("#list_button_advSearch").click(function(){
+			if($("#startDate1").val() == "--不限--"){
+				$("#startDate").val("");
+			}else {
+				$("#startDate").val($("#startDate1").val());
+			}
+			if($("#endDate1").val() == "--不限--"){
+				$("#endDate").val("");
+			}else {
+				$("#endDate").val($("#endDate1").val());
+			}
+		});
+	};
+
+5、其他
+
+	等所有高级检索修改完后，adv_search.jsp全部修改为search.jsp，adv_search.js修改为search.js。
+	原来toAdvSearch方法及其配置都可以删掉了。
+	以下为高级检索部分用到的样式，main.css已经写好，对照成果的论文部分看一下，差不多就知道该怎么用了
+	/* 检索栏table行高 */
+	.table_main_tr_adv {background:url(../image/table_bg011.gif) repeat-x bottom;}
+	.adv_content {margin:3px 10px 0px 10px; *margin:1px 0px 0px 10px; overflow:hidden; clear:both;}
+	.adv_table{border-collapse: collapse; line-height: 12px;}
+	.adv_tr{vertical-align: middle;}
+	.adv_td1{padding:5px 2px; border-bottom: 1px dashed #DDD;}
+	.adv_td2{padding:5px 2px;}
+	
+	所有 检索条件的名称所属的td都加上align="right"，否则上下行的冒号没有对齐不太好看
+	
+	<table class="adv_table" width="100%" border="0" cellspacing="2" cellpadding="0">
+	
+	
+	<s:hidden id="startDate" name="startDate" value="%{searchQuery.startDate}"/>
+	<s:hidden id="endDate" name="endDate" value="%{searchQuery.endDate}" />  
+	size="10"
+	FloraDatepick

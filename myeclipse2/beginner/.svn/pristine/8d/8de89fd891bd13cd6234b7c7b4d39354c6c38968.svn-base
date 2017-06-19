@@ -1,0 +1,246 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：index.css
+ *
+ * 文件说明：
+ *     主要用于登入前主页面样式的定义。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 与页面整体布局相关的样式。
+ ***************************************************************/
+
+/* 默认边距 */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+/* 页面容器 */
+#container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+/* 标题 */
+#title {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	width: 300px;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	background-color: rgb(230, 240, 247);
+	border: solid #999;
+    border-width: 1px;
+}
+
+/* login */
+#login {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 20px;
+	width: 500px;
+	text-align: center;
+}
+
+.login_table {
+	margin-top: 100px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 320px;
+	vertical-align: middle;
+	border-collapse: collapse;
+	line-height: 30px;
+}
+
+.wd0 {
+	width: 60px;
+	text-align: right;
+	padding-right: 10px;
+	background-color: rgb(230, 230, 230);
+	border: solid #999;
+    border-width: 1px;
+}
+
+.wd1 {
+	width: 170px;
+	padding-left: 0;
+	border: solid #999;
+    border-width: 1px 0 1px 1px;
+	background-color: #F5FBFF;
+}
+
+.wd2 {
+	text-align: center;
+}
+
+.wd3 {
+	width: 90px;
+	text-align: right;
+}
+
+.wd4 {
+	text-align: left;
+	padding-left: 10px;
+	width: 70px;
+	border: solid #999;
+    border-width: 1px 1px 1px 0;
+	background-color: #F5FBFF;
+}
+
+.wd5 {
+	text-align: center;
+	width: 100px;
+}
+
+.wd6 {
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	background-color: rgb(230, 240, 247);
+	border: solid #999;
+    border-width: 1px;
+}
+
+/* 登入区输入框 */
+.input_login {
+	width: 168px;
+	height: 18px;
+	background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+    font-weight: normal;
+}
+
+.input_login1 {
+	width: 100px;
+	height: 18px;
+	background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+    font-weight: normal;
+}
+
+/* 登入区按钮 */
+.bnt1 {
+	margin-top: 1px;
+	margin-bottom: 1px;
+	height: 18px;
+	/*width: 60px;*/
+	background-color: #F5FBFF;
+    border: 1px solid #7AC4EA;
+    color: #333333;
+    font-weight: normal;
+	cursor: pointer;
+}
+
+img {
+	border: 0;
+}
+
+/* a标签链接不同状态下的样式 */
+
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}
+
+/* 错误容器 */
+#error {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}
+
+/* 背景行 */
+#errorbg {
+	height: 20px;
+	background-color: rgb(10, 176, 234);
+}
+
+#table_error {
+	width: 100%;
+}
+
+.static {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.static_table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	text-align: left;
+	line-height: 31px;
+	border-collapse: collapse;
+}
+
+.static_table td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+.staticwd0 {
+	background-color: rgb(230, 240, 247);
+	padding-left: 5px;
+	font-weight: bold;
+}
+
+.staticwd1 {
+	background-color: rgb(230, 230, 230);
+	padding-right: 10px;
+	text-align: right;
+	width: 120px;
+}
+
+.staticwd2 {
+	text-align: left;
+	padding-left: 10px;
+}
+
+.staticwd3 {
+	background-color: rgb(230, 230, 230);
+	padding-right: 10px;
+	text-align: right;
+}
+
+.staticwd4 {
+	text-align: center;
+	width: 70px;
+}
+
+.staticwd5 {
+	background-color: rgb(230, 230, 230);
+	padding-right: 10px;
+	text-align: right;
+	width: 160px;
+}
+
+.text_red {
+	color: #FF7400;
+}

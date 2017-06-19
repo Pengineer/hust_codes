@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="bonus" extends="main" namespace="/system/dataDic/bonus">
+		<action name="toList" class="bonusAction" method="toList">
+			<result>/jsp/system/dataDic/bonus/list.jsp</result>
+		</action>
+		
+		<action name="list" class="bonusAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="bonusAction" method="toAdd">
+			<result>/jsp/system/dataDic/bonus/add.jsp</result>
+		</action>
+		
+		<action name="add" class="bonusAction" method="add">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+	</package>
+</struts>

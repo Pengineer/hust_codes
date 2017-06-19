@@ -1,0 +1,11 @@
+package csdc.service.imp;
+
+import csdc.service.IDataMiningService;
+
+/**
+ * 数据挖掘：数据挖掘的父业务逻辑层
+ * @author fengcl
+ */
+public class DataMiningService extends BaseService implements IDataMiningService{
+	
+}

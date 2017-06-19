@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="asset" extends="default" namespace="/asset">
+		<action name="toAdd" class="assetAction" method="toAdd">
+			<result name="success">/jsp/oa/asset/addAsset.jsp</result>
+		</action>
+		
+		<action name="add" class="assetAction" method="add">
+			<result>/jsp/oa/asset/addAsset.jsp</result>
+		</action>
+
+		<action name="delete" class="assetAction" method="delete">
+			<result>/jsp/oa/asset/listAsset.jsp</result>
+		</action>
+		
+		<action name="view" class="assetAction" method="view">
+			<result>/jsp/oa/asset/view.jsp</result>
+		</action>
+		
+		<action name="toList" class="assetAction" method="toList">
+			 <result>/jsp/oa/asset/listAsset.jsp</result>
+		</action>
+		
+		<action name="list" class="assetAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+	</package>
+</struts>

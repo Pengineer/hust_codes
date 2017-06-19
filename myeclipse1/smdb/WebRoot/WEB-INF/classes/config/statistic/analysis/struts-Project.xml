@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="statisticProjectAnalysis" extends="main" namespace="/statistic/analysis/project">
+		<action name="toAnalysis" class="projectAnalysisAction" method="toAnalysis">
+	    	<result>/statistic/analysis/project.jsp</result>
+	    </action>
+	
+		<action name="exportAccountingTable" class="projectAnalysisAction" method="exportAccountingTable">
+	   		<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadAccountingFile</param>
+			</result>
+	   	</action>
+	
+		<action name="exportApplyInEnd" class="projectAnalysisAction" method="exportApplyInEnd">
+	   		<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	</package>
+</struts>

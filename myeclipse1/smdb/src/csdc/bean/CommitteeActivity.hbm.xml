@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.CommitteeActivity" table="T_COMMITTEE_ACTIVITY" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="institute" class="csdc.bean.Institute" fetch="select">
+            <column name="C_INSTITUTE_ID" length="40" not-null="true" />
+        </many-to-one>
+        <property name="date" type="java.util.Date">
+            <column name="C_DATE" length="7" />
+        </property>
+        <property name="population" type="java.lang.Integer">
+            <column name="C_POPULATION" />
+        </property>
+        <property name="title" type="java.lang.String">
+            <column name="C_TITLE" length="80" not-null="true" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="C_CONTENT" length="2000" />
+        </property>
+    </class>
+</hibernate-mapping>

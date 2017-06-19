@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+      "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+      "http://struts.apache.org/dtds/struts-2.0.dtd">
+      <!-- 
+                                   以下配置加入了“token”拦截器和“invalid.token”结果，因为“token”拦截器在会话的token与请求的token不一致时，将会直接
+                                   返回“invalid.token”结果。
+
+                                  在debug状态,控制台出现下面信息,是因为Action中并没有struts.token和struts.token.name属性,我们不用关心这个错误：
+                                                 严重: ParametersInterceptor - [setParameters]: Unexpected Exception caught setting 'struts.token' on 'class xxx: Error setting expression 'struts.token' with value '[Ljava.lang.String;@39f16f'
+                                                 严重: ParametersInterceptor - [setParameters]: Unexpected Exception caught setting 'struts.token.name'    
+       -->
+<struts>
+      <constant name="struts.ui.theme" value="simple" />
+      
+      <package name="srutsform" namespace="/test" extends="json-default">
+      	<action name="login" class="edu.hust.action.PersonAction" method="execute">      		
+      		<interceptor-ref name="token" />   <!-- 拦截器在这种顺序下，刷新后，Action的属性没有被注入值。因为默认拦截器栈会完成属性值注入；顺序颠倒时，返回后表单中值还在，属性值也已经被注入(但是好像没什么影响吧，因为业务逻辑代码execute方法没有执行)-->    	
+        	<interceptor-ref name="defaultStack" />
+        	<result name="invalid.token">/struts2form.jsp</result>  
+        	<result>/WEB-INF/page/message.jsp</result>
+      	</action>
+      </package>
+</struts>

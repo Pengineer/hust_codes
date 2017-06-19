@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: first war can work properly .edit  by jintianfan
+              Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="" name="smdb">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="C:/Program Files/Genuitec/MyEclipse-8.6"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="classes.dir" value="${basedir}/WebRoot/WEB-INF/classes"/>
+	<!-- the .war destination-->
+	<property name="antwar.dir" value="G:/jin"/>
+	<!-- closure compiler路径 -->
+	<property name="closure.path" location="${basedir}/WebRoot/WEB-INF/lib/compiler.jar" /> 
+	<property name="yuicompressor.path" location="${basedir}/WebRoot/WEB-INF/lib/yuicompressor-2.4.7.jar" /> 
+
+    <path id="Java EE 5 Libraries.libraryclasspath">
+        <pathelement location="C:/Program Files/Genuitec/Common/plugins/com.genuitec.eclipse.j2eedt.core_8.6.0.me201007292038/data/libraryset/EE_5/javaee.jar"/>
+        <pathelement location="C:/Program Files/Genuitec/Common/plugins/com.genuitec.eclipse.j2eedt.core_8.6.0.me201007292038/data/libraryset/EE_5/jsf-impl.jar"/>
+        <pathelement location="C:/Program Files/Genuitec/Common/plugins/com.genuitec.eclipse.j2eedt.core_8.6.0.me201007292038/data/libraryset/EE_5/jsf-api.jar"/>
+        <pathelement location="C:/Program Files/Genuitec/Common/plugins/com.genuitec.eclipse.j2eedt.core_8.6.0.me201007292038/data/libraryset/EE_5/jstl-1.2.jar"/>
+    </path>
+	<path id ="external.libs">
+		<fileset dir="WebRoot/WEB-INF/lib">
+		</fileset>
+	</path>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="smdb.classpath">
+        <pathelement location="WebRoot/WEB-INF/classes"/>
+        <path refid="Java EE 5 Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="external.libs"/>
+    </path>
+ 
+	<target name="clean">
+		<delete dir="${classes.dir}"/>
+		<delete dir="${antwar.dir}"/>
+	</target>
+	<target name="init" depends="clean">
+		<mkdir dir="${classes.dir}"/>
+		<mkdir dir="${antwar.dir}"/>
+	</target>
+	
+	<target name="compile" depends="init"  description="compile the src and copy configs">		    
+		    <echo message="begin to compile!"/>
+	        <javac encoding="utf-8" debug="true" debuglevel="${debuglevel}" srcdir="src" destdir="${classes.dir}" source="${source}" target="${target}" failonerror="true" nowarn="true">
+	        	<exclude name="csdc/tool/Customized.java"/>	
+	        	<exclude name="csdc/tool/execution/**/*.java"/>
+	        	<exclude name="csdc/action/mobile/*.java"/>	     
+	        	<exclude name="csdc/tool/tableKit/**/*.java"/>		        	
+	            <classpath refid="smdb.classpath"/>
+	        	<compilerarg value="-Xlint"/>
+	        </javac>
+	        <echo message="begin to copy other configs!"/>
+	        <copy todir="${classes.dir}">
+	        	<fileset dir="src">
+                	<exclude name="**/*.launch"/>
+                	<exclude name="**/*.java"/>
+            	</fileset>
+	        </copy>
+	</target>
+	
+	<target name="antwar" depends="compile" description="开始工作了（打war包）">
+		   <war destfile="${antwar.dir}/smdb.war" needxmlfile='false' >
+				    <fileset dir="${basedir}/WebRoot">
+				     <exclude name="**/AntBuild/**"/>
+				     <exclude name="**/doc/**"/>
+				     <exclude name="**/src/**"/>		
+				     <exclude name="**/.svn/**"/>
+				     <exclude name="**/*.mex"/>	
+				    </fileset>
+		   </war>
+	 </target>	
+	<target name="antfold" depends="compile" description="开始工作了">
+		 <copy todir="${antwar.dir}/smdb"  >
+				    <fileset dir="${basedir}/WebRoot">
+				     <exclude name="**/AntBuild/**"/>
+				     <exclude name="**/doc/**"/>
+				     <exclude name="**/src/**"/>		
+				     <exclude name="**/.svn/**"/>
+				     <exclude name="**/*.mex"/>	
+				    </fileset>
+		 </copy>
+	</target>
+	
+	<!-- 使用yuicompressor压缩css -->
+	<target name="minify-css">
+		<apply executable="java" verbose="true" dest="${basedir}/WebRoot" failonerror="true" parallel="false">
+			<fileset dir="${basedir}/WebRoot" includes="**/*.css" /> 
+			<arg line="-jar" /> 
+			<arg path="${yuicompressor.path}" /> 
+			<arg line="--charset gbk" /> 
+			<arg value="--type" /> 
+			<arg value="css" /> 
+			<arg value="-o" /> 
+			<targetfile /> 
+			<mapper type="glob" from="*.css" to="*-min.css" /> 
+		</apply>
+	</target>
+
+	<!-- 使用yuicompressor压缩js -->
+	<target name="minify-js">
+		<apply executable="java" dest="${basedir}/WebRoot">
+			<fileset dir="${basedir}/WebRoot" includes="**/*.js"/>
+			<arg line="-jar"/>
+			<arg path="${yuicompressor.path}"/>
+			<arg value="-o"/>
+			<targetfile/>
+			<mapper type="glob" from="*.js" to="*-min.js"/>
+		</apply>
+	</target>
+	
+	<!-- 使用closure压缩js(目前由于代码不规范，所以暂时不能使用此压缩方法) -->
+	<target name="minify-js-closure">
+		<apply executable="java" verbose="true" dest="${basedir}/WebRoot/javascript" failonerror="true" parallel="false">
+			<fileset dir="${basedir}/WebRoot/javascript" includes="*.js" /> 
+			<arg line="-jar" /> 
+			<arg path="${closure.path}" /> 
+			<arg line="--charset gbk" /> 
+			<arg value="--warning_level" /> 
+			<arg value="QUIET" /> 
+			<arg value="--compilation_level"/>
+			<arg value="WHITESPACE_ONLY"/>
+			<arg value="--js" /> 
+			<srcfile /> 
+			<arg value="--js_output_file" /> 
+			<targetfile /> 
+			<mapper type="regexp" from="^(.*)\.js$$" to="\1-min.js"/>
+		</apply>
+	</target>
+
+</project>

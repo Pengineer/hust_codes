@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.InterfaceConfig" table="T_INTERFACE_CONFIG" >
+	    <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="serviceName" type="java.lang.String">
+            <column name="C_SERVICE_NAME" length="200"/>
+        </property>        
+        <property name="methodName" type="java.lang.String">
+            <column name="C_METHOD_NAME" length="200"/>
+        </property>	    
+        <property name="isPublished" type="java.lang.Integer">
+        	<column name="C_IS_PUBLISHED" precision="1" scale="0" />
+        </property>	
+        <property name="options" type="java.lang.String">
+            <column name="C_OPTIONS" length="1000"/>
+        </property>	
+		<many-to-one name="right" class="csdc.bean.Right" fetch="join">
+            <column name="C_RIGHT_ID"/>
+        </many-to-one> 
+    </class>               
+</hibernate-mapping>

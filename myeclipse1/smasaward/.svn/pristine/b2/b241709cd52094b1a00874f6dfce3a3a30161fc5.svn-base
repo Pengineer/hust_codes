@@ -1,0 +1,10 @@
+mail.host=csdc.info
+mail.username=serv
+mail.password=csdc20121013
+
+#mail.host=email.bnu.edu.cn
+#mail.username=moesk
+#mail.password=bnu-58805145
+
+#\u540c\u65f6\u5de5\u4f5c\u7684\u53d1\u9001\u90ae\u4ef6\u7ebf\u7a0b\u6570
+mail.sendingThreadNumber=1

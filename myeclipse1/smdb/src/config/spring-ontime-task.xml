@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- 业务对象 -->
+	<bean id="sinossTask" class="csdc.tool.ontimeTask.SinossTask" />
+
+	<!-- 调度业务:自动执行数据同步 -->
+	<bean id="sinossJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="sinossTask" />
+ 		<property name="targetMethod" value="getModifyRecord" />
+	</bean>
+
+	<!-- 增加调度触发器  -->
+	<bean id="sinossTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="sinossJob" />
+ 		<property name="cronExpression" value="0 30 12 ? * MON" />
+	</bean>
+	
+	 <!-- 调度业务:自动清除垃圾session -->
+	<bean name="clearSessionsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="csdc.tool.SessionContext.ClearIdleSessionsJob" />
+	</bean>
+	
+	<!-- 增加调度触发器  -->
+	<bean id="clearSessionsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="clearSessionsJob" />
+		<property name="cronExpression" value="0 0/5 * * * ?" />
+	</bean>
+	
+	<!-- 业务对象 -->
+	<bean id="sendUndoneMails" class="csdc.tool.mail.SendUndoneMails" scope="prototype" />
+	
+    <!-- 调度业务:自动发送未完成的邮件 -->
+	<bean id="sendUndoneMailsJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="sendUndoneMails" />
+		<property name="targetMethod" value="send" />
+	</bean>
+
+	<!-- 增加调度触发器  -->
+	<bean id="sendUndoneMailsTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="sendUndoneMailsJob" />
+		<property name="cronExpression" value="0 30 * * * ?" />
+	</bean>
+	
+	<!-- 设置调度 -->
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="sinossTrigger" />
+				<ref bean="clearSessionsTrigger" />
+				<ref bean="sendUndoneMailsTrigger" />
+			</list>
+		</property> 
+	</bean>
+</beans>

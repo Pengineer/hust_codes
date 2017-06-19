@@ -1,0 +1,4 @@
+smdb.jdbc.driverClassName=oracle.jdbc.OracleDriver
+smdb.jdbc.url=jdbc:oracle:thin:@192.168.88.220:1521:orcl
+smdb.jdbc.username=smdbunion
+smdb.jdbc.password=p1013smdbunion702

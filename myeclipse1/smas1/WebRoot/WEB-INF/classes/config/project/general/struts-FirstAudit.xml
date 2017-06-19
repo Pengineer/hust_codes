@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="generalFirstAudit" extends="global" namespace="/project/general/firstAudit">
+	
+		<!-- 进入列表 -->
+		<action name="toList" class="generalFirstAuditAction" method="toList">
+			<result>/project/general/firstAudit/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="generalFirstAuditAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalFirstAuditAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+			
+		<action name="toView" class="generalFirstAuditAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalFirstAuditAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalFirstAuditAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalFirstAuditAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="generalFirstAuditAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="generalFirstAuditAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="generalFirstAuditAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 更新初审结果 -->
+		<action name="updateFirstAudit" class="generalFirstAuditAction" method="updateFirstAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 导出初审结果 -->
+		<action name="exportFirstAudit" class="generalFirstAuditAction" method="exportFirstAudit">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

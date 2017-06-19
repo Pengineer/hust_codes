@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="right" location="430,10" size="1750,1190">
+    <action name="toAdd" location="1535,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="1535,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="1290,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="65,1097" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="65,1002" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="65,887" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="1045,887" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="1045,222" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="800,222" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toSimpleSearch" location="800,337" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="800,817" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdvSearch" location="555,827" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="555,722" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sort" location="310,712" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="changePageSize" location="310,607" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="65,607" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toBackToList" location="65,502" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="backToList" location="65,397" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/security/right/add.jsp" location="1955,1255" size="150,55" />
+  <webResource name="modify.jsp" path="/security/right/modify.jsp" location="56,135" size="150,55" />
+  <webResource name="view.jsp" path="/security/right/view.jsp" location="202,975" size="150,55" />
+  <webResource name="list.jsp" path="/security/right/list.jsp" location="202,310" size="150,55" />
+  <webResource name="advSearch.jsp" path="/security/right/advSearch.jsp" location="187,800" size="150,55" />
+</Struts2Diagram>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="right" extends="default" namespace="/right">
+		<!-- 进入权限列表 -->
+		<action name="toList" class="rightAction" method="toList">
+			 <result>/jsp/oa/roleright/listRight.jsp</result>
+		</action>
+		<!-- 权限列表 -->
+		<action name="list" class="rightAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>  
+			</result>
+		</action>
+		
+		<!-- 添加权限 -->
+		<action name="toAdd" class="rightAction" method="toAdd">
+			<result>/jsp/oa/roleright/addRight.jsp</result>
+		</action>
+		
+		<action name="add" class="rightAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="rightId">${rightId}</param>
+			</result>
+			<result name="input">/jsp/oa/roleright/addRight.jsp</result>
+		</action>
+		
+		<!-- 删除权限 -->
+		<action name="delete" class="rightAction" method="delete">
+			<result type="json">
+	    		<param name="root">jsonMap</param>
+	    	</result>
+		</action>
+
+		
+		<!-- 查看权限 -->
+		<action name="view" class="rightAction" method="view">
+			<result>/jsp/oa/roleright/viewRight.jsp</result>
+		</action>
+		
+		<!-- 修改权限-->
+		<action name="toModify" class="rightAction" method="toModify">
+			<result>/jsp/oa/roleright/modifyRight.jsp</result>
+		</action>
+		
+		<action name="modify" class="rightAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="rightId">${right.id}</param>
+			</result>
+			<result name="input">/jsp/oa/roleright/modifyRight.jsp</result>
+		</action>
+	</package>
+</struts>

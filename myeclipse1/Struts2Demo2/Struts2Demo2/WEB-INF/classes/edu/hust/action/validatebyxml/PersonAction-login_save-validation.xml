@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+      "-//Apache Struts//XWork Validator 1.0.3//EN" 
+      "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">  
+
+
+<!-- 
+    validators:申明校验器集合
+    field:申明校验器作用字段
+    field-validator:指定校验规则（Struts2提供了一系列常用的校验规则），type后就是具体规则申明
+          param.name.trim的默认值就是true（此处可不写），就是去掉空格
+          message：指定校验出错后的信息
+ -->
+<validators>
+    <field name="username">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>用户名不能为空!</message>
+        </field-validator>
+    </field>
+    
+    <field name="phonenumber">
+    	<field-validator type="requiredstring">
+    		<message>手机号不能为空</message>
+    	</field-validator>
+    	<field-validator type="regex">
+    		<param name="expression"><![CDATA[^1[358]\d{9}$]]></param>   <!-- 失效，不知为什么 -->
+            <message>手机号格式不正确</message>
+    	</field-validator>
+    </field>
+</validators>

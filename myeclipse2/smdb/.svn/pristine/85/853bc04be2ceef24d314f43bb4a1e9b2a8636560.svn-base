@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.Nsfc" table="T_NSFC">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="number" type="java.lang.String">
+			<column name="C_NUMBER" />
+		</property>
+		<property name="applyNumber" type="java.lang.String">
+			<column name="C_APPLY_NUMBER" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="C_NAME" />
+		</property>
+		<property name="applicant" type="java.lang.String">
+			<column name="C_APPLICANT" />
+		</property>
+		<property name="unit" type="java.lang.String">
+			<column name="C_UNIT" />
+		</property>
+		<property name="approvedFee" type="java.lang.Double">
+			<column name="C_APPROVED_FEE" />
+		</property>
+		<property name="startDate" type="java.util.Date">
+			<column name="C_START_DATE" />
+		</property>
+		<property name="endDate" type="java.util.Date">
+			<column name="C_END_DATE" />
+		</property>
+		<property name="grantType" type="java.lang.String">
+			<column name="C_GRANT_TYPE" />
+		</property>
+		<property name="subGrantType" type="java.lang.String">
+			<column name="C_SUB_GRANT_TYPE" />
+		</property>
+		<property name="grantDescription" type="java.lang.String">
+			<column name="C_GRANT_DESCRIPTION" />
+		</property>
+		<property name="year" type="java.lang.Integer">
+			<column name="C_YEAR" />
+		</property>
+		<property name="importDate" type="java.util.Date">
+			<column name="C_IMPORT_DATE" />
+		</property>
+		<property name="isDupCheckGeneral" type="java.lang.Integer">
+            <column name="C_IS_DUP_CHECK_GENERAL" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="university" type="java.lang.String">
+			<column name="C_UNIVERSITY" />
+		</property>
+		<property name="universityId" type="java.lang.String">
+			<column name="C_UNIVERSITY_ID" />
+		</property>
+	</class>
+
+</hibernate-mapping>

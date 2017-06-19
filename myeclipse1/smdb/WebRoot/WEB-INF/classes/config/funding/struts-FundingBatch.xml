@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="fundingBatchAction" extends="main" namespace="/funding/fundingBatch">
+		<action name="toView" class="fundingBatchAction" method="toView">
+			<result>/funding/fundingBatch/view.jsp</result>
+		</action>
+		<action name="view" class="fundingBatchAction" method="view">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		<action name="toAdd" class="fundingBatchAction" method="toAdd">
+			<result>/funding/fundingBatch/add.jsp</result>
+		</action>
+		<action name="add" class="fundingBatchAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/funding/fundingBatch/add.jsp</result>
+		</action>
+		<action name="toModify" class="fundingBatchAction" method="toModify">
+			<result>/funding/fundingBatch/modify.jsp</result>
+		</action>
+		<action name="modify" class="fundingBatchAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/funding/fundingBatch/modify.jsp</result>
+		</action>
+		<action name="toList" class="fundingBatchAction" method="toList">
+			<result>/funding/fundingBatch/list.jsp</result>
+		</action>
+		<action name="list" class="fundingBatchAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+			<result name="input" type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		<action name="delete" class="fundingBatchAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="fundingBatchAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="fundingBatchAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="fundingBatchAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="fundingBatchAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="prev" class="fundingBatchAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="next" class="fundingBatchAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

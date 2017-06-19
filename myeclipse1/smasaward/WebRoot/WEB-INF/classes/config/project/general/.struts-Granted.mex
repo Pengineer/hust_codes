@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="generalGranted" location="303,10" size="525,315">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="65,57" size="150,41">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="65,232" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="310,232" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPrint" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popPrint.jsp" />
+      </result>
+    </action>
+    <action name="printNotice" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="grantedNotice.jsp" />
+      </result>
+    </action>
+    <action name="printGrantedList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="grantedList.jsp" />
+      </result>
+      <result name="exportGrantedList" />
+    </action>
+    <action name="getSelectBoxData" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="exportGrantedList" location="0,0" size="0,0" />
+  </package>
+  <webResource name="list.jsp" path="/project/general/granted/list.jsp" location="13,30" size="150,55" />
+  <webResource name="listPublicity.jsp" path="/project/general/listPublicity.jsp" location="10,205" size="150,55" />
+  <webResource name="popPrint.jsp" path="/project/print/popPrint.jsp" location="0,0" size="0,0" />
+  <webResource name="grantedNotice.jsp" path="/project/print/grantedNotice.jsp" location="0,0" size="0,0" />
+  <webResource name="grantedList.jsp" path="/project/print/grantedList.jsp" location="0,0" size="0,0" />
+  <webResource name="viewProject.jsp" path="/project/viewProject.jsp" location="0,0" size="0,0" />
+  <webResource name="view.jsp" path="/project/general/view.jsp" location="0,0" size="0,0" />
+  <webResource name="view.jsp" path="/project/general/granted/view.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

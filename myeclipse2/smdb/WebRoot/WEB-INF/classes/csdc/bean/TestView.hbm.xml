@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.TestView" table="V_Test_View" >
+        <id name="id" type="java.lang.String">
+            <column name="id" length="40" />
+        </id>
+        <property name="pname" type="java.lang.String">
+            <column name="pname" length="200"  />
+        </property>
+        <property name="mfile" type="java.lang.String">
+            <column name="mfile" length="100"  />
+        </property>
+    </class>
+</hibernate-mapping>

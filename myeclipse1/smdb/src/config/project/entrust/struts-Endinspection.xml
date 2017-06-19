@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="entrustEndinspectionAudit" extends="main" namespace="/project/entrust/endinspection/applyAudit">
+	
+		<action name="toAdd" class="entrustEndinspectionApplyAuditAction" method="toAdd">
+	        <result>/project/entrust/endinspection/applyAudit/popAdd.jsp</result>
+	    </action>
+	    <action name="toModify" class="entrustEndinspectionApplyAuditAction" method="toModify">
+	        <result>/project/entrust/endinspection/applyAudit/popModify.jsp</result>
+	    </action>
+	    <action name="add" class="entrustEndinspectionApplyAuditAction" method="add">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="modify" class="entrustEndinspectionApplyAuditAction" method="modify">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="submit" class="entrustEndinspectionApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="back" class="entrustEndinspectionApplyAuditAction" method="backAudit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="view" class="entrustEndinspectionApplyAuditAction" method="view">
+	        <result>/project/entrust/endinspection/applyAudit/popView.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="entrustEndinspectionApply" extends="main" namespace="/project/entrust/endinspection/apply">
+		
+		<action name="toList" class="entrustEndinspectionApplyAction" method="toList">
+			<result>/project/entrust/endinspection/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="entrustEndinspectionApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="assist" class="entrustEndinspectionApplyAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="entrustEndinspectionApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="entrustEndinspectionApplyAction" method="toAdvSearch">
+			<result>/project/entrust/endinspection/apply/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="entrustEndinspectionApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="entrustEndinspectionApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="entrustEndinspectionApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="entrustEndinspectionApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="downloadTemplate" class="entrustEndinspectionApplyAction" method="downloadTemplate">
+	    	<result name="success" type="stream">
+				<param name="inputName">targetTemplate</param>
+				<param name="contentType">application/x-msdownload</param>
+				<param name="contentDisposition">attachment;filename="${filepath}"</param>
+				<param name="bufferSize">10240*1024</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	    
+	    <action name="validateTemplate" class="entrustEndinspectionApplyAction" method="validateTemplate">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	</action>
+	  	
+	    <action name="toAdd" class="entrustEndinspectionApplyAction" method="toAdd">
+		 	 <result>/project/entrust/endinspection/apply/popAdd.jsp</result>
+		 	 <result name="input">/project/entrust/endinspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="add" class="entrustEndinspectionApplyAction" method="add">
+			<result>/project/entrust/endinspection/apply/popAdd.jsp</result>
+			<result name="input">/project/entrust/endinspection/apply/popAdd.jsp</result>
+		</action>
+		
+		<action name="toAddEndFee" class="entrustEndinspectionApplyAction" method="toAddEndFee">
+			 <result>/project/popAddEndFee.jsp</result>
+		</action>
+		
+		<action name="toModify" class="entrustEndinspectionApplyAction" method="toModify">
+		 	 <result>/project/entrust/endinspection/apply/popModify.jsp</result>
+		 	 <result name="input">/project/entrust/endinspection/apply/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="entrustEndinspectionApplyAction" method="modify">
+			<result>/project/entrust/endinspection/apply/popModify.jsp</result>
+			<result name="input">/project/entrust/endinspection/apply/popModify.jsp</result>
+		</action>
+		
+	    <action name="submit" class="entrustEndinspectionApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddResult" class="entrustEndinspectionApplyAction" method="toAddResult">
+		  <result>/project/entrust/endinspection/apply/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="entrustEndinspectionApplyAction" method="toModifyResult">
+		  <result>/project/entrust/endinspection/apply/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="entrustEndinspectionApplyAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="entrustEndinspectionApplyAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="entrustEndinspectionApplyAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toUploadFileResult" class="entrustEndinspectionApplyAction" method="toUploadFileResult">
+		  <result>/project/entrust/endinspection/apply/popUploadFileResult.jsp</result>
+		</action>
+		
+		<action name="uploadFileResult" class="entrustEndinspectionApplyAction" method="uploadFileResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	 	<action name="delete" class="entrustEndinspectionApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="toView" class="entrustEndinspectionApplyAction" method="toView">
+	        <result>/project/entrust/view.jsp</result>
+	    </action>
+	    
+	    <action name="view" class="entrustEndinspectionApplyAction" method="view">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+	    </action>
+		
+		<action name="prev" class="entrustEndinspectionApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="entrustEndinspectionApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="downloadApply" class="entrustEndinspectionApplyAction" method="downloadApply">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filepath}"</param>  
+	 	  	</result>
+	 	  	<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	
+		 <action name="validateFile" class="entrustEndinspectionApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+	  	 
+	  	 <action name="downloadData" class="entrustEndinspectionApplyAction" method="downloadData">
+			<result type="stream">
+		 	    <param name="inputName">targetData</param>
+		 	    <param name="bufferSize">10240*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filepath}"</param>  
+	 	  	</result>
+	 	  	<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	
+		 <action name="validateData" class="entrustEndinspectionApplyAction" method="validateData">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+	  	 
+		<action name="printCertificate" class="entrustEndinspectionApplyAction" method="printCertificate">
+        	<result>/project/entrust/endinspection/apply/printCertificate.jsp</result>
+	   	</action>
+	   	
+	   	<action name="confirmPrintCertificate" class="entrustEndinspectionApplyAction" method="confirmPrintCertificate">
+        	<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	   	</action>
+	   	
+	   	<action name="printOverView" class="entrustEndinspectionApplyAction" method="printOverView">
+        	<result>/project/entrust/endinspection/apply/popPrintOverView.jsp</result>
+	   	</action>
+	   	
+	   	<action name="confirmPrintOverView" class="entrustEndinspectionApplyAction" method="confirmPrintOverView">
+        	<result name="success">/project/entrust/endinspection/apply/printOverView.jsp</result>
+        	<result name="exportOverView" type="chain">exportOverView</result>
+	   	</action>
+
+	   	<action name="exportOverView" class="entrustEndinspectionApplyAction" method="exportOverView">
+	   		<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	   	</action>
+	   	
+	   	<!-- 发布 -->
+		<action name="publish" class="entrustEndinspectionApplyAction" method="publish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		
+	</package>
+	
+	<package name="entrustEndinspectionReview" extends="main" namespace="/project/entrust/endinspection/review">
+		
+		<action name="toAddRevExpert" class="entrustEndinspectionReviewAction" method="toAddRevExpert">
+	        <result>/project/entrust/endinspection/review/popAddExpert.jsp</result>
+	    </action>
+	    
+	    <action name="addResultExpert" class="entrustEndinspectionReviewAction" method="addResultExpert">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input">/project/entrust/endinspection/review/popAddExpert.jsp</result>
+		</action>
+			
+		<action name="toList" class="entrustEndinspectionReviewAction" method="toList">
+			<result>/project/entrust/endinspection/review/list.jsp</result>
+		</action>
+
+		<action name="list" class="entrustEndinspectionReviewAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="assist" class="entrustEndinspectionReviewAction" method="assist">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="entrustEndinspectionReviewAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdvSearch" class="entrustEndinspectionReviewAction" method="toAdvSearch">
+			<result>/project/entrust/endinspection/review/advSearch.jsp</result>
+		</action>
+		
+		<action name="advSearch" class="entrustEndinspectionReviewAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="entrustEndinspectionReviewAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="entrustEndinspectionReviewAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="entrustEndinspectionReviewAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="viewReview" class="entrustEndinspectionReviewAction" method="viewReview">
+	    	<result type="redirectAction">
+				<param name="namespace">/project/entrust/endinspection/apply</param>
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="projectid">${projectid}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+	    </action>
+	    
+	    <action name="toViewReview" class="entrustEndinspectionReviewAction" method="toViewReview">
+	        <result>/project/entrust/view.jsp</result>
+	    </action>
+	
+		<action name="prev" class="entrustEndinspectionReviewAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="entrustEndinspectionReviewAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">viewReview</param>
+				<param name="entityId">${entityId}</param>
+				<param name="pageNumber">${pageNumber}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="entrustEndinspectionReviewAction" method="toAdd">
+	        <result>/project/entrust/endinspection/review/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toAddGroup" class="entrustEndinspectionReviewAction" method="toAddGroup">
+	        <result>/project/entrust/endinspection/review/popAddGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toAddResult" class="entrustEndinspectionReviewAction" method="toAddResult">
+	        <result>/project/entrust/endinspection/review/popAddResult.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="entrustEndinspectionReviewAction" method="toModify">
+	        <result>/project/entrust/endinspection/review/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyGroup" class="entrustEndinspectionReviewAction" method="toModifyGroup">
+	        <result>/project/entrust/endinspection/review/popModifyGroup.jsp</result>
+	    </action>
+	    
+	    <action name="toModifyResult" class="entrustEndinspectionReviewAction" method="toModifyResult">
+	        <result>/project/entrust/endinspection/review/popModifyResult.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="entrustEndinspectionReviewAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addGroup" class="entrustEndinspectionReviewAction" method="addGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="addResult" class="entrustEndinspectionReviewAction" method="addResult">
+		 	<result>/project/entrust/endinspection/review/popAddResult.jsp</result>
+		 	<result name="input">/project/entrust/endinspection/review/popAddResult.jsp</result>
+		</action>
+		
+		<action name="modify" class="entrustEndinspectionReviewAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyGroup" class="entrustEndinspectionReviewAction" method="modifyGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modifyResult" class="entrustEndinspectionReviewAction" method="modifyResult">
+			<result>/project/entrust/endinspection/review/popModifyResult.jsp</result>
+		 	<result name="input">/project/entrust/endinspection/review/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submit" class="entrustEndinspectionReviewAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitGroup" class="entrustEndinspectionReviewAction" method="submitGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitResult" class="entrustEndinspectionReviewAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="entrustEndinspectionReviewAction" method="view">
+	        <result>/project/entrust/endinspection/review/popView.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroup" class="entrustEndinspectionReviewAction" method="viewGroup">
+	        <result>/project/entrust/endinspection/review/popViewGroup.jsp</result>
+	    </action>
+	    
+	    <action name="viewGroupOpinion" class="entrustEndinspectionReviewAction" method="viewGroupOpinion">
+	        <result>/project/entrust/endinspection/review/popViewGroupOpinion.jsp</result>
+	    </action>
+	</package>
+	
+	<package name="entrustEndinspectionReviewAudit" extends="main" namespace="/project/entrust/endinspection/reviewAudit">
+	
+		<action name="toAdd" class="entrustEndinspectionReviewAuditAction" method="toAdd">
+	        <result>/project/entrust/endinspection/reviewAudit/popAdd.jsp</result>
+	    </action>
+	    
+	    <action name="toModify" class="entrustEndinspectionReviewAuditAction" method="toModify">
+	        <result>/project/entrust/endinspection/reviewAudit/popModify.jsp</result>
+	    </action>
+	    
+	    <action name="add" class="entrustEndinspectionReviewAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="modify" class="entrustEndinspectionReviewAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="entrustEndinspectionReviewAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	    <action name="view" class="entrustEndinspectionReviewAuditAction" method="view">
+	        <result>/project/entrust/endinspection/reviewAudit/popView.jsp</result>
+	    </action>
+	    
+	</package>
+</struts>

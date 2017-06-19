@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.SinossPatent" table="T_SINOSS_PATENT">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+	    <property name="projectName" type="java.lang.String">
+            <column name="C_PROJECT_NAME"/>
+        </property>        
+	    <property name="name" type="java.lang.String">
+            <column name="C_NAME"/>
+        </property>  
+ 	    <property name="firstAuthor" type="java.lang.String">
+            <column name="C_FIRST_AUTHOR"/>
+        </property>
+ 	    <property name="otherName" type="java.lang.String">
+            <column name="C_OTHER_NAME"/>
+        </property>
+ 	    <property name="subject" type="java.lang.String">
+            <column name="C_SUBJECT"/>
+        </property>	
+ 	    <property name="disciplineType" type="java.lang.String">
+            <column name="C_DISCIPLINE_TYPE"/>
+        </property>	
+        <property name="isMark" type="java.lang.String">
+            <column name="C_IS_MARK" />
+        </property>  
+ 	    <property name="patentType" type="java.lang.String">
+            <column name="C_PATENT_TYPE"/>
+        </property>   
+ 	    <property name="patentScope" type="java.lang.String">
+            <column name="C_PATENT_SCOPE"/>
+        </property>
+ 	    <property name="patentNumber" type="java.lang.String">
+            <column name="C_PATENT_NUMBER"/>
+        </property>   
+        <property name="authorizeDate" type="java.util.Date">
+            <column name="C_AUTHORIZE_DATE" />
+        </property>
+ 	    <property name="patentPerson" type="java.lang.String">
+            <column name="C_PATENT_PERSON"/>
+        </property> 
+ 	    <property name="note" type="java.lang.String">
+            <column name="C_NOTE"/>
+        </property>	
+ 	    <property name="projectId" type="java.lang.String">
+            <column name="C_PROJECT_ID"/>
+        </property>
+        <many-to-one name="projectMidinspection" class="csdc.bean.SinossProjectMidinspection" fetch="join">
+            <column name="C_project_Midinspection_ID"/>
+        </many-to-one>		        	                                                             	
+    </class>
+</hibernate-mapping>

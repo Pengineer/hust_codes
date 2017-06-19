@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-body>
+	<user id="1122" username="zhangsan" password="123" email="zs@qq.com" birthday="1990-01-01"/>
+</xml-body>

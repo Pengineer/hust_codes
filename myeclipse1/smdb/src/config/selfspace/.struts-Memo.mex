@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="memo" location="10,10" size="280,245">
+    <action name="toSimpleSearch" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="65,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/selfspace/memo/list.jsp" location="342,30" size="150,55" />
+</Struts2Diagram>
+

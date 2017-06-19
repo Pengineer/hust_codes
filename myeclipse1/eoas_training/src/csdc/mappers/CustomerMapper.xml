@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Customer">
+	<resultMap id="customerMap" type="Customer">
+		<id property="id" column="cst_id" />
+		<result property="name" column="cst_name" />
+		<result property="type" column="cst_type" />
+		<result property="abbreviation" column="cst_abbreviation" />	
+		<result property="region" column="cst_region" />
+		<result property="address" column="cst_address" />
+		<result property="level" column="cst_level" />
+		<result property="homepage" column="cst_homepage" />
+		<result property="mainproducts" column="cst_mainproducts" />
+		<result property="source" column="cst_source" />
+		<result property="value" column ="cst_value" />
+		<result property="consultationTime" column ="cst_consultationTime" />
+		<result property="city" column ="cst_city" />
+		<result property="note" column ="cst_note" />
+		<result property="industry" column ="cst_industry" />
+	</resultMap>
+
+	<!-- id:sql的唯一标示 parameterType:参数类型 resultType:结果类型 -->
+	<!-- 插入一条数据 ById -->
+	<insert id="insert" parameterType="Customer" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_CUSTOMER (
+			C_ID,
+			C_NAME,
+			C_TYPE,
+			C_ABBREVIATION,
+			C_REGION,
+			C_ADDRESS,
+			C_LEVEL,
+			C_HOME_PAGE,
+			C_MAIN_PRODUCTS,
+			C_SOURCE,
+			C_VALUE,
+			C_CONSULTATION_TIME,
+			C_CITY,
+			C_NOTE,
+			C_INDUSTRY
+		) values (
+			#{id,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{type,jdbcType=DATE},
+			#{abbreviation,jdbcType=DATE},
+			#{region,jdbcType=VARCHAR},
+			#{address,jdbcType=NUMERIC},
+			#{level,jdbcType=DATE},
+			#{homepage,jdbcType=NUMERIC},
+			#{mainproducts,jdbcType=DATE},
+			#{source,jdbcType=DATE},
+			#{value,jdbcType=NUMERIC},
+			#{consultationTime,jdbcType=VARCHAR},
+			#{city,jdbcType=NUMERIC},
+			#{note,jdbcType=DATE},
+			#{industry,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id="update" parameterType="string">
+		update T_CUSTOMER set
+			C_ID = #{id},
+			C_NAME = #{name},
+			C_TYPE = #{type},
+			C_ABBREVIATION = #{abbreviation},
+			C_REGION = #{region},
+			C_ADDRESS = #{address},
+			C_LEVEL = #{level},
+			C_HOME_PAGE = #{homepage},
+			C_MAIN_PRODUCTS = #{mainproducts},
+			C_SOURCE = #{source},
+			C_VALUE = #{value},
+			C_CONSULTATION_TIME = #{consultationTime},
+			C_CITY = #{city},
+			C_NOTE = #{note},
+			C_INDUSTRY = #{industry}
+		where C_ID = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from T_CUSTOMER where C_ID = #{id}
+	</delete>
+	
+	<select id = "load" parameterType = "string" resultMap = "customerMap">
+		select
+			cst.C_ID as cst_id,		
+			cst.C_NAME as cst_name,
+			cst.C_TYPE as cst_type,
+			cst.C_ABBREVIATION as cst_abbreviation,
+			cst.C_REGION as cst_region,
+			cst.C_ADDRESS as cst_address,
+			cst.C_LEVEL as cst_level,
+			cst.C_HOME_PAGE as cst_homepage,
+			cst.C_MAIN_PRODUCTS as cst_mainproducts,
+			cst.C_SOURCE as cst_source,
+			cst.C_VALUE as cst_value,
+			cst.C_CONSULTATION_TIME as cst_consultationTime,
+			cst.C_CITY as cst_city,
+			cst.C_NOTE as cst_note,
+			cst.C_INDUSTRY as cst_industry
+		from T_CUSTOMER cst
+		where
+			cst.C_ID = #{id}
+	</select>
+	
+	<select id = "list" parameterType = "map" resultMap = "customerMap">
+		select
+			cst.C_ID as cst_id,		
+			cst.C_NAME as cst_name,
+			cst.C_TYPE as cst_type,
+			cst.C_ABBREVIATION as cst_abbreviation,
+			cst.C_REGION as cst_region,
+			cst.C_ADDRESS as cst_address,
+			cst.C_LEVEL as cst_level,
+			cst.C_HOME_PAGE as cst_homepage,
+			cst.C_MAIN_PRODUCTS as cst_mainproducts,
+			cst.C_SOURCE as cst_source,
+			cst.C_VALUE as cst_value,
+			cst.C_CONSULTATION_TIME as cst_consultationTime,
+			cst.C_CITY as cst_city,
+			cst.C_NOTE as cst_note,
+			cst.C_INDUSTRY as cst_industry
+		from T_CUSTOMER cst
+	</select>	
+</mapper>

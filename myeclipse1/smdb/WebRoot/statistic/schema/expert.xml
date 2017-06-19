@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="expert">
+<Cube name="expert">
+	<Table name="s_s_expert"/>
+  <Dimension name="专家维度" foreignKey="c_d_expert_id">
+	    <Hierarchy hasAll="true" name="职称" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="职称" column="C_TITLE" uniqueMembers="true"/>
+	    </Hierarchy>
+		<Hierarchy hasAll="true" name="学位" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="学位" column="C_DEGREE" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="年龄段" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="年龄段" column="C_AGE_GROUP" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="性别" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="性别" column="C_GENDER" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="地区" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="地区" column="C_NATIVE_PLACE" uniqueMembers="true"/>
+	    </Hierarchy>
+		<Hierarchy name="语种1" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="语种1" column="C_LANGUAGE1" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="语种1水平" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="语种1水平" column="C_LANGUAGE1_LEVEL" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="语种2" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="语种2" column="C_LANGUAGE2" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="语种2水平" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="语种2水平" column="C_LANGUAGE2_LEVEL" uniqueMembers="true"/>
+	    </Hierarchy>
+	    <Hierarchy name="所属高校" hasAll="true" primaryKey="c_id" allMemberName="总计">
+	      <Table name="s_d_expert"/>
+	      <Level name="所属高校" column="C_UNIVERSITY" uniqueMembers="true"/>
+	    </Hierarchy>
+  </Dimension>
+  
+  <Measure name="专家数目" column="c_id" aggregator="count"/>
+</Cube>
+</Schema>

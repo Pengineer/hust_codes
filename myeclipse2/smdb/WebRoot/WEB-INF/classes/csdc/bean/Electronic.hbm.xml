@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+    <joined-subclass name="csdc.bean.Electronic" extends="csdc.bean.Product" table="T_ELECTRONIC">
+    	<key column="C_ID"/>
+            <property name="isTranslation" type="java.lang.Integer">
+	            <column name="C_IS_TRANSLATION" precision="1" scale="0" />
+	        </property>
+	        <property name="publishUnit" type="java.lang.String">
+	            <column name="C_PUBLISH_UNIT" length="200" />
+	        </property>
+	        <property name="publishDate" type="java.util.Date">
+	            <column name="C_PUBLISH_DATE" length="7" />
+	        </property>
+	        <property name="useUnit" type="java.lang.String">
+	            <column name="C_USE_UNIT" length="200" />
+	        </property>
+	        <property name="useDate" type="java.util.Date">
+	            <column name="C_USE_DATE" length="7" />
+	        </property>
+	        <property name="publishRegion" type="java.lang.String">
+	            <column name="C_PUBLISH_REGION" />
+	        </property>
+	        <many-to-one name="type" class="csdc.bean.SystemOption" fetch="select">
+	            <column name="C_SUBTYPE_ID" length="40" />
+	        </many-to-one>
+    </joined-subclass>
+    
+</hibernate-mapping>

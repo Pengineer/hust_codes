@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="statisticCommon" extends="main" namespace="/statistic/common">
+		<interceptors>
+			<interceptor name="statisticLogInterceptor" class="statisticLogInterceptor" />
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="statisticLogInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="myInterceptorStack"/>
+	
+	
+		<action name="toList" class="commonStatisticAction" method="toList">
+			<result>/statistic/common/list.jsp</result>
+		</action>
+		<action name="list" class="commonStatisticAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="commonStatisticAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="commonStatisticAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="commonStatisticAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="commonStatisticAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="toView" class="commonStatisticAction" method="toView">
+				<result>/statistic/common/view.jsp</result>
+	    </action>
+		<action name="prev" class="commonStatisticAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="next" class="commonStatisticAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	    <action name="toAdd" class="commonStatisticAction" method="toAdd">
+	    	<result>/statistic/common/add.jsp</result>
+	    </action>
+	      <action name="add" class="commonStatisticAction" method="add">
+	    	<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/statistic/common/add.jsp</result>
+	    </action>
+		<action name="delete" class="commonStatisticAction" method="delete">
+			<result type="chain">list</result>
+		</action>
+	 	<action name="toModify" class="commonStatisticAction" method="toModify ">
+		  <result>/statistic/common/modify.jsp</result>
+	    </action>
+	 	<action name="modify" class="commonStatisticAction" method="modify ">
+	 	  <result type="redirectAction">
+			  <param name="entityId">${entityId}</param>
+			  <param name="actionName">toView</param>
+			  <param name="update">1</param>
+	      </result>
+	      <result name="input">/statistic/common/modify.jsp</result>
+	   </action>
+	   <action name="configHomeShow" class="commonStatisticAction" method="configHomeShow">
+	  	 	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	   </action>
+	   
+	</package>
+</struts>

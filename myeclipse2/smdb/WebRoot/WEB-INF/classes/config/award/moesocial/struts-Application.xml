@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="moesocialApplicationApply" extends="main" namespace="/award/moesocial/application/apply">
+
+		<action name="toList" class="moesocialApplicationApplyAction" method="toList">
+			<result>/award/moesocial/application/apply/list.jsp</result>
+		</action>
+
+		<action name="list" class="moesocialApplicationApplyAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="moesocialApplicationApplyAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="moesocialApplicationApplyAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="moesocialApplicationApplyAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="moesocialApplicationApplyAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="moesocialApplicationApplyAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="fetchOrganInfo" class="moesocialApplicationApplyAction" method="fetchOrganInfo">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="moesocialApplicationApplyAction" method="toAdd">
+			<result>/award/moesocial/application/apply/add.jsp</result>
+		</action> 
+
+		<action name="add" class="moesocialApplicationApplyAction" method="add">
+			<result name="input">${valView}</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+			</result>
+			<result name="login">/product/popAddApply.jsp</result>
+		</action>
+		
+		<action name="toView" class="moesocialApplicationApplyAction" method="toView">
+			<result>/award/moesocial/application/view.jsp</result>
+		</action>
+		
+		<action name="view" class="moesocialApplicationApplyAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="delete" class="moesocialApplicationApplyAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+     
+		<action name="toModify" class="moesocialApplicationApplyAction" method="toModify">
+			<result>/award/moesocial/application/apply/modify.jsp</result>
+			<!--<result name="award2012">/award/moesocial/application/apply/modify2012.jsp</result>
+		--></action>
+
+		<action name="modify" class="moesocialApplicationApplyAction" method="modify">
+			<result name="input">${valView}</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="login">/product/popModifyApply.jsp</result>
+		</action>
+		
+		<action name="submit" class="moesocialApplicationApplyAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="prev" class="moesocialApplicationApplyAction" method="prev">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="moesocialApplicationApplyAction" method="next">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="download" class="moesocialApplicationApplyAction" method="download">
+			<result type="stream">
+		 	    <param name="inputName">targetFile</param>
+		 	    <param name="contentType">application/msword</param>
+		 	    <param name="bufferSize">1024*1024</param> 
+		 	    <param name="contentDisposition">attachment;fileName="${filePath}"</param>  
+	 	  	</result>
+	 	  	<result name="input" type="json"><param name="root">jsonMap</param></result>
+	 	</action>
+	 	 
+	   	<action name="validateFile" class="moesocialApplicationApplyAction" method="validateFile">
+	   		<result type="json"><param name="root">jsonMap</param></result>
+	   		<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	  	 </action>
+	
+		<action name="downloadModel" class="moesocialApplicationApplyAction" method="downloadModel">
+			<result name="success">/data/template/award/2012/MOEAward2012.exe</result>
+		</action>
+		
+		<action name="add2012" class="moesocialApplicationApplyAction" method="add2012">
+			<result name="input">${valView}</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+			</result>
+		</action>
+		
+		<action name="submitAward2012" class="moesocialApplicationApplyAction" method="submitAward2012">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+
+	<package name="moesocialApplicationApplyAudit" extends="main" namespace="/award/moesocial/application/applyAudit">
+
+		<action name="toAdd" class="moesocialApplicationApplyAuditAction" method="toAdd">
+			<result name="success">/award/moesocial/application/applyAudit/popAdd.jsp</result>
+		</action>
+
+		<action name="add" class="moesocialApplicationApplyAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModify" class="moesocialApplicationApplyAuditAction" method="toModify">
+			<result>/award/moesocial/application/applyAudit/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="moesocialApplicationApplyAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+			
+		<action name="view" class="moesocialApplicationApplyAuditAction" method="view">
+			<result>/award/moesocial/application/applyAudit/popView.jsp</result>
+		</action>
+		
+		<action name="submit" class="moesocialApplicationApplyAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="back" class="moesocialApplicationApplyAuditAction" method="back">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	</package>
+	
+	<package name="moesocialApplicationReview" extends="main" namespace="/award/moesocial/application/review">
+	
+	    <action name="toAddExpert" class="moesocialApplicationReviewAction" method="toAddExpert">
+			<result>/award/moesocial/application/review/popAddExp.jsp</result>
+		</action>
+		
+		<action name="addExpert" class="moesocialApplicationReviewAction" method="addExpert">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+		</action>
+		
+		<action name="toList" class="moesocialApplicationReviewAction" method="toList">
+			<result>/award/moesocial/application/review/list.jsp</result>
+		</action>
+
+		<action name="list" class="moesocialApplicationReviewAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="moesocialApplicationReviewAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="moesocialApplicationReviewAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="moesocialApplicationReviewAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="moesocialApplicationReviewAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="moesocialApplicationReviewAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toView" class="moesocialApplicationReviewAction" method="toView">
+			<result>/award/moesocial/application/view.jsp</result>
+		</action>
+		
+		<action name="view" class="moesocialApplicationReviewAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="moesocialApplicationReviewAction" method="prev">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="moesocialApplicationReviewAction" method="next">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAdd" class="moesocialApplicationReviewAction" method="toAdd">
+			<result>/award/moesocial/application/review/popAdd.jsp</result>
+		</action>
+		
+		<action name="add" class="moesocialApplicationReviewAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewReview" class="moesocialApplicationReviewAction" method="viewReview">
+			<result>/award/moesocial/application/review/popView.jsp</result>
+		</action>
+			
+		<action name="toModify" class="moesocialApplicationReviewAction" method="toModify">
+			<result>/award/moesocial/application/review/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="moesocialApplicationReviewAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="moesocialApplicationReviewAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddResult" class="moesocialApplicationReviewAction" method="toAddResult">
+		  <result>/award/moesocial/application/review/popAddResult.jsp</result>
+		</action>
+		
+		<action name="toModifyResult" class="moesocialApplicationReviewAction" method="toModifyResult">
+		  <result>/award/moesocial/application/review/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="moesocialApplicationReviewAction" method="addResult">
+			 <result>/award/moesocial/application/review/popAddResult.jsp</result>
+			 <result name="input">/award/moesocial/application/review/popAddResult.jsp</result>
+		</action>
+		
+		<action name="modifyResult" class="moesocialApplicationReviewAction" method="modifyResult">
+			 <result>/award/moesocial/application/review/popModifyResult.jsp</result>
+			 <result name="input">/award/moesocial/application/review/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="submitResult" class="moesocialApplicationReviewAction" method="submitResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddGroup" class="moesocialApplicationReviewAction" method="toAddGroup">
+			<result>/award/moesocial/application/review/popAddGroup.jsp</result>
+		</action>
+		
+		<action name="addGroup" class="moesocialApplicationReviewAction" method="addGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewGroup" class="moesocialApplicationReviewAction" method="viewGroup">
+			<result>/award/moesocial/application/review/popViewGroup.jsp</result>
+		</action>
+		
+		<action name="viewGroupOpinion" class="moesocialApplicationReviewAction" method="viewGroupOpinion">
+			<result>/award/moesocial/application/review/popViewGroupOpinion.jsp</result>
+		</action>
+		
+		<action name="toModifyGroup" class="moesocialApplicationReviewAction" method="toModifyGroup">
+			<result>/award/moesocial/application/review/popModifyGroup.jsp</result>
+		</action>
+		
+		<action name="modifyGroup" class="moesocialApplicationReviewAction" method="modifyGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submitGroup" class="moesocialApplicationReviewAction" method="submitGroup">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+	</package>
+	
+	<package name="moesocialApplicationReviewAudit" extends="main" namespace="/award/moesocial/application/reviewAudit">
+		
+		<action name="toAdd" class="moesocialApplicationReviewAuditAction" method="toAdd">
+			<result>/award/moesocial/application/reviewAudit/popAdd.jsp</result>
+		</action>
+		<action name="add" class="moesocialApplicationReviewAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="view" class="moesocialApplicationReviewAuditAction" method="view">
+			<result>/award/moesocial/application/reviewAudit/popView.jsp</result>
+		</action>
+			
+		<action name="toModify" class="moesocialApplicationReviewAuditAction" method="toModify">
+			<result>/award/moesocial/application/reviewAudit/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="moesocialApplicationReviewAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="moesocialApplicationReviewAuditAction" method="submit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+	</package>
+
+	<package name="moesocialApplicationPublicity" extends="main" namespace="/award/moesocial/application/publicity">
+
+		<action name="toList" class="moesocialApplicationPublicityAction" method="toList">
+			<result>/award/moesocial/application/publicity/list.jsp</result>
+		</action>
+
+		<action name="list" class="moesocialApplicationPublicityAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="moesocialApplicationPublicityAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="moesocialApplicationPublicityAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="moesocialApplicationPublicityAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="moesocialApplicationPublicityAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="moesocialApplicationPublicityAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+	
+		<action name="toView" class="moesocialApplicationPublicityAction" method="toView">
+			<result>/award/moesocial/application/view.jsp</result>
+		</action>
+		
+		<action name="view" class="moesocialApplicationPublicityAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="prev" class="moesocialApplicationPublicityAction" method="prev">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="moesocialApplicationPublicityAction" method="next">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+	
+	<package name="moesocialApplicationPublicityAudit" extends="main" namespace="/award/moesocial/application/publicityAudit">
+
+		<action name="toAdd" class="moesocialApplicationPublicityAuditAction" method="toAdd">
+			<result>/award/moesocial/application/publicityAudit/popAdd.jsp</result>
+		</action>
+		<action name="add" class="moesocialApplicationPublicityAuditAction" method="add">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="view" class="moesocialApplicationPublicityAuditAction" method="view">
+			<result>/award/moesocial/application/publicityAudit/popView.jsp</result>
+		</action>
+			
+		<action name="toModify" class="moesocialApplicationPublicityAuditAction" method="toModify">
+			<result>/award/moesocial/application/publicityAudit/popModify.jsp</result>
+		</action>
+		
+		<action name="modify" class="moesocialApplicationPublicityAuditAction" method="modify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="submit" class="moesocialApplicationPublicityAuditAction" method="submit ">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>	
+	</package>
+	
+	<package name="moesocialApplicationAwarded" extends="main" namespace="/award/moesocial/application/awarded">
+		
+		<action name="toList" class="moesocialApplicationAwardedAction" method="toList">
+			<result>/award/moesocial/application/awarded/list.jsp</result>
+		</action>
+
+		<action name="list" class="moesocialApplicationAwardedAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="moesocialApplicationAwardedAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="moesocialApplicationAwardedAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="moesocialApplicationAwardedAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="moesocialApplicationAwardedAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="moesocialApplicationAwardedAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toView" class="moesocialApplicationAwardedAction" method="toView">
+			<result>/award/moesocial/application/view.jsp</result>
+		</action>
+		
+		<action name="view" class="moesocialApplicationAwardedAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="moesocialApplicationAwardedAction" method="prev">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="moesocialApplicationAwardedAction" method="next">
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="listflag">${listflag}</param>
+				<param name="actionName">view</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+	</package>
+
+</struts>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="workflow" extends="default" namespace="/workflow">
+		<action name="toList" class="workflowAction" method="toList">
+			<result>/jsp/oa/workflow/list.jsp</result>
+		</action>
+		
+		<action name="list" class="workflowAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name="toRunningList" class="workflowAction" method="toRunningList">
+			<result>/jsp/oa/workflow/runningList.jsp</result>
+		</action>
+		
+		<action name="runningList" class="workflowAction" method="runningList">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name="toFinishedList" class="workflowAction" method="toFinishedList">
+			<result>/jsp/oa/workflow/finishedList.jsp</result>
+		</action>
+		
+		<action name="finishedList" class="workflowAction" method="finishedList">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		
+		<action name="deploy" class="workflowAction" method="deploy">
+			<result>/jsp/oa/workflow/list.jsp</result>
+		</action>
+		
+		<action name="view" class="workflowAction" method="view">
+			<!-- <result name="xmlMessage" type="plainText"></result> -->
+		</action>
+		
+		<action name="delete" class="workflowAction" method="delete">
+			<result type="json">
+	    		<param name="root">jsonMap</param>
+	    	</result>
+		</action>
+		
+		<action name="todoList" class="workflowAction" method="todoList">
+			<result type="json">
+	    		<param name="root">jsonMap</param>
+	    	</result>
+		</action>
+		
+		<action name="trace" class="workflowAction" method="trace">
+			<result type="json">
+	    		<param name="root">jsonMap</param>
+	    	</result>
+		</action>
+	</package>
+</struts>

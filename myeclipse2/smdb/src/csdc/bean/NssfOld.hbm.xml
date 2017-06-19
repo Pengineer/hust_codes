@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.NssfOld" table="T_NSSF_OLD">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="applicant" type="java.lang.String">
+			<column name="C_APPLICANT" />
+		</property>
+		<property name="unit" type="java.lang.String">
+			<column name="C_UNIT" />
+		</property>
+		<property name="specialityTitle" type="java.lang.String">
+			<column name="C_SPECIALITY_TITLE" />
+		</property>
+		<property name="province" type="java.lang.String">
+			<column name="C_PROVINCE" />
+		</property>
+		<property name="unitType" type="java.lang.String">
+			<column name="C_UNIT_TYPE" />
+		</property>
+		<property name="disciplineType" type="java.lang.String">
+			<column name="C_DISCIPLINE_TYPE" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="C_NAME" />
+		</property>
+		<property name="year" type="java.lang.Integer">
+			<column name="C_YEAR" />
+		</property>
+		<property name="startDate" type="java.util.Date">
+			<column name="C_START_DATE" />
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="C_TYPE" />
+		</property>
+		<property name="importDate" type="java.util.Date">
+			<column name="C_IMPORT_DATE" />
+		</property>
+	</class>
+
+</hibernate-mapping>

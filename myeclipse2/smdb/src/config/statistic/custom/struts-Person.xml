@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="statisticPerCustom" extends="main" namespace="/statistic/custom/person">
+		<interceptors>
+			<interceptor name="statisticLogInterceptor" class="statisticLogInterceptor" />
+			<interceptor-stack name="myInterceptorStack">
+				<interceptor-ref name="statisticLogInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="myInterceptorStack"/>
+		
+		<action name="toCustomStatistic" class="personStatisticAction" method="toCustomStatistic">
+	    	<result>/statistic/custom/person.jsp</result>
+	    </action>
+		
+		<action name="customStatistic" class="personStatisticAction" method="customStatistic">
+	    	<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="encryptedMdxQueryString">${encryptedMdxQueryString}</param>
+				<param name="chartConfig">${chartConfig}</param>
+			</result>
+	    </action>
+		<action name="toView" class="personStatisticAction" method="toView">
+	    	<result>/statistic/custom/view.jsp</result>
+	    </action>
+
+		<action name="toCommon" class="personStatisticAction" method="toCommon">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+	</package>
+</struts>

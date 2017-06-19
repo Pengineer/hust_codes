@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="locations">
+			<list>
+				<value>classpath:mail.properties</value> 
+				<value>classpath:smdb.jdbc.properties</value> 
+			</list>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="csdc.tool" />
+
+	<!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->     
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />  
+	
+	<!-- 自动扫描该包，并为有相关注解的类生成spring bean -->
+	<context:component-scan base-package="csdc.tool,csdc.service" />
+
+	<!-- 数据源配置 -->
+	<import resource="config/spring-datasource.xml" />
+
+	<!-- service配置 -->
+	<import resource="config/spring-service.xml" />
+
+	<!-- 事务配置 -->
+	<import resource="config/spring-transaction.xml" />
+
+	<!-- action配置 -->
+	<import resource="config/spring-action.xml"/>
+	
+	<!-- execution配置 -->
+	<import resource="config/spring-execution.xml" />
+
+	<!-- 邮件配置 -->
+	<import resource="config/spring-mail.xml" />
+
+</beans>

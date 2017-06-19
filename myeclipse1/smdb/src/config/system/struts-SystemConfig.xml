@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="systemConfig" extends="main" namespace="/system/config">
+		
+		<!-- 进入系统配置页面 -->
+		<action name="toConfig" class="systemConfigAction" method="toConfig">
+			<result>/system/config/config.jsp</result>
+		</action>
+		
+		<!-- 是否开放注册配置 -->
+		<action name="toConfigRegister" class="systemConfigAction" method="toConfigRegister">
+			<result>/system/config/configRegister.jsp</result>
+		</action>
+		
+		<action name="configRegister" class="systemConfigAction" method="configRegister">
+			<result type="redirectAction">toConfig</result>
+			<result name="input" type="redirectAction">toConfigRegister</result>
+		</action>
+		
+		<!-- 登录配置（最大连接数，允许ip和拒绝ip） -->
+		<action name="toConfigLogin" class="systemConfigAction" method="toConfigLogin">
+			<result>/system/config/configLogin.jsp</result>
+		</action>
+		
+		<action name="configLogin" class="systemConfigAction" method="configLogin">
+			<result type="redirectAction">toConfig</result>
+			<result name="input" type="redirectAction">toConfigLogin</result>
+		</action>
+		
+		<!-- 配置查询条件（每次查询页数，每页大小） -->
+		<action name="toConfigSearchCondition" class="systemConfigAction" method="toConfigSearchCondition">
+			<result>/system/config/configSearchCondition.jsp</result>
+		</action>
+		
+		<action name="configSearchCondition" class="systemConfigAction" method="configSearchCondition">
+			<result type="redirectAction">toConfig</result>
+			<result name="input" type="redirectAction">toConfigSearchCondition</result>
+		</action>
+		
+		<!-- 配置专家评审个数 -->
+		<action name="toConfigReview" class="systemConfigAction" method="toConfigReview">
+			<result>/system/config/configReview.jsp</result>
+		</action>
+		
+		<action name="configReview" class="systemConfigAction" method="configReview">
+			<result type="redirectAction">toConfig</result>
+			<result name="input" type="redirectAction">toConfigSearchCondition</result>
+		</action>
+		
+		<!-- 配置奖励默认信息（当前奖励届次，各级得分） -->
+		<action name="toConfigFee" class="systemConfigAction" method="toConfigFee">
+			<result>/system/config/configFee.jsp</result>
+		</action>
+		
+		<action name="toConfigAward" class="systemConfigAction" method="toConfigAward">
+			<result>/system/config/configAward.jsp</result>
+		</action>
+		
+		<action name="configFee" class="systemConfigAction" method="configFee">
+			<result type="redirectAction">toConfigFee</result>
+			<result name="input" type="redirectAction">toConfigFee</result>
+		</action>
+		
+		<action name="configAward" class="systemConfigAction" method="configAward">
+			<result type="redirectAction">toConfigAward</result>
+			<result name="input" type="redirectAction">toConfigAward</result>
+		</action>
+		
+		<!-- 配置上传路径 -->
+		<action name="toConfigPath" class="systemConfigAction" method="toConfigPath">
+			<result>/system/config/configPath.jsp</result>
+		</action>
+		
+		<action name="configPath" class="systemConfigAction" method="configPath">
+			<result type="redirectAction">toConfig</result>
+			<result name="input" type="redirectAction">toConfigPath</result>
+		</action>
+		
+		<!-- 配置邮件服务器 -->
+<!-- 		<action name="toConfigMailer" class="systemConfigAction" method="toConfigMailer"> -->
+<!-- 			<result>/system/config/configMailer.jsp</result> -->
+<!-- 		</action> -->
+		
+<!-- 		<action name="configMailer" class="systemConfigAction" method="configMailer"> -->
+<!-- 			<result type="redirectAction">toConfig</result> -->
+<!-- 			<result name="input" type="redirectAction">toConfigMailer</result> -->
+<!-- 		</action> -->
+		<action name="toClear2ndCache" class="systemConfigAction" method="toClear2ndCache">
+			<result>/system/config/clear2ndCache.jsp</result>
+		</action>
+		<!-- 清除二级缓存 -->
+		<action name="clear2ndCache" class="systemConfigAction" method="clear2ndCache">
+			<result type="redirectAction">toClear2ndCache</result>
+		</action>
+		
+		<!-- 下载xml -->
+		<action name="toDownloadXML" class="systemConfigAction" method="toDownloadXML">
+			<result>/system/config/downloadXML.jsp</result>
+		</action>
+		<action name="downloadXML" class="systemConfigAction" method="downloadXML">
+			<result type="redirectAction">toConfig</result>
+		</action>
+
+		<!-- 配置第三方文件上传接口 -->
+		<action name="toConfigUplodToDmss" class="systemConfigAction" method="toConfigUplodToDmss">
+			<result>/system/config/configUplodToDmss.jsp</result>
+		</action>
+		<action name="configUplodToDmss" class="systemConfigAction" method="configUplodToDmss">
+			<result type="redirectAction">toConfigUplodToDmss</result>
+		</action>
+	</package>
+
+</struts>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="selectUngrantedProject" extends="main" namespace="/selectUngrantedProject">
+		
+		<action name="toList" class="selectUngrantedProjectAction" method="toList">
+			<result>/pop/select/selectUngrantedProject.jsp</result>
+		</action>
+
+		<action name="list" class="selectUngrantedProjectAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="selectUngrantedProjectAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="selectUngrantedProjectAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="selectUngrantedProjectAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

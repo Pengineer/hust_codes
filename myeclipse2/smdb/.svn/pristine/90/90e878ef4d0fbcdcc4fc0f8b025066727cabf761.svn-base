@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="sinossClient" extends="main" namespace="/system/interfaces/sinossClient">
+		<!-- 进入数据获取页面 -->
+		<action name="toObtain" class="sinossClientAction" method="toObtain">
+			<result>/system/interfaces/sinossClient/toObtain.jsp</result>
+		</action>
+		<!-- 数据获取 -->
+		<action name="obtain" class="sinossClientAction" method="obtain">
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 进入附件下载页面 -->
+		<action name="toDownload" class="sinossClientAction" method="toDownload">
+			<result>/system/interfaces/sinossClient/toDownload.jsp</result>
+		</action>
+		<!-- 附件下载 -->
+		<action name="download" class="sinossClientAction" method="download">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 进入数据入库页面 -->
+		<action name="toImporter" class="sinossClientAction" method="toImporter">
+			<result>/system/interfaces/sinossClient/toImporter.jsp</result>
+		</action>
+		<!-- 数据入库 -->
+		<action name="importer" class="sinossClientAction" method="importer">
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 验证文件是否存在 -->
+		<action name="fileExist" class="sinossClientAction" method="fileExist">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 获取当前下载任务 -->
+		<action name="getCurrentAttachment" class="sinossClientAction" method="getCurrentAttachment">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 获取当前入库任务 -->
+		<action name="getCurrentImporter" class="sinossClientAction" method="getCurrentImporter">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 获取当前数据同步任务 -->
+		<action name="getCurrentObtain" class="sinossClientAction" method="getCurrentObtain">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>					
+</struts>

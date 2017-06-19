@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <tree id="0">
+        <item text="所有权限" id="all" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" open="1" select="1">
+            <item text="系统访问" id="01" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                <item text="项目管理系统" id="0103" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+            <item text="项目管理" id="07" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                <item text="一般项目管理" id="0701" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                    <item text="一般项目申报管理" id="070101" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                        <item text="一般项目申报申请管理" id="07010101" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目申报申请" id="0701010104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目申报审核管理" id="07010102" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目申报审核" id="0701010204" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目立项管理" id="07010103" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目立项" id="0701010304" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目申报评审管理" id="07010104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目申报评审" id="0701010404" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目申报评审审核管理" id="07010105" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目申报评审审核" id="0701010504" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                    </item>
+                    <item text="一般项目中检管理" id="070102" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                        <item text="一般项目中检申请管理" id="07010201" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目中检申请" id="0701020104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目中检审核管理" id="07010202" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目中检审核" id="0701020204" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目中检结果管理" id="07010203" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目中检结果" id="0701020304" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                    </item>
+                    <item text="一般项目结项管理" id="070103" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                        <item text="一般项目结项申请管理" id="07010301" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目结项申请" id="0701030104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目结项审核管理" id="07010302" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目结项审核" id="0701030204" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目结项评审管理" id="07010303" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目结项评审" id="0701030304" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目结项评审审核管理" id="07010304" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目结项评审审核" id="0701030404" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目结项结果管理" id="07010305" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目结项结果" id="0701030504" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                    </item>
+                    <item text="一般项目变更管理" id="070104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                        <item text="一般项目变更申请管理" id="07010401" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目变更申请" id="0701040104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目变更审核管理" id="07010402" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目变更审核" id="0701040204" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目变更结果管理" id="07010403" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目变更结果" id="0701040304" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                    </item>
+                    <item text="一般项目年检管理" id="070105" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                        <item text="一般项目年检申请管理" id="07010501" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目年检申请" id="0701050104" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目年检审核管理" id="07010502" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目年检审核" id="0701050204" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                        <item text="一般项目年检结果管理" id="07010503" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif">
+                            <item text="查看一般项目年检结果" id="0701050304" im0="folder_closed.gif" im1="folder_open.gif" im2="folder_closed.gif" /></item>
+                    </item>
+                </item>
+            </item>
+        </item>
+    </tree>

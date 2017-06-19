@@ -1,0 +1,109 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：mail.css
+ *
+ * 文件说明：
+ *     主要用于mail模块中页面样式的定义。
+ *
+ * 历史记录：
+ * 2012-06-14  徐涵：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 列表字段宽度
+ ***************************************************************/
+
+.wd11 {
+	width: 90px;
+}
+
+.wd12 {
+	width: 120px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd13 {
+	padding-left: 5px;
+}
+
+.wd14 {
+	width: 140px;
+	text-align: right;
+	padding-right: 10px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd15 {
+	padding-left: 10px;
+}
+
+.wd16 {
+	padding-left: 10px;
+}
+
+.wd17 {
+	width: 50px;
+}
+
+.wd18 {
+	width: 80px;
+}
+
+.wd19 {
+	background-color: rgb(230, 230, 230);
+}
+
+.wd22 {
+	color: green;
+}
+
+.wd22 a:link {
+    text-decoration: none;
+    color: green;
+}
+
+.wd22 a:active {
+    text-decoration: blink;
+    color: green;
+}
+
+.wd22 a:visited {
+    text-decoration: none;
+    color: green;
+}
+
+.wd22 a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}
+
+.td_input{
+	width: 180px;
+	background-color: rgb(255, 255, 255);
+}
+li {
+    list-style: none outside none;
+}
+.table_view {
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table_view tr {
+	height: 31px;
+}
+
+.table_view td {
+	border: solid #999;
+    border-width: 1px;
+}
+
+#form_expert label.error {
+	padding-left: 6px;
+	padding-bottom: 2px;
+	color: rgb(255, 116, 0);
+}

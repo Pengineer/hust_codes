@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>用户注册</title>
+	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link type="text/css"  rel="stylesheet" href="css/common.css"  />
+	<link type="text/css"  rel="stylesheet" href="css/content.css"  />
+	<link type="text/css"  rel="stylesheet" href="css/login.css"  />
+  </head>
+  
+  <body>
+  	<div class="header">
+		<div class="logo">
+			<h1><a href="content.html"><span style="color:#FFFFFF">DMSS</span><small>文档管理系统</small></a></h1>
+		</div>
+	</div>
+	
+	<div class="main-content" style="background:#f1f1f1;">
+		<div class="register-content">
+			<div id="tips" style="display:none;text-align:center;font-size:16px;color:green;">
+				恭喜您注册成功！</br>
+			</div>
+			<div class="register-title">用户注册</div>
+			<form id="register-form" action="user/register" method="post" >
+				<table width="100%">
+					<tr>
+						<td width="10" class="text-right"><img src="images/ico04.gif"></td>
+						<td width="100" class="text-right size16"><label for="user"><strong class="user-label">账号</strong></label></td>
+						<td width="200"><input id="accountname" class="msg-input" type="text" name="accountName" spellcheck="false"></td>
+						<td width="100"></td>
+					</tr>
+					<tr>
+						<td class="text-right"><img src="images/ico04.gif"></td>
+						<td class="text-right size16"><label for="Passwd"><strong class="passwd-label">密码</strong></label></td>
+						<td><input id="Passwd" class="msg-input" type="password" name="password" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-right"><img src="images/ico04.gif"></td>
+						<td class="text-right size16"><label for="Passwd"><strong class="passwd-label">确认密码</strong></label></td>
+						<td><input id="rePasswd" class="msg-input" type="password" name="repassword" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-right"></td>
+						<td class="text-right size16"><label for="name"><strong class="user-label">姓名</strong></label></td>
+						<td><input id="name" class="msg-input" type="text" name="name" spellcheck="false"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-right"></td>
+						<td class="text-right size16"><label for="name"><strong class="user-label">手机号</strong></label></td>
+						<td><input id="name" class="msg-input" type="text" name="mobilePhone" spellcheck="false"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-right"><img src="images/ico04.gif"></td>
+						<td class="text-right size16"><label for="email"><strong class="user-label">邮箱</strong></label></td>
+						<td><input id="email" class="msg-input" type="text" name="email" spellcheck="false"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-right"></td>
+						<td class="text-right size16"><label for="qq"><strong class="user-label">QQ</strong></label></td>
+						<td><input id="qq" class="msg-input" type="text" name="qq" spellcheck="false"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="text-right"><img src="images/ico04.gif"></td>
+						<td class="text-right size16"><label for="qq"><strong class="user-label">身份证</strong></label></td>
+						<td><input id="qq" class="msg-input" type="text" name="idCard" spellcheck="false"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td id="errorInfo" style="color:red;font-size:12px;"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td class="text-center"><input id="confirm" type="submit" class="g-button g-button-submit"  value="&nbsp;&nbsp;注&nbsp;&nbsp;册&nbsp;&nbsp;"/></td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+			<div class="content-bottom">
+				<div class="product-about-col-left">
+					<img class="ic_cloud" src="images/login/ic_cloud.png"><h4 class="product-about-heading">云存储</h4>
+					<p class="product-about-text">可以随心所欲在任何地点通过电脑、手机和平板电脑登录系统，在线管理文档，可支持上传文档，编辑文档属性以及在线修改文档等相关功能。</p></div>
+				<div class="product-about-col-left">
+					<img class="ic_search" src="images/login/ic_search.png"><h4 class="product-about-heading">全文检索</h4>
+					<p class="product-about-text">输入关键字可检索系统中所有公开的文档，支持模糊检索与文档智能匹配。</p></div>
+				<div class="product-about-col-left">
+					<img class="ic_download" src="images/login/ic_download.png"><h4 class="product-about-heading">文档下载</h4>
+					<p class="product-about-text">用户登录系统后可下载发布在系统上的共享文档</p></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div class="footer-bar">
+			中国高校社会科学数据中心 Chinese University Social Sciences Data Center
+			<br>
+			Copyright©2009-2011 All Rights Reserved. 
+		</div>
+	</div>
+	<script type="text/javascript" src="plugins/jquery/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="plugins/jquery/jquery.validate.js"></script>
+	<script type="text/javascript" src="plugins/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="js/register.js"></script>
+  </body>
+</html>

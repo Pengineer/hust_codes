@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="selectProvinceGroup" extends="main" namespace="/selectProvinceGroup">
+		
+		<action name="toList" class="selectProvinceGroupAction" method="toList">
+			<result>/pop/select/selectProvinceGroup.jsp</result>
+		</action>
+
+		<action name="list" class="selectProvinceGroupAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="selectProvinceGroupAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="selectProvinceGroupAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="selectProvinceGroupAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Person">
+	<resultMap id="personResult" type="Person">
+		<id property="id" column="person_id" />
+		<result property="realName" column="person_realName" />
+		<result property="idCardNumber" column="person_idCardNumber" />
+		<result property="birthday" column="person_birthday" />
+		<result property="sex" column="person_sex" />
+		<result property="membership" column="person_membership" />
+		<result property="ethnic" column="person_ethnic" />
+		<result property="birthplace" column="person_birthplace" />
+		<result property="photoName" column="person_photoName" />
+		<result property="photoFile" column="person_photoFile" />
+		<result property="status" column="person_status" />
+		<result property="note" column="person_note" />
+		<result property="homeAddress" column="person_homeAddress" />
+		<result property="officeAddress" column="person_officeAddress" />
+		<result property="personEmail" column="person_personEmail" />
+		<result property="mobilePhone" column="person_mobilePhone" />
+		<result property="officePhone" column="person_officePhone" />
+		<result property="qq" column="person_qq" />
+		<result property="englishName" column="person_englishName" />
+		<result property="intime" column="person_intime" />
+		<result property="banknum" column="person_banknum" />
+		<result property="staffnum" column="person_staffnum" />
+		<result property="outtime" column="person_outtime" />
+		<result property="married" column="person_married" />
+		<association property="department" column="person_departmentId" select="selectDepartmentByDepartmentId"></association>
+	</resultMap>
+	
+	<resultMap id="departmentResult" type="Department">
+		<id property="id" column="department_id" />
+		<result property="name" column="department_name" />
+		<association property="department" column="department_parentId" select="selectDepartmentByParentId"></association>
+	</resultMap>
+	
+	<select id="selectDepartmentByDepartmentId" parameterType="string" resultMap = "departmentResult">
+		select
+			department.C_ID as department_id,
+			department.C_NAME as department_name,
+			department.C_PARENT_ID as department_parentId
+		from T_DEPARTMENT department
+		where department.C_ID = #{department.id}
+	</select>
+	
+	<select id = "selectDepartmentByParentId" parameterType="string" resultMap = "departmentResult">
+		select
+			department.C_ID as department_id,
+			department.C_NAME as department_name,
+			department.C_PARENT_ID as department_parentId
+		from T_DEPARTMENT department
+		where department.C_ID = #{department.id}
+	</select>
+
+	<resultMap id="personAccountMap" type="Person" extends="personResult">
+		<association property="account" javaType="Account">
+			<id property="id" column="accountId" />
+			<result property="email" column="accountEmail" javaType="String" />
+			<result property="accounttype" column="accountType" />
+			<result property="belongId" column="C_BELONG_ID" />
+		</association>
+	</resultMap>
+
+	<!-- 查询Person及对应的Account -->
+	<select id="listPersonAccount" parameterType="string" resultMap="personAccountMap">
+		select
+		tp.C_ID,
+		tp.C_REALNAME,
+		tp.C_SEX,
+		tp.C_OFFICE_PHONE,
+		tp.C_MOBILE_PHONE,
+		tp.C_STATUS,
+		ta.C_EMAIL as accountEmail,
+		ta.C_ACCOUNT_TYPE as accountType
+		from T_PERSON tp,T_ACCOUNT ta
+		where
+		tp.C_ID =
+		ta.C_BELONG_ID
+	</select>
+
+	<!-- 查询所有Person -->
+	<select id="listAll" resultMap="personResult">
+		select * from T_PERSON
+	</select>
+
+	<!-- 插入一个Person -->
+	<insert id="insert" parameterType="Person" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_PERSON (
+		C_ID,
+		C_EMAIL,
+		C_REALNAME,
+		C_ENGLISH_NAME,
+		C_IDCARD_NUMBER,
+		C_BIRTHDAY,
+		C_SEX,
+		C_MEMBERSHIP,
+		C_ETHNIC,
+		C_BIRTHPLACE,
+		C_PHOTO_NAME,
+		C_PHOTO_FILE,
+		C_STATUS,
+		C_HOME_ADDRESS,
+		C_OFFICE_ADDRESS,
+		C_MOBILE_PHONE,
+		C_OFFICE_PHONE,
+		C_QQ,
+		C_NOTE
+		)
+		values (
+		#{id,jdbcType=VARCHAR},
+		#{personEmail,jdbcType=VARCHAR},
+		#{realName,jdbcType=VARCHAR},
+		#{englishName,jdbcType=VARCHAR},
+		#{idCardNumber,jdbcType=VARCHAR},
+		#{birthday,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR},
+		#{membership,jdbcType=VARCHAR},
+		#{ethnic,jdbcType=VARCHAR},
+		#{birthplace,jdbcType=VARCHAR},
+		#{photoName,jdbcType=VARCHAR},
+		#{photoFile,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{homeAddress,jdbcType=VARCHAR},
+		#{officeAddress,jdbcType=VARCHAR},
+		#{mobilePhone,jdbcType=VARCHAR},
+		#{officePhone,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR},
+		#{note,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 根据ID修改 -->
+	<update id="update" parameterType="Person">
+		update T_PERSON set
+			C_REALNAME = #{realName,jdbcType=VARCHAR},
+			C_IDCARD_NUMBER = #{idCardNumber,jdbcType=VARCHAR},
+			C_BIRTHDAY = #{birthday,jdbcType=DATE},
+			C_SEX = #{sex,jdbcType=VARCHAR},
+			C_MEMBERSHIP = #{membership,jdbcType=VARCHAR},
+			C_ETHNIC = #{ethnic,jdbcType=VARCHAR},
+			C_BIRTHPLACE = #{birthplace,jdbcType=VARCHAR},
+			C_PHOTO_NAME = #{photoName,jdbcType=VARCHAR},
+			C_PHOTO_FILE = #{photoFile,jdbcType=VARCHAR},
+			C_STATUS = #{status,jdbcType=VARCHAR},
+			C_NOTE = #{note,jdbcType=VARCHAR},
+			C_HOME_ADDRESS = #{homeAddress,jdbcType=VARCHAR},
+			C_OFFICE_ADDRESS = #{officeAddress,jdbcType=VARCHAR},			
+			C_EMAIL = #{personEmail,jdbcType=VARCHAR},
+			C_MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+			C_OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+			C_QQ = #{qq,jdbcType=VARCHAR},
+			C_ENGLISH_NAME = #{englishName,jdbcType=VARCHAR},
+			C_INTIME = #{intime,jdbcType=VARCHAR},
+			C_BANKNUM = #{banknum,jdbcType=VARCHAR},
+			C_STAFFNUM = #{staffnum,jdbcType=VARCHAR},
+			C_OUTTIME = #{outtime,jdbcType=VARCHAR},
+			C_MARRIED = #{married,jdbcType=VARCHAR},
+			C_DEPARTMENT_ID = #{department.id}
+		where C_ID = #{id}
+	</update>
+
+	<!-- 删除Person根据id -->
+	<delete id="delete">
+		delete from T_PERSON
+	</delete>
+
+	<!-- 根据ID查询 -->
+	<select id="load" parameterType="string" resultMap="personResult">
+		select
+			p.C_ID as person_id,
+			p.C_REALNAME as person_realName,
+			p.C_IDCARD_NUMBER as person_idCardNumber,
+			p.C_BIRTHDAY as person_birthday,
+			p.C_SEX as person_sex,
+			p.C_MEMBERSHIP as person_membership,
+			p.C_ETHNIC as person_ethnic,
+			p.C_BIRTHPLACE as person_birthplace,
+			p.C_PHOTO_NAME as person_photoName,
+			p.C_PHOTO_FILE as person_photoFile,
+			p.C_STATUS as person_status,
+			p.C_NOTE as person_note,
+			p.C_HOME_ADDRESS as person_homeAddress,
+			p.C_OFFICE_ADDRESS as person_officeAddress,
+			p.C_EMAIL as person_personEmail,
+			p.C_MOBILE_PHONE as person_mobilePhone,
+			p.C_OFFICE_PHONE as person_officePhone,
+			p.C_QQ as person_qq,
+			p.C_ENGLISH_NAME as person_englishName,
+			p.C_INTIME as person_intime,
+			p.C_BANKNUM as person_banknum,
+			p.C_STAFFNUM as person_staffnum,
+			p.C_OUTTIME as person_outtime,
+			p.C_MARRIED as person_married,
+			p.C_DEPARTMENT_ID as person_departmentId
+		from T_PERSON p
+		where p.C_ID = #{id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="personResult">
+		select
+			p.C_ID as person_id,
+			p.C_REALNAME as person_realName,
+			p.C_IDCARD_NUMBER as person_idCardNumber,
+			p.C_BIRTHDAY as person_birthday,
+			p.C_SEX as person_sex,
+			p.C_MEMBERSHIP as person_membership,
+			p.C_ETHNIC as person_ethnic,
+			p.C_BIRTHPLACE as person_birthplace,
+			p.C_PHOTO_NAME as person_photoName,
+			p.C_PHOTO_FILE as person_photoFile,
+			p.C_STATUS as person_status,
+			p.C_NOTE as person_note,
+			p.C_HOME_ADDRESS as person_homeAddress,
+			p.C_OFFICE_ADDRESS as person_officeAddress,
+			p.C_EMAIL as person_personEmail,
+			p.C_MOBILE_PHONE as person_mobilePhone,
+			p.C_OFFICE_PHONE as person_officePhone,
+			p.C_QQ as person_qq,
+			p.C_ENGLISH_NAME as person_englishName,
+			p.C_INTIME as person_intime,
+			p.C_BANKNUM as person_banknum,
+			p.C_STAFFNUM as person_staffnum,
+			p.C_OUTTIME as person_outtime,
+			p.C_MARRIED as person_married,
+			p.C_DEPARTMENT_ID as person_departmentId
+		from T_PERSON p
+	</select>
+</mapper>

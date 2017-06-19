@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="record" extends="default" namespace="/record">
+		<action name="listRecord" class="recordAction" method="listRecord">
+			<result>/jsp/recruitment/record/listRecord.jsp</result>
+		</action>
+		<action name="toAddRecord" class="recordAction" method="toAddRecord">
+			<result>/jsp/recruitment/record/addRecord.jsp</result>
+		</action>
+	</package>
+</struts>

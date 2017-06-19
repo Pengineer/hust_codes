@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="project" extends="main" namespace="/project">
+	
+		<!-- 申请项目  -->
+		<action name="toAdd" class="projectAction" method="toAdd">
+			<result>/project/popAdd.jsp</result>
+		</action>
+		<!-- 进入我的项目列表页面 -->
+		<action name="toSearchMyProject" class="projectAction" method="toSearchMyProject">
+			<result>/project/listMyProject.jsp</result>
+		</action>
+		<!-- 我的项目列表查询 -->
+		<action name="searchMyProject" class="projectAction" method="searchMyProject">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 进入查看我的项目页面 -->
+		<action name="toViewMyProject" class="projectAction" method="toViewMyProject">
+	        <result name="general">/project/general/view.jsp</result>
+	        <result name="key">/project/key/view.jsp</result>
+	        <result name="instp">/project/instp/view.jsp</result>
+	        <result name="post">/project/post/view.jsp</result>
+	        <result name="entrust">/project/entrust/view.jsp</result>
+	    </action>
+	    <!-- 查看我的项目 -->
+	    <action name="viewMyProject" class="projectAction" method="viewMyProject">
+	    	<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+
+	</package>
+
+</struts>

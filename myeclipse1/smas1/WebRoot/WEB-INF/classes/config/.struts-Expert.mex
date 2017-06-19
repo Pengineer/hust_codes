@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="expert" location="518,10" size="1155,1260">
+    <action name="toImportExpert" location="940,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="import.jsp" />
+      </result>
+    </action>
+    <action name="importExpert" location="65,1167" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="import.jsp" />
+      </result>
+    </action>
+    <action name="expertTemplate" location="65,1073" size="150,40" />
+    <action name="exportExpert" location="310,1073" size="150,40" />
+    <action name="listExpert" location="555,1072" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="showDiscipline" location="555,967" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="listExpert.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="800,967" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="sortExpert" location="800,792" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="viewExpert" location="555,792" size="150,41">
+      <result name="normalView">
+        <resourceEdge source="normalView" routing="0" target="viewExpert.jsp" />
+      </result>
+      <result name="popView">
+        <resourceEdge source="popView" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+    <action name="prevExpert" location="555,687" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="nextExpert" location="800,687" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toAddExpert" location="800,582" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="addExpert" location="555,572" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="loadExpert" location="555,477" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modifyExpert" location="555,232" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="deleteExpert" location="65,232" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="groupDeleteExperts" location="65,407" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toDisableReview" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popDisableReview.jsp" />
+      </result>
+    </action>
+    <action name="enableReview" location="310,407" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="disableReview" location="310,302" size="150,41">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="import.jsp" path="/expert/import.jsp" location="10,1150" size="150,55" />
+  <webResource name="listExpert.jsp" path="/expert/listExpert.jsp" location="296,940" size="150,55" />
+  <webResource name="viewExpert.jsp" path="/expert/viewExpert.jsp" location="296,765" size="150,55" />
+  <webResource name="add.jsp" path="/expert/add.jsp" location="159,135" size="150,55" />
+  <webResource name="modify.jsp" path="/expert/modify.jsp" location="290,450" size="150,55" />
+  <webResource name="popDisableReview.jsp" path="/expert/popDisableReview.jsp" location="0,0" size="0,0" />
+  <webResource name="popView.jsp" path="/expert/popView.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

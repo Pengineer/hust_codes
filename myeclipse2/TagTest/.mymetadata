@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TagTest"
+  id="myeclipse.1404368152634"
+  context-root="/TagTest"
+  j2ee-spec="1.4"
+  archive="TagTest.war">
+  <attributes>
+    <attribute name="webrootdir" value="TagTest" />
+  </attributes>
+</project-module>
+

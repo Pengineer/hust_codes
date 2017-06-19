@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="right" extends="global" namespace="/right">
+		<interceptors>
+			<interceptor name="rightAuto" class="csdc.interceptor.RightAuthorizationInterceptor" />
+			<interceptor-stack name="rightInterceptorStack">
+				<interceptor-ref name="rightAuto" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="rightInterceptorStack" />
+		
+		<!-- 权限列表 -->
+		<action name="listRight" class="rightAction" method="listRight">
+			<result>/roleright/listRight.jsp</result>
+		</action>
+		
+		<!-- 添加权限 -->
+		<action name="toAddRight" class="rightAction" method="toAddRight">
+			<result>/roleright/addRight.jsp</result>
+		</action>
+		
+		<action name="addRight" class="rightAction" method="addRight">
+			<result type="redirectAction">
+				<param name="actionName">viewRight</param>
+				<param name="rightid">${rightid}</param>
+			</result>
+			<result name="input">/roleright/addRight.jsp</result>
+		</action>
+		
+		<!-- 删除权限 -->
+		<action name="deleteRight" class="rightAction" method="deleteRight">
+			<result type="redirectAction">listRight</result>
+		</action>
+		
+		<!-- 群删权限 -->
+		<action name="groupDeleteRights" class="rightAction" method="groupDeleteRights">
+			<result type="redirectAction">listRight</result>
+		</action>
+		
+		<!-- 查看权限 -->
+		<action name="viewRight" class="rightAction" method="viewRight">
+			<result>/roleright/viewRight.jsp</result>
+		</action>
+		
+		<!-- 修改权限-->
+		<action name="loadRight" class="rightAction" method="loadRight">
+			<result>/roleright/modifyRight.jsp</result>
+		</action>
+		
+		<action name="modifyRight" class="rightAction" method="modifyRight">
+			<result type="redirectAction">
+				<param name="actionName">viewRight</param>
+				<param name="rightid">${right.id}</param>
+			</result>
+			<result name="input">/roleright/modifyRight.jsp</result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prevRight" class="rightAction" method="prevRight">
+			<result type="redirectAction">
+	           <param name="actionName">viewRight</param>
+	           <param name="rightid">${rightid}</param>
+	        </result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="nextRight" class="rightAction" method="nextRight">
+			<result type="redirectAction">
+	           <param name="actionName">viewRight</param>
+	           <param name="rightid">${rightid}</param>
+	        </result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sortRight" class="rightAction" method="sortRight">
+			<result>/roleright/listRight.jsp</result>
+		</action>
+		
+		<!-- 检索 -->
+		<action name="simpleSearch" class="rightAction" method="simpleSearch">
+			<result>/roleright/listRight.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.1.xsd">
+		
+	<!-- 安全配置 -->
+<!-- 	<import resource="config/spring-security.xml" /> -->
+
+	<!--配置数据源-->
+	<bean id="dataSource"  class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@192.168.88.220:1521:orcl"/>
+		<property name="username" value="eoas"/>
+		<property name="password" value="p1013eoas702"/>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" /> 
+    </bean>
+	
+	<!-- 配置myBatis文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:sqlMapConfig.xml"/>
+	    <property name="dataSource" ref="dataSource"/>
+	</bean>
+	  
+	<!-- 配置Dao -->
+	<bean id="accountDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="eoas.dao.AccountDao"></property> 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="resumeDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="eoas.dao.ResumeDao"></property> 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="positionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="eoas.dao.PositionDao"></property> 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="recordDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="eoas.dao.RecordDao"></property> 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="educationDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="eoas.dao.EducationDao"></property> 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="experienceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="eoas.dao.ExperienceDao"></property> 
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+
+	<!-- 配置Service -->
+    <bean id="accountService" class="eoas.service.imp.AccountService">
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+    <bean id="resumeService" class="eoas.service.imp.ResumeService">
+        <property name="resumeDao" ref="resumeDao"></property>
+    </bean>
+    <bean id="positionService" class="eoas.service.imp.PositionService">
+        <property name="positionDao" ref="positionDao"></property>
+    </bean>
+    <bean id="recordService" class="eoas.service.imp.RecordService">
+        <property name="recordDao" ref="recordDao"></property>
+    </bean>
+    <bean id="educationService" class="eoas.service.imp.EducationService">
+        <property name="educationDao" ref="educationDao"></property>
+    </bean>
+    <bean id="experienceService" class="eoas.service.imp.ExperienceService">
+        <property name="experienceDao" ref="experienceDao"></property>
+    </bean>
+    
+    <bean id="uploadService" class="eoas.service.imp.UploadService">
+      
+    </bean> 
+
+    
+	<!--配置Action-->
+	<bean id="accountAction" class="eoas.action.recruitment.AccountAction" scope="prototype">
+		<property name="accountService" ref="accountService" />
+	</bean>
+	<bean id="resumeAction" class="eoas.action.recruitment.ResumeAction" scope="prototype">
+		<property name="resumeService" ref="resumeService" />
+		
+		<property name="educationService" ref="educationService" />
+		<property name="experienceService" ref="experienceService" />
+	</bean>
+	
+	<bean id="positionAction" class="eoas.action.recruitment.PositionAction" scope="prototype">
+		<property name="positionService" ref="positionService" />
+	</bean>
+	<bean id="recordAction" class="eoas.action.recruitment.RecordAction" scope="prototype">
+		<property name="recordService" ref="recordService" />
+	</bean>
+	
+ 	<bean id="uploadAction" class="eoas.action.recruitment.UploadAction" scope="prototype" >
+ 		<property name="uploadService" ref="uploadService" />
+ 	</bean> 
+</beans>

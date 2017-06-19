@@ -1,0 +1,342 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.csdc</groupId>
+  <artifactId>dmss</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>dmss Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+
+
+  <repositories>
+
+  	<repository>
+             <id>nexus</id>
+             <name>Team Nexus Repository</name>
+             <url>http://192.168.88.172:8081/nexus/content/groups/public/</url>
+         </repository>
+         
+         <repository>
+			<id>java.net</id>
+			<url>http://download.java.net/maven/2/</url>
+		 </repository>
+		 
+		 <repository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-web</artifactId>
+    	<version>3.1.0.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-webmvc</artifactId>
+    	<version>3.1.0.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.geronimo.specs</groupId>
+        <artifactId>geronimo-servlet_2.5_spec</artifactId>
+        <version>1.2</version>
+    </dependency>
+
+    <dependency>
+    	<groupId>org.codehaus.jackson</groupId>
+    	<artifactId>jackson-core-asl</artifactId>
+    	<version>1.9.12</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.codehaus.jackson</groupId>
+    	<artifactId>jackson-mapper-asl</artifactId>
+    	<version>1.9.12</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-core</artifactId>
+    	<version>3.1.0.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-orm</artifactId>
+    	<version>3.1.0.RELEASE</version>
+    </dependency>
+    
+    <!-- 增加 spring-security jar包-->
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-acl</artifactId>
+	  <version>3.0.5.RELEASE</version>
+	</dependency> 
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-config</artifactId>
+	  <version>3.0.5.RELEASE</version>
+	</dependency>	 
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-core</artifactId>
+	  <version>3.0.5.RELEASE</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-taglibs</artifactId>
+	  <version>3.0.5.RELEASE</version>
+	</dependency>
+	<dependency>
+	  <groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-web</artifactId>
+	  <version>3.0.5.RELEASE</version>
+	</dependency>
+	<dependency>
+	<groupId>org.springframework.security</groupId>
+	  <artifactId>spring-security-aspects</artifactId>
+	  <version>3.0.5.RELEASE</version>
+	</dependency>		 
+	<dependency>
+	  <groupId>javax.annotation</groupId>
+	  <artifactId>jsr250-api</artifactId>
+	  <version>1.0</version>
+	</dependency>
+	
+	<!-- 新增 -->
+    <!--fileUpload -->  
+    <dependency>  
+        <groupId>commons-fileupload</groupId>  
+        <artifactId>commons-fileupload</artifactId>  
+        <version>1.2.2</version>  
+    </dependency>  
+  
+    <!--io -->  
+    <dependency>  
+        <groupId>commons-io</groupId>  
+        <artifactId>commons-io</artifactId>  
+        <version>2.1</version>  
+    </dependency>  
+        
+        
+    <dependency>
+    	<groupId>javax.mail</groupId>
+    	<artifactId>mail</artifactId>
+    	<version>1.4.1</version>
+    </dependency>
+    <dependency>
+    	<groupId>net.sf.json-lib</groupId>
+    	<artifactId>json-lib</artifactId>
+    	<version>2.4</version>
+    	<classifier>jdk15</classifier>
+    	<exclusions>
+    		<exclusion>
+    			<artifactId>commons-collections</artifactId>
+    			<groupId>commons-collections</groupId>
+    		</exclusion>
+    	</exclusions>
+    </dependency>
+	<dependency>
+	  <groupId>com.oracle.driver</groupId>
+	  <artifactId>jdbc-driver</artifactId>
+	  <version>14</version>
+	</dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-mock</artifactId>
+    	<version>2.0.8</version>
+    	<scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>commons-collections</groupId>
+    	<artifactId>commons-collections</artifactId>
+    	<version>3.2</version>
+    </dependency>
+
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+		<version>2.5</version>
+	</dependency>
+   
+    
+	<dependency>
+	  <groupId>simplecaptcha</groupId>
+	  <artifactId>simplecaptcha</artifactId>
+	  <version>1.2.1</version>
+	</dependency>
+    <dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>4.1.9.Final</version>
+	</dependency>
+    <dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>cglib</groupId>
+		<artifactId>cglib</artifactId>
+		<version>2.2</version>
+    </dependency>
+
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>ejb3-persistence</artifactId>
+		<version>1.0.2.GA</version>
+		<type>pom</type>
+	</dependency>
+	<!-- Luence相关包 -->
+	<dependency>
+	    <groupId>org.apache.lucene</groupId>
+	    <artifactId>lucene-core</artifactId>
+	    <version>4.6.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.lucene</groupId>
+	    <artifactId>lucene-memory</artifactId>
+	    <version>4.6.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.lucene</groupId>
+	    <artifactId>lucene-queries</artifactId>
+	    <version>4.6.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.lucene</groupId>
+	    <artifactId>lucene-queryparser</artifactId>
+	    <version>4.6.0</version>
+	</dependency>
+	
+	<!-- Solr配置 -->
+	<dependency>
+	    <groupId>org.apache.solr</groupId>
+	    <artifactId>solr-solrj</artifactId>
+	    <version>4.6.0</version>
+	</dependency> 
+	<dependency>
+	    <groupId>org.apache.solr</groupId>
+	    <artifactId>solr-core</artifactId>
+	    <version>4.6.0</version>
+	</dependency>
+	
+	<dependency>
+		  <groupId>IKAnalyzer</groupId>
+		  <artifactId>IKAnalyzer2012FF_u1</artifactId>
+		  <version>1.0</version>
+	</dependency>	
+	<!-- Hadoop配置 -->
+	<dependency>
+	    <groupId>commons-configuration</groupId>
+	    <artifactId>commons-configuration</artifactId>
+	    <version>1.6</version>
+	    <type>jar</type>
+	    <scope>compile</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.avro</groupId>
+	    <artifactId>avro</artifactId>
+	    <version>1.7.6</version>
+	</dependency>
+
+	<dependency>
+	    <groupId>org.apache.zookeeper</groupId>
+	    <artifactId>zookeeper</artifactId>
+	    <version>3.4.5</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.tika</groupId>
+	    <artifactId>tika-core</artifactId>
+	    <version>1.5</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.tika</groupId>
+	    <artifactId>tika-parsers</artifactId>
+	    <version>1.5</version>
+	</dependency>
+	<!-- 新增文档在线预览所需jar包  -->
+	<dependency>
+		<groupId>com.artofsolving</groupId>
+		<artifactId>jodconverter</artifactId>
+		<version>3.0-beta-4</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.openoffice</groupId>
+		<artifactId>ridl</artifactId>
+		<version>3.2.1</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.openoffice</groupId>
+		<artifactId>juh</artifactId>
+		<version>3.2.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.openoffice</groupId>
+		<artifactId>jurt</artifactId>
+		<version>3.2.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.openoffice</groupId>
+		<artifactId>unoil</artifactId>
+		<version>3.2.1</version>
+	</dependency>
+		
+		<!-- 解压缩zip和rar -->
+	<dependency>
+		<groupId>org.apache.ant</groupId>
+		<artifactId>ant</artifactId>
+		<version>1.0</version>
+	</dependency>
+	<dependency>
+	  <groupId>java-unrar</groupId>
+	  <artifactId>java-unrar</artifactId>
+	  <version>0.3</version>
+	</dependency>
+
+  </dependencies>
+  <build>
+  	<plugins>  	
+		<plugin>
+		    <groupId>org.apahce.maven.plugins</groupId>
+		    <artifactId>maven-surefire-plugin</artifactId>
+		    <version>2.5</version>
+		    <configuration>
+		    	<skipTests>true</skipTests>
+		    </configuration>
+		</plugin>
+	</plugins>    
+    <finalName>dmss</finalName>
+  </build>
+</project>

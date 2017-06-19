@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    					http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    					http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="csdc.service.webService"/> 
+
+	<bean id="logInterceptor" class="csdc.interceptor.LogInterceptor" />
+	<bean id="conditionsInterceptor" class="csdc.interceptor.ConditionsInterceptor" />
+	
+	<!-- 配置Service -->
+	<bean id="baseService" class="csdc.service.imp.BaseService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="userService" class="csdc.service.imp.UserService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="expertService" class="csdc.service.imp.ExpertService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="mailService" class="csdc.service.imp.MailService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="roleRightService" class="csdc.service.imp.RoleRightService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="projectService" class="csdc.service.imp.ProjectService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="generalService" class="csdc.service.imp.GeneralService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="projectKit" class="csdc.tool.tableKit.imp.ProjectKit"/>
+	
+	<bean id="instpService" class="csdc.service.imp.InstpService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="financeService" class="csdc.service.imp.FinanceService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="matcherWarningUpdater" class="csdc.tool.matcher.MatcherWarningUpdater" scope="prototype">
+	</bean> 
+	
+	<bean id="logService" class="csdc.service.imp.LogService">
+		<property name="baseDao" ref="hibernateBaseDao" />
+	</bean>
+	
+	<bean id="awardService" class="csdc.service.imp.AwardService">
+		<property name="baseDao" ref="hibernateBaseDao"/>
+	</bean>
+	
+ 	<!-- Web 服务相关代码 -->
+
+	<bean id="clientWebService" class="csdc.service.webService.client.ClientWebService">
+	</bean>
+
+</beans>

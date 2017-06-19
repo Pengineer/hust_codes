@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="newsOuter" location="10,165" size="1015,350">
+    <action name="view" location="800,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="download" location="800,267" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toSimpleSearch" location="555,267" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="310,257" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="310,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="310,47" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toBackToList" location="65,47" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="backToList" location="65,152" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="view.jsp" path="/system/news/outer/view.jsp" location="788,10" size="150,55" />
+  <webResource name="list.jsp" path="/system/news/outer/list.jsp" location="543,10" size="150,55" />
+</Struts2Diagram>
+

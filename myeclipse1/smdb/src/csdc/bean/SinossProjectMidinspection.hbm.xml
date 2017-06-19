@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.SinossProjectMidinspection" table="T_SINOSS_PROJECT_MIDINSPECTION">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+	    <property name="code" type="java.lang.String">
+            <column name="C_CODE"/>
+        </property>        
+	    <property name="name" type="java.lang.String">
+            <column name="C_NAME"/>
+        </property>  
+ 	    <property name="agencyName" type="java.lang.String">
+            <column name="C_AGENCY_NAME"/>
+        </property>
+ 	    <property name="agencyCode" type="java.lang.String">
+            <column name="C_AGENCY_CODE"/>
+        </property>
+ 	    <property name="personName" type="java.lang.String">
+            <column name="C_PERSON_NAME"/>
+        </property>	
+ 	    <property name="year" type="java.lang.String">
+            <column name="C_YEAR"/>
+        </property>
+        <property name="batchYear" type="java.lang.String">
+            <column name="C_BATCH_YEAR"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="C_STATUS" />
+        </property>  
+ 	    <property name="checkStatus" type="java.lang.String">
+            <column name="C_CHECK_STATUS"/>
+        </property>
+        <property name="isAdded" type="java.lang.Integer">
+            <column name="C_IS_ADDED"/>
+        </property>	
+        <property name="note" type="java.lang.String">
+            <column name="C_NOTE"/>
+        </property>   
+ 	    <property name="deferReason" type="java.lang.String">
+            <column name="C_DEFER_REASON"/>
+        </property>
+        <property name="deferDate" type="java.util.Date">
+            <column name="C_DEFER_DATE" />
+        </property>        
+ 	    <property name="midReportName" type="java.lang.String">
+            <column name="C_MID_REPORT_NAME"/>
+        </property>
+        <property name="storageFileName" type="java.lang.String">
+            <column name="C_STORAGE_FILE_NAME"/>
+        </property> 
+        <property name="applyDate" type="java.util.Date">
+            <column name="C_APPLY_DATE" />
+        </property>        
+ 	    <property name="sinossProjectId" type="java.lang.String">
+            <column name="C_SINOSS_PROJECT_ID"/>
+        </property>
+        <property name="importDate" type="java.util.Date">
+            <column name="C_IMPORT_DATE" />
+        </property>        
+ 	    <property name="importPerson" type="java.lang.String">
+            <column name="C_IMPORT_PERSON"/>
+        </property> 
+        <property name="dumpDate" type="java.util.Date">
+            <column name="C_DUMP_DATE" />
+        </property>        
+ 	    <property name="dumpPerson" type="java.lang.String">
+            <column name="C_DUMP_PERSON"/>
+        </property>              
+ 	    <property name="from" type="java.lang.String">
+            <column name="C_FROM"/>
+        </property>
+        <property name="checkDate" type="java.util.Date">
+            <column name="C_CHECK_DATE" />
+        </property>        
+ 	    <property name="checker" type="java.lang.String">
+            <column name="C_CHECKER"/>
+        </property>   
+ 	    <property name="checkInfo" type="java.lang.String">
+            <column name="C_CHECK_INFO"/>
+        </property>	
+        <property name="projectType" type="java.lang.String">
+            <column name="C_project_Type"/>
+        </property>	
+        <property name="sinossId" type="java.lang.String">
+            <column name="C_SINOSS_ID"/>
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE"/>
+        </property>
+        <property name="dfs" type="java.lang.String">
+            <column name="C_DFS" length="200" />
+        </property>
+        <many-to-one name="projectGranted" class="csdc.bean.ProjectGranted" fetch="join">
+            <column name="C_GRANTED_ID"/>
+        </many-to-one>
+        <many-to-one name="projectApplication" class="csdc.bean.ProjectApplication" fetch="join">
+            <column name="C_PROJECT_ID"/>
+        </many-to-one>	
+        <many-to-one name="projectMidinspection" class="csdc.bean.ProjectMidinspection" fetch="join">
+            <column name="C_MIDINSPECTION_ID"/>
+        </many-to-one>
+        <many-to-one name="projectVariation" class="csdc.bean.ProjectVariation" fetch="join">
+            <column name="C_VARIATION_ID"/>
+        </many-to-one>		                	        	                                                             	
+    </class>
+</hibernate-mapping>

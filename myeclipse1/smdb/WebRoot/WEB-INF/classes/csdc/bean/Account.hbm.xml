@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Account" table="T_ACCOUNT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="type">
+        	<column name="C_TYPE" length="40" not-null="true"></column>
+        	<type name="org.hibernate.type.EnumType">
+        		<param name="enumClass">csdc.tool.bean.AccountType</param>
+         		<param name="type">12</param><!-- 12 is java.sql.Types.VARCHAR -->
+       		</type>
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="C_STATUS" precision="1" scale="0" not-null="true" />
+        </property>
+       
+        <many-to-one name="person" class="csdc.bean.Person" fetch="select">
+            <column name="C_PERSON_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="officer" class="csdc.bean.Officer" fetch="select">
+            <column name="C_OFFICER_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="agency" class="csdc.bean.Agency" fetch="select">
+            <column name="C_AGENCY_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="department" class="csdc.bean.Department" fetch="select">
+            <column name="C_DEPARTMENT_ID" length="40" not-null="true" />
+        </many-to-one>
+         <many-to-one name="institute" class="csdc.bean.Institute" fetch="select">
+            <column name="C_INSTITUTE_ID" length="40" not-null="true" />
+        </many-to-one>
+        
+        <property name="isPrincipal" type="java.lang.Integer">
+        	<column name="C_IS_PRINCIPAL" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="isLeapfrog" type="java.lang.Integer">
+        	<column name="C_IS_LEAPFROG" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="C_START_DATE" length="7" not-null="true" />
+        </property>
+        <property name="expireDate" type="java.util.Date">
+            <column name="C_EXPIRE_DATE" length="7" not-null="true" />
+        </property>
+        <property name="lastLoginDate" type="java.util.Date">
+        	<column name="C_LAST_LOGIN_DATE" length="7" />
+        </property>
+        <property name="lastLoginSystem" type="java.lang.String">
+        	<column name="C_LAST_LOGIN_SYSTEM" length="40" />
+        </property>
+	    <property name="loginCount" type="java.lang.Integer">
+        	<column name="C_LOGIN_COUNT" /> 
+        </property>
+        <property name="createType" type="java.lang.Integer">
+        	<column name="C_CREATE_TYPE" precision="1" scale="0" />
+        </property>
+        <many-to-one name="passport" class="csdc.bean.Passport" fetch="select">
+            <column name="C_PASSPORT_ID" length="40" not-null="true" />
+        </many-to-one>
+        <set name="accountRole" inverse="true" cascade="all">
+        	<key>
+                <column name="C_ACCOUNT_ID" length="40" not-null="true" />
+            </key>
+            <one-to-many class="csdc.bean.AccountRole" />
+        </set>
+        <set name="role" inverse="true" cascade="all">
+        	<key>
+        		<column name="C_ACCOUNT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Role" />
+        </set>
+        <set name="mail" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_ACCOUNT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Mail" />
+        </set>
+        <set name="news" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_ACCOUNT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.News" />
+        </set>
+        <set name="notice" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_ACCOUNT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Notice" />
+        </set>
+        <set name="message" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_ACCOUNT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Message" />
+        </set>
+        <set name="log" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_ACCOUNT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Log" />
+        </set>
+    </class>
+</hibernate-mapping>

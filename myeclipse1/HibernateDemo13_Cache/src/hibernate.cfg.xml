@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://192.168.88.176/hibernatedb</property>
+        <property name="connection.username">hibernate</property>
+        <property name="connection.password">peng123</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <!-- 很少有人会用hibernate自带的连接池，一般使用application server本身在JNDI里面注册的连接池 -->
+        <!-- <property name="connection.pool_size">1</property>  -->
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</property>
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        
+         <property name="format_sql">false</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <!-- hbm2ddl.auto用来执行DDL语句，有4个选项：create：当配置文件/注解中定义的表在数据库中不存在时，就自动创建
+        									 update：当配置文件/注解中定义的表结构与数据库不一致时，更新数据库中表结构
+        									 create-drop：在显式关闭sessionFactory时，将drop掉数据库schema
+        									 validate：每次操作数据，都会检查配置文件/注解中定义的表结构与数据库中的是否一致 -->
+        <property name="hbm2ddl.auto">validate</property> 
+
+        <mapping class="hust.bean.School"/>
+
+    </session-factory>
+
+</hibernate-configuration>

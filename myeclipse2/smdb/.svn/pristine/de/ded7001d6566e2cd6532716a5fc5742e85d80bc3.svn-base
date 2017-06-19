@@ -1,0 +1,394 @@
+package csdc.action.system.interfaces;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+
+import net.sf.json.JSONObject;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import csdc.bean.InterfaceConfig;
+import csdc.bean.Right;
+import csdc.dao.HibernateBaseDao;
+import csdc.service.IInterfaceService;
+import csdc.service.IProjectService;
+
+public class SinossServerAction extends ActionSupport{
+	private static final long serialVersionUID = -2753118291122678473L;
+
+	private int startYear,endYear;
+	private Date applyStartDate,applyEndDate,auditStartDate,auditEndDate;
+	private int isPublished;
+	protected IInterfaceService interfaceService;
+	private IProjectService projectService;
+	@Autowired
+	protected HibernateBaseDao dao;
+	
+	public String toApplicationResultConfig() {
+		Map opMap = interfaceService.getOptionsByName("SinossWebService", "requestProjectApplicationResult");
+		isPublished = interfaceService.getIsPublished("SinossWebService", "requestProjectApplicationResult");
+		if(opMap != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				startYear = (Integer) opMap.get("startYear");
+				endYear = (Integer) opMap.get("endYear");
+				if(opMap.get("applyStartDate") != null) {
+					applyStartDate = sdf.parse((String) opMap.get("applyStartDate"));					
+				}
+				if(opMap.get("applyEndDate") != null) {
+					applyEndDate = sdf.parse((String) opMap.get("applyEndDate"));					
+				}
+				if(opMap.get("auditStartDate") != null) {
+					auditStartDate = sdf.parse((String) opMap.get("auditStartDate"));					
+				}
+				if(opMap.get("auditEndDate") != null) {
+					auditEndDate = sdf.parse((String) opMap.get("auditEndDate"));						
+				}			
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return SUCCESS;
+	}
+
+	public String applicationResultConfig() {
+		JSONObject mapObj = new JSONObject();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  		
+		InterfaceConfig interfaceConfig = interfaceService.getInterfaceConfig("SinossWebService", "requestProjectApplicationResult");
+		interfaceConfig.setIsPublished(isPublished);
+		interfaceConfig.setServiceName("SinossWebService");
+		interfaceConfig.setMethodName("requestProjectApplicationResult");
+		Right right = (Right) dao.query("from Right r where r.code = 'ROLE_INTERFACE_WEBSERVICE_SINOSS_SERVER_APP_RESULT_CONFIG'").get(0);
+		interfaceConfig.setRight(right);
+		mapObj.put("startYear", startYear);
+		mapObj.put("endYear", endYear);
+		if(applyStartDate != null) {
+			mapObj.put("applyStartDate", sdf.format(applyStartDate));
+		} else {
+			mapObj.put("applyStartDate", applyStartDate);
+		}
+		if(applyEndDate != null) {
+			mapObj.put("applyEndDate", sdf.format(applyEndDate));
+		} else {
+			mapObj.put("applyEndDate", applyEndDate);
+		}
+		if(auditStartDate != null) {
+			mapObj.put("auditStartDate", sdf.format(auditStartDate));
+		} else {
+			mapObj.put("auditStartDate", auditStartDate);
+		}
+		if(auditEndDate != null) {
+			mapObj.put("auditEndDate", sdf.format(auditEndDate));
+		} else {
+			mapObj.put("auditEndDate", auditEndDate);
+		}
+		String options = mapObj.toString();
+		interfaceConfig.setOptions(options);
+		dao.addOrModify(interfaceConfig);		
+		return SUCCESS;
+	}
+	
+	public String toMidinspectionResultConfig() {
+		Map opMap = interfaceService.getOptionsByName("SinossWebService", "requestProjectMidinspectionResult");
+		isPublished = interfaceService.getIsPublished("SinossWebService", "requestProjectMidinspectionResult");
+		if(opMap != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				startYear = (Integer) opMap.get("startYear");
+				endYear = (Integer) opMap.get("endYear");
+				if(opMap.get("applyStartDate") != null) {
+					applyStartDate = sdf.parse((String) opMap.get("applyStartDate"));					
+				}
+				if(opMap.get("applyEndDate") != null) {
+					applyEndDate = sdf.parse((String) opMap.get("applyEndDate"));					
+				}
+				if(opMap.get("auditStartDate") != null) {
+					auditStartDate = sdf.parse((String) opMap.get("auditStartDate"));					
+				}
+				if(opMap.get("auditEndDate") != null) {
+					auditEndDate = sdf.parse((String) opMap.get("auditEndDate"));						
+				}			
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}	
+		}		
+		return SUCCESS;
+	}
+
+	public String midinspectionResultConfig() {
+		JSONObject mapObj = new JSONObject();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  		
+		InterfaceConfig interfaceConfig = interfaceService.getInterfaceConfig("SinossWebService", "requestProjectMidinspectionResult");
+		interfaceConfig.setIsPublished(isPublished);
+		interfaceConfig.setServiceName("SinossWebService");
+		interfaceConfig.setMethodName("requestProjectMidinspectionResult");
+		Right right = (Right) dao.query("from Right r where r.code = 'ROLE_INTERFACE_WEBSERVICE_SINOSS_SERVER_MID_RESULT_CONFIG'").get(0);
+		interfaceConfig.setRight(right);
+		mapObj.put("startYear", startYear);
+		mapObj.put("endYear", endYear);
+		if(applyStartDate != null) {
+			mapObj.put("applyStartDate", sdf.format(applyStartDate));
+		} else {
+			mapObj.put("applyStartDate", applyStartDate);
+		}
+		if(applyEndDate != null) {
+			mapObj.put("applyEndDate", sdf.format(applyEndDate));
+		} else {
+			mapObj.put("applyEndDate", applyEndDate);
+		}
+		if(auditStartDate != null) {
+			mapObj.put("auditStartDate", sdf.format(auditStartDate));
+		} else {
+			mapObj.put("auditStartDate", auditStartDate);
+		}
+		if(auditEndDate != null) {
+			mapObj.put("auditEndDate", sdf.format(auditEndDate));
+		} else {
+			mapObj.put("auditEndDate", auditEndDate);
+		}
+		String options = mapObj.toString();
+		interfaceConfig.setOptions(options);
+		dao.addOrModify(interfaceConfig);			
+		return SUCCESS;
+	}
+	
+	public String toVariationResultConfig() {
+		Map opMap = interfaceService.getOptionsByName("SinossWebService", "requestProjectVariationResult");
+		isPublished = interfaceService.getIsPublished("SinossWebService", "requestProjectVariationResult");
+		if(opMap != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				startYear = (Integer) opMap.get("startYear");
+				endYear = (Integer) opMap.get("endYear");
+				if(opMap.get("applyStartDate") != null) {
+					applyStartDate = sdf.parse((String) opMap.get("applyStartDate"));					
+				}
+				if(opMap.get("applyEndDate") != null) {
+					applyEndDate = sdf.parse((String) opMap.get("applyEndDate"));					
+				}
+				if(opMap.get("auditStartDate") != null) {
+					auditStartDate = sdf.parse((String) opMap.get("auditStartDate"));					
+				}
+				if(opMap.get("auditEndDate") != null) {
+					auditEndDate = sdf.parse((String) opMap.get("auditEndDate"));						
+				}			
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}	
+		}		
+		return SUCCESS;
+	}
+
+	public String variationResultConfig() {
+		JSONObject mapObj = new JSONObject();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  		
+		InterfaceConfig interfaceConfig = interfaceService.getInterfaceConfig("SinossWebService", "requestProjectVariationResult");
+		interfaceConfig.setIsPublished(isPublished);
+		interfaceConfig.setServiceName("SinossWebService");
+		interfaceConfig.setMethodName("requestProjectVariationResult");
+		Right right = (Right) dao.query("from Right r where r.code = 'ROLE_INTERFACE_WEBSERVICE_SINOSS_SERVER_VAR_RESULT_CONFIG'").get(0);
+		interfaceConfig.setRight(right);
+		mapObj.put("startYear", startYear);
+		mapObj.put("endYear", endYear);
+		if(applyStartDate != null) {
+			mapObj.put("applyStartDate", sdf.format(applyStartDate));
+		} else {
+			mapObj.put("applyStartDate", applyStartDate);
+		}
+		if(applyEndDate != null) {
+			mapObj.put("applyEndDate", sdf.format(applyEndDate));
+		} else {
+			mapObj.put("applyEndDate", applyEndDate);
+		}
+		if(auditStartDate != null) {
+			mapObj.put("auditStartDate", sdf.format(auditStartDate));
+		} else {
+			mapObj.put("auditStartDate", auditStartDate);
+		}
+		if(auditEndDate != null) {
+			mapObj.put("auditEndDate", sdf.format(auditEndDate));
+		} else {
+			mapObj.put("auditEndDate", auditEndDate);
+		}
+		String options = mapObj.toString();
+		interfaceConfig.setOptions(options);
+		dao.addOrModify(interfaceConfig);
+		return SUCCESS;
+	}
+	
+	public String toEndinspectionResultConfig() {
+		Map opMap = interfaceService.getOptionsByName("SinossWebService", "requestProjectEndinspectionResult");
+		isPublished = interfaceService.getIsPublished("SinossWebService", "requestProjectEndinspectionResult");
+		if(opMap != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				startYear = (Integer) opMap.get("startYear");
+				endYear = (Integer) opMap.get("endYear");
+				if(opMap.get("applyStartDate") != null) {
+					applyStartDate = sdf.parse((String) opMap.get("applyStartDate"));					
+				}
+				if(opMap.get("applyEndDate") != null) {
+					applyEndDate = sdf.parse((String) opMap.get("applyEndDate"));					
+				}
+				if(opMap.get("auditStartDate") != null) {
+					auditStartDate = sdf.parse((String) opMap.get("auditStartDate"));					
+				}
+				if(opMap.get("auditEndDate") != null) {
+					auditEndDate = sdf.parse((String) opMap.get("auditEndDate"));						
+				}			
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}	
+		}
+		return SUCCESS;
+	}
+
+	public String endinspectionResultConfig() {
+		JSONObject mapObj = new JSONObject();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  		
+		InterfaceConfig interfaceConfig = interfaceService.getInterfaceConfig("SinossWebService", "requestProjectEndinspectionResult");
+		interfaceConfig.setIsPublished(isPublished);
+		interfaceConfig.setServiceName("SinossWebService");
+		interfaceConfig.setMethodName("requestProjectEndinspectionResult");
+		Right right = (Right) dao.query("from Right r where r.code = 'ROLE_INTERFACE_WEBSERVICE_SINOSS_SERVER_END_RESULT_CONFIG'").get(0);
+		interfaceConfig.setRight(right);
+		mapObj.put("startYear", startYear);
+		mapObj.put("endYear", endYear);
+		if(applyStartDate != null) {
+			mapObj.put("applyStartDate", sdf.format(applyStartDate));
+		} else {
+			mapObj.put("applyStartDate", applyStartDate);
+		}
+		if(applyEndDate != null) {
+			mapObj.put("applyEndDate", sdf.format(applyEndDate));
+		} else {
+			mapObj.put("applyEndDate", applyEndDate);
+		}
+		if(auditStartDate != null) {
+			mapObj.put("auditStartDate", sdf.format(auditStartDate));
+		} else {
+			mapObj.put("auditStartDate", auditStartDate);
+		}
+		if(auditEndDate != null) {
+			mapObj.put("auditEndDate", sdf.format(auditEndDate));
+		} else {
+			mapObj.put("auditEndDate", auditEndDate);
+		}
+		String options = mapObj.toString();
+		interfaceConfig.setOptions(options);
+		dao.addOrModify(interfaceConfig);		
+		return SUCCESS;
+	}
+	public String toMidinspectionRequiredConfig() {
+		Map opMap = interfaceService.getOptionsByName("SinossWebService", "requestProjectMidinspectionRequired");
+		isPublished = interfaceService.getIsPublished("SinossWebService", "requestProjectMidinspectionRequired");
+		if(opMap != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			startYear = (Integer) opMap.get("startYear");
+			endYear = (Integer) opMap.get("endYear");				
+		}		
+		return SUCCESS;
+	}
+
+	public String midinspectionRequiredConfig() {
+		JSONObject mapObj = new JSONObject();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");  		
+		InterfaceConfig interfaceConfig = interfaceService.getInterfaceConfig("SinossWebService", "requestProjectMidinspectionRequired");
+		interfaceConfig.setIsPublished(isPublished);
+		interfaceConfig.setServiceName("SinossWebService");
+		interfaceConfig.setMethodName("requestProjectMidinspectionRequired");
+		Right right = (Right) dao.query("from Right r where r.code = 'ROLE_INTERFACE_WEBSERVICE_SINOSS_SERVER_MID_REQUIRED_CONFIG'").get(0);
+		interfaceConfig.setRight(right);
+		mapObj.put("startYear", startYear);
+		mapObj.put("endYear", endYear);
+		String options = mapObj.toString();
+		interfaceConfig.setOptions(options);
+		dao.addOrModify(interfaceConfig);			
+		return SUCCESS;
+	}
+	
+	public String toExport() {
+		return SUCCESS;
+	}
+	
+	public int getStartYear() {
+		return startYear;
+	}
+
+	public void setStartYear(int startYear) {
+		this.startYear = startYear;
+	}
+
+	public int getEndYear() {
+		return endYear;
+	}
+
+	public void setEndYear(int endYear) {
+		this.endYear = endYear;
+	}
+
+	public Date getApplyStartDate() {
+		return applyStartDate;
+	}
+
+	public void setApplyStartDate(Date applyStartDate) {
+		this.applyStartDate = applyStartDate;
+	}
+
+	public Date getApplyEndDate() {
+		return applyEndDate;
+	}
+
+	public void setApplyEndDate(Date applyEndDate) {
+		this.applyEndDate = applyEndDate;
+	}
+
+	public Date getAuditStartDate() {
+		return auditStartDate;
+	}
+
+	public void setAuditStartDate(Date auditStartDate) {
+		this.auditStartDate = auditStartDate;
+	}
+
+	public Date getAuditEndDate() {
+		return auditEndDate;
+	}
+
+	public void setAuditEndDate(Date auditEndDate) {
+		this.auditEndDate = auditEndDate;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public int getIsPublished() {
+		return isPublished;
+	}
+
+	public void setIsPublished(int isPublished) {
+		this.isPublished = isPublished;
+	}
+
+	public IInterfaceService getInterfaceService() {
+		return interfaceService;
+	}
+
+	public void setInterfaceService(IInterfaceService interfaceService) {
+		this.interfaceService = interfaceService;
+	}
+
+	public IProjectService getProjectService() {
+		return projectService;
+	}
+
+	public void setProjectService(IProjectService projectService) {
+		this.projectService = projectService;
+	}
+	
+}

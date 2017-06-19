@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SSHDemo2_MVN_simple_perfect"
+  id="myeclipse.1441670848027"
+  context-root="/SSHDemo2_MVN_simple_perfect"
+  j2ee-spec="6.0"
+  archive="SSHDemo2_MVN_simple_perfect.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

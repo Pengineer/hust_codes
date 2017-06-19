@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="login" extends="main" namespace="/login">
+
+		<action name="doLogin" class="loginAction" method="doLogin">
+			<result type="redirectAction">
+				<param name="actionName">checkIfNeedModifyPassword</param>
+				<param name="namespace">/selfspace</param>
+			</result>
+			<result name="mobile" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="namespace">/mobile/login</param>
+				<param name="username">${username}</param>
+			</result>
+		</action>
+		
+		<action name="toSelectAccount" class="loginAction" method="toSelectAccount">
+			<result>/passport/selectAccount.jsp</result>
+			<result name="input">/passport/selectAccount.jsp</result>
+		</action>
+		
+		<action name="ckeckAccount" class="loginAction" method="ckeckAccount">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="selectAccount" class="loginAction" method="selectAccount">
+			<result type="redirectAction">toSelectServer</result>
+			<result name="input">/passport/selectAccount.jsp</result>
+		</action>
+		
+		<action name="toSwitchAccount" class="loginAction" method="toSwitchAccount">
+			<result>/passport/switchAccount.jsp</result>
+		</action>
+		
+		<action name="switchAccount" class="loginAction" method="switchAccount">
+			<result>${serverPath}</result>
+		</action>
+		
+		<action name="toSelectServer" class="loginAction" method="toSelectServer">
+			<result>${serverPath}</result>
+		</action>
+		
+		<action name="toSwitchServer" class="loginAction" method="toSwitchServer">
+			<result>/server/switchServer.jsp</result>
+		</action>
+		
+		<action name="switchServer" class="loginAction" method="switchServer">
+			<result>${serverPath}</result>
+		</action>
+		
+		<action name="basisRight" class="loginAction" method="basisRight">
+			<result>/server/basis/right.jsp</result>
+		</action>
+		
+		<action name="expertRight" class="loginAction" method="expertRight">
+			<result>/server/expert/right.jsp</result>
+		</action>
+		
+		<action name="statisticRight" class="loginAction" method="statisticRight">
+			<result>/server/statistic/right.jsp</result>
+		</action>
+		
+		<action name="projectRight" class="loginAction" method="projectRight">
+			<result>/server/project/right.jsp</result>
+		</action>
+		
+		<action name="ucenterRight" class="loginAction" method="ucenterRight">
+			<result>/server/ucenter/right.jsp</result>
+		</action>
+		
+		<action name="scenterRight" class="loginAction" method="scenterRight">
+			<result>/server/scenter/right.jsp</result>
+		</action>
+		
+		<action name="managementRight" class="loginAction" method="managementRight">
+			<result>/server/management/right.jsp</result>
+		</action>
+		
+		<action name="awardRight" class="loginAction" method="awardRight">
+			<result>/server/award/right.jsp</result>
+		</action>
+		
+		<action name="feeRight" class="loginAction" method="feeRight">
+			<result>/server/fee/right.jsp</result>
+		</action>
+
+		<action name="getHistory" class="loginAction" method="getHistory">
+			<result type="json"></result>
+		</action>
+	</package>
+
+</struts>

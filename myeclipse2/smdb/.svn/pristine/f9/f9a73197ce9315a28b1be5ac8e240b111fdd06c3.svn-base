@@ -1,0 +1,17 @@
+i18n_Monitor=\u7CFB\u7EDF\u76D1\u63A7
+i18n_Visitor=\u8BBF\u5BA2\u76D1\u63A7
+i18n_List=\u8BBF\u5BA2\u5217\u8868
+i18n_SelectAllOrNot=\u70B9\u51FB\u5168\u9009/\u4E0D\u9009\u672C\u9875\u6240\u6709\u8BBF\u5BA2
+i18n_SortByAccountName=\u70B9\u51FB\u6309\u8D26\u53F7\u540D\u6392\u5E8F
+i18n_SortByUserName=\u70B9\u51FB\u6309\u7528\u6237\u540D\u6392\u5E8F
+i18n_AccountName=\u8D26\u53F7\u540D
+i18n_UserName=\u7528\u6237\u540D
+i18n_SortByIp=\u6309IP\u6392\u5E8F
+i18n_Ip=IP
+i18n_SortByArrivalTime=\u6309\u5230\u8BBF\u65F6\u523B\u6392\u5E8F
+i18n_ArrivalTime=\u5230\u8BBF\u65F6\u523B
+i18n_SortByActiveLength=\u6309\u6D3B\u8DC3\u65F6\u957F\u6392\u5E8F
+i18n_ActiveLength=\u6D3B\u8DC3\u65F6\u957F
+i18n_SortByFreezeLength=\u6309\u53D1\u5446\u65F6\u957F\u6392\u5E8F
+i18n_FreezeLength=\u53D1\u5446\u65F6\u957F
+i18n_Evict=\u8E22\u51FA

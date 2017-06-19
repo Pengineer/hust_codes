@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="account" extends="default" namespace="/account">
+	
+	    <!-- 获取页面显示的相关信息 -->
+        <action name="toIndex" class="csdc.action.recruitment.AccountAction" method="toIndex">
+	        <result name = "recruitment">/jsp/recruitment/index.jsp</result>
+	        <result name = "eoas">/jsp/oa/home/loginUI.jsp</result>
+	    </action>
+	    <!-- 进入注册页面 -->
+		<action name="toRegister" class="csdc.action.recruitment.AccountAction" method="toRegister">
+	        <result>/jsp/recruitment/account/registerStep.jsp</result>
+	    </action>
+	    <action name="register" class="csdc.action.recruitment.AccountAction" method="register">
+	    	<result type="chain">
+	            <param name="actionName">createMail</param>
+	            <param name="namespace">/mailer</param>
+			</result>
+	    
+<!-- 	    	<result name="success">/jsp/recruitment/selfspace/main.jsp</result>
+	    	<result name="input">/jsp/recruitment/account/login.jsp</result> -->
+	    </action>
+	    
+	    <action name="toAdd" class="csdc.action.recruitment.AccountAction" method="toAdd">
+	        <result>/jsp/oa/account/add.jsp</result>
+	    </action>
+	    <action name="add" class="csdc.action.recruitment.AccountAction" method="add">
+			<result>/jsp/oa/account/view.jsp</result>
+	    </action>
+	    
+	    <!-- 退出系统 -->
+	    <action name="logout" class="csdc.action.recruitment.AccountAction" method="logout">
+	     	<result>/oa/loginUI.action</result>
+	     </action>
+	     
+	    <!-- 登录 -->
+	    <action name="dologin" class="csdc.action.recruitment.AccountAction" method="dologin">
+	    	<result name="recruitment">/jsp/recruitment/position/list.jsp</result>
+	    	<result name="eoas">/jsp/oa/home/index.jsp</result>
+	    </action> 
+	    
+	    <action name="register" class="csdc.action.recruitment.AccountAction" method="register">
+	    	<result name="success">/jsp/recruitment/selfspace/main.jsp</result>
+	    	<result name="input">/jsp/recruitment/account/login.jsp</result>
+	    </action>
+	    
+	    <!-- 进入修改页面 -->
+	    <action name="toModifyPassword" class="csdc.action.recruitment.AccountAction" method="toModifyPassword">
+	    	<result>/jsp/recruitment/account/modifyPassword.jsp</result>
+	    </action> 
+<!-- 	    <action name="modify" class="accountAction" method="modify">
+	    	<result>/jsp/recruitment/account/modifyPasswordSuccess.jsp</result>
+	    	<result name="input">/jsp/recruitment/account/modifyPassword.jsp</result>
+	    </action> -->
+	    
+	    <action name="toModify" class="csdc.action.recruitment.AccountAction" method="toModify">
+	    	<result>/jsp/oa/account/modify.jsp</result>
+	    </action> 
+	    
+	    <action name="modify" class="csdc.action.recruitment.AccountAction" method="modify">
+	    <!-- <result>/jsp/oa/account/modify.jsp</result> -->
+			<result type="json">
+	    		<param name="root">jsonMap</param>
+	    	</result>
+	    </action>
+	    
+<!-- 	    <action name="oaLogin" class="accountAction" method="oaLogin">
+	    	<result name="success">${pageContext.request.contextPath}/jsp/systemPerson/personList.jsp</result>
+	    	<result name="input">/jsp/systemPerson/loginUI.jsp</result>
+	    </action> -->
+	    <action name="delete" class="csdc.action.recruitment.AccountAction" method="delete">
+			 <result type="json"> 
+	    		<param name="root">jsonMap</param>
+	    	</result>
+		</action>
+	    
+	    <!-- 生成验证码 -->
+	    <action name="rand" class="csdc.action.recruitment.AccountAction" method="rand">
+	        <result type="stream"> 
+                <param name="contentType">image/jpeg</param>
+                <param name="inputName">inputStream</param>      
+            </result>   
+	    </action>
+	    
+	    <!-- 进入帐号的列表显示 -->
+	    <action name="toList" class="csdc.action.recruitment.AccountAction" method="toList">
+	        <result>/jsp/oa/account/list.jsp</result>   
+	    </action>
+	    
+	    <action name="list" class="csdc.action.recruitment.AccountAction" method="list">
+			<result type="json">
+				<param name="root">jsonMap</param>
+			</result>	    
+	    </action>
+	    
+	    <action name="view" class="csdc.action.recruitment.AccountAction" method="view">
+			 <result>/jsp/oa/account/view.jsp</result>
+		</action>
+		
+	    <action name="listRole" class="userAction" method="listRole">
+	    	<result type="chain">
+	    		<param name="actionName">checkUserStatus</param>
+	    	</result>
+	    </action>
+	</package>
+</struts>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Product" table="T_PRODUCT">
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+	    <property name="productType" type="java.lang.String" update="false">
+            <column name="C_TYPE" length="40" not-null="true"/>
+        </property>
+        <property name="chineseName" type="java.lang.String">
+            <column name="C_CHINESE_NAME" length="800" not-null="true" />
+        </property>
+        <property name="englishName" type="java.lang.String">
+            <column name="C_ENGLISH_NAME" length="400" />
+        </property>
+        <property name="disciplineType" type="java.lang.String">
+            <column name="C_DISCIPLINE_TYPE" length="400" />
+        </property>
+        <property name="discipline" type="java.lang.String">
+            <column name="C_DISCIPLINE" length="400" />
+        </property>
+        <property name="file" type="java.lang.String">
+            <column name="C_FILE" length="100" />
+        </property>
+        <property name="submitStatus" type="java.lang.Integer">
+            <column name="C_SUBMIT_STATUS" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="submitDate" type="java.util.Date">
+            <column name="C_SUBMIT_DATE" length="10" />
+        </property>
+         <property name="otherAuthorName" type="java.lang.String">
+            <column name="C_OTHER_AUTHOR_NAME" length="800" />
+        </property>
+        <property name="keywords" type="java.lang.String">
+            <column name="C_KEYWORDS" length="400" />
+        </property>
+        <property name="authorName" type="java.lang.String">
+            <column name="C_AUTHOR_NAME" length="200" />
+        </property>  
+        <property name="agencyName" type="java.lang.String">
+            <column name="C_AGENCY_NAME" length="200" />
+        </property>
+        <property name="divisionName" type="java.lang.String">
+            <column name="C_DIVISION_NAME" length="200" />
+        </property>
+		<property name="isForeignCooperation" type="java.lang.Integer">
+            <column name="C_IS_FOREIGN_COOPERATION" precision="1" scale="0" />
+        </property>        
+		<property name="isImported" type="java.lang.Integer">
+            <column name="C_IS_IMPORTED" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="introduction" type="java.lang.String">
+            <column name="C_INTRODUCTION" />
+        </property>
+        <property name="authorType" type="java.lang.Integer">
+            <column name="C_AUTHOR_TYPE" precision="1" scale="0" not-null="true" />
+        </property>
+        <property name="auditorName" type="java.lang.String">
+            <column name="C_AUDITOR_NAME" length="200" />
+        </property>
+        <property name="auditDate" type="java.util.Date">
+            <column name="C_AUDIT_DATE" length="7" />
+        </property>
+        <property name="auditStatus" type="java.lang.Integer">
+            <column name="C_AUDIT_STATUS" precision="1" scale="0" />
+        </property>
+        <property name="auditResult" type="java.lang.Integer">
+            <column name="C_AUDIT_RESULT" precision="1" scale="0" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="C_NOTE" />
+        </property>
+		<property name="orgName" type="java.lang.String">
+            <column name="C_ORG_NAME" length="200" not-null="true" />
+        </property>
+        <property name="orgOfficeAddress" type="java.lang.String">
+            <column name="C_ORG_OFFICE_ADDRESS" length="200" />
+        </property>
+        <property name="orgOfficePhone" type="java.lang.String">
+            <column name="C_ORG_OFFICE_PHONE" length="400" />
+        </property>
+        <property name="orgOfficePostcode" type="java.lang.String">
+            <column name="C_ORG_OFFICE_POSTCODE" length="40" />
+        </property>
+        <property name="orgMobilePhone" type="java.lang.String">
+            <column name="C_ORG_MOBILE_PHONE" length="400" />
+        </property>
+        <property name="orgEmail" type="java.lang.String">
+            <column name="C_ORG_EMAIL" length="400" />
+        </property>
+        <property name="orgDiscipline" type="java.lang.String">
+            <column name="C_ORG_DISCIPLINE" length="800" />
+        </property>
+        <property name="orgMember" type="java.lang.String">
+            <column name="C_ORG_MEMBER" length="800" />
+        </property>
+        <property name="language" type="java.lang.String">
+            <column name="C_LANGUAGE" length="80" />
+        </property>       
+        <property name="dfs" type="java.lang.String">
+            <column name="C_DFS" length="200" />
+        </property>
+        
+        <many-to-one name="orgPerson" class="csdc.bean.Person" fetch="select">
+            <column name="C_ORG_PERSON_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="form" class="csdc.bean.SystemOption" fetch="select">
+            <column name="C_FORM_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="author" class="csdc.bean.Person" fetch="select">
+            <column name="C_AUTHOR_ID" length="40"/>
+        </many-to-one> 
+        <many-to-one name="university" class="csdc.bean.Agency" fetch="select">
+            <column name="C_UNIVERSITY_ID" length="40"/>
+        </many-to-one>        
+        <many-to-one name="province" class="csdc.bean.SystemOption" fetch="select">
+        	<column name="C_PROVINCE_ID" length="40" />
+        </many-to-one>
+        <property name="provinceName" type="java.lang.String" update="false">
+            <column name="C_PROVINCE_NAME" length="200" />
+        </property>        
+        <many-to-one name="department" class="csdc.bean.Department" fetch="select">
+            <column name="C_DEPARTMENT_ID" length="40"/>
+        </many-to-one>
+        <many-to-one name="institute" class="csdc.bean.Institute" fetch="select">
+            <column name="C_INSTITUTE_ID" length="40"/>
+        </many-to-one>
+        <many-to-one name="auditor" class="csdc.bean.Person" fetch="select">
+            <column name="C_AUDITOR_ID" length="40"/>
+        </many-to-one>
+        <many-to-one name="auditorDept" class="csdc.bean.Department" fetch="select">
+            <column name="C_AUDITOR_DEPT_ID" length="40"/>
+        </many-to-one>
+        <many-to-one name="auditorInst" class="csdc.bean.Institute" fetch="select">
+            <column name="C_AUDITOR_INST_ID" length="40"/>
+        </many-to-one>
+        <many-to-one name="auditorAgency" class="csdc.bean.Agency" fetch="select">
+            <column name="C_AUDITOR_AGENCY_ID" length="40"/>
+        </many-to-one>
+        <set name="awardApplication" inverse="true" cascade="all">
+            <key>
+                <column name="C_PRODUCT_ID" length="40"/>
+            </key>
+            <one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+    </class>
+</hibernate-mapping>

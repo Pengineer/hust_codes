@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="generalVariation" extends="global" namespace="/project/general/variation">
+		<!-- 进入列表 -->
+		<action name="toList" class="generalVariationAction" method="toList">
+			<result>/project/general/variation/list.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="generalVariationAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalVariationAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="generalVariationAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="generalVariationAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="generalVariationAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="generalVariationAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalVariationAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalVariationAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalVariationAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<!-- 进入变更审核弹出层 -->
+		<action name="popAudit" class="generalVariationAction" method="popAudit">
+			<result>/project/general/variation/popAudit.jsp</result>
+		</action>
+		
+		<!-- 项目变更审核 -->
+		<action name="audit" class="generalVariationAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="auditView" class="generalVariationAction" method="auditView">
+			<result>...jsp</result>
+		</action>
+		
+		<action name="toAuditModify" class="generalVariationAction" method="toAuditModify">
+			<result>...jsp</result>
+		</action>
+		
+		<action name="auditModify" class="generalVariationAction" method="auditModify">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddResult" class="generalVariationAction" method="toAddResult">
+		  <result>/project/general/variation/popAddResult.jsp</result>
+		</action>
+		
+		<action name="addResult" class="generalVariationAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAddVarFee" class="generalVariationAction" method="toAddVarFee">
+			<result>/project/general/variation/popAddFee.jsp</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="generalPublicity" extends="global" namespace="/project/general/publicity">
+	
+		<!-- 进入列表 -->
+		<action name="toList" class="generalPublicityAction" method="toList">
+			<result>/project/general/publicity/list.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="generalPublicityAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="generalPublicityAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+			
+		<action name="toView" class="generalPublicityAction" method="toView">
+			<result>/project/general/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="generalPublicityAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="generalPublicityAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="generalPublicityAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="listType">${listType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="generalPublicityAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="generalPublicityAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="generalPublicityAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="delete" class="generalGrantedAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 项目举报 -->
+		<action name="popInform" class="generalPublicityAction" method="popInform">
+			<result>/project/general/publicity/popInform.jsp</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 修改立项状态 -->
+		<action name="updatePublic" class="generalPublicityAction" method="updatePublic">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 添加举报信息 -->
+		<action name="addInform" class="generalPublicityAction" method="addInform">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 确定立项 -->
+		<action name="confirmGrant" class="generalPublicityAction" method="confirmGrant">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 导出公示项目清单 -->
+		<action name="exportPublicityList" class="generalPublicityAction" method="exportPublicityList">
+		</action>
+		
+	</package>
+</struts>

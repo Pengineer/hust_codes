@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="finance" extends="global" namespace="/finance">
+	
+		<action name="toCheck" class="financeAction" method="toCheck">
+			<result>/project/finance/check.jsp</result>
+		</action>
+	
+		<action name="importExcel" class="financeAction" method="importExcel"></action>
+		
+		<action name="generateScore" class="financeAction" method="generateScore"></action>
+		
+		<action name="init" class="financeAction" method="init">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="checkByRate" class="financeAction" method="checkByRate">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="initCheckById" class="financeAction" method="initCheckById">
+			<result>/project/finance/popCheck.jsp</result>
+		</action>
+		
+		<action name="checkById" class="financeAction" method="checkById">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="initCheckZcById" class="financeAction" method="initCheckZcById">
+			<result>/project/finance/popCheckZc.jsp</result>
+		</action>
+		
+		<action name="checkByZcId" class="financeAction" method="checkZcById">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="finish" class="financeAction" method="finish">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+	</package>
+</struts>
+

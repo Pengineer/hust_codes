@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="fixGeneralApplicationUniv070809" class="csdc.tool.execution.fix.FixGeneralApplicationUniv070809">
+		<constructor-arg index="0" value="D:\csdc\20120504备份\一般项目\修正导入\2007年一般项目申报汇总_修正导入.xls" />
+		<constructor-arg index="1" value="D:\csdc\20120504备份\一般项目\修正导入\2008年一般项目申报汇总（各项明细）_修正导入.xls" />
+		<constructor-arg index="2" value="D:\csdc\20120504备份\一般项目\修正导入\2009年一般项目申报数据v2-13646项_修正导入.xls" />
+	</bean>
+	
+	<bean id="fixGeneralEndinspection080910" class="csdc.tool.execution.fix.Fix20121102">
+		<constructor-arg index="0" value="E:\项目\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\一般项目\2.中后期管理数据\2009年一般项目结项原始记录_修正导入.xls" />
+		<constructor-arg index="1" value="E:\项目\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\一般项目\2.中后期管理数据\2010年一般项目结项原始记录_修正导入.xls" /> 
+	</bean>
+
+	<bean id="specialityTitleImporter" class="csdc.tool.execution.importer.SpecialityTitleImporter">
+		<constructor-arg value="D:\csdc\pub\reference\standard\数据代码\GBT8561专业技术职务代码\GBT8561-2001专业技术职务代码.xls" />
+	</bean>
+	
+	<bean id="generalMidInspection2012Importer" class="csdc.tool.execution.importer.GeneralMidInspection2012Importer">
+		<constructor-arg value="E:\项目\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\一般项目\2.中后期管理数据\2012年一般项目中检及拨款情况一览表_修正导入.xls" />
+	</bean>
+	
+	<bean id="instpMidInspection2012Importer" class="csdc.tool.execution.importer.InstpMidInspection2012Importer">
+		<constructor-arg value="E:\项目\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地项目中检（2012年9月30日）及拨款（2012年12月31日）情况一览表 _修正导入.xls" />
+	</bean>
+	
+	<bean id="instpMidInspection2011ImporterNew" class="csdc.tool.execution.importer.InstpMidInspection2011ImporterNew">
+		<constructor-arg value="E:\项目\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2011年基地项目中检及拨款一览表_修正导入.xls" />
+	</bean>
+	
+	<bean id="KeyPostInstpNotEndinspection20130122Importer" class="csdc.tool.execution.importer.KeyPostInstpNotEndinspection20130122Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\评价中心未结项项目名单（截至2013年1月22日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="Fix20130127" class="csdc.tool.execution.fix.Fix20130127">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\国家社会科学规划办\国家社科基金2012年10-12月后期项目结项名单.xls" />
+	</bean>
+	
+	<bean id="Fix20130531" class="csdc.tool.execution.fix.Fix20130531">
+		<constructor-arg value="E:\pub\reference\standard\数据代码\其他数据代码\全国普通高等学校代码\新增高职院校代码（2011年5月24日）.xls" />
+	</bean>
+	
+	<bean id="fix20131125" class="csdc.tool.execution.fix.Fix20131125">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2013\2013中检变更-系统无变更数据.xls" />
+	</bean>
+	
+	<bean id="fixNssf2014" class="csdc.tool.execution.fix.FixNssf2014">
+		<constructor-arg index="0" value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\国家社科基金中华学术外译项目在研名单（截至2014.3.17）_修正导入.xls" />
+		<constructor-arg index="1" value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\国家社科基金后期资助项目在研名单（截至2014.3.12）_修正导入.xls" />
+	</bean>
+	
+	<bean id="fixNssf2015" class="csdc.tool.execution.fix.FixNssf2015">
+		<constructor-arg index="0" value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\国家社科基金年度项目（重点、一般、青年）在研名单（截至2015.3.31）_修正导入.xls" />
+		<constructor-arg index="1" value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\国家社科基金后期资助项目在研名单（截至2015.3.25）_修正导入.xls" />
+		<constructor-arg index="2" value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\国家社科基金重大项目在研名单（截至2015.3.25）_修正导入.xls" />
+	</bean>
+	
+	
+	<bean id="fixChechTotal20150512" class="csdc.tool.execution.fix.FixChechTotal20150512">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2015\2015有效申报19546（不含师岚）.xls" />
+	</bean>
+	
+	<bean id="universityNameChangesImporter" class="csdc.tool.execution.importer.UniversityNameChangesImporter">
+	</bean>
+	
+	<bean id="NssfApplication2014Importer" class="csdc.tool.execution.importer.NssfApplication2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\2014年国家社科基金申报数据（全部）.xls" />
+	</bean>
+	
+	<bean id="nssfApplication2015Importer" class="csdc.tool.execution.importer.NssfApplication2015Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\2015年国家社科基金申报数据（全部）.xls" />
+	</bean>
+	
+	<bean id="NssfApplicationBJ2014Importer" class="csdc.tool.execution.importer.NssfApplicationBJ2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\2014年国家社科基金申报数据（在京部属高校）.xls" />
+	</bean>
+	
+	<bean id="NssfPostApplication2014Importer" class="csdc.tool.execution.importer.NssfPostApplication2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\2014年国家社科基金后期项目申报数据_修正导入.xls" />
+	</bean>
+	
+	<bean id="nssfPostApplication2015Importer" class="csdc.tool.execution.importer.NssfPostApplication2015Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\2015年国家社科基金后期资助项目申报数据_修正导入.xls" />
+	</bean>
+	
+	<bean id="NssfArtGranted2009_2012Importer" class="csdc.tool.execution.importer.NssfArtGranted2009_2012Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\国家社会科学规划办\艺术学\2009-2012年艺术学立项名单.xls" />
+	</bean>
+	
+	<bean id="NssfArtGranted1983_2012Importer" class="csdc.tool.execution.importer.NssfArtGranted1983_2012Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\国家社会科学规划办\艺术学\1983-2012年艺术学项目_修正导入.xls" />
+	</bean>
+	
+	<bean id="NssfArtEndinspection2007_2012Importer" class="csdc.tool.execution.importer.NssfArtEndinspection2007_2012Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\国家社会科学规划办\艺术学\2007-2012年艺术学结项名单.xls" />
+	</bean>
+	
+	<bean id="nssfArtEndinspection2013_2014Importer" class="csdc.tool.execution.importer.NssfArtEndinspection2013_2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\2013-2014年艺术学结项名单_修正导入.xls" />
+	</bean>
+	
+	<bean id="nssfArtOnStudy20150413Importer" class="csdc.tool.execution.importer.NssfArtOnStudy20150413Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\国家社会科学规划办\国家社科基金艺术学在研名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="NssfNespGranted2001_2012Importer" class="csdc.tool.execution.importer.NssfNespGranted2001_2012Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\全国教育科学规划领导小组\全国教育科学规划立项课题2001-2012_修正导入.xls" />
+	</bean>
+	
+	<bean id="NssfNespEndinspection2004_2012Importer" class="csdc.tool.execution.importer.NssfNespEndinspection2004_2012Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\全国教育科学规划领导小组\结项数据\2004-2012全国教育规划立项课题鉴定情况一览表_修正导入.xls" />
+	</bean>
+	
+	<bean id="nssfNespEndinspection2014_2015Importer" class="csdc.tool.execution.importer.NssfNespEndinspection2014_2015Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\全国教育科学规划领导小组\结项数据\2014-2015年全国教育规划立项课题鉴定情况一览表 .xls" />
+	</bean>
+	
+	<bean id="NssfNewEndinspectionImporter" class="csdc.tool.execution.importer.NssfNewEndinspectionImporter">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\其他资料\国家社会科学规划办\国家社科基金2012年1月-2013年1月项目新结项数据（汇总）.xls" />
+	</bean>
+	
+	<bean id="nssfEducationSingle2014Importer" class="csdc.tool.execution.importer.NssfEducationSingle2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\其他资料\全国教育科学规划领导小组\全国教育科学“十二五”规划2014年度课题立项名单.xls" />
+	</bean>
+	
+	<bean id="specialProjectOnStudy20150415Importer" class="csdc.tool.execution.importer.SpecialProjectOnStudy20150415Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20150401_2015年教育部一般项目、基地重大项目、专项任务项目查重范围\教育部人文社会科学专项任务项目在研数据（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="GeneralSpecial20130121Importer" class="csdc.tool.execution.importer.GeneralSpecial20130121Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\一般项目\专项任务项目\2009-2012年教育部人文社会科学专项任务项目\教育部人文社会科学专项任务项目在研数据（截至2013年1月21日）_修正导入.xls" />
+	</bean>
+
+	<bean id="cMIPSACOtherAchieveImporter" class="csdc.tool.execution.importer.CMIPSACOtherAchieveImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="instituteFunding2012Importer" class="csdc.tool.execution.importer.InstituteFunding2012Importer">
+		<constructor-arg index="0" value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地预算拨款一览表\附件1：2012年度教育部人文社会科学重点研究基地预算拨款一览表.xls" />
+		<constructor-arg index="1" value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地预算拨款一览表\附件2：2012年度部省共建人文社会科学重点研究基地预算拨款一览表.xls" />
+		<constructor-arg index="2" value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地预算拨款一览表\附件3：2012年人权基地预算拨款一览表（不公布）.xls" />
+	</bean>
+
+	<bean id="instituteFunding2011Importer" class="csdc.tool.execution.importer.InstituteFunding2011Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2011年度基地拨款一览表.xls" />
+	</bean>
+
+	<bean id="instituteFunding2010Importer" class="csdc.tool.execution.importer.InstituteFunding2010Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2010年基地经费拨款一览表.xls" />
+	</bean>
+
+	<bean id="cMIPSACRecReportImporter" class="csdc.tool.execution.importer.CMIPSACRecReportImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="cMIPSACJournalPaperImporter" class="csdc.tool.execution.importer.CMIPSACJournalPaperImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="cMIPSACForeignPublicationImporter" class="csdc.tool.execution.importer.CMIPSACForeignPublicationImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="instpProjectGranted2012Importer" class="csdc.tool.execution.importer.InstpProjectGranted2012Importer">
+		<constructor-arg index="0" value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地项目立项一览表_修正导入.xls" />
+		<constructor-arg index="1" value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地项目立项一览表（省厅资助项目）_修正导入.xls" />
+	</bean>
+
+	<bean id="instpApplication2012Importer" class="csdc.tool.execution.importer.InstpApplication2012Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\基地项目\2012年基地项目申报一览表（录入）_修正导入.xls" />
+	</bean>
+
+	<bean id="generalProjectGranted2012Importer" class="csdc.tool.execution.importer.GeneralProjectGranted2012Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\一般项目\1.申报立项数据\2012年一般项目申报立项数据\2012年一般项目立项及拨款一览表（新）_修正导入.xls" />
+	</bean>
+	
+	<bean id="generalProjectGranted2013Importer" class="csdc.tool.execution.importer.GeneralProjectGranted2013Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2013\2013年一般项目立项及拨款一览表_修正导入.xls" />
+	</bean>
+	
+	<bean id="generalProjectGranted2014Importer" class="csdc.tool.execution.importer.GeneralProjectGranted2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014\2014年一般项目立项及拨款一览表.xls" />
+	</bean>
+	
+	<bean id="entrustProjectgranted2014Importer" class="csdc.tool.execution.importer.EntrustProjectgranted2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\委托应急课题\2014\2014年专项委托项目立项及拨款一览表.xls" />
+	</bean>
+	
+	<bean id="entrustProjectApplication2014Import" class="csdc.tool.execution.importer.EntrustProjectApplication2014Import">
+		<constructor-arg index="0" value="E:\work\2.sks\1.smdb\20140314_教育部社会科学研究管理平台数据交换职称代码.xls" />
+		<constructor-arg index="1" value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\委托应急课题\2014\2014年专项委托项目立项及拨款一览表.xls" />
+	</bean>
+
+	<bean id="testImporter" class="csdc.tool.execution.importer.TestImporter">
+		<constructor-arg value="d:\Users\Isun\Desktop\Book1.xls" />
+	</bean>
+	
+	<bean id="higherVocationalSchoolImporter" class="csdc.tool.execution.importer.HigherVocationalSchoolImporter">
+		<constructor-arg value="D:\csdc\pub\reference\standard\数据代码\其他数据代码\全国普通高等学校代码\新增高职院校代码（2011年5月24日）.xls" />
+	</bean>
+
+	<bean id="universityContactInfoImporterV2" class="csdc.tool.execution.importer.UniversityContactInfoImporterV2">
+		<constructor-arg index="0" value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科机构\补充发送专家库邮件.xls" />
+		<constructor-arg index="1" value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科机构\20140424学校联系方式.xls" />
+	</bean>
+
+	<bean id="generalProjectApplication2012Importer" class="csdc.tool.execution.importer.GeneralProjectApplication2012Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\1.参考资料\数据资料\社科项目\一般项目\1.申报立项数据\2012年一般项目申报立项数据\2012年一般项目申报一览表_修正导入.xls" />
+	</bean>
+	
+	<bean id="generalProjectApplication2013Importer" class="csdc.tool.execution.importer.GeneralProjectApplication2013Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2013\2013年一般项目申报一览表_修正导入.xls" />
+	</bean>
+
+	<bean id="cMIPSACConferencePaperImporter" class="csdc.tool.execution.importer.CMIPSACConferencePaperImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="cMIPSACBookImporter" class="csdc.tool.execution.importer.CMIPSACBookImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="cMIPSBaseListImporter" class="csdc.tool.execution.importer.CMIPSBaseListImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="fixProductAuthorAndUniversity" class="csdc.tool.execution.fix.FixProductAuthorAndUniversity" />
+
+	<bean id="cMIPSACStudentImporter" class="csdc.tool.execution.importer.CMIPSACStudentImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+
+	<bean id="cMIPSBaseStaffImporter" class="csdc.tool.execution.importer.CMIPSBaseStaffImporter">
+		<constructor-arg ref="cMIPSDao" />
+	</bean>
+	
+	
+	
+	<bean id="instituteNameChangesImporter" class="csdc.tool.execution.importer.InstituteNameChangesImporter">
+	</bean>
+	
+	<bean id="productTypeNormalizingImporter" class="csdc.tool.execution.importer.ProductTypeNormalizingImporter">
+	</bean>
+	
+	<bean id="fixPersonName" class="csdc.tool.execution.fix.FixPersonName">
+		<constructor-arg value="D:\person.xls" />
+	</bean>
+	
+	<bean id="generalProjectApplication2014Importer" class="csdc.tool.execution.importer.GeneralProjectApplication2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20140314_教育部社会科学研究管理平台数据交换职称代码.xls" />
+	</bean>
+	
+	<bean id="instpApplication2014Importer" class="csdc.tool.execution.importer.InstpApplication2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20140314_教育部社会科学研究管理平台数据交换职称代码.xls" />
+	</bean>
+	
+	<bean id="generalSpecialApplication2014Importer" class="csdc.tool.execution.importer.GeneralSpecialApplication2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20140314_教育部社会科学研究管理平台数据交换职称代码.xls" />
+	</bean>
+	
+	<bean id="projectApplicationAudit2014Importer" class="csdc.tool.execution.importer.ProjectApplicationAudit2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\2014年一般项目初审最终结果（社科服务中心提供）_修正导入.xls" />
+	</bean>
+	
+	<bean id="generalEndInspectionFundingImporter" class="csdc.tool.execution.importer.GeneralEndInspectionFundingImporter">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款情况_修正导入.xls" />
+	</bean>
+
+	<bean id="keyMidInspectionFunding2014Importer" class="csdc.tool.execution.importer.KeyMidInspectionFunding2014Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款情况_修正导入.xls" />
+	</bean>
+	
+	<bean id="reportProjectFundingImporter" class="csdc.tool.execution.importer.ReportProjectFundingImporter">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款情况_修正导入.xls" />
+	</bean>
+	
+	
+	<bean id="postProjectApplication2013Importer" class="csdc.tool.execution.importer.PostProjectApplication2013Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\14年后期资助项目申报.xls" />
+	</bean>
+	
+	<bean id="postProjectApplicationAndGranted2014Importer" class="csdc.tool.execution.importer.PostProjectApplicationAndGranted2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20150401_2015年教育部一般项目、基地重大项目、专项任务项目查重范围\评价中心在研项目名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="devrptApplicationOnStudyBefore2015Importer" class="csdc.tool.execution.importer.DevrptApplicationOnStudyBefore2015Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20150401_2015年教育部一般项目、基地重大项目、专项任务项目查重范围\评价中心在研项目名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="instpProjectOnStudy201504Import" class="csdc.tool.execution.importer.InstpProjectOnStudy201504Import">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20150401_2015年教育部一般项目、基地重大项目、专项任务项目查重范围\评价中心在研项目名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="popularBookApplicationOnStudy2015Importer" class="csdc.tool.execution.importer.PopularBookApplicationOnStudy2015Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20150401_2015年教育部一般项目、基地重大项目、专项任务项目查重范围\评价中心在研项目名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="entrustProjectApplicationAndGranted20150409Importer" class="csdc.tool.execution.importer.EntrustProjectApplicationAndGranted20150409Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\委托应急课题\委托项目在研名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="keyInstpOnStudy20150408Importer" class="csdc.tool.execution.importer.KeyInstpOnStudy20150408Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20150401_2015年教育部一般项目、基地重大项目、专项任务项目查重范围\评价中心在研项目名单（截至2015年3月31日）_修正导入.xls" />
+	</bean>
+	
+	<bean id="generalMidInspectionFunding2014Importer" class="csdc.tool.execution.importer.GeneralMidInspectionFunding2014Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款情况_修正导入.xls" />
+	</bean>
+	
+	<bean id="postEndInspectionFunding2014Importer" class="csdc.tool.execution.importer.PostEndInspectionFunding2014Importer">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款情况_修正导入.xls" />
+	</bean>
+	
+	<bean id="reportProjectApplicationAndGrantedImporter" class="csdc.tool.execution.importer.ReportProjectApplicationAndGrantedImporter">
+		<constructor-arg value="D:\csdc\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款情况_修正导入.xls" />
+	</bean>
+		
+	<bean id="entrustProjectApplicationAudit2014Importer" class="csdc.tool.execution.importer.EntrustProjectApplicationAudit2014Importer">
+		<constructor-arg index="0" value="E:\work\2.sks\1.smdb\20140421_2014年一般项目初审最终结果（社科服务中心提供）.xls" />
+		<constructor-arg index="1" value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\委托应急课题\2014\2014年专项委托项目立项及拨款一览表.xls" />
+	</bean>
+	
+	<bean id="projectApplication2014_PublishImporter" class="csdc.tool.execution.importer.ProjectApplication2014_PublishImporter">
+		<constructor-arg value="E:\work\2.sks\1.smdb\20140421_2014年一般项目初审最终结果（社科服务中心提供）.xls" />
+	</bean>	
+		
+	<bean id="projectMidInspectionFinalCheckInfo2014Importer" class="csdc.tool.execution.importer.ProjectMidInspectionFinalCheckInfo2014Importer">
+		<constructor-arg index="0" value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2014\2014年一般项目中检情况一览表.xls" />
+		<constructor-arg index="1" value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\基地项目\2014\2014年基地项目中检情况一览表.xls" />
+	</bean>
+	
+	<bean id="projectVariationImporterAdd" class="csdc.tool.execution.importer.ProjectVariationImporterAdd">
+		<constructor-arg value="E:\work\2.sks\1.smdb\变更遗漏数据_修正导入.xls" />
+	</bean>
+	
+	<bean id="generalProjectApplicationAutoImporter" class="csdc.tool.execution.importer.GeneralProjectApplicationAutoImporter">
+	</bean>
+	
+	<bean id="specialProjectApplicationAutoImporter" class="csdc.tool.execution.importer.SpecialProjectApplicationAutoImporter">
+	</bean>
+	
+	<bean id="instpApplicationAutoImporter" class="csdc.tool.execution.importer.InstpApplicationAutoImporter">
+	</bean>
+	
+	<bean id="universityContactInfoImporterV3" class="csdc.tool.execution.importer.UniversityContactInfoImporterV3">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科机构\高校\20141125_学校联系方式_修正导入.xls" />
+	</bean>
+	
+	<bean id="awardUnivIdeoPoliticTeachingExcellentFunding2014Impoter" class="csdc.tool.execution.importer.AwardUnivIdeoPoliticTeachingExcellentFunding2014Impoter">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="workFeeUnivIdeoPoliticVisitFundingImporter" class="csdc.tool.execution.importer.WorkFeeUnivIdeoPoliticVisitFundingImporter">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="workFee2014Importer" class="csdc.tool.execution.importer.WorkFee2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+
+	<bean id="awardBySpecialIssueFunding2014Importer" class="csdc.tool.execution.importer.AwardBySpecialIssueFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialEndinspectionMarxFunding2014Importer" class="csdc.tool.execution.importer.SpecialEndinspectionMarxFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialEndinspectionEngineerResearchFunding2014Importer" class="csdc.tool.execution.importer.SpecialEndinspectionEngineerResearchFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialEndinspectionEduIncorruptFunding2014Importer" class="csdc.tool.execution.importer.SpecialEndinspectionEduIncorruptFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialPromoteCultureCommunicationFunding2014Importer" class="csdc.tool.execution.importer.SpecialPromoteCultureCommunicationFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialUnivIdeoPoliticKeyAndHardFunding2014Importer" class="csdc.tool.execution.importer.SpecialUnivIdeoPoliticKeyAndHardFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+
+	<bean id="specialEndinspectionEduIncorruptFundingFix2014Importer" class="csdc.tool.execution.importer.SpecialEndinspectionEduIncorruptFundingFix2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialEndinspectionEngineerResearchFundingFix2014Importer" class="csdc.tool.execution.importer.SpecialEndinspectionEngineerResearchFundingFix2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialEndinspectionMarxFundingFix2014Importer" class="csdc.tool.execution.importer.SpecialEndinspectionMarxFundingFix2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialPromoteCultureCommunicationFundingFix2014Importer" class="csdc.tool.execution.importer.SpecialPromoteCultureCommunicationFundingFix2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="specialUnivIdeoPoliticKeyAndHardFundingFix2014Importer" class="csdc.tool.execution.importer.SpecialUnivIdeoPoliticKeyAndHardFundingFix2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+	
+	<bean id="workFeeSupplementFunding2014Importer" class="csdc.tool.execution.importer.WorkFeeSupplementFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金划拨情况明细总表v2_修正导入.xls" />
+	</bean>
+
+	<bean id="agencyFunding2014Importer" class="csdc.tool.execution.importer.AgencyFunding2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款账号（非部属高校）_修正导入.xls" />
+	</bean>
+	
+	<bean id="agencyFundingAccount2014Importer" class="csdc.tool.execution.importer.AgencyFundingAccount2014Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科经费\2014\2014年第二批高等学校哲学社会科学繁荣计划专项资金拨款账号（非部属高校）_修正导入.xls" />
+	</bean>
+	
+	<bean id="addNoteToPublishProject2015Importer" class="csdc.tool.execution.importer.AddNoteToPublishProject2015Importer">
+		<constructor-arg value="E:\work\2.sks\1.smdb\0.参考资料\数据资料\社科项目\一般项目\2015\2015年教育部人文社会科学研究一般项目出版课题申报名单.xls" />
+	</bean>
+	
+
+	<bean id="generalProjectMidInspectionAutoImporter" class="csdc.tool.execution.importer.GeneralProjectMidInspectionAutoImporter">
+	</bean>
+	
+	<bean id="instpMidInspectionAutoImporter" class="csdc.tool.execution.importer.InstpMidInspectionAutoImporter">
+	</bean>
+	
+	<bean id="generalProjectVariationAutoImporter" class="csdc.tool.execution.importer.GeneralProjectVariationAutoImporter">
+	</bean>
+
+	<bean id="instpVariationAutoImporter" class="csdc.tool.execution.importer.InstpVariationAutoImporter">
+	</bean>
+
+	<bean id="allInstituteMerger" class="csdc.tool.execution.AllInstituteMerger" />
+	<bean id="allDepartmentMerger" class="csdc.tool.execution.AllDepartmentMerger" />
+
+	<bean id="customized" class="csdc.tool.execution.Customized" />
+	<bean id="firstAuditGeneralApplication" class="csdc.tool.execution.FirstAuditGeneralApplication">
+		<constructor-arg ref="jdbcDao" />
+	</bean>
+	<bean id="firstAuditSpecialApplication" class="csdc.tool.execution.FirstAuditSpecialApplication">
+		<constructor-arg ref="jdbcDao" />
+	</bean>
+	<bean id="firstAuditInstpApplication" class="csdc.tool.execution.FirstAuditInstpApplication">
+		<constructor-arg ref="jdbcDao" />
+	</bean>
+	<bean id="fileRename" class="csdc.tool.execution.FileRename" />
+	
+	<bean id="importDocToDmss" class="csdc.tool.execution.importer.ImportDocToDmss" />
+	
+	<bean id="fixOldProject" class="csdc.tool.execution.fix.FixOldProject" >
+		<constructor-arg ref="jdbcDao" />
+	</bean>
+</beans>

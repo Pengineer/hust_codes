@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="statisticUniversityReview" extends="global" namespace="/statistic/review/university">
+		<!-- 进入列表 -->
+		<action name="toList" class="universityStatisticAction" method="toList">   
+			<result>/reviewstatic/listUniversity.jsp</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="universityStatisticAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="universityStatisticAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="universityStatisticAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="universityStatisticAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="universityStatisticAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="exportUniversityStatistic" class="universityStatisticAction" method="exportUniversityStatistic"/>
+				
+		<action name="statisticOne" class="universityStatisticAction" method="statisticOne"/>
+		<action name="statisticTwo" class="universityStatisticAction" method="statisticTwo"/>
+		<action name="statisticThree" class="universityStatisticAction" method="statisticThree"/>
+		
+	</package>
+</struts>

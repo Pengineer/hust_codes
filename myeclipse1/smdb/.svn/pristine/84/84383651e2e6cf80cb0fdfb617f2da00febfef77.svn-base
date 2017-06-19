@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="logEmbed" extends="main" namespace="/logEmbed">
+		
+		<action name="list" class="logEmbedAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="logEmbedAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="logEmbedAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="logEmbedAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+
+</struts>

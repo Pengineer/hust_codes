@@ -1,0 +1,42 @@
+@charset "utf-8";
+body {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; background:#FFF;}
+body,ul,li,select,input,form {margin:0px; padding:0px;}
+textarea {border:solid 1px #aaa; background:#FFF;}
+li {list-style:none;}
+img {border:0px;}
+a {color:#6c6c96; text-decoration:none;}
+a:hover {color:#ff6600; text-decoration:underline;}
+hr {margin:0;}
+
+.select {border:solid 1px #aaa; height:20px; background:url(../image/input_bg.gif) repeat-x;}
+.select-sub {border:solid 1px #aaa; height:20px; background:url(../image/input_bg.gif) repeat-x;display:none;margin-top:10px}
+
+.btn1 {cursor:pointer; background:url(../image/btn_bg02.gif) no-repeat; width:58px; height:22px; border:none; color:#444; *padding-top:2px; _padding-top:2px;}
+.btn2 {cursor:pointer; background:url(../image/btn_bg03.gif) no-repeat; width:70px; height:22px; border:none; color:#444; *padding-top:2px; _padding-top:2px;}
+.btn4 {cursor:pointer; width:70px; height:22px; color:#444; *padding-top:2px; _padding-top:2px;}
+.btn3 {margin-left:2px; font-size:8pt; height:20px;}/*上传文件时取消上传按钮*/
+.color1 {color:#e4751b;}/*橙色*/
+.color2 {color:#B15BFF;}/*紫色*/
+
+.choose {width:50%;}
+.choose1 {width:30%; background-color:#f4f4f4;}
+.choose span {margin-left:10px;}
+.disable {color:gray;}
+.pull-right{float:right;}
+.pull-left{float:left;}
+.clear-fix{clear:both;}
+.display-none{display:none;}
+#L_dialog{z-index: 29999; position: fixed; visibility: visible; left: 52%; overflow: hidden; padding: 20px; margin-left: -400px; top: 100px; display: block; }
+.choosebar{display: inline-block; border: 1px solid #FFF; height: 146px; width: 146px; text-align: center; vertical-align: middle; margin-top:62px; margin-bottom:62px }
+.L_close_x{display: inline-block; position: absolute; right: 5px; top: 4px; background: no-repeat; background-image: url("/smdb/image/L_close.png"); background-size: contain; height: 30px; width: 30px; text-indent: -9999px; margin: 2.5px; z-index: 2413;}
+.L_close_x:hover{background-image: url("/smdb/image/L_close_hover.png"); }
+.chosen{border: 1px solid #CCC; border-radius: 73px; -webkit-border-radius: 73px; -moz-border-radius: 73px; -o-border-radius: 73px; cursor: pointer; }
+.choosebar:hover{border: 1px solid #CCC; border-radius: 73px; -webkit-border-radius: 73px; -moz-border-radius: 73px; -o-border-radius: 73px; cursor: pointer; } 
+#L_bg{width: 100%; left: 0px; top: 0px; height: 100%; position: fixed; z-index: 19999; display: block; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.4); }
+.L_choose{height: 272px; width: 700px; background-color: #FFF;border-radius: 10px; position:relative}
+.L_download{height: 230px; width: 700px; background-color: #F9F7F5; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; text-align: center; line-height: 230px; }
+#L_downlaod_link{display: inline-block; height: 50px; padding: 0 30px; color: #555; text-align: center; font-size: 21px; font-weight: 600; line-height: 50px; letter-spacing: .1rem; text-decoration: none; white-space: nowrap; background-color: transparent; border-radius: 4px; border: 1px solid #bbb; cursor: pointer; box-sizing: border-box; }
+#L_downlaod_link:hover{color: #333; border-color: #888; outline: 0; }
+.L_android{margin-left:130px}
+.L_iphone{  position: absolute;right: 0px;margin-right: 130px;}
+/*CSS品质校验http://csslint.net/*/

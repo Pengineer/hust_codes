@@ -1,0 +1,301 @@
+package csdc.bean;
+
+import java.util.Date;
+
+public class AwardApplication {
+	private String id;
+	private String number;
+	private String shelfNumber;
+	private String unitCode;
+	private String group;
+	private String awardType;
+	private String productName;
+	private String productType;
+	private String productLanguage;
+	private String bookType;
+	private String originalLanguage;
+	private String disciplinePrimitive;
+	private String discipline;
+	private String disciplineCode;
+	private String publishUnit;
+	private Date publishDate;
+	private String journalNumber;
+	private int wordNumber;
+	private String applicantName;
+	private String firstAuthor;
+	private String gender;
+	private Date birthday;
+	private String position;
+	private String specialistTitle;
+	private int isUnitLeader;
+	private String idcardType;
+	private String idcardNumber;
+	private String divisionName;
+	private String nationality;
+	private String humanRelationship;
+	private int isFirstAuthor;
+	private String applicationType;
+	private String officePhone;
+	private String homePhone;
+	private String mobilePhone;
+	private String email;
+	private String address;
+	private String authors;
+	private int isPassed;
+	private String note;
+	private int isTracked;
+	private String auditOpinion;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	public String getShelfNumber() {
+		return shelfNumber;
+	}
+	public void setShelfNumber(String shelfNumber) {
+		this.shelfNumber = shelfNumber;
+	}
+	public String getUnitCode() {
+		return unitCode;
+	}
+	public void setUnitCode(String unitCode) {
+		this.unitCode = unitCode;
+	}
+	public String getGroup() {
+		return group;
+	}
+	public void setGroup(String group) {
+		this.group = group;
+	}
+	public String getAwardType() {
+		return awardType;
+	}
+	public void setAwardType(String awardType) {
+		this.awardType = awardType;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	public String getProductLanguage() {
+		return productLanguage;
+	}
+	public void setProductLanguage(String productLanguage) {
+		this.productLanguage = productLanguage;
+	}
+	public String getBookType() {
+		return bookType;
+	}
+	public void setBookType(String bookType) {
+		this.bookType = bookType;
+	}
+	public String getOriginalLanguage() {
+		return originalLanguage;
+	}
+	public void setOriginalLanguage(String originalLanguage) {
+		this.originalLanguage = originalLanguage;
+	}
+	public String getDisciplinePrimitive() {
+		return disciplinePrimitive;
+	}
+	public void setDisciplinePrimitive(String disciplinePrimitive) {
+		this.disciplinePrimitive = disciplinePrimitive;
+	}
+	public String getDiscipline() {
+		return discipline;
+	}
+	public void setDiscipline(String discipline) {
+		this.discipline = discipline;
+	}
+	public String getDisciplineCode() {
+		return disciplineCode;
+	}
+	public void setDisciplineCode(String disciplineCode) {
+		this.disciplineCode = disciplineCode;
+	}
+	public String getPublishUnit() {
+		return publishUnit;
+	}
+	public void setPublishUnit(String publishUnit) {
+		this.publishUnit = publishUnit;
+	}
+	public Date getPublishDate() {
+		return publishDate;
+	}
+	public void setPublishDate(Date publishDate) {
+		this.publishDate = publishDate;
+	}
+	public String getJournalNumber() {
+		return journalNumber;
+	}
+	public void setJournalNumber(String journalNumber) {
+		this.journalNumber = journalNumber;
+	}
+	public int getWordNumber() {
+		return wordNumber;
+	}
+	public void setWordNumber(int wordNumber) {
+		this.wordNumber = wordNumber;
+	}
+	public String getApplicantName() {
+		return applicantName;
+	}
+	public void setApplicantName(String applicantName) {
+		this.applicantName = applicantName;
+	}
+	public String getFirstAuthor() {
+		return firstAuthor;
+	}
+	public void setFirstAuthor(String firstAuthor) {
+		this.firstAuthor = firstAuthor;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public String getSpecialistTitle() {
+		return specialistTitle;
+	}
+	public void setSpecialistTitle(String specialistTitle) {
+		this.specialistTitle = specialistTitle;
+	}
+	public int getIsUnitLeader() {
+		return isUnitLeader;
+	}
+	public void setIsUnitLeader(int isUnitLeader) {
+		this.isUnitLeader = isUnitLeader;
+	}
+	public String getIdcardType() {
+		return idcardType;
+	}
+	public void setIdcardType(String idcardType) {
+		this.idcardType = idcardType;
+	}
+	public String getIdcardNumber() {
+		return idcardNumber;
+	}
+	public void setIdcardNumber(String idcardNumber) {
+		this.idcardNumber = idcardNumber;
+	}
+	public String getDivisionName() {
+		return divisionName;
+	}
+	public void setDivisionName(String divisionName) {
+		this.divisionName = divisionName;
+	}
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+	public String getHumanRelationship() {
+		return humanRelationship;
+	}
+	public void setHumanRelationship(String humanRelationship) {
+		this.humanRelationship = humanRelationship;
+	}
+	public int getIsFirstAuthor() {
+		return isFirstAuthor;
+	}
+	public void setIsFirstAuthor(int isFirstAuthor) {
+		this.isFirstAuthor = isFirstAuthor;
+	}
+	public String getApplicationType() {
+		return applicationType;
+	}
+	public void setApplicationType(String applicationType) {
+		this.applicationType = applicationType;
+	}
+	public String getOfficePhone() {
+		return officePhone;
+	}
+	public void setOfficePhone(String officePhone) {
+		this.officePhone = officePhone;
+	}
+	public String getHomePhone() {
+		return homePhone;
+	}
+	public void setHomePhone(String homePhone) {
+		this.homePhone = homePhone;
+	}
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getAuthors() {
+		return authors;
+	}
+	public void setAuthors(String authors) {
+		this.authors = authors;
+	}
+	public int getIsPassed() {
+		return isPassed;
+	}
+	public void setIsPassed(int isPassed) {
+		this.isPassed = isPassed;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
+	public int getIsTracked() {
+		return isTracked;
+	}
+	public void setIsTracked(int isTracked) {
+		this.isTracked = isTracked;
+	}
+	public String getAuditOpinion() {
+		return auditOpinion;
+	}
+	public void setAuditOpinion(String auditOpinion) {
+		this.auditOpinion = auditOpinion;
+	}
+}

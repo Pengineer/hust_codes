@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>rqd4_form.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+  
+  <body>
+  <form action="/ServletDemo/RequestDemo4" method="post">
+	用户名：<input type="text" name="username"><br/>
+	密码：<input type="password" name="password"><br/>
+	性别：<input type="radio" name="gender" value="male">男
+	      <input type="radio" name="gender" value="female">女<br/>
+	      
+	所在地：<select name="city">
+				<option value="beijing">北京</option>
+				<option value="shanghai">上海</option>
+				<option value="wuhan">武汉</option>
+			</select><br/>
+				
+	爱好：<input type="checkbox" name="likes" value="football">足球
+	      <input type="checkbox" name="likes" value="basketball">篮球
+	      <input type="checkbox" name="likes" value="sing">唱歌<br/>
+	      
+	备注：<textarea cols="60" rows="6" name="description"></textarea><br/>
+	
+	大头照：<input type="file" name="file"><br/>
+	
+	
+	<input type="button" name="button" value="确定"><br/>
+	
+	<input type="hidden" name="id" value="123456"><br/>
+	
+	<input type="reset" name="reset"><br/>
+	
+	<input type="submit" value="提交">
+	         
+  </form>
+  </body>
+</html>

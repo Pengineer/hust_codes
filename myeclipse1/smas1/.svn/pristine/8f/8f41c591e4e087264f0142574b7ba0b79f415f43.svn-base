@@ -1,0 +1,11 @@
+.wd14 {
+	width: 140px;
+	text-align: right;
+	padding-right: 10px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd15 {
+	width: 230px;
+	padding-left: 10px;
+}

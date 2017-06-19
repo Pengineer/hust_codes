@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Asset">
+	<resultMap id="assetResult" type="Asset">
+		<id property="id" column="C_ID" />
+		<result property="name" column="C_NAME" />
+		<result property="price" column="C_PRICE" />
+		<result property="datetime" column="C_DATETIME" />
+		<result property="spec" column="C_SPEC" />
+		<result property="begtime" column="C_BEGTIME" />
+		<result property="assetNumber" column="C_ASSET_NUMBER" />
+		<result property="type" column="C_TYPE" />
+		<result property="status" column="C_STATUS" />
+		<result property="usage" column="C_USAGE" />
+		<association property="rsper" column="C_RSP_ID" javaType="Account" resultMap="rsperResult">
+		</association>
+		<association property="pcher" column="C_PCH_ID" javaType="Account" resultMap="pcherResult">
+		</association>		
+	</resultMap>
+	
+	<resultMap id="rsperResult" type="Account">
+		<id property="id" column="C_RSP_ID" />
+		<result property="email" column="C_EMAIL"/>
+		<result property="password" column="C_PASSWORD"/>
+		<result property="accountType" column="C_ACCOUNT_TYPE"/>
+		<result property="belongId" column="C_BELONG_ID"/>
+	</resultMap>
+	
+	<resultMap id="pcherResult" type="Account">
+		<id property="id" column="C_PCH_ID" />
+		<result property="email" column="C_EMAIL"/>
+		<result property="password" column="C_PASSWORD"/>
+		<result property="accountType" column="C_ACCOUNT_TYPE"/>
+		<result property="belongId" column="C_BELONG_ID"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="Asset" useGeneratedKeys="true"
+		keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"
+			order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_ASSET
+		(C_ID,
+		C_RSP_ID,
+		C_PCH_ID,
+		C_NAME,
+		C_PRICE,
+		C_DATETIME,
+		C_SPEC,
+		C_BEGTIME,
+		C_ASSET_NUMBER,
+		C_TYPE,
+		C_STATUS,
+		C_USAGE
+		)
+		values
+		(
+		#{id,jdbcType=VARCHAR},
+		#{rsper.id,jdbcType=VARCHAR},
+		#{pcher.id,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{price,jdbcType=VARCHAR},
+		#{datetime,jdbcType=VARCHAR},
+		#{spec,jdbcType=VARCHAR},
+		#{begtime,jdbcType=VARCHAR},
+		#{assetNumber,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{usage,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="java.lang.String" >
+		delete  from T_ASSET where C_ID = #{id}
+	</delete>
+		
+	<select id="load" parameterType="string" resultMap="assetResult">
+		select * from t_asset where c_id = #{id}
+	</select>
+	
+	<select id="list" parameterType="map" resultMap="assetResult">
+		SELECT * FROM t_asset
+		<where>
+			<if test="accountId != null">
+				C_RSP_ID = #{accountId}
+			</if>
+			<if test="accountId != null">
+				OR C_PCH_ID = #{accountId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="listByTypeAndAssetNumber" parameterType="map" resultMap="assetResult">
+		SELECT * FROM t_asset
+		<where>
+			<if test="type != null">
+				C_TYPE = #{type} order by C_NAME
+			</if>
+			<if test="assetNumber != null">
+				C_ASSET_NUMBER = #{assetNumber}
+			</if>
+		</where>
+	</select>
+</mapper>

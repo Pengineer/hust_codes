@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Department" table="T_DEPARTMENT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <many-to-one name="linkman" class="csdc.bean.Person" fetch="select">
+            <column name="C_LINKMAN_ID" length="40" />
+        </many-to-one>
+        <many-to-one name="university" class="csdc.bean.Agency" fetch="select">
+            <column name="C_UNIVERSITY_ID" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="director" class="csdc.bean.Person" fetch="select">
+            <column name="C_DIRECTOR_ID" length="40" />
+        </many-to-one>
+        <property name="introduction" type="java.lang.String">
+            <column name="C_INTRODUCTION" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="200" not-null="true" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="C_ADDRESS" length="200" />
+        </property>
+        <property name="postcode" type="java.lang.String">
+            <column name="C_POSTCODE" length="40" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="C_PHONE" length="40" />
+        </property>
+        <property name="fax" type="java.lang.String">
+            <column name="C_FAX" length="40" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="C_EMAIL" length="200" />
+        </property>
+        <property name="homepage" type="java.lang.String">
+            <column name="C_HOMEPAGE" length="100" />
+        </property>
+		<property name="code" type="java.lang.String">
+			<column name="C_CODE" length="40"/>
+		</property>
+        <set name="officer" inverse="true">
+            <key>
+                <column name="C_DEPARTMENT_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.Officer" />
+        </set>
+        <set name="student" inverse="true">
+            <key>
+                <column name="C_DEPARTMENT_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.Student" />
+        </set>
+        <set name="teacher" inverse="true">
+            <key>
+                <column name="C_DEPARTMENT_ID" length="40" />
+            </key>
+            <one-to-many class="csdc.bean.Teacher" />
+        </set>
+        <set name="projectMember" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectMember" />
+        </set>
+        <set name="awardApplicationForDepartment" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+         <set name="awardApplicationForDeptInstAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        <set name="awardApplicationForFinalAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardApplication" />
+        </set>
+        <set name="awardReview" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.AwardReview" />
+        </set>
+        <set name="productForDepartment" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Product" />
+        </set>
+        <set name="projectApplicationForDepartment" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectApplication" />
+        </set>
+        <set name="projectGranted" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectGranted" />
+        </set>
+        <set name="projectEndinspectionReviewForDepartment" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectEndinspectionReview" />
+        </set>
+        <set name="projectVariationForOldDepartment" inverse="true">
+        	<key>
+        		<column name="C_OLD_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="projectVariationForNewDepartment" inverse="true">
+        	<key>
+        		<column name="C_NEW_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="discipline" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Discipline" />
+        </set>
+        <set name="doctoral" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Doctoral" />
+        </set>
+        <set name="productForAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Product" />
+        </set>
+        <set name="projectApplicationForDeptInstAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectApplication" />
+        </set>
+        <set name="projectApplicationForFinalAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectApplication" />
+        </set>
+        <set name="projectMidinspectionForDeptInstAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectMidinspection" />
+        </set>
+        <set name="projectMidinspectionForFinalAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectMidinspection" />
+        </set>
+        <set name="projectEndinspectionForDeptInstAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectEndinspection" />
+        </set>
+        <set name="projectEndinspectionForFinalAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectEndinspection" />
+        </set>
+        <set name="projectVariationForDeptInstAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_DEPT_INST_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="projectVariationForFinalAuditorDept" inverse="true">
+        	<key>
+        		<column name="C_FINAL_AUDITOR_DEPT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectVariation" />
+        </set>
+        <set name="projectData" inverse="true">
+        	<key>
+        		<column name="C_DEPARTMENT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.ProjectData" />
+        </set>
+    </class>
+</hibernate-mapping>

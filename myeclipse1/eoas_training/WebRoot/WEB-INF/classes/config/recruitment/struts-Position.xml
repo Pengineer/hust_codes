@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="position" extends="default" namespace="/position">
+	    <!-- 进入我的职位申请列表 -->
+	    <action name="toMyApplyList" class="positionAction" method="toMyApplyList">
+	        <result>/jsp/recruitment/position/listMyApplyPosition.jsp</result>
+	    </action>
+	    <action name="listMyApplyPosition" class="positionAction" method="listMyApplyPosition">
+			<result type="json" >
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		<!-- 进入我的职位收藏列表 -->
+	    <action name="toMyFavoriteList" class="positionAction" method="toMyFavoriteList">
+	        <result>/jsp/recruitment/position/listMyFavoritePosition.jsp</result>
+	    </action>
+	    <action name="listMyFavoritePosition" class="positionAction" method="listMyFavoritePosition">
+			<result type="json" >
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		<!-- 进入所有职位列表 -->
+		<action name="toList" class="positionAction" method="toList">
+	        <result>/jsp/recruitment/position/list.jsp</result>
+	    </action>
+	    <action name="list" class="positionAction" method="list">
+			<result type="json" >
+				<param name="root">jsonMap</param>
+			</result>
+		</action>
+		<!-- 查看职位详情 -->
+		<action name="view" class="positionAction" method="view">
+			<result>/jsp/recruitment/position/viewPosition.jsp</result>
+		</action>
+		<!-- 进入发布职位职位 -->
+	    <action name="toAddPosition" class="positionAction" method="toAddPosition">
+	        <result>/jsp/recruitment/position/addPosition.jsp</result>
+	    </action>
+	    <!-- 发布职位 -->
+	    <action name="addPosition" class="positionAction" method="addPosition">
+	        <result>/jsp/recruitment/position/list.jsp</result>
+	    </action>
+	    <!-- 删除职位 -->
+	    <action name="delete" class="positionAction" method="delete">
+			<result>/jsp/recruitment/position/list.jsp</result>
+		</action>
+	   <!-- 申请职位 -->
+	    <action name="apply" class="positionAction" method="apply">
+			<result type="json" >
+				<param name="root">jsonMap</param>
+			</result>
+	    </action>
+	    <!-- 收藏职位 -->
+	    <action name="collect" class="positionAction" method="collect">
+			<result name = "success" type="json" ><param name="root">jsonMap</param></result>
+	    </action>
+	    <!-- 取消收藏职位 -->
+	    <action name="cancelCollect" class="positionAction" method="cancelCollect">
+	    
+	    </action>
+	</package>
+</struts>

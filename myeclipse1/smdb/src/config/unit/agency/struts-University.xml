@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="university" extends="main" namespace="/unit/agency/university">
+		
+		<action name="toAdd" class="universityAction" method="toAdd">
+			<result>/unit/agency/university/add.jsp</result>
+		</action>
+		
+		<action name="add" class="universityAction" method="add">
+			<result name="input">/unit/agency/university/add.jsp</result>
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+		</action>
+		
+		<action name="toView" class="universityAction" method="toView">
+			<result>/unit/agency/university/view.jsp</result>
+		</action>
+		
+		<action name="view" class="universityAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="universityAction" method="toModify">
+			<result>/unit/agency/university/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="universityAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="viewFlag">${viewFlag}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/unit/agency/university/modify.jsp</result>
+		</action>
+	
+		<action name="delete" class="universityAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toList" class="universityAction" method="toList">
+			<result>/unit/agency/university/list.jsp</result>
+		</action>
+		
+		<action name="list" class="universityAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="universityAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="universityAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="universityAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="universityAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="universityAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toPage" class="universityAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="universityAction" method="toAdvSearch"> -->
+<!-- 			<result>/unit/agency/university/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="universityAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toMerge" class="universityAction" method="toMerge">
+			<result>/unit/agency/popMergeUniversity.jsp</result>
+			<result name="input">/unit/agency/popMergeUniversity.jsp</result>
+		</action>
+
+		<action name="merge" class="universityAction" method="merge">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+	</package>
+	
+</struts>

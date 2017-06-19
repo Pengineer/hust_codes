@@ -1,0 +1,34 @@
+@charset "UTF-8";
+/**************************************************************************
+ * file name：print.css
+ *
+ * description：
+ *     Used for print module definition of page style.
+ *
+ * history：
+ * 2011-11-25  fengcl：create.
+ *************************************************************************/
+
+/****************************************************************
+ * Set spacing of P tags and Print paging.
+ ***************************************************************/
+
+/*Set ling-height and modify paragraph spacing*/
+p {
+	margin: 0;
+	padding: 0;
+	line-height: 30px;
+}
+
+.A4 {
+	width:210mm; 
+	height:297mm;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body {text-align:center;}
+div.wrap {text-align:left;} 
+
+/*page-break-after*/
+@media print{div .content {page-break-after:always;}}

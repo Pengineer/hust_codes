@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="csdc.bean.SinossProjectApplication" table="T_SINOSS_PROJECT_APPLICATION">
+		<id name="id" type="java.lang.String">
+			<column name="C_ID" length="40" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="sinossId" type="java.lang.String">
+			<column name="C_SINOSS_ID" />
+		</property>		
+		<property name="projectName" type="java.lang.String">
+			<column name="C_PROJECT_NAME" />
+		</property>
+		<property name="projectJDId" type="java.lang.String">
+			<column name="C_PROJECTJD_ID" />
+		</property>
+		<property name="projectJDName" type="java.lang.String">
+			<column name="C_PROJECTJD_NAME" />
+		</property>
+		<property name="unitCode" type="java.lang.String">
+			<column name="C_UNITCODE" />
+		</property>
+		<property name="unitName" type="java.lang.String">
+			<column name="C_UNITNAME" />
+		</property>
+		<property name="typeCode" type="java.lang.String">
+			<column name="C_TYPE_CODE" />
+		</property>
+		<property name="projectType" type="java.lang.String">
+			<column name="C_PROJECT_TYPE" />
+		</property>
+		<property name="batchId" type="java.lang.String">
+			<column name="C_BATCH_ID" />
+		</property>
+		<property name="year" type="java.lang.String">
+			<column name="C_YEAR" />
+		</property>
+		<property name="batchName" type="java.lang.String">
+			<column name="C_BATCH_NAME" />
+		</property>
+		<property name="beginDate" type="java.util.Date">
+			<column name="C_BEGIN_DATE" />
+		</property>
+		<property name="endDate" type="java.util.Date">
+			<column name="C_END_DATE" />
+		</property>
+		<property name="applyDate" type="java.util.Date">
+			<column name="C_APPLY_DATE" />
+		</property>
+		<property name="planFinishDate" type="java.util.Date">
+			<column name="C_PLANFINISH_DATE" />
+		</property>
+		<property name="subject" type="java.lang.String">
+			<column name="C_SUBJECT" />
+		</property>
+		<property name="subject1_1" type="java.lang.String">
+			<column name="C_SUBJECT1_1" />
+		</property>
+		<property name="subject1_2" type="java.lang.String">
+			<column name="C_SUBJECT1_2" />
+		</property>
+		<property name="researchDirection" type="java.lang.String">
+			<column name="C_RESEARCH_DIRECTION" />
+		</property>
+		<property name="researchType" type="java.lang.String">
+			<column name="C_RESEARCH_TYPE" />
+		</property>
+		<property name="lastProductMode" type="java.lang.String">
+			<column name="C_LAST_PRODUCT_MODE" />
+		</property>
+		<property name="words" type="java.lang.String">
+			<column name="C_WORDS" />
+		</property>
+		<property name="applyTotleFee" type="java.lang.String">
+			<column name="C_APPLY_TOTAL_FEE" />
+		</property>
+		<property name="otherFeeSource" type="java.lang.String">
+			<column name="C_OTHER_FEE_SOURCE" />
+		</property>
+		<property name="applyDocName" type="java.lang.String">
+			<column name="C_APPLY_DOCNAME" />
+		</property>
+		<property name="attachmentName" type="java.lang.String">
+			<column name="C_ATTACHMENT_NAME" />
+		</property>
+		<property name="applyer" type="java.lang.String">
+			<column name="C_APPLYER" />
+		</property>
+		<property name="gender" type="java.lang.String">
+			<column name="C_GENDER" />
+		</property>
+		<property name="birthday" type="java.util.Date">
+			<column name="C_BIRTHDAY" />
+		</property>
+		<property name="idCardNo" type="java.lang.String">
+			<column name="C_IDCARDNO" />
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="C_TITLE" />
+		</property>
+		<property name="division" type="java.lang.String">
+			<column name="C_DIVISION" />
+		</property>
+		<property name="duty" type="java.lang.String">
+			<column name="C_DUTY" />
+		</property>
+		<property name="eduLevel" type="java.lang.String">
+			<column name="C_EDULEVEL" />
+		</property>
+		<property name="eduDegree" type="java.lang.String">
+			<column name="C_EDUDEGREE" />
+		</property>
+		<property name="language" type="java.lang.String">
+			<column name="C_LANGUAGE" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="C_EMAIL" />
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="C_ADDRESS" />
+		</property>
+		<property name="postalCode" type="java.lang.String">
+			<column name="C_POSTAL_CODE" />
+		</property>
+		<property name="telOffice" type="java.lang.String">
+			<column name="C_TEL_OFFICE" />
+		</property>
+		<property name="tel" type="java.lang.String">
+			<column name="C_TEL" />
+		</property>
+		<property name="checkStatus" type="java.lang.String">
+            <column name="C_CHECK_STATUS" />
+        </property>
+		<property name="checkDate" type="java.util.Date">
+			<column name="C_CHECK_DATE" />
+		</property>
+		<property name="checker" type="java.lang.String">
+			<column name="C_CHECKER" />
+		</property>
+		<property name="dumpDate" type="java.util.Date">
+			<column name="C_DUMP_DATE" />
+		</property>
+		<property name="dumpPerson" type="java.lang.String">
+			<column name="C_DUMP_PERSON" />
+		</property>
+		<property name="from" type="java.lang.String">
+			<column name="C_FROM" />
+		</property>	
+		<property name="subType" type="java.lang.String">
+			<column name="C_PROJECT_SUBTYPE" />
+		</property>	
+		<property name="firstAuditResult" type="java.lang.String">
+			<column name="c_first_audit_result" />
+		</property>
+		<property name="firstAuditDate" type="java.util.Date">
+			<column name="c_first_audit_date" />
+		</property>
+		<many-to-one name="projectApplication" class="csdc.bean.ProjectApplication" fetch="join">
+            <column name="C_PROJECT_ID"/>
+        </many-to-one>
+        <many-to-one name ="projectGranted" class="csdc.bean.ProjectGranted" fetch="join">
+        	<column name="C_GRANTED_ID"/>
+        </many-to-one>
+	</class>
+
+</hibernate-mapping>

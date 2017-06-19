@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="messageSupportUnit" extends="main" namespace="/auxiliary/unit">
+
+		<action name="toUnitQuery" class="messageAuxiliaryUnitAction" method="toUnitQuery">
+	    	<result>/auxiliary/comprehensiveAuxiliary/unit/unit.jsp</result>
+	    </action>
+	    
+	    <action name="unitQuery" class="messageAuxiliaryUnitAction" method="unitQuery">
+ 	    	<result type="json"><param name="root">jsonMap</param></result> 
+	    </action>
+	    
+	    <action name="getData" class="messageAuxiliaryUnitAction" method="getData">
+	    </action>
+	    
+	</package>
+</struts>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <display-name></display-name>
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>edu.hust.ajax.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>XmlFileServlet</servlet-name>
+    <servlet-class>edu.hust.ajax.XmlFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>JsonServlet</servlet-name>
+    <servlet-class>edu.whut.json.JsonServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>JsonServlet1</servlet-name>
+    <servlet-class>edu.whut.json.JsonServlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>JsonServlet2</servlet-name>
+    <servlet-class>edu.whut.json.JsonServlet2</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>XmlFileServlet</servlet-name>
+    <url-pattern>/XmlFileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JsonServlet</servlet-name>
+    <url-pattern>/JsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JsonServlet1</servlet-name>
+    <url-pattern>/JsonServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>JsonServlet2</servlet-name>
+    <url-pattern>/JsonServlet2</url-pattern>
+  </servlet-mapping>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

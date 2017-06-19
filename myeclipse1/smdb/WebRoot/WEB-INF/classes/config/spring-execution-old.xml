@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+	<context:component-scan base-package="csdc.tool" />
+	
+	<bean id="fix20120307" class="csdc.tool.execution.fix.Fix20120307">
+		<constructor-arg value="D:\csdc\[修改]专家表.xls" />
+	</bean>
+
+	<bean id="fix20120229" class="csdc.tool.execution.fix.Fix20120229" />
+
+	<bean id="fix20120228" class="csdc.tool.execution.fix.Fix20120228">
+		<constructor-arg value="D:\csdc\基地一览表\20111108_基地一览表（总表）_修正导入.xls" />
+	</bean>
+
+	<bean id="fix20120227" class="csdc.tool.execution.fix.Fix20120227" />
+
+	<bean id="fix20120222" class="csdc.tool.execution.fix.Fix20120222" />
+
+	<bean id="addOtherInstitute" class="csdc.tool.execution.AddOtherInstitute" />
+
+	<bean id="generalWithdraw2005_2006Importer" class="csdc.tool.execution.importer.GeneralWithdraw2005_2006Importer">
+		<constructor-arg value="D:\csdc\一般项目\2.中后期管理数据\2005-2006年一般项目撤项情况一览表_修正导入.xls" />
+	</bean>
+
+	<bean id="instpVariation2011Importer" class="csdc.tool.execution.importer.InstpVariation2011Importer">
+		<constructor-arg value="D:\csdc\基地项目\修正导入\2011年基地项目变更情况_修正导入.xls" />
+	</bean>
+
+	<bean id="fix20120215" class="csdc.tool.execution.fix.Fix20120215" />
+
+	<bean id="addAcronym" class="csdc.tool.execution.AddAcronym" />
+
+	<bean id="instpMidInspection2011Importer" class="csdc.tool.execution.importer.InstpMidInspection2011Importer">
+		<constructor-arg value="D:\csdc\基地项目\修正导入\2011年基地项目中检情况_修正导入.xls" />
+	</bean>
+
+	<bean id="generalVariation2011Importer" class="csdc.tool.execution.importer.GeneralVariation2011Importer">
+		<constructor-arg value="D:\csdc\一般项目\2.中后期管理数据\2011年一般项目变更情况_修正导入.xls" />
+	</bean>
+
+	<bean id="postGranted2006_2011Importer" class="csdc.tool.execution.importer.PostGranted2006_2011Importer">
+		<constructor-arg value="D:\csdc\后期资助项目\修正导入\2006-2011年后期资助项目立项及鉴定一览表_修正导入.xls" />
+	</bean>
+	
+	<bean id="postProjectApplication2010_2011Importer" class="csdc.tool.execution.importer.PostProjectApplication2010_2011Importer">
+		<constructor-arg value="D:\csdc\后期资助项目\修正导入\2010-2011年后期资助项目申报一览表_修正导入.xls" />
+	</bean>
+
+	<bean id="instpProject1999_2009Importer" class="csdc.tool.execution.importer.InstpProject1999_2009Importer">
+		<constructor-arg value="D:\csdc\基地项目\修正导入\1999-2009年基地项目一览表（工作表）_修正导入.xls" />
+	</bean>
+
+	<bean id="fix20120207" class="csdc.tool.execution.fix.Fix20120207" />
+	<bean id="fix20120112" class="csdc.tool.execution.fix.Fix20120112" />
+
+	<bean id="generalSubtypeApprovedfeeFundingImporter" class="csdc.tool.execution.importer.GeneralSubtypeApprovedfeeFundingImporter">
+		<constructor-arg value="D:\csdc\一般项目\2005-2010一般项目项目子类_批准经费_拨款信息_增补导入.xls" />
+	</bean>
+
+	<bean id="fixDepartmentField" class="csdc.tool.execution.fix.FixDepartmentField" />
+
+	<bean id="generalMidInspection2011Importer" class="csdc.tool.execution.importer.GeneralMidInspection2011Importer">
+		<constructor-arg value="D:\csdc\一般项目\2.中后期管理数据\2011年一般项目中检情况_修正导入.xls" />
+	</bean>
+
+	<bean id="fixDepartmentName" class="csdc.tool.execution.fix.FixDepartmentName" />
+
+	<bean id="instpGrantedImporter" class="csdc.tool.execution.importer.InstpGrantedImporter">
+		<constructor-arg value="D:\csdc\基地项目\修正导入\1999-2011年基地项目立项数据_修正导入.xls" />
+	</bean>
+
+	<bean id="instpApplicationImporter" class="csdc.tool.execution.importer.InstpApplicationImporter">
+		<constructor-arg value="D:\csdc\基地项目\修正导入\2006-2011年基地项目申报数据_修正导入.xls" />
+	</bean>
+
+	<bean id="ministryInstituteImporter" class="csdc.tool.execution.importer.MinistryInstituteImporter">
+		<constructor-arg value="D:\csdc\基地一览表\20111108_基地一览表（总表）_修正导入.xls" />
+	</bean>
+	
+	<bean id="fixGeneralMember" class="csdc.tool.execution.fix.FixGeneralMember" />
+	
+	<bean id="fixProduct" class="csdc.tool.execution.fix.FixProduct" scope="prototype" />
+	
+	<bean id="fixFinalAuditResultDetail" class="csdc.tool.execution.fix.FixFinalAuditResultDetail" scope="prototype" />
+	
+	
+</beans>

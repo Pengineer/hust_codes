@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="institute" location="675,10" size="2380,840">
+    <action name="toAdd" location="2165,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="2165,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="1920,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="1675,162" size="150,41">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModify" location="1430,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="1430,362" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="delete" location="1185,362" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="createDisciplineTree" location="1185,268" size="150,40" />
+    <action name="search" location="940,267" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="search.jsp" />
+      </result>
+    </action>
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="695,757" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="65,747" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="sort" location="65,642" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="prev" location="310,642" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="555,642" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="310,432" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="65,442" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="65,337" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="export" location="0,0" size="0,0" />
+    <action name="toMerge" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popMergeInstitute.jsp" />
+      </result>
+    </action>
+    <action name="merge" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/unit/institute/add.jsp" location="2830,1045" size="150,55" />
+  <webResource name="view.jsp" path="/unit/institute/view.jsp" location="2582,905" size="150,55" />
+  <webResource name="modify.jsp" path="/unit/institute/modify.jsp" location="56,135" size="150,55" />
+  <webResource name="search.jsp" path="/unit/institute/search.jsp" location="1596,905" size="150,55" />
+  <webResource name="list.jsp" path="/unit/institute/list.jsp" location="307,240" size="150,55" />
+  <webResource name="advSearch.jsp" path="/unit/institute/advSearch.jsp" location="432,415" size="150,55" />
+  <webResource name="popMergeInstitute.jsp" path="/unit/institute/popMergeInstitute.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

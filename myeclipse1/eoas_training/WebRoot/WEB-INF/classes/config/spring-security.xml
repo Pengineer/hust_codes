@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	<http pattern="/~*" security="none" />
+	<http pattern="/index.jsp" security="none" />
+ 	<http pattern="/css/**" security="none"/>
+	<http pattern="/image/**" security="none"/>
+	<http pattern="/javascript/**" security="none"/>
+	<http pattern="/swfupload/**" security="none"/>
+	<http pattern="/tool/**" security="none"/>
+	<http pattern="/struts/**" security="none"/>
+	<http pattern="/upload/**" security="none"/>
+	<http pattern="/style/**" security="none" />
+	
+	<http pattern="/dwr/interface/expertService.js" security="none"/>
+	<http pattern="/dwr/util.js" security="none"/>
+	<http pattern="/dwr/call/plaincall/expertService.getDispIdCodeNameByCodeName.dwr" security="none"/>
+	<http pattern="/dwr/call/plaincall/expertService.getDispIdCodeNameById.dwr" security="none"/>
+	<http auto-config="true" use-expressions="true" access-denied-page="/jsp/403.jsp" >
+
+		<intercept-url pattern="/jsp/**" access="permitAll"/>
+		
+		<intercept-url pattern="/oa/oaLogin.action" access="permitAll"/>
+		<intercept-url pattern="/account/toIndex.action" access="permitAll"/>
+		<intercept-url pattern="/oa/loginUI.action" access="permitAll"/>
+
+		<intercept-url pattern="/account/dologin.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/toRegister.action" access="permitAll"/>
+		<intercept-url pattern="/account/register.action" access="permitAll"/>
+		<intercept-url pattern="/account/toAdd.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/add.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/toModifyPassword.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/modify.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/toModify.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/delete.action" access="isAuthenticated()  and hasAnyRole('ROLE_ACCOUNT_DEL')"/>
+		<intercept-url pattern="/account/rand.action" access="permitAll"/>
+		<intercept-url pattern="/account/toList.action" access="isAuthenticated() and hasAnyRole('ROLE_ACCOUNT_VIEW')"/>
+		<intercept-url pattern="/account/list.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/account/view.action" access="isAuthenticated() and hasAnyRole('ROLE_ACCOUNT_VIEW')"/>
+		
+		<intercept-url pattern="/workflow/toList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/list.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/toRunningList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/runningList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/toFinishedList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/finishedList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/deploy.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/delete.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/view.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/workflow/todoList.action" access="permitAll"/>
+		<intercept-url pattern="/workflow/trace.action" access="permitAll"/>
+
+		<intercept-url pattern="/role/createRightTree.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/role/viewAccountRole.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/role/accountRole.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/role/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/role/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/role/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_ROLE_ADD')" />
+		<intercept-url pattern="/role/add.action" access="isAuthenticated() and hasAnyRole('ROLE_ROLE_ADD')" />
+		<intercept-url pattern="/role/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_ROLE_MODIFY')" />
+		<intercept-url pattern="/role/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_ROLE_MODIFY')" />
+		<intercept-url pattern="/role/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_ROLE_DEL')" />
+		<intercept-url pattern="/role/view.action" access="isAuthenticated() and hasAnyRole('ROLE_ROLE_VIEW')" />
+
+		<intercept-url pattern="/right/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/right/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/right/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_RIGHT_ADD')" />
+		<intercept-url pattern="/right/add.action" access="isAuthenticated() and hasAnyRole('ROLE_RIGHT_ADD')" />
+		<intercept-url pattern="/right/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_RIGHT_MODIFY')" />
+		<intercept-url pattern="/right/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_RIGHT_MODIFY')" />
+		<intercept-url pattern="/right/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_RIGHT_DEL')" />
+		<intercept-url pattern="/right/view.action" access="isAuthenticated() and hasAnyRole('ROLE_RIGHT_VIEW')" />
+		
+		<intercept-url pattern="/mail/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/mail/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/mail/createMail.action" access="isAuthenticated()" />
+		<intercept-url pattern="/mail/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_MAIL_ADD')" />
+		<intercept-url pattern="/mail/add.action" access="isAuthenticated() and hasAnyRole('ROLE_MAIL_ADD')" />
+		<intercept-url pattern="/mail/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_MAIL_MODIFY')" />
+		<intercept-url pattern="/mail/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_MAIL_MODIFY')" />
+		<intercept-url pattern="/mail/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_MAIL_DEL')" />
+		<intercept-url pattern="/mail/view.action" access="isAuthenticated() and hasAnyRole('ROLE_MAIL_VIEW')" />
+		
+		<intercept-url pattern="/article/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/add.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/modify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/delete.action" access="isAuthenticated()" />
+		<intercept-url pattern="/article/view.action" access="isAuthenticated()" />
+		
+		<intercept-url pattern="/notice/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/notice/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/notice/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_NOTICE_ADD')" />
+		<intercept-url pattern="/notice/add.action" access="isAuthenticated() and hasAnyRole('ROLE_NOTICE_ADD')" />
+		<intercept-url pattern="/notice/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_NOTICE_MODIFY')" />
+		<intercept-url pattern="/notice/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_NOTICE_MODIFY')" />
+		<intercept-url pattern="/notice/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_NOTICE_DEL')" />
+		<intercept-url pattern="/notice/view.action" access="isAuthenticated() and hasAnyRole('ROLE_NOTICE_VIEW')" />
+
+		<intercept-url pattern="/department/createDepartmentTree.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/department/toView.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/department/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/department/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/department/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_DEPARTMENT_ADD')" />
+		<intercept-url pattern="/department/add.action" access="isAuthenticated() and hasAnyRole('ROLE_DEPARTMENT_ADD')" />
+		<intercept-url pattern="/department/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_DEPARTMENT_MODIFY')" />
+		<intercept-url pattern="/department/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_DEPARTMENT_MODIFY')" />
+		<intercept-url pattern="/department/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_DEPARTMENT_DEL')" />
+		<intercept-url pattern="/department/view.action" access="isAuthenticated() and hasAnyRole('ROLE_DEPARTMENT_VIEW')" />
+		
+		<intercept-url pattern="/expert/toSelectDiscipline.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/expert/createDisciplineTree.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/expert/toView.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/expert/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/expert/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/expert/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_EXPERT_ADD')" />
+		<intercept-url pattern="/expert/add.action" access="isAuthenticated() and hasAnyRole('ROLE_EXPERT_ADD')" />
+		<intercept-url pattern="/expert/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_EXPERT_MODIFY')" />
+		<intercept-url pattern="/expert/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_EXPERT_MODIFY')" />
+		<intercept-url pattern="/expert/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_EXPERT_DEL')" />
+		<intercept-url pattern="/expert/view.action" access="isAuthenticated() and hasAnyRole('ROLE_EXPERT_VIEW')" />
+		
+		<intercept-url pattern="/person/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/person/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/person/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_PERSON_ADD')" />
+		<intercept-url pattern="/person/add.action" access="isAuthenticated() and hasAnyRole('ROLE_PERSON_ADD')" />
+		<intercept-url pattern="/person/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_PERSON_MODIFY')" />
+		<intercept-url pattern="/person/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_PERSON_MODIFY')" />
+		<intercept-url pattern="/person/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_PERSON_DEL')" />
+		<intercept-url pattern="/person/view.action" access="isAuthenticated() and hasAnyRole('ROLE_PERSON_VIEW')" />
+		
+		<intercept-url pattern="/asset/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/asset/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/asset/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSET_ADD')" />
+		<intercept-url pattern="/asset/add.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSET_ADD')" />
+		<intercept-url pattern="/asset/toModify.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSET_MODIFY')" />
+		<intercept-url pattern="/asset/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSET_MODIFY')" />
+		<intercept-url pattern="/asset/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSET_DEL')" />
+		<intercept-url pattern="/asset/view.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSET_VIEW')" />
+		
+		<intercept-url pattern="/attendance/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/attendance/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/attendance/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/attendance/add.action" access="isAuthenticated() and hasAnyRole('ROLE_ATTENDANCE_ADD')" />
+		<intercept-url pattern="/attendance/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/attendance/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_ATTENDANCE_MODIFY')" />
+		<intercept-url pattern="/attendance/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_ATTENDANCE_DEL')" />
+		<intercept-url pattern="/attendance/view.action" access="isAuthenticated() and hasAnyRole('ROLE_ATTENDANCE_VIEW')" />
+		<intercept-url pattern="/attendance/toAudit.action" access="isAuthenticated() and hasAnyRole('ROLE_ATTENDANCE_AUDIT')" />
+		<intercept-url pattern="/attendance/audit.action" access="isAuthenticated() and hasAnyRole('ROLE_ATTENDANCE_AUDIT')" />
+		
+		<intercept-url pattern="/assess/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/assess/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/assess/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/assess/add.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSESS_ADD')" />
+		<intercept-url pattern="/assess/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/assess/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSESS_MODIFY')" />
+		<intercept-url pattern="/assess/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSESS_DEL')" />
+		<intercept-url pattern="/assess/view.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSESS_VIEW')" />
+		<intercept-url pattern="/assess/toAudit.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSESS_AUDIT')" />
+		<intercept-url pattern="/assess/audit.action" access="isAuthenticated() and hasAnyRole('ROLE_ASSESS_AUDIT')" />
+		
+		<intercept-url pattern="/salary/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/salary/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/salary/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/salary/add.action" access="isAuthenticated() and hasAnyRole('ROLE_SALARY_ADD')" />
+		<intercept-url pattern="/salary/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/salary/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_SALARY_MODIFY')" />
+		<intercept-url pattern="/salary/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_SALARY_DEL')" />
+		<intercept-url pattern="/salary/view.action" access="isAuthenticated() and hasAnyRole('ROLE_SALARY_VIEW')" />
+		<intercept-url pattern="/salary/toAudit.action" access="isAuthenticated() and hasAnyRole('ROLE_SALARY_AUDIT')" />
+		<intercept-url pattern="/salary/audit.action" access="isAuthenticated() and hasAnyRole('ROLE_SALARY_AUDIT')" />
+
+		<intercept-url pattern="/document/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/document/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/document/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/document/add.action" access="isAuthenticated() and hasAnyRole('ROLE_DOCUMENT_ADD')" />
+		<intercept-url pattern="/document/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/document/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_DOCUMENT_MODIFY')" />
+		<intercept-url pattern="/document/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_DOCUMENT_DEL')" />
+		<intercept-url pattern="/document/view.action" access="isAuthenticated() and hasAnyRole('ROLE_DOCUMENT_VIEW')" />
+		<intercept-url pattern="/document/toAudit.action" access="isAuthenticated() and hasAnyRole('ROLE_DOCUMENT_AUDIT')" />
+		<intercept-url pattern="/document/audit.action" access="isAuthenticated() and hasAnyRole('ROLE_DOCUMENT_AUDIT')" />
+		
+		<intercept-url pattern="/customer/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/customer/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/customer/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/customer/add.action" access="isAuthenticated() and hasAnyRole('ROLE_CUSTOMER_ADD')" />
+		<intercept-url pattern="/customer/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/customer/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_CUSTOMER_MODIFY')" />
+		<intercept-url pattern="/customer/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_CUSTOMER_DEL')" />
+		<intercept-url pattern="/customer/view.action" access="isAuthenticated() and hasAnyRole('ROLE_CUSTOMER_VIEW')" />		
+		
+		<intercept-url pattern="/solution/toList.action" access="isAuthenticated()" />
+		<intercept-url pattern="/solution/list.action" access="isAuthenticated()" />
+		<intercept-url pattern="/solution/toAdd.action" access="isAuthenticated()" />
+		<intercept-url pattern="/solution/add.action" access="isAuthenticated() and hasAnyRole('ROLE_SOLUTION_ADD')" />
+		<intercept-url pattern="/solution/toModify.action" access="isAuthenticated()" />
+		<intercept-url pattern="/solution/modify.action" access="isAuthenticated() and hasAnyRole('ROLE_SOLUTION_MODIFY')" />
+		<intercept-url pattern="/solution/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_SOLUTION_DEL')" />
+		<intercept-url pattern="/solution/view.action" access="isAuthenticated() and hasAnyRole('ROLE_SOLUTION_VIEW')" />
+
+		<intercept-url pattern="/resume/toAddResume.action" access="isAuthenticated() and hasAnyRole('ROLE_RESUME_ADD')"/>
+		<intercept-url pattern="/resume/addResume.action" access="isAuthenticated() and hasAnyRole('ROLE_RESUME_ADD')"/>
+		<intercept-url pattern="/resume/deleteResume.action" access="isAuthenticated() and hasAnyRole('ROLE_RESUME_DEL')"/>
+		<intercept-url pattern="/resume/toModifyResume.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/modifyResume.action" access="isAuthenticated() and hasAnyRole('ROLE_RESUME_MODIFY')"/>
+		<intercept-url pattern="/resume/view.action" access="isAuthenticated() and hasAnyRole('ROLE_RESUME_VIEW')"/>
+		<intercept-url pattern="/resume/toListMyResume.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/listMyResume.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/toList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/list.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/toListInnerTalent.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/listInnerTalent.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/listOuterTalent.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/resume/addTalent.action" access="isAuthenticated()"/>
+
+		<intercept-url pattern="/position/toMyApplyList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/listMyApplyPosition.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/toMyFavoriteList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/listMyFavoritePosition.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/toList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/list.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/view.action" access="isAuthenticated() and hasAnyRole('ROLE_POSITION_VIEW')"/>
+		<intercept-url pattern="/position/toAddPosition.action" access="isAuthenticated() and hasAnyRole('ROLE_POSITION_ADD')"/>
+		<intercept-url pattern="/position/addPosition.action" access="isAuthenticated() and hasAnyRole('ROLE_POSITION_ADD')"/>
+		<intercept-url pattern="/position/delete.action" access="isAuthenticated() and hasAnyRole('ROLE_POSITION_DEL')"/>
+		<intercept-url pattern="/position/apply.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/position/collect.action" access="isAuthenticated()"/>
+		
+		<intercept-url pattern="/positionResume/toAllApplyList.action" access="permitAll"/>
+		<intercept-url pattern="/positionResume/listAllApply.action" access="permitAll"/>
+		<intercept-url pattern="/positionResume/toAllFavoriteList.action" access="permitAll"/>
+		<intercept-url pattern="/positionResume/listAllFavorite.action" access="permitAll"/>
+		
+		<intercept-url pattern="/project/toList.action" access="permitAll"/>
+		<intercept-url pattern="/project/list.action" access="permitAll"/>
+		<intercept-url pattern="/project/toTaskList.action" access="permitAll"/>
+		<intercept-url pattern="/project/taskList.action" access="permitAll"/>
+		<intercept-url pattern="/project/toApply.action" access="permitAll"/>
+		<intercept-url pattern="/project/apply.action" access="permitAll"/>
+		<intercept-url pattern="/project/claim.action" access="permitAll"/>
+		<intercept-url pattern="/project/view.action" access="permitAll"/>
+		<intercept-url pattern="/project/load.action" access="permitAll"/>
+		<intercept-url pattern="/project/confirm.action" access="permitAll"/>
+		<intercept-url pattern="/project/refuse.action" access="permitAll"/>
+		<intercept-url pattern="/project/complete.action" access="permitAll"/>
+		
+		
+		<intercept-url pattern="/record/toList.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/record/list.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/record/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_RECORD_ADD')"/>
+		<intercept-url pattern="/record/add.action" access="isAuthenticated() and hasAnyRole('ROLE_RECORD_ADD')"/>
+		<intercept-url pattern="/record/view.action" access="isAuthenticated() and hasAnyRole('ROLE_RECORD_VIEW')"/>
+		
+
+		<intercept-url pattern="/systemOption/toAdd.action" access="isAuthenticated() and hasAnyRole('ROLE_SYSTEMOPTION_ADD')"/>
+		<intercept-url pattern="/systemOption/add.action" access="isAuthenticated() and hasAnyRole('ROLE_SYSTEMOPTION_ADD')"/>
+		<intercept-url pattern="/systemOption/toView.action" access="isAuthenticated() and hasAnyRole('ROLE_SYSTEMOPTION_VIEW')"/>
+		<intercept-url pattern="/systemOption/view.action" access="isAuthenticated() and hasAnyRole('ROLE_SYSTEMOPTION_VIEW')"/>
+		
+		<intercept-url pattern="/upload/resetGroup.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/upload/upload.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/upload/discard.action" access="isAuthenticated()"/>
+		<intercept-url pattern="/upload/fetchGroupFilesSummary.action" access="isAuthenticated()"/>
+
+		<!-- 未配置的资源 -->
+		<intercept-url pattern="/**" access="denyAll"/>
+		<!-- 登录退出URL -->
+		<form-login	login-processing-url="/account/login.action"
+					login-page="/oa/loginUI.action"
+					authentication-failure-url="/oa/loginUI.action"
+					default-target-url="/account/dologin.action"
+					always-use-default-target="true" />
+		<logout logout-url="/account/logout.action" logout-success-url="/oa/loginUI.action"/>
+		<!-- 自定义过滤器 -->
+		<custom-filter before="FORM_LOGIN_FILTER" ref="myAuthenticationFilter"/>
+	</http>
+
+	<beans:bean id="myAuthenticationFilter" class="csdc.tool.security.MyAuthenticationFilter">
+		<beans:property name="myAuthentication" ref="myAuthentication"/>
+	</beans:bean>
+	
+	<beans:bean id="myAuthentication" class="csdc.tool.security.MyAuthentication">
+		<beans:property name="accountService" ref="accountService"/>
+	</beans:bean>
+	
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="myAccountDetailsService">
+			<password-encoder hash="md5"/>
+		</authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="myAccountDetailsService" class="csdc.tool.security.MyAccountDeitailsService">
+		<beans:property name="accountService" ref="accountService"/>
+	</beans:bean>
+</beans:beans>

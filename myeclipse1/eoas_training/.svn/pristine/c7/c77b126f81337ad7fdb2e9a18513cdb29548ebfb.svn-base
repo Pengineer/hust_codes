@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Position">
+	<resultMap type="Position" id="positionResult">
+		<id property = "id" column="C_ID" />
+		<result property="place" column="C_PLACE" />
+		<result property="name" column="C_NAME" />
+		<result property="releaseTime" column="C_RELEASE_TIME" />
+		<result property="number" column="C_NUMBER" />
+		<result property="responsibility" column="C_RESPONSIBILITY" />
+		<result property="requirement" column="C_REQUIREMENT" />
+		<result property="type" column="C_TYPE"/>
+		<result property="dateTime" column="C_DATETIME"/>
+		<result property="viewCount" column="C_VIEW_COUNT"/>
+	</resultMap>
+	<!-- 职位发布 -->
+	<insert id="insert" parameterType="Position" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType = "java.lang.String" keyProperty = "id" order = "BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_POSITION
+		(
+		C_ID,
+		C_PLACE,
+		C_NAME,
+		C_RELEASE_TIME,
+		C_NUMBER,
+		C_RESPONSIBILITY,
+		C_REQUIREMENT
+		)
+		values
+		(
+		#{id},
+		#{place},
+		#{name},
+		#{releaseTime},
+		#{number},
+		#{responsibility},
+		#{requirement}
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.String" >
+		delete  from T_POSITION	 where C_ID = #{id}
+	</delete>
+	
+	<select id="load" parameterType="java.lang.String" resultMap="positionResult">
+    	select * from t_position where c_id = #{id}
+    </select>
+    
+	<!-- 所有职位列表 -->
+	<select id="list" resultMap="positionResult">
+		select * from T_POSITION
+	</select>
+	
+	<select id="listMyApply" parameterType="map" resultMap="positionResult">
+		select * from t_position join T_POSITION_RESUME on t_position.c_id = T_POSITION_RESUME.C_POSITION_ID
+			where T_POSITION_RESUME.C_APPLY_STATUS = 1 and T_POSITION_RESUME.C_RESUME_ID = #{resumeId}
+	</select>
+	
+	<!-- 职位申请列表 -->
+	<select id="listAllApply" parameterType="map" resultMap="positionResult">
+		select * from t_position join T_POSITION_RESUME on t_position.c_id = T_POSITION_RESUME.C_POSITION_ID
+			where T_POSITION_RESUME.C_APPLY_STATUS = 1
+	</select>
+	
+	<!-- 查看职位详情 -->
+	<select id="select" parameterType = "java.lang.String" resultMap="positionResult">
+		select * from T_POSITION where  C_ID = #{id,jdbcType=VARCHAR}
+	</select>
+	
+</mapper> 

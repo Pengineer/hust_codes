@@ -1,0 +1,114 @@
+package csdc.tool.webService;
+
+import java.io.IOException;
+import java.security.cert.Certificate;
+import java.util.Set;
+
+import javax.xml.namespace.QName;
+import javax.xml.soap.SOAPBody;
+import javax.xml.soap.SOAPElement;
+import javax.xml.soap.SOAPEnvelope;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPHeader;
+import javax.xml.soap.SOAPHeaderElement;
+import javax.xml.soap.SOAPMessage;
+import javax.xml.ws.handler.MessageContext;
+import javax.xml.ws.handler.soap.SOAPHandler;
+import javax.xml.ws.handler.soap.SOAPMessageContext;
+
+public class ServerSignHandler implements SOAPHandler<SOAPMessageContext> {
+	String localNameSpace = WSSecurityTool.getLocalNameSpace();
+	private final boolean auth_b = false;
+	@Override
+	public boolean handleMessage(SOAPMessageContext ctx) {
+		Boolean out_b = (Boolean) ctx.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
+		SOAPMessage msg = ctx.getMessage();
+		if(out_b){
+			try {
+				SOAPEnvelope env;
+				env = msg.getSOAPPart().getEnvelope();
+				SOAPHeader hdr = env.getHeader();
+				SOAPBody  body = env.getBody();
+				if (hdr == null) 
+					hdr = env.addHeader();
+				switch (WSSecurityTool.reConn_tab) {
+				case 0:
+					QName qname = new QName(localNameSpace, "ReconTag");
+					SOAPHeaderElement helemt = hdr.addHeaderElement(qname);
+					helemt.addChildElement("recon_tag").addTextNode(Integer.toString(WSSecurityTool.reConn_tab));
+					String text = SOAPEnvTool.getRequestContent(body);
+					//返回的服务内容先加密，后签名 
+					String codeString = WSSecurityTool.DESEncry(text, WSSecurityTool.getSecretKey());
+					
+					body.removeChild(body.getChildNodes().item(0));
+					QName operate = new QName("http://server.webService.service.csdc/", "operateResponse", "ns2");
+					SOAPElement operateElement = body.addChildElement(operate);
+					QName returnName = new QName("return");
+					operateElement.addChildElement(returnName).addTextNode(codeString);					
+					msg.saveChanges();
+					
+					//对密文签名
+					String signvalue = WSSKeyStoTool.signText(codeString, (String)WSSKeyStoTool.keyStoSession.get("serverKeyAlias"),(String)WSSKeyStoTool.keyStoSession.get("serverKeyPass"));
+					QName qname1 = new QName(localNameSpace, "ServerDS");
+					SOAPHeaderElement helemt1 = hdr.addHeaderElement(qname1);
+					helemt1.addChildElement("signvalue").addTextNode(signvalue );
+					break;
+				case 1:
+					//返回协商状态消息
+					QName qname1_1 = new QName(localNameSpace, "ReconTag");
+					SOAPHeaderElement helemt1_1 = hdr.addHeaderElement(qname1_1);
+					helemt1_1.addChildElement("recon_tag").addTextNode(Integer.toString(WSSecurityTool.reConn_tab));
+					QName qname1_2 = new QName(localNameSpace, "ServerCer");
+					SOAPHeaderElement helemt1_2 = hdr.addHeaderElement(qname1_2);
+					byte[] cer_byte = null;
+					try {
+						 Certificate serverCer = WSSKeyStoTool.getExportedCertificate((String)WSSKeyStoTool.keyStoSession.get("serverCertificatePath"));
+						 cer_byte = serverCer.getEncoded();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					String cer_str = WSSKeyStoTool.byteArray2HexStr(cer_byte);
+					helemt1_2.addChildElement("servervalue").addTextNode(cer_str);
+					
+					String text1_3 = SOAPEnvTool.getRequestContent(body);
+					String signvalue1_3 = WSSKeyStoTool.signText(text1_3, (String)WSSKeyStoTool.keyStoSession.get("serverKeyAlias"),(String)WSSKeyStoTool.keyStoSession.get("serverKeyPass"));
+					QName qname1_3 = new QName(localNameSpace, "ServerDS");
+					SOAPHeaderElement helemt1_3 = hdr.addHeaderElement(qname1_3);
+					helemt1_3.addChildElement("signvalue").addTextNode(signvalue1_3 );
+					break;
+				default:
+					
+					break;
+				}
+				msg.saveChanges();
+				if(auth_b){
+					try {
+						System.out.println("\n从signhandler出去的添加服务签名元素的soap消息如下=0签名，=1证书：---->");
+						msg.writeTo(System.out);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				return true;
+			} catch (SOAPException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public boolean handleFault(SOAPMessageContext context) {
+		return false;
+	}
+
+	@Override
+	public void close(MessageContext context) {
+	}
+
+	@Override
+	public Set<QName> getHeaders() {
+		return null;
+	}
+
+}

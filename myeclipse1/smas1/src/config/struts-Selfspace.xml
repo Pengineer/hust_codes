@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="selfspace" extends="global" namespace="/selfspace">
+		<!-- 查看个人信息 -->
+		<action name="viewInfo" class="selfSpaceAction" method="viewInfo">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="namespace">/user</param>
+				<param name="entityId">${entityId}</param>
+				<param name="selflabel">1</param>
+			</result>
+		</action>
+		
+		<!-- 加载个人信息 -->
+		<action name="loadInfo" class="selfSpaceAction" method="loadInfo">
+			<result type="redirectAction">
+				<param name="actionName">toModify</param>
+				<param name="namespace">/user</param>
+				<param name="entityId">${entityId}</param>
+				<param name="selflabel">1</param>
+			</result>
+		</action>
+
+		<!-- 跳转至修改密码 -->
+		<action name="toModifyPassword" class="selfSpaceAction" method="toModifyPassword">
+			<result>/selfspace/modifyPassword.jsp</result>
+		</action>
+
+		<!-- 修改密码 -->
+		<action name="modifyPassword" class="selfSpaceAction" method="modifyPassword">
+			<result>/selfspace/modifyPasswordSuccess.jsp</result>
+			<result name="input">/selfspace/modifyPassword.jsp</result>
+		</action>
+
+		<action name="toResetPassword" class="selfSpaceAction" method="toResetPassword">
+			<result>/selfspace/resetPassword.jsp</result>
+		</action>
+
+		<action name="resetPassword" class="selfSpaceAction" method="resetPassword">
+			<result>/selfspace/resetPasswordSuccess.jsp</result>
+			<result name="input">/selfspace/resetPassword.jsp</result>
+		</action>
+		
+	</package>
+</struts>

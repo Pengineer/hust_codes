@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="dataMiningResult" extends="main" namespace="/dataMining/result">
+		
+		<action name="toList" class="dataMiningResultAction" method="toList">
+			<result>/dataMining/result/list.jsp</result>
+		</action>
+		<action name="list" class="dataMiningResultAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="simpleSearch" class="dataMiningResultAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		<action name="changePageSize" class="dataMiningResultAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		<action name="toPage" class="dataMiningResultAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		<action name="sort" class="dataMiningResultAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		<action name="toView" class="dataMiningResultAction" method="toView">
+			<result>/dataMining/result/view.jsp</result>
+	    </action>
+	    <action name="view" class="dataMiningResultAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+	    </action>
+		<action name="prev" class="dataMiningResultAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="next" class="dataMiningResultAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="delete" class="dataMiningResultAction" method="delete">
+			<result type="chain">list</result>
+		</action>
+	</package>
+</struts>

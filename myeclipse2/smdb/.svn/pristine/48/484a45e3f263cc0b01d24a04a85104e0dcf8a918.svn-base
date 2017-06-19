@@ -1,0 +1,87 @@
+package csdc.tool.webService;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+import javax.xml.soap.SOAPBody;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+
+/**
+ * soap报文处理工具
+ * @author zhangnan
+ * @version v1.0
+ * 2014-4-3
+ */
+public class SOAPEnvTool {
+
+	/**
+	 * 将指定错误原因放入session传递,为C提供反馈
+	 * @param session
+	 * @param soapInfo
+	 * @param reason
+	 * @return
+	 */
+	public static boolean genErrorSOAP(HttpSession session,Map<String, String> Map,String reason){
+		if(Map.get("error") != null){
+			return true;
+		}else{
+			Map.put("error", reason);
+			session.setAttribute("soapInfo", Map);
+			return true;//down chain
+		}
+	}
+	/**
+	 * 获取session的soapInfo
+	 * @param session
+	 * @return
+	 * 有则获取，无则重建
+	 */
+	public static Map<String, String> getSoapInfo(HttpSession session){
+		Map<String, String> map = null;
+		if(null == session.getAttribute("soapInfo")){
+			map = new HashMap<String, String>();
+			session.setAttribute("soapInfo", map);
+		}
+		return map;
+	}
+	/**
+	 * 本服务只提供唯一入口
+	 * 返回请求内容，便于后续处理如签名等
+	 * @param bdy
+	 * @return
+	 * 有则返回content
+	 * 无则返回null
+	 */
+	public static String getRequestContent(SOAPBody bdy){
+		String content = bdy.getChildNodes().item(0).getChildNodes().item(0).getTextContent();
+		if(content == null){
+			return null;
+		}
+		return content;
+	}
+
+	/**
+	 * 获取请求内容中，临近指定节点的内容
+	 * @param bdy
+	 * @param subNodeName
+	 * @return
+	 * 有返回内容
+	 * 无返回null
+	 * @throws DocumentException 
+	 * 不处理异常，全部抛出
+	 */
+	public static String getSubNodeInContent(SOAPBody bdy,String subNodeName) throws DocumentException{
+		String content = getRequestContent(bdy);
+		if(content == null){
+			return null;
+		}
+		Document doc = DocumentHelper.parseText(content);
+		Element argumentElement = (Element) doc.selectNodes("//" + subNodeName).get(0);
+		return argumentElement.getText();
+	}
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="login" location="0,0" size="0,0">
+    <action name="doLogin" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toSelectServer" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toSwitchServer" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="switchServer" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="basisRight" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="statisticRight" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="projectRight" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+</Struts2Diagram>
+

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="instpEndinspection" extends="global" namespace="/project/instp/endinspection">
+		<!-- 进入列表 -->
+		<action name="toList" class="instpEndinspectionAction" method="toList">
+			<result>/project/instp/endinspection/list.jsp</result>
+		</action>
+		<!-- 列表 -->
+		<action name="list" class="instpEndinspectionAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="instpEndinspectionAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instpEndinspectionAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="instpEndinspectionAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="instpEndinspectionAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="instpEndinspectionAction" method="toView">
+			<result>/project/instp/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="instpEndinspectionAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="instpEndinspectionAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="instpEndinspectionAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				<param name="businessType">${businessType}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 审核弹出层 -->
+		<action name="popAudit" class="instpEndinspectionAction" method="popAudit">
+			<result>/project/instp/endinspection/popAudit.jsp</result>
+		</action>
+		
+		<!-- 提交审核 -->
+		<action name="audit" class="instpEndinspectionAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看审核详情 -->
+		<action name="auditView" class="instpEndinspectionAction" method="auditView">
+			<result>/project/instp/endinspection/popAuditView.jsp</result>
+		</action>
+		
+		<!-- 评审弹出层 -->
+		<action name="popAuditReview" class="instpEndinspectionAction" method="popAuditReview">
+			<result>/project/instp/endinspection/popFinalResult.jsp</result>
+		</action>
+		
+		<!-- 提交评审 -->
+		<action name="auditReview" class="instpEndinspectionAction" method="auditReview">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 查看评审 -->
+		<action name="auditReviewView" class="instpEndinspectionAction" method="auditReviewView">
+			<result>/project/instp/endinspection/popAuditReviewView.jsp</result>
+		</action>
+		
+		<!-- 添加结项弹出层 -->
+		<action name="toAddResult" class="instpEndinspectionAction" method="toAddResult">
+		  <result>/project/instp/endinspection/popAddResult.jsp</result>
+		</action>
+		
+		<!-- 提交添加结项 -->
+		<action name="addResult" class="instpEndinspectionAction" method="addResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 修改结项结果 -->
+		<action name="toModifyResult" class="instpEndinspectionAction" method="toModifyResult">
+		  <result>/project/instp/endinspection/popModifyResult.jsp</result>
+		</action>
+		
+		<action name="toAddEndFee" class="instpEndinspectionAction" method="toAddEndFee">
+			<result>/project/instp/endinspection/popModifyFee.jsp</result>
+		</action>
+		
+		<!-- 提交修改结项结果 -->
+		<action name="modifyResult" class="instpEndinspectionAction" method="modifyResult">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+</struts>

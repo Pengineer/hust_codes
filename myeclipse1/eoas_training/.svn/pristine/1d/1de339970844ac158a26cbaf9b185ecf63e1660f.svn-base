@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="solution" extends="default" namespace="/solution">
+		<action name = "toAdd" class = "solutionAction"  method = "toAdd" >
+			<result>/jsp/oa/solution/add.jsp</result>
+		</action>
+		
+		<action name = "add" class = "solutionAction"  method = "add" >
+			<result>/jsp/oa/solution/add.jsp</result>
+		</action>
+		
+		<action name = "toModify" class = "solutionAction"  method = "toModify" >
+			<result>/jsp/oa/solution/modify.jsp</result>
+		</action>
+		
+		<action name = "modify" class = "solutionAction"  method = "modify" >
+			<result>/jsp/oa/solution/list.jsp</result>
+		</action>
+
+		<action name = "delete" class = "solutionAction"  method = "delete" >
+			<result>/jsp/oa/solution/list.jsp</result>
+		</action>
+		
+		<action name = "view" class = "solutionAction"  method = "view" >
+			<result>/jsp/oa/solution/view.jsp</result>
+		</action>
+		
+		<action name = "toList" class = "solutionAction"  method = "toList" >
+			<result>/jsp/oa/solution/list.jsp</result>
+		</action>
+		
+		<action name = "list" class = "solutionAction"  method = "list" >
+			<result type="json">
+				<param name="root">jsonMap</param>  
+			</result>
+		</action>
+	</package>
+</struts>

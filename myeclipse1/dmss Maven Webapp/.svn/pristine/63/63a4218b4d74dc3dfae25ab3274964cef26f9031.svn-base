@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>登录</title>	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link   type="text/css"  rel="stylesheet" href="css/common.css"  />
+	<link   type="text/css"  rel="stylesheet" href="css/content.css"  />
+	<link   type="text/css"  rel="stylesheet" href="css/login.css"  />
+	<script type="text/javascript" src="plugins/jquery/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="plugins/jquery/jquery.validate.js"></script>
+	<script type="text/javascript" src="plugins/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+	<div class="header">
+		<div class="logo">
+			<h1><a href="content.html"><span style="color:#FFFFFF">DMSS</span><small>文档管理系统</small></a></h1>
+		</div>
+	</div>
+	<div class="index-content">
+		<div class="content-left">
+			<img class="dmss-img" src="images/dmss_img.png" />
+		</div>
+		<div class="content-right">
+			<div class="signin-box">
+				<h2>登录</h2>
+					<form id="login-form" action="user/login" method="post" >
+						<div class="email-div">
+							<label for="Email"><strong class="email-label">用户名</strong></label>
+							<input id="Email" class="msg-input" type="text" name="j_username" spellcheck="false"></div>
+						<div class="passwd-div">
+							<label for="Passwd"><strong class="passwd-label">密码</strong></label>
+							<input id="Passwd" class="msg-input" type="password" name="j_password" />
+						</div>		
+						<div class="submit-div">
+						<input type="submit" class="g-button g-button-submit"  value="登录"/> 
+						<span id="error-info" class="warning"></span>
+						</div>
+						<div><a href="register.html" >立即注册!</a></div>
+						<ul><li><a id="link-forgot-passwd" target="_top" href=""> 无法访问您的帐户？ </a></li></ul>
+					</form>
+			</div>
+		</div>
+		<div class="content-bottom">
+			<div class="product-about-col-left">
+				<img class="ic_cloud" src="images/login/ic_cloud.png"><h4 class="product-about-heading">云存储</h4>
+				<p class="product-about-text">可以随心所欲在任何地点通过电脑、手机和平板电脑登录系统，在线管理文档，可支持上传文档，编辑文档属性以及在线修改文档等相关功能。</p></div>
+			<div class="product-about-col-left">
+				<img class="ic_search" src="images/login/ic_search.png"><h4 class="product-about-heading">全文检索</h4>
+				<p class="product-about-text">输入关键字可检索系统中所有公开的文档，支持模糊检索与文档智能匹配。</p></div>
+			<div class="product-about-col-left">
+				<img class="ic_download" src="images/login/ic_download.png"><h4 class="product-about-heading">文档下载</h4>
+				<p class="product-about-text">用户登录系统后可下载发布在系统上的共享文档</p></div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footer-bar">
+			中国高校社会科学数据中心 Chinese University Social Sciences Data Center
+			<br>
+			Copyright©2009-2011 All Rights Reserved. 
+		</div>
+	</div>
+</body>
+</html>

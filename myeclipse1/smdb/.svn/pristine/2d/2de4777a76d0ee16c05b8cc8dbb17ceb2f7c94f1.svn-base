@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.FieldConfig" table="T_FIELD_CONFIG" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="xmlField" type="java.lang.String">
+            <column name="C_XML_FIELD" length="100" />
+        </property>
+        <property name="field" type="java.lang.String">
+            <column name="C_FIELD" length="100" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="C_TYPE" length="100" />
+        </property>
+        <property name="source" type="java.lang.String">
+            <column name="C_SOURCE" length="100" />
+        </property>
+        <property name="tableName" type="java.lang.String">
+            <column name="C_TABLE_NAME" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

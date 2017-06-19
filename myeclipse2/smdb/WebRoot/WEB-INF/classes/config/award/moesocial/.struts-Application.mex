@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="moesocialApplicationApply" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="input" />
+      <result name="success" />
+      <result name="login" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="input" />
+      <result name="success" />
+      <result name="login" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="download" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="validateFile" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="downloadModel" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="add2012" location="0,0" size="0,0">
+      <result name="input" />
+      <result name="success" />
+    </action>
+    <action name="submitAward2012" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="moesocialApplicationApplyAudit" location="0,0" size="0,0">
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="back" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="moesocialApplicationReview" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="viewReview" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAddGroup" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="addGroup" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="viewGroup" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="viewGroupOpinion" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toModifyGroup" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="modifyGroup" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submitGroup" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="moesocialApplicationReviewAudit" location="0,0" size="0,0">
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="moesocialApplicationPublicity" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="moesocialApplicationPublicityAudit" location="0,0" size="0,0">
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <package name="moesocialApplicationAwarded" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/award/moesocial/application/apply/list.jsp" location="0,0" size="0,0" />
+  <webResource name="advSearch.jsp" path="/award/moesocial/application/apply/advSearch.jsp" location="0,0" size="0,0" />
+  <webResource name="add.jsp" path="/award/moesocial/application/apply/add.jsp" location="0,0" size="0,0" />
+  <webResource name="add1.jsp" path="/award/moesocial/application/apply/add1.jsp" location="0,0" size="0,0" />
+  <webResource name="add2012.jsp" path="/award/moesocial/application/apply/add2012.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

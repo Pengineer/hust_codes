@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+.wd11 {
+	width: 150px;
+}

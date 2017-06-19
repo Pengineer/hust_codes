@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="positionResume" extends="default" namespace="/positionResume">
+	    <!-- 进入我的职位申请列表 -->
+	    <action name="toAllApplyList" class="positionResumeAction" method="toAllApplyList">
+	        <result>/jsp/recruitment/positionResume/listApplyPosition.jsp</result>
+	    </action>
+	    <action name="listAllApply" class="positionResumeAction" method="listAllApply">
+			<result type="json" >
+				<param name="root">jsonMap</param>
+			</result>
+	    </action>
+	    <action name="toAllFavoriteList" class="positionResumeAction" method="toAllFavoriteList">
+	    	<result>/jsp/recruitment/positionResume/listFavoritePosition.jsp</result>
+	    </action>
+	    <action name="listAllFavorite" class="positionResumeAction" method="listAllFavorite">
+	    	<result type="json">
+	    		<param name="root">jsonMap</param>
+	    	</result>
+	    </action>
+	</package>
+</struts>

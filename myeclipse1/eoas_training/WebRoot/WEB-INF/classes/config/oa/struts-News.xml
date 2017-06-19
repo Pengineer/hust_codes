@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="news" extends="default" namespace="/news">
+		<action name="toList" class="newsAction" method="toList">
+			<result name="success">/jsp/oa/news/list.jsp</result>
+		</action>
+		
+		<action name="list" class="newsAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toAdd" class="newsAction" method="toAdd">
+			<result>/jsp/oa/news/add.jsp</result>
+		</action>
+		
+		<action name="add" class="newsAction" method="add">
+			<result>/jsp/oa/news/view.jsp</result>
+		</action>
+		
+		<action name="delete" class="newsAction" method="delete">
+			<result>/jsp/oa/news/list.jsp</result>
+		</action>
+		
+		<action name="toModify" class="newsAction" method="toModify">
+			<result>/jsp/oa/news/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="newsAction" method="modify">
+			<result>/jsp/oa/news/view.jsp</result>
+		</action>		
+		
+		<action name="view" class="newsAction" method="view">
+			<result>/jsp/oa/news/view.jsp</result>
+		</action>
+	</package>
+</struts>

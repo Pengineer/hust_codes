@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.Passport" table="T_PASSPORT" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="C_NAME" length="40" not-null="true" unique="true" />
+        </property>
+        
+        <property name="bindEmail" type="java.lang.String">
+            <column name="C_BIND_EMAIL" length="100" />
+        </property>
+        
+        <property name="bindPhone" type="java.lang.String">
+            <column name="C_BIND_PHONE" length="100" />
+        </property>
+        
+        <property name="password" type="java.lang.String">
+            <column name="C_PASSWORD" length="40" not-null="true" />
+        </property>
+        <property name="lastLoginAccount" type="java.lang.String">
+            <column name="C_LAST_LOGIN_ACCOUNT" length="40" />
+        </property>
+        <property name="passwordRetrieveCode" type="java.lang.String">
+            <column name="C_PASSWORD_RETRIEVE_CODE" length="40" />
+        </property>
+        <property name="emailVerifyCode" type="java.lang.String">
+            <column name="C_EMAIL_VERIFY_CODE" length="40" />
+        </property>
+        <property name="activateVerifyCode" type="java.lang.String">
+            <column name="C_ACTIVATE_VERIFY_CODE" length="40" />
+        </property>
+        <property name="phoneVerifyCode" type="java.lang.String">
+            <column name="C_PHONE_VERIFY_CODE" length="40" />
+        </property>
+        <property name="passwordRetrieveCodeStartDate" type="java.util.Date">
+            <column name="C_RETRIEVE_CODE_START_DATE" length="7" />
+        </property>
+        <property name="activateVerifyCodeStartDate" type="java.util.Date">
+            <column name="C_ACTIVATE_CODE_START_DATE" length="7" />
+        </property>
+        <property name="maxSession" type="java.lang.Integer">
+        	<column name="C_MAX_SESSION" precision="2" scale="0" />
+        </property>
+        <property name="allowedIp" type="java.lang.String">
+            <column name="C_ALLOWED_IP" length="400" />
+        </property>
+        <property name="lastLoginDate" type="java.util.Date">
+        	<column name="C_LAST_LOGIN_DATE" length="7" />
+        </property>
+        <property name="refusedIp" type="java.lang.String">
+            <column name="C_REFUSED_IP" length="400" />
+        </property>
+        <property name="lastLoginIp" type="java.lang.String">
+        	<column name="C_LAST_LOGIN_IP" length="40" />
+        </property>
+        <property name="passwordWarning" type="java.lang.Integer">
+        	<column name="C_PASSWORD_WARNING" precision="1" scale="0" not-null="true" />
+        </property>
+        
+        <property name="emailVerified" type="java.lang.Integer">
+        	<column name="C_EMAIL_VERIFIED" precision="1" scale="0" />
+        </property>
+        
+         <property name="phoneVerified" type="java.lang.Integer">
+        	<column name="C_PHONE_VERIFIED" precision="1" scale="0" />
+        </property>
+        
+        <property name="activateVerified" type="java.lang.Integer">
+        	<column name="C_ACTIVATE_VERIFIED" precision="1" scale="0" />
+        </property>
+        
+        <property name="passwordQuestion" type="java.lang.String">
+        	<column name="C_PASSWORD_QUESTION" length="800" />
+        </property>
+        <property name="passwordAnswer" type="java.lang.String">
+        	<column name="C_PASSWORD_ANSWER" length="800" />
+        </property>
+        <property name="expireDate" type="java.util.Date">
+        	<column name="C_EXPIRE_DATE" length="7" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="C_START_DATE" length="7" />
+        </property>
+       <property name="status" type="java.lang.Integer">
+            <column name="C_STATUS" precision="1" scale="0"/>
+        </property> 
+	    <property name="loginCount" type="java.lang.Integer">
+        	<column name="C_LOGIN_COUNT" /> 
+        </property>
+        <set name="account" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_PASSPORT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Account" />
+        </set>
+        <set name="log" inverse="true" cascade="none">
+        	<key>
+        		<column name="C_PASSPORT_ID" length="40" />
+        	</key>
+        	<one-to-many class="csdc.bean.Log" />
+        </set>
+    </class>
+</hibernate-mapping>

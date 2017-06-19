@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="user" extends="global" namespace="/user">
+		<!-- 登入系统 -->
+		<action name="login" class="userAction" method="login">
+			<result>/main/main.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="inMaintain">/inMaintain.jsp</result>
+		</action>
+		
+		<!-- 退出系统 -->
+		<action name="logout" class="userAction" method="logout">
+		 	<result>/user/logout.jsp</result>
+		 </action>
+		
+		<!-- 准备 -->
+		<action name="toRegister" class="userAction" method="toRegister">
+			<result>/user/register.jsp</result>
+		</action>
+		
+		<!-- 注册 -->
+		<action name="register" class="userAction" method="register">
+			<result>/user/registerSuccess.jsp</result>
+			<result name="input">/user/register.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/gif,image/bmp,image/jpg,image/pjpg,image/png,image/x-png,image/jpeg,image/pjpeg</param>
+				<param name="maximumSize">102400</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!--检测用户名是否可用--> 
+		<action name="checkUsername" class="userAction" method="checkUsername">  
+			<result type="stream">  
+				<param name="contentType">text/html</param>  
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- 找密码跳转 -->
+		<action name="toRetrievePassword" class="userAction" method="toRetrievePassword">
+			<result>/user/retrievePassword.jsp</result>
+		</action>
+		
+		<!-- 找回密码 -->
+		<action name="retrievePassword" class="userAction" method="retrievePassword">
+			<result>/user/retrievePasswordSuccess.jsp</result>
+			<result name="input">/user/retrievePassword.jsp</result>
+		</action>
+		
+		<!-- 重置密码 -->
+		<action name="retrieveCode" class="userAction" method="retrieveCode">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 管理员修改密码 -->
+		<action name="toModifyPassword" class="userAction" method="toModifyPassword">
+			<result>/user/popModifyPassword.jsp</result>
+		</action>
+		
+		<action name="modifyPassword" class="userAction" method="modifyPassword">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 检测用户状态 -->
+		<action name="checkUserStatus" class="userAction" method="checkUserStatus">
+			<result name="first">/user/listActive.jsp</result>
+			<result name="second">/user/listInactive.jsp</result>
+			<result name="third">/user/listUnapproved.jsp</result>
+		</action>
+		
+		<!-- 进入列表 -->
+		<action name="toList" class="userAction" method="toList">
+			<result type="chain">checkUserStatus</result>
+		</action>
+		
+		<!-- 列表 -->
+		<action name="list" class="userAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 初级检索 -->
+		<action name="simpleSearch" class="userAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toView" class="userAction" method="toView">
+			<result>/user/view.jsp</result>
+		</action>
+		
+		<!-- 查看 -->
+		<action name="view" class="userAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 上一条 -->
+		<action name="prev" class="userAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				 <param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 下一条 -->
+		<action name="next" class="userAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+				 <param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 排序 -->
+		<action name="sort" class="userAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 改变pageSize -->
+		<action name="changePageSize" class="userAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 到指定页 -->
+		<action name="toPage" class="userAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<!-- 进入修改页面 -->
+		<action name="toModify" class="userAction" method="toModify">
+			<result>/user/modify.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		<action name="modify" class="userAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+				<param name="selflabel">${selflabel}</param>
+				<param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input">/user/modify.jsp</result>
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/gif,image/bmp,image/jpg,image/pjpg,image/png,image/x-png,image/jpeg,image/pjpeg</param>
+				<param name="maximumSize">10240</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<!-- 删除 -->
+		<action name="delete" class="userAction" method="delete">
+			<result type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 审批、启用准备 -->
+		<action name="toGroupOperationP" class="userAction" method="toGroupOperationP">
+			<result>/user/groupOperation.jsp</result>
+		</action>
+		
+	   <!-- 审批、启用 -->
+	   <action name="groupOperation" class="userAction" method="groupOperation">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+				<param name="userstatus">${userstatus}</param>
+			</result>
+			<result name="input">/user/groupOperation.jsp</result>
+		</action>
+		
+		<!-- 账号停用 -->
+		<action name="groupDisableAccount" class="userAction" method="groupDisableAccount">
+			<result type="redirectAction">
+				<param name="actionName">toList</param>
+				<param name="update">1</param>
+				<param name="userstatus">1</param>
+			</result>
+		</action>
+	</package>
+</struts>

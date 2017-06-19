@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="hust.bean">
+	<class name="hust.bean.Province" table="t_province">
+		<id name="id" column="c_id">
+			<generator class="increment"></generator>
+		</id>
+		
+		<property name="name" column="c_name" />
+		<many-to-one name="country" class="hust.bean.Country">
+			<column name="c_country_id" length="2" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="generalEndinspectionAudit" location="0,0" size="0,0">
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModify.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="back" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="generalEndinspectionApply" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="downloadTemplate" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="validateTemplate" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModify.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popModify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModify.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popModify.jsp" />
+      </result>
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAddResult" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAddResult.jsp" />
+      </result>
+    </action>
+    <action name="toModifyResult" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyResult.jsp" />
+      </result>
+    </action>
+    <action name="addResult" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="modifyResult" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submitResult" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="delete" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="downloadApply" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="validateFile" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="downloadData" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="validateData" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="printCertificate" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="printCertificate.jsp" />
+      </result>
+    </action>
+    <action name="confirmPrintCertificate" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="printOverView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popPrintOverView.jsp" />
+      </result>
+    </action>
+    <action name="confirmPrintOverView" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="printOverView.jsp" />
+      </result>
+      <result name="exportOverView" />
+    </action>
+    <action name="exportOverView" location="0,0" size="0,0" />
+  </package>
+  <package name="generalEndinspectionReview" location="0,0" size="0,0">
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toAdvSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="sort" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="viewReview" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view" namespace="/project/general/endinspection/apply" />
+      </result>
+    </action>
+    <action name="toViewReview" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="toAddGroup" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAddGroup.jsp" />
+      </result>
+    </action>
+    <action name="toAddResult" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAddResult.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModify.jsp" />
+      </result>
+    </action>
+    <action name="toModifyGroup" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyGroup.jsp" />
+      </result>
+    </action>
+    <action name="toModifyResult" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyResult.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="addGroup" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="addResult" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAddResult.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popAddResult.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="modifyGroup" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="modifyResult" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModifyResult.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="popModifyResult.jsp" />
+      </result>
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submitGroup" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submitResult" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+    <action name="viewGroup" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popViewGroup.jsp" />
+      </result>
+    </action>
+    <action name="viewGroupOpinion" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popViewGroupOpinion.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="generalEndinspectionReviewAudit" location="0,0" size="0,0">
+    <action name="toAdd" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popAdd.jsp" />
+      </result>
+    </action>
+    <action name="toModify" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popModify.jsp" />
+      </result>
+    </action>
+    <action name="add" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="modify" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="submit" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="popView.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="popAdd.jsp" path="/project/general/endinspection/applyAudit/popAdd.jsp" location="1413,3650" size="150,55" />
+  <webResource name="popAddProdReview.jsp" path="/project/general/endinspection/applyAudit/popAddProdReview.jsp" location="1908,4035" size="150,55" />
+  <webResource name="popModifyProdReview.jsp" path="/project/general/endinspection/applyAudit/popModifyProdReview.jsp" location="79,4245" size="150,55" />
+  <webResource name="popViewProdReview.jsp" path="/project/general/endinspection/applyAudit/popViewProdReview.jsp" location="1380,4805" size="150,55" />
+  <webResource name="popModify.jsp" path="/project/general/endinspection/applyAudit/popModify.jsp" location="949,4805" size="150,55" />
+  <webResource name="popView.jsp" path="/project/general/endinspection/applyAudit/popView.jsp" location="535,4805" size="150,55" />
+  <webResource name="list.jsp" path="/project/general/endinspection/apply/list.jsp" location="1461,3160" size="150,55" />
+  <webResource name="advSearch.jsp" path="/project/general/endinspection/apply/advSearch.jsp" location="1446,3335" size="150,55" />
+  <webResource name="popAdd.jsp" path="/project/general/endinspection/apply/popAdd.jsp" location="90,10" size="150,55" />
+  <webResource name="popModify.jsp" path="/project/general/endinspection/apply/popModify.jsp" location="5121,2670" size="150,55" />
+  <webResource name="popAddResult.jsp" path="/project/general/endinspection/apply/popAddResult.jsp" location="1437,360" size="150,55" />
+  <webResource name="popModifyResult.jsp" path="/project/general/endinspection/apply/popModifyResult.jsp" location="3353,465" size="150,55" />
+  <webResource name="view.jsp" path="/project/general/view.jsp" location="3096,570" size="150,55" />
+  <webResource name="printCertificate.jsp" path="/project/general/endinspection/apply/printCertificate.jsp" location="1460,955" size="150,55" />
+  <webResource name="popPrintOverView.jsp" path="/project/general/endinspection/apply/popPrintOverView.jsp" location="1460,1165" size="150,55" />
+  <webResource name="printOverView.jsp" path="/project/general/endinspection/apply/printOverView.jsp" location="1469,1340" size="150,55" />
+  <webResource name="list.jsp" path="/project/general/endinspection/review/list.jsp" location="1528,1690" size="150,55" />
+  <webResource name="advSearch.jsp" path="/project/general/endinspection/review/advSearch.jsp" location="1513,1515" size="150,55" />
+  <webResource name="popAdd.jsp" path="/project/general/endinspection/review/popAdd.jsp" location="3272,1340" size="150,55" />
+  <webResource name="popAddGroup.jsp" path="/project/general/endinspection/review/popAddGroup.jsp" location="3642,1340" size="150,55" />
+  <webResource name="popModify.jsp" path="/project/general/endinspection/review/popModify.jsp" location="4033,1340" size="150,55" />
+  <webResource name="popModifyGroup.jsp" path="/project/general/endinspection/review/popModifyGroup.jsp" location="4438,1340" size="150,55" />
+  <webResource name="popView.jsp" path="/project/general/endinspection/review/popView.jsp" location="2534,2565" size="150,55" />
+  <webResource name="popViewGroup.jsp" path="/project/general/endinspection/review/popViewGroup.jsp" location="2099,2565" size="150,55" />
+  <webResource name="popViewGroupOpinion.jsp" path="/project/general/endinspection/review/popViewGroupOpinion.jsp" location="1448,2285" size="150,55" />
+  <webResource name="popAdd.jsp" path="/project/general/endinspection/reviewAudit/popAdd.jsp" location="2458,3685" size="150,55" />
+  <webResource name="popModify.jsp" path="/project/general/endinspection/reviewAudit/popModify.jsp" location="2414,3860" size="150,55" />
+  <webResource name="popView.jsp" path="/project/general/endinspection/reviewAudit/popView.jsp" location="3435,4175" size="150,55" />
+  <webResource name="popAddResult.jsp" path="/project/general/endinspection/review/popAddResult.jsp" location="0,0" size="0,0" />
+  <webResource name="popModifyResult.jsp" path="/project/general/endinspection/review/popModifyResult.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

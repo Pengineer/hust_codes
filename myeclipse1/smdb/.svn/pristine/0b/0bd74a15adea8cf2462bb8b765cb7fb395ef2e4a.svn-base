@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="mail" extends="main" namespace="/mail">
+		
+		<action name="toAdd" class="mailAction" method="toAdd">
+			<result>/system/mail/add.jsp</result>
+		</action>
+		
+		<action name="add" class="mailAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/system/mail/add.jsp</result>
+		</action>
+		
+		<action name="toView" class="mailAction" method="toView">
+			<result>/system/mail/view.jsp</result>
+		</action>
+		
+		<action name="view" class="mailAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="download" class="mailAction" method="download">
+			<result name="success" type="stream">
+				<param name="inputName">targetFile</param>
+				<param name="contentDisposition">attachment;filename="${attachmentName}"</param>
+				<param name="contentType">application/octet-stream</param>
+				<param name="bufferSize">10240000</param>
+			</result>
+		</action>
+		
+		<action name="validateFile" class="mailAction" method="validateFile">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+		</action>
+		
+		<action name="prev" class="mailAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="mailAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="delete" class="mailAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toList" class="mailAction" method="toList">
+			<result>/system/mail/list.jsp</result>
+		</action>
+		
+		<action name="list" class="mailAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="mailAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="mailAction" method="toAdvSearch"> -->
+<!-- 			<result>/system/mail/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="mailAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="mailAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="mailAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toPage" class="mailAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="pauseSend" class="mailAction" method="pauseSend">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		<action name="cancel" class="mailAction" method="cancel">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="send" class="mailAction" method="send">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toSendAgain" class="mailAction" method="toSendAgain">
+			<result>/system/mail/sendAgain.jsp</result>
+		</action>
+		
+		<action name="sendAgain" class="mailAction" method="sendAgain">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input">/system/mail/sendAgain.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

@@ -1,0 +1,195 @@
+/* -----------------------------------------------
+	www.swfupload.org
+	Description: Common Screen Stylesheet for SWFUpload Demos
+	Updated on:  May 1, 2008
+----------------------------------------------- */
+
+
+/* ----------------------------------------------- 
+	GLOBAL RESET 
+----------------------------------------------- */
+
+
+/* remember to define focus styles! */
+:focus { outline: 0; }
+body {
+/*	line-height: 1;*/
+	color: black;
+	background: white;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after { 
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+
+
+
+
+
+
+div.fieldset span.legend {
+	position: relative;
+	background-color: #FFF;
+	padding: 3px;
+	top: -30px;
+	font: 700 14px Arial, Helvetica, sans-serif;
+	color: #73b304;
+}
+
+div.flash {
+/*	width: 430px;*/
+	border-color: #D9E4FF;
+
+	-moz-border-radius-topleft : 5px;
+	-webkit-border-top-left-radius : 5px;
+	-moz-border-radius-topright : 5px;
+	-webkit-border-top-right-radius : 5px;
+	-moz-border-radius-bottomleft : 5px;
+	-webkit-border-bottom-left-radius : 5px;
+	-moz-border-radius-bottomright : 5px;
+	-webkit-border-bottom-right-radius : 5px;
+
+}
+
+
+
+input[disabled]{ border: 1px solid #ccc } /* FF 2 Fix */
+
+
+
+#btnSubmit { margin: 0 0 0 155px ; }
+
+
+
+.progressWrapper {
+/*	width: 430px;*/
+	overflow: hidden;
+}
+
+.progressContainer {
+	padding: 4px;
+	border: solid 1px #E8E8E8;
+	background-color: #F7F7F7;
+	overflow: hidden;
+	margin-top: 5px;
+}
+/* Message */
+.message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #FFDD99;
+	background-color: #FFFFCC;
+	overflow: hidden;
+}
+/* Error */
+.red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.green {
+	border: solid 1px #DDF0DD;
+	background-color: #EBFFEB;
+}
+
+/* Complete */
+.blue {
+	border: 1px solid #7AC4EA;
+	background-color: #F5FBFF;
+}
+
+.progressName {
+	font-size: 8pt;
+	font-weight: 700;
+	color: #555;
+/*	width: 350px;*/
+	height: 14px;
+	margin-top: 5px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	float: left;
+}
+
+.bd_upload {
+	font-size: 1px;
+	width: 200px;
+	height: 10px;
+	overflow: hidden;
+	margin: 5px 5px 2px 15pt;
+	border-width: 1px;
+	border:1px solid #628D0B;
+	float: left;
+}
+
+.progressBarInProgress,
+.progressBarComplete,
+.progressBarError {
+	float: left;
+	font-size: 0;
+	width: 0%;
+	height: 10px;
+	background: none repeat scroll 0 0 #9BBB59;
+}
+
+.progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.progressBarStatus {
+	padding-left: 15px;
+	height: 10px;
+/*	width: 337px;*/
+	margin-top: 5px;
+	font-size: 7pt;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+	float: left;
+}
+
+a.progressCancel {
+	margin-top: 3px;
+	margin-right: 5px;
+	font-size: 0;
+	display: block;
+	height: 14px;
+	width: 14px;
+	background-image: url(../images/cancelbutton.gif);
+	background-repeat: no-repeat;
+	background-position: -14px 0px;
+	float: left;
+}
+
+a.progressCancel:hover {
+	background-position: 0px 0px;
+}
+
+
+/* -- SWFUpload Object Styles ------------------------------- */
+.swfupload {
+	vertical-align: top;
+}

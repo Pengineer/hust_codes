@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="messageOuter" location="291,165" size="1505,630">
+    <action name="toAdd" location="65,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="65,152" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="310,162" size="150,41">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="view" location="555,152" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="prev" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toList" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="list" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="simpleSearch" location="555,432" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="sort" location="800,432" size="150,62">
+      <result name="success" />
+    </action>
+    <action name="toPage" location="1045,432" size="150,62">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/system/message/outer/add.jsp" location="48,290" size="150,55" />
+  <webResource name="view.jsp" path="/system/message/outer/view.jsp" location="570,10" size="150,55" />
+  <webResource name="list.jsp" path="/system/message/outer/list.jsp" location="10,465" size="150,55" />
+</Struts2Diagram>
+

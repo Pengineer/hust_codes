@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="salary" extends="default" namespace="/salary">
+		<action name = "toAdd" class = "salaryAction"  method = "toAdd" >
+			<result>/jsp/oa/salary/add.jsp</result>
+		</action>
+		
+		<action name = "add" class = "salaryAction"  method = "add" >
+			<result>/jsp/oa/salary/add.jsp</result>
+		</action>
+		
+		<action name = "toList" class = "salaryAction"  method = "toList" >
+			<result>/jsp/oa/salary/list.jsp</result>
+		</action>
+		
+		<action name = "list" class = "salaryAction"  method = "list" >
+			<result type="json">
+				<param name="root">jsonMap</param>  
+			</result>
+		</action>
+	</package>
+</struts>

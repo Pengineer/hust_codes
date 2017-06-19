@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="province" extends="main" namespace="/unit/agency/province">
+		
+		<action name="toAdd" class="provinceAction" method="toAdd">
+			<result>/unit/agency/province/add.jsp</result>
+		</action>
+	
+		<action name="add" class="provinceAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/unit/agency/province/add.jsp</result>
+		</action>
+		
+		<action name="toView" class="provinceAction" method="toView">
+			<result>/unit/agency/province/view.jsp</result>
+		</action>
+		
+		<action name="view" class="provinceAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="provinceAction" method="toModify">
+			<result>/unit/agency/province/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="provinceAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="viewFlag">${viewFlag}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/unit/agency/province/modify.jsp</result>
+		</action>
+
+		<action name="delete" class="provinceAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toList" class="provinceAction" method="toList">
+			<result>/unit/agency/province/list.jsp</result>
+		</action>
+		
+		<action name="list" class="provinceAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="provinceAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="provinceAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="provinceAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="provinceAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="provinceAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toPage" class="provinceAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="provinceAction" method="toAdvSearch"> -->
+<!-- 			<result>/unit/agency/province/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="provinceAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+	</package>
+</struts>

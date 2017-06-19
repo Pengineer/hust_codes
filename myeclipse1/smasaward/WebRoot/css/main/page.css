@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/**************************************************************************
+ * 文件名：page.css
+ *
+ * 文件说明：
+ *     主要用于父页面top和bottom帧样式的定义。
+ *
+ * 历史记录：
+ * 2010-02-24  龚凡：创建文件。
+ *************************************************************************/
+
+/****************************************************************
+ * 与页面整体布局相关的样式。
+ ***************************************************************/
+
+/* 边距默认设置 */
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+
+/* 帧容器 */
+.div_main {
+	width: 100%;
+	height: 100%;
+}
+
+/* 容器内table */
+.table {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: rgb(230, 230, 230);
+}
+
+.tr_tile {
+	height: 25px;
+	background-color: rgb(230, 230, 230);
+}
+
+.tr_back {
+	height: 76px;
+	background-color: rgb(230, 230, 230);
+}
+
+/* top帧左边 */
+.td_left {
+	width: 400px;
+	background-image: url(../../image/main/banner_left.gif);
+	background-repeat: no-repeat;
+}
+
+/* top帧中间 */
+.td_mid {
+	width: auto;
+	background-image: url(../../image/main/banner_mid.gif);
+	background-repeat: repeat-x;
+}
+
+/* top帧右边 */
+.td_right {
+	width: 239px;
+	background-image: url(../../image/main/banner_right.gif);
+	background-repeat: no-repeat;
+}
+
+/* table */
+.table1 {
+	width: 100%;
+	height: auto;
+	vertical-align: middle;
+	border: solid #999;
+    border-width: 1px 0 1px 0;
+	line-height: 180%;
+	border-collapse: collapse;
+}
+
+/* 只显示行 */
+.bd1 {
+	border: solid #999;
+	border-width: 0px 0px 1px 0;
+}
+
+.wd0 {
+	width: 20px;
+}
+
+/*a标签链接不同状态下的样式*/
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:active {
+    text-decoration: blink
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FF7400;
+}
+
+/* 用于系统配置 */
+.wd12 {
+	width: 120px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+/* 显示系统配置的检验信息 */
+#form_sysconfig label.error {
+	padding-top: 1px;
+	padding-left: 12px;
+	font-size: 12px;
+	color: rgb(255, 66, 66);
+}
+#form_sysconfig label.checked {
+	background: url("../../image/pass.gif") no-repeat 0px 0px;
+}
+
+.wd13 {
+	padding-left: 5px;
+}
+
+/* #unit {
+	margin-left: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 15pt;
+	font-weight: bold;
+	color: rgb(230, 230, 230);;
+	width: 220px;
+} */
+
+.wd14 {
+	width: 200px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+
+.wd15 {
+	width: 250px;
+	text-align: right;
+	padding-right: 5px;
+	background-color: rgb(230, 230, 230);
+}
+.main_title {
+	height: 25px;
+	background-image: url("../../image/title_pic.jpg");
+	background-color: rgb(230, 230, 230);
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	vertical-align:middle;
+	line-height: 25px;
+	color:white;
+}
+.title_welcome {
+	margin-left:10px;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color:white;
+}
+
+.title_welcome a {
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color:white;
+}
+.currentTime {
+	float:right;
+	margin-right:10px;
+	text-align:right;
+	font-family: 宋体, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+}

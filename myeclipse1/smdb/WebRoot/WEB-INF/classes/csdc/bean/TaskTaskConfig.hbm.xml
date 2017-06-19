@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="csdc.bean.TaskTaskConfig" table="T_TASK_TASK_CONFIG" >
+        <id name="id" type="java.lang.String">
+            <column name="C_ID" length="40" />
+            <generator class="uuid.hex" />
+        </id>
+        
+        <property name="order" type="java.lang.Integer">
+            <column name="C_ORDER" precision="1" scale="0" />
+        </property>
+        
+        <many-to-one name="task" class="csdc.bean.Task" fetch="select" lazy="false">
+            <column name="C_TASK_ID" length="40" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="taskConfig" class="csdc.bean.TaskConfig" fetch="select">
+            <column name="C_TASK_CONFIG_ID" length="40" not-null="true" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>

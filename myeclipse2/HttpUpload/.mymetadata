@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="HttpUpload"
+  id="myeclipse.1404636779766"
+  context-root="/HttpUpload"
+  j2ee-spec="1.4"
+  archive="HttpUpload.war">
+  <attributes>
+    <attribute name="webrootdir" value="HttpUpload" />
+  </attributes>
+</project-module>
+

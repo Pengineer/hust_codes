@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="csdc.bean.Contact">
+	<resultMap id="contactMap" type="Contact">
+		<result property="id" column="contact_id"/>
+		<result property="name" column="contact_name"/>
+		<result property="gender" column="contact_gender"/>
+		<result property="birthday" column="contact_birthday"/>
+		<result property="companyPhone" column="contact_companyPhone"/>
+		<result property="mobilePhone" column="contact_mobilePhone"/>
+		<result property="fax" column="contact_fax"/>
+		<result property="qq" column="contact_qq"/>
+		<result property="email" column="contact_email"/>
+		<result property="role" column="contact_role"/>
+		<result property="position" column="contact_position"/>
+		<association property="customer" javaType="Customer" column = "contact_customerId">
+			<id property="id" column="customer_id"/>
+			<result property="name" column="customer_name"/>
+			<result property="type" column="customer_type"/>
+			<result property="abbreviation" column="customer_abbreviation"/>
+			<result property="region" column="customer_region"/>
+			<result property="address" column="customer_address"/>
+			<result property="level" column="customer_level"/>
+			<result property="homepage" column="customer_homepage"/>
+			<result property="mainproducts" column="customer_mainproducts"/>
+			<result property="source" column="customer_source"/>
+			<result property="value" column="customer_value"/>
+			<result property="consultationTime" column="customer_consultationTime"/>
+			<result property="city" column="customer_city"/>
+			<result property="note" column="customer_note"/>
+			<result property="industry" column="customer_industry"/>
+		</association>
+	</resultMap>
+
+	<insert id="insert" parameterType="Contact" useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+		insert into T_CONTACT (
+			C_ID,
+			C_NAME,
+			C_GENDER,
+			C_BIRTHDAY,
+			C_COMPANY_PHONE,
+			C_MOBILE_PHONE,
+			C_FAX,
+			C_QQ,
+			C_EMAIL,
+			C_ROLE,
+			C_POSITION,
+			C_CUSTOMER_ID
+		) values (
+			#{id,jdbcType=VARCHAR},
+			#{name,jdbcType=VARCHAR},
+			#{gender,jdbcType=VARCHAR},
+			#{birthday,jdbcType=VARCHAR},
+			#{companyPhone,jdbcType=VARCHAR},
+			#{mobilePhone,jdbcType=VARCHAR},
+			#{fax,jdbcType=VARCHAR},
+			#{qq,jdbcType=VARCHAR},
+			#{email,jdbcType=VARCHAR},
+			#{role,jdbcType=VARCHAR},
+			#{position,jdbcType=VARCHAR},
+			#{customer.id,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<update id = "update" parameterType = "string">
+		update T_CONTACT set
+			C_ID = #{id},
+			C_NAME = #{name},
+			C_GENDER = #{gender},
+			C_BIRTHDAY = #{birthday},
+			C_COMPANY_PHONE = #{companyPhone},
+			C_MOBILE_PHONE = #{mobilePhone},
+			C_FAX = #{fax},
+			C_QQ = #{qq},
+			C_EMAIL = #{email},
+			C_ROLE = #{role},
+			C_POSITION = #{position},
+			C_CUSTOMER_ID = #{customer.id}
+		where C_ID = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from T_CONTACT where C_ID = #{id}
+	</delete>
+
+	<select id="list" parameterType = "map" resultMap = "contactMap">
+		SELECT 
+			T_CONTACT.C_ID as contact_id,
+			T_CONTACT.C_NAME as contact_name,
+			T_CONTACT.C_GENDER as contact_gender,
+			T_CONTACT.C_BIRTHDAY as contact_birthday,
+			T_CONTACT.C_COMPANY_PHONE as contact_companyPhone,
+			T_CONTACT.C_MOBILE_PHONE as contact_mobilePhone,
+			T_CONTACT.C_FAX as contact_fax,
+			T_CONTACT.C_QQ as contact_qq,
+			T_CONTACT.C_EMAIL as contact_email,
+			T_CONTACT.C_ROLE as contact_role,
+			T_CONTACT.C_POSITION as contact_position,
+			T_CONTACT.C_CUSTOMER_ID as contact_customerId,
+			T_CUSTOMER.C_ID as customer_id,
+			T_CUSTOMER.C_NAME as customer_name,
+			T_CUSTOMER.C_TYPE as customer_type,
+			T_CUSTOMER.C_ABBREVIATION as customer_abbreviation,
+			T_CUSTOMER.C_REGION as customer_region,
+			T_CUSTOMER.C_ADDRESS as customer_address,
+			T_CUSTOMER.C_LEVEL as customer_level,
+			T_CUSTOMER.C_HOME_PAGE as customer_homepage,
+			T_CUSTOMER.C_MAIN_PRODUCTS as customer_mainproducts,
+			T_CUSTOMER.C_SOURCE as customer_source,
+			T_CUSTOMER.C_VALUE as customer_value,
+			T_CUSTOMER.C_CONSULTATION_TIME as customer_consultationTime,
+			T_CUSTOMER.C_CITY as customer_city,
+			T_CUSTOMER.C_NOTE as customer_note,
+			T_CUSTOMER.C_INDUSTRY as customer_industry
+			FROM T_CONTACT
+		LEFT JOIN T_CUSTOMER  on T_CONTACT.C_CUSTOMER_ID = T_CUSTOMER.C_ID
+		<where>
+			<if test="customerId != null">
+				C_CUSTOMER_ID = #{customerId}
+			</if>
+		</where>
+	</select>
+</mapper>

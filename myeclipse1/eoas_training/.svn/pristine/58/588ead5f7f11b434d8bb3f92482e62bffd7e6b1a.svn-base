@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    	http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.1.xsd">
+
+	<!-- 该 BeanPostProcessor 将自动对标注 @Autowired 的 Bean 进行注入 -->     
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />  
+
+	<!-- 自动扫描该包，并为有相关注解的类生成spring bean -->
+	<context:component-scan base-package="csdc.tool,csdc.service" />
+	
+	<!--配置数据源 -->
+	<!-- 正式库 -->
+<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@123.56.145.119:1521:ORCL" />
+		<property name="username" value="eoastest" />
+		<property name="password" value="p1013eoastest702" />
+	</bean> -->
+	
+	<!-- 测试库 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.88.240:1521:orcl" />
+		<property name="username" value="eoasdemo" />
+		<property name="password" value="p1013eoasdemo702" />
+	</bean> 
+
+	<!-- 安全配置 -->
+ 	<import resource="config/spring-security.xml" />
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+    
+    <import resource="applicationContext-activiti.xml" />
+	
+	<!-- 使用PROPAGATION_REQUIRES_NEW传播特性的编程式事务模板 -->
+	<bean id="txTemplateRequiresNew" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW" />
+		<property name="isolationLevelName" value="ISOLATION_READ_COMMITTED" />
+	</bean>
+
+<!-- 配置MultipartResolver 用于文件上传 使用spring的CommosMultipartResolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize">
+            <value>104857600</value>
+        </property>
+        <property name="maxInMemorySize">
+            <value>4096</value>
+        </property>
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
+        </property>
+    </bean>
+
+    <!-- Activiti begin -->
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="jobExecutorActivate" value="false"/>
+        <property name="history" value="full"/>
+        <property name="processDefinitionCacheLimit" value="10"/>
+
+        <!-- 生成流程图的字体 -->
+        <property name="activityFontName" value="宋体"/>
+        <property name="labelFontName" value="宋体"/>
+
+        <!-- 自动部署 -->
+        <property name="deploymentResources">
+            <list>
+                <value>classpath*:/deployments/*</value>
+            </list>
+        </property>
+
+        <!-- 自定义表单字段类型 -->
+<!--         <property name="customFormTypes">
+            <list>
+                <bean class="me.kafeitu.demo.activiti.activiti.form.UsersFormType"/>
+            </list>
+        </property> -->
+
+        <!-- 全局监听器 -->
+<!--         <property name="globalTaskListener" >
+            <bean class="me.kafeitu.demo.activiti.activiti.listener.GlobalTaskListener" />
+        </property> -->
+    </bean>
+
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+    <bean id="formService" factory-bean="processEngine" factory-method="getFormService"/>
+    <bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService"/>
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
+
+	<!-- 配置myBatis文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
+		<property name="mapperLocations"  value="classpath:csdc/mappers/*Mapper.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactory" />
+       <constructor-arg index="1" value="BATCH" />
+    </bean>
+    
+	<bean id="baseDao" class="csdc.dao.BaseDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="sqlSession" ref="sqlSession"/>
+	</bean>
+
+	<bean id="baseService" class="csdc.service.imp.BaseService">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="accountService" class="csdc.service.imp.AccountService">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="roleService" class="csdc.service.imp.RoleService">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="departmentService" class="csdc.service.imp.DepartmentService">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="expertService" class="csdc.service.imp.ExpertService">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+<!-- 	<bean id = "projectDao" class = "csdc.dao.IProjectDao">
+	</bean> -->
+	
+<!-- 	<bean id = "projectManager" class = "csdc.bean.common.ProjectManager">
+		<property name="projectDao" ref="projectDao"></property>
+	</bean> -->
+	
+	<bean id="projectWorkflowService" class="csdc.service.imp.ProjectWorkflowService">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<bean id="accountAction" class="csdc.action.recruitment.AccountAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+		<property name="accountService" ref="accountService"></property>
+	</bean>
+	<bean id="assetAction" class="csdc.action.oa.AssetAction" scope="prototype">
+	 	<property name="baseService" ref="baseService" />
+	 </bean>
+	<bean id="resumeAction" class="csdc.action.recruitment.ResumeAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<bean id="positionAction" class="csdc.action.recruitment.PositionAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<bean id="positionResumeAction" class="csdc.action.recruitment.PositionResumeAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>	
+	</bean>
+	<bean id="projectAction" class="csdc.action.oa.ProjectAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>	
+	</bean>
+	<bean id="recordAction" class="csdc.action.recruitment.RecordAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<bean id="roleAction" class="csdc.action.oa.RoleAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+		<property name="roleService" ref="roleService" />
+		<property name="accountService" ref="accountService" />
+	</bean>
+	<bean id="rightAction" class="csdc.action.oa.RightAction" scope="prototype">
+		<property name="baseService" ref="baseService" />
+	</bean>
+	<bean id="departmentAction" class="csdc.action.oa.DepartmentAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
+	<bean id="personAction" class="csdc.action.oa.PersonAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean> 
+	
+	<bean id="newsAction" class="csdc.action.oa.NewsAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="noticeAction" class="csdc.action.oa.NoticeAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="articleAction" class="csdc.action.oa.ArticleAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="attendanceAction" class="csdc.action.oa.AttendanceAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="expertAction" class="csdc.action.oa.ExpertAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+		<property name="expertService" ref="expertService"></property>
+	</bean>
+	
+	<bean id="assessAction" class="csdc.action.oa.AssessAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+
+	<bean id="loginAction" class="csdc.action.oa.LoginAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	<bean id="uploadify" class="csdc.action.recruitment.UploadifyAction" scope="prototype">
+	</bean>
+	<bean id="mailAction" class="csdc.action.oa.MailAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+		<property name="txTemplateRequiresNew" ref="txTemplateRequiresNew"></property>
+	</bean>
+
+	<bean id="salaryAction" class="csdc.action.oa.SalaryAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="systemOptionAction" class="csdc.action.oa.SystemOptionAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="workflowAction" class="csdc.action.oa.WorkflowAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+		<property name="repositoryService" ref="repositoryService"></property>
+	</bean>
+	
+	<bean id="documentAction" class="csdc.action.oa.DocumentAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+
+	<bean id="customerAction" class="csdc.action.oa.CustomerAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="solutionAction" class="csdc.action.oa.SolutionAction" scope="prototype">
+		<property name="baseService" ref="baseService"></property>
+	</bean>
+	
+	<bean id="toIndexAction" class="csdc.action.ToIndexAction" scope="prototype">
+	
+	</bean>
+	<bean id="mailController" class="csdc.tool.mail.MailController" scope="prototype">
+		<property name="txTemplateRequiresNew" ref="txTemplateRequiresNew" />
+	</bean>
+	<bean id="mailTask" class="csdc.tool.mail.MailTask" scope="prototype" />
+	<bean id="sendUndoneMails" class="csdc.tool.mail.SendUndoneMails" scope="prototype" />
+		<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="nadr.hust.edu.cn"/>
+
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+		<property name="username" value="serv"/>
+		<property name="password" value="csdc20121013"/>
+	</bean>
+</beans>

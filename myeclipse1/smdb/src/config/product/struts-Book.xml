@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="Book" extends="main" namespace="/product/book">
+	
+		<action name="toList" class="BookAction" method="toList">
+			<result>/product/book/list.jsp</result>
+		</action>
+
+		<action name="list" class="BookAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="BookAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="advSearch" class="BookAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="BookAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="BookAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="BookAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="toAdd" class="BookAction" method="toAdd">
+			<result>/product/book/add.jsp</result>
+		</action>
+		
+		<action name="add" class="BookAction" method="add"> 
+			<param name="savePath">/upload/product/book</param>
+			<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="actionName">toView</param>	
+	        </result>
+	        <result name="finish" type="json"><param name="root">jsonMap</param></result>
+			<result name="input">${inputView}</result>
+		</action>
+		
+	 	<action name="toModify" class="BookAction" method="toModify">
+			<result>/product/book/modify.jsp</result>
+			<result name="finish">/product/extIf/popModifyBook.jsp</result>
+	  	</action>
+	  	
+	 	<action name="modify" class="BookAction" method="modify">
+ 			<param name="savePath">/upload/product/book</param>
+ 	    	<result type="redirectAction">
+				<param name="entityId">${entityId}</param>
+				<param name="productflag">${productflag}</param>
+				<param name="update">1</param>
+				<param name="actionName">toView</param>	
+	        </result>
+	        <result name="finish" type="json"><param name="root">jsonMap</param></result>
+	        <result name="input">/product/book/modify.jsp</result>
+		</action>
+		
+		<action name="delete" class="BookAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	   	
+		<action name="toView" class="BookAction" method="toView">
+			<result>/product/book/view.jsp</result>
+			<result name="popView">/product/extIf/popViewBook.jsp</result>
+		</action>
+		
+		<action name="view" class="BookAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="prev" class="BookAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="BookAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toAudit" class="BookAction" method="toAudit">
+			<result>/product/popAudit.jsp</result>
+		</action>
+		
+		<action name="audit" class="BookAction" method="audit">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="viewAudit" class="BookAction" method="viewAudit">
+			<result>/product/popViewAudit.jsp</result>
+		</action>
+		
+		<action name="toAddApply" class="BookAction" method="toAddApply">
+			<result>/product/popAddApply.jsp</result>
+		</action>
+		
+		<action name="toModifyApply" class="BookAction" method="toModifyApply">
+			<result>/product/popModifyApply.jsp</result>
+		</action>
+		
+	    <action name="download" class="BookAction" method="download">
+  			<result type="stream">
+ 	    		<param name="inputName">targetFile</param>
+	 	   		<param name="bufferSize">4096</param>
+	 	   		<param name="contentType">application/octet-stream</param>
+	 	   		<param name="contentDisposition">attachment;fileName="${fileFileName}"</param>   
+	 		</result>
+	 	</action>
+	 	
+	   	<action name="validateFile" class="BookAction" method="validateFile">
+   			<result type="json"><param name="root">jsonMap</param></result>
+   			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+  		</action>
+	  	 	
+	   	<action name="exAdd" class="BookAction" method="exAdd">
+   			<result type="json"><param name="root">jsonMap</param></result>
+   			<result type="json" name="input"><param name="root">jsonMap</param></result>	
+	   	</action>
+	   	
+	</package>
+</struts>

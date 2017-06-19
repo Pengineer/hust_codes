@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="ministry" location="512,10" size="1645,1505">
+    <action name="toAdd" location="1430,57" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="add" location="1430,152" size="150,62">
+      <result name="success" />
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="add.jsp" />
+      </result>
+    </action>
+    <action name="toView" location="1185,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="view" location="1185,267" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toModify" location="1185,372" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modify" location="1185,467" size="150,62">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+      <result name="success" />
+    </action>
+    <action name="delete" location="1185,1342" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toSimpleSearch" location="65,1352" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+    </action>
+    <action name="simpleSearch" location="65,1177" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="changePageSize" location="310,1167" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="sort" location="310,1272" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="prev" location="555,1272" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="next" location="555,1167" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toBackToList" location="555,1062" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="list.jsp" />
+      </result>
+      <result name="input" />
+    </action>
+    <action name="backToList" location="555,957" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toPage" location="800,957" size="150,62">
+      <result name="success" />
+      <result name="input" />
+    </action>
+    <action name="toAdvSearch" location="800,862" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="advSearch.jsp" />
+      </result>
+    </action>
+    <action name="advSearch" location="1045,862" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toViewSelf" location="1045,757" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="view.jsp" />
+      </result>
+    </action>
+    <action name="viewSelf" location="1045,582" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="toModifySelf" location="65,582" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify.jsp" />
+      </result>
+    </action>
+    <action name="modifySelf" location="65,677" size="150,62">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="modify.jsp" />
+      </result>
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="add.jsp" path="/unit/agency/ministry/add.jsp" location="10,1430" size="150,55" />
+  <webResource name="view.jsp" path="/unit/agency/ministry/view.jsp" location="147,135" size="150,55" />
+  <webResource name="modify.jsp" path="/unit/agency/ministry/modify.jsp" location="281,555" size="150,55" />
+  <webResource name="list.jsp" path="/unit/agency/ministry/list.jsp" location="287,1325" size="150,55" />
+  <webResource name="advSearch.jsp" path="/unit/agency/ministry/advSearch.jsp" location="272,835" size="150,55" />
+</Struts2Diagram>
+

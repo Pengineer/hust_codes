@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery封装ajax请求，实现浏览器数据的异步响应</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+    <style type="text/css">
+    	div,span{
+    		width:140px;
+    		height:140px;
+    		margin:20px;
+    		background:#9999cc;
+    		border:#000 1px solid;
+    		float:left;
+    		font-family:Roman;
+    	}
+    	
+    	div.mini{
+    		width:30px;
+    		height:30px;
+    		background:#cc66ff;
+    		border:#000 1px solid;
+    		font-size:12px;
+    		font-family:Roman;
+    	}
+    	
+    	div.visible{
+    		display:none;    		
+    	}
+    </style>
+
+  </head>
+  
+  <body>
+    <form action="" name="form1" id="form1">
+    	<input type="text" name="username" id="username" value="zhang"><br>
+    	<input type="text" name="psw" id="psw" value="9999"><br>
+    	<input type="button" id="b1" value="登录">
+    </form>
+	
+    <div id="one"></div>
+	
+  </body>
+  <script type="text/javascript">
+  	$("#b1").click(function(){
+		/*
+		 * load(url,fordata,function(data,textStatus,xmlRequest))
+		 *  功能说明：载入远程HTML文件代码并插入至DOM中。
+		 *  
+		 *   *url:向服务器端指定资源地址发起ajax请求,后面可接一个过滤器，用空格隔开
+		 *   *fordata:发送到服务器的数据  格式：{key1:value1,key2:value2,...}-------json格式
+		 *   *回调函数 function(data,textStatus,xmlResponse)，在请求完成时调用
+		 *   				*data: e1	qq(load01.jsp的全部内容)
+		 *   				*textStatus:代表请求状态的对象，succuss, error, notmodify, timeout 4 种
+		 *   				*XMLHttpRequest：ajax请求对象
+		 */
+		
+	/*不带参数
+	 * 	$("#one").load("load01.jsp",function(data,textStatus,xmlResponse){
+			//load01.jsp中的代码被直接加载到html页面的#one层中。
+			alert(data+"----"+textStatus);
+		});
+	*/	
+	    //带参数
+		$("#one").load("load01.jsp", {username:$("#username").val(),psw:$("#psw").val()}, function(data,textStatus,xmlResponse){
+			
+		});
+			
+		
+	});
+  </script>
+</html>

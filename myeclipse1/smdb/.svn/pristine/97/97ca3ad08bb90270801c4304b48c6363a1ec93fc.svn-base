@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="institute" extends="main" namespace="/unit/institute">
+		
+		<action name="toAdd" class="instituteAction" method="toAdd">
+			<result>/unit/institute/add.jsp</result>
+		</action>
+		
+		<action name="add" class="instituteAction" method="add">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input">/unit/institute/add.jsp</result>
+		</action>
+		
+		<action name="toView" class="instituteAction" method="toView">
+			<result>/unit/institute/view.jsp</result>
+		</action>
+		
+		<action name="view" class="instituteAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="toModify" class="instituteAction" method="toModify">
+			<result>/unit/institute/modify.jsp</result>
+		</action>
+
+		<action name="modify" class="instituteAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="viewFlag">${viewFlag}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/unit/institute/modify.jsp</result>
+		</action>
+
+		<action name="delete" class="instituteAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="createDisciplineTree" class="instituteAction" method="createDisciplineTree">
+		</action>
+		
+		<action name="search" class="instituteAction" method="search">
+			<result>/unit/institute/search.jsp</result>
+		</action>
+		
+		<action name="toList" class="instituteAction" method="toList">
+			<result>/unit/institute/list.jsp</result>
+		</action>
+		
+		<action name="list" class="instituteAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="simpleSearch" class="instituteAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="changePageSize" class="instituteAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="instituteAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="prev" class="instituteAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="next" class="instituteAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	
+		<action name="toPage" class="instituteAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name ="toAdvSearch" class="instituteAction" method = "toAdvSearch"> -->
+<!-- 			<result>/unit/institute/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="instituteAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="export" class="instituteAction" method="export">
+		</action>
+		
+		<action name="toMerge" class="instituteAction" method="toMerge">
+			<result>/unit/institute/popMergeInstitute.jsp</result>
+			<result name="input">/unit/institute/popMergeInstitute.jsp</result>
+		</action>
+		
+		<action name="merge" class="instituteAction" method="merge">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+	</package>
+	
+</struts>

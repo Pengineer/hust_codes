@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="csdc.bean.Experience">
+	<resultMap id="experienceResult" type="Experience">
+		<id property="id" column="C_EXP_ID" />
+		<result property="company" column="C_COMPANY" />
+		<result property="companyStime" column="C_COMPANY_STIME" />
+		<result property="companyEtime" column="C_COMPANY_ETIME" />
+		<result property="position" column="C_POSITION" />
+		<result property="positionDescription" column="C_POSITION_DESCRIPTION" />
+		<result property="project" column="C_PROJECT" />
+		<result property="projectStime" column="C_PROJECT_STIME" />
+		<result property="projectEtime" column="C_PROJECT_ETIME" />
+		<result property="dutyDescription" column="C_DUTY_DESCRIPTION" />
+	</resultMap>
+	<insert id="insert"  parameterType="Resume"  useGeneratedKeys="true"  keyProperty="id">
+		<selectKey resultType="java.lang.String" keyProperty="id"  order="BEFORE">
+			SELECT seguence.NEXTVAL AS ID FROM DUAL
+		</selectKey>
+	   	insert into T_EXPERIENCE 
+	   		(
+	   		 C_EXP_ID,
+	   		 C_COMPANY,
+	   		 C_COMPANY_STIME,
+	   		 C_COMPANY_ETIME, 
+	   		 C_POSITION, 
+	   		 C_POSITION_DESCRIPTION, 
+	   		 C_PROJECT,
+	   		 C_PROJECT_STIME,
+	   		 C_PROJECT_ETIME,
+	   		 C_DUTY_DESCRIPTION,
+	   		 C_RESUME_ID
+	   		 )
+        	values 
+            (
+             #{id,jdbcType=VARCHAR},
+             #{company,jdbcType=VARCHAR},
+             #{companyStime,jdbcType=DATE},
+             #{companyEtime,jdbcType=DATE},
+             #{position,jdbcType=DATE},
+             #{positionDescription,jdbcType=VARCHAR},
+             #{project,jdbcType=VARCHAR},
+             #{projectStime,jdbcType=DATE},
+             #{projectEtime,jdbcType=DATE},
+             #{dutyDescription,jdbcType=VARCHAR},
+             #{resume.id,jdbcType=VARCHAR}
+        	)
+     </insert>
+     
+     <delete id="delete" parameterType="java.lang.String">
+     	delete from t_experience where c_exp_id = #{id}
+<!--      	delete from t_experience where t_experience.c_resume_id  -->
+<!--      		in (select c_id from t_resume where t_resume.c_id = t_experience.c_resume_id and t_experience.c_id = #{id}) -->
+     </delete>
+     
+     <update id="update" parameterType="java.lang.String">
+     	update t_experience set
+	   		 C_COMPANY = #{company,jdbcType=VARCHAR},
+	   		 C_COMPANY_STIME = #{companyStime,jdbcType=DATE},
+	   		 C_COMPANY_ETIME = #{companyEtime,jdbcType=DATE},
+	   		 C_POSITION = #{position,jdbcType=DATE},
+	   		 C_POSITION_DESCRIPTION = #{positionDescription,jdbcType=VARCHAR},
+	   		 C_PROJECT = #{project,jdbcType=VARCHAR},
+	   		 C_PROJECT_STIME = #{projectStime,jdbcType=DATE},
+	   		 C_PROJECT_ETIME = #{projectEtime,jdbcType=DATE},
+	   		 C_DUTY_DESCRIPTION = #{dutyDescription,jdbcType=VARCHAR}
+			where C_RESUME_ID = #{id}
+     </update>
+     
+     <select id="list" parameterType="map" resultMap="experienceResult">
+        select * from t_experience
+        <where>
+            <if test="resumeId!=null">
+                c_resume_id = #{resumeId} 
+            </if>
+        </where>
+         <if test="sort!=null">
+             order by ${sort}
+             <if test="order!=null">
+                 ${order}
+             </if>
+         </if>
+    </select>
+</mapper> 

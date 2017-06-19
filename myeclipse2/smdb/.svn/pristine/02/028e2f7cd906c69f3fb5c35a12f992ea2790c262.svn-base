@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema name="Product">
+<Cube name="Product">
+  <Table name="S_S_PRODUCT"/>
+  
+  <Dimension name="成果维度" foreignKey="C_D_PRODUCT_ID">
+		<Hierarchy hasAll="true" name="成果名称" primaryKey="C_ID">
+		  <Table name="S_D_PRODUCT"/>
+		  <Level name="成果名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="学科门类" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_PRODUCT"/>
+		  <Level name="学科门类" column="C_DISCIPLINE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="成果类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_PRODUCT"/>
+		  <Level name="成果类型" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>
+  </Dimension>
+  <Dimension name="机构维度" foreignKey="C_D_UNIT_ID">
+		<Hierarchy hasAll="true" name="高校名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校名称" column="C_NAME" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="省份名称" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="省份名称" column="C_PROVINCE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="办学类型" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="办学类型" column="C_STYLE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="性质类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="性质类别" column="C_CATEGORY" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="高校类别" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="高校类别" column="C_TYPE" uniqueMembers="true"/>
+		</Hierarchy>
+		<Hierarchy hasAll="true" name="举办者" primaryKey="C_ID" allMemberName="总计">
+		  <Table name="S_D_UNIT"/>
+		  <Level name="举办者" column="C_ORGANIZER" uniqueMembers="true"/>
+		</Hierarchy>
+  </Dimension>
+  <Measure name="成果总数" column="C_ID" aggregator="count"/>
+</Cube>
+</Schema>

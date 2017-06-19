@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="teacher" extends="main" namespace="/person/teacher">
+
+		<action name="toList" class="teacherAction" method="toList">
+			<result>/person/teacher/list.jsp</result>
+		</action>
+
+		<action name="list" class="teacherAction" method="list">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="simpleSearch" class="teacherAction" method="simpleSearch">
+			<result type="chain">list</result>
+		</action>
+		
+<!-- 		<action name="toAdvSearch" class="teacherAction" method="toAdvSearch"> -->
+<!-- 			<result>/person/teacher/advSearch.jsp</result> -->
+<!-- 		</action> -->
+		
+		<action name="advSearch" class="teacherAction" method="advSearch">
+			<result type="chain">list</result>
+		</action>
+		
+		<action name="sort" class="teacherAction" method="sort">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="changePageSize" class="teacherAction" method="changePageSize">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toPage" class="teacherAction" method="toPage">
+			<result type="chain">list</result>
+		</action>
+
+		<action name="toAdd" class="teacherAction" method="toAdd">
+			<result>/person/teacher/add.jsp</result>
+		</action>
+
+		<action name="add" class="teacherAction" method="add">
+			<result type="redirect">/person/teacher/toView.action?entityId=${entityId}</result>
+			<result name="input">/person/teacher/add.jsp</result>
+		</action>
+
+		<action name="delete" class="teacherAction" method="delete">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toView" class="teacherAction" method="toView">
+			<result>/person/teacher/view.jsp</result>
+		</action>
+
+		<action name="view" class="teacherAction" method="view">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toModify" class="teacherAction" method="toModify">
+			<result>/person/teacher/modify.jsp</result>
+		</action>
+		
+		<action name="modify" class="teacherAction" method="modify">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/teacher/modify.jsp</result>
+			<result name="deleteAll" type="redirectAction">toList</result>
+		</action>
+
+		<action name="prev" class="teacherAction" method="prev">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="next" class="teacherAction" method="next">
+			<result type="redirectAction">
+				<param name="actionName">view</param>
+				<param name="entityId">${entityId}</param>
+			</result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+
+		<action name="toggleKey" class="teacherAction" method="toggleKey">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<!-- 人员合并 -->
+		<action name="toMerge" class="teacherAction" method="toMerge">
+			<result>/person/teacher/merge.jsp</result>
+		</action>
+		
+		<action name="fetchMergeData" class="teacherAction" method="fetchMergeData">
+			<result type="json"><param name="root">jsonMap</param></result>
+			<result name="input" type="json"><param name="root">jsonMap</param></result>
+		</action>
+		
+		<action name="merge" class="teacherAction" method="merge">
+			<result type="redirectAction">
+				<param name="actionName">toView</param>
+				<param name="entityId">${entityId}</param>
+				<param name="update">1</param>
+			</result>
+			<result name="input">/person/teacher/merge.jsp</result>
+			<result name="deleteAll" type="redirectAction">toList</result>
+		</action>
+	</package>
+
+</struts>

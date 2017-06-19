@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>load01.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+    <style type="text/css">
+    	div,span{
+    		width:140px;
+    		heigth:140px;
+    		margin:20px;
+    		background:#9999cc;
+    		border:#000 1px solid;
+    		float:left;
+    		font-family:Roman;
+    	}
+    	
+    	div.mini{
+    		width:30px;
+    		heigth:30px;
+    		background:#cc66ff;
+    		border:#000 1px solid;
+    		font-size:12px;
+    		font-family:Roman;
+    	}
+    	
+    	div.visible{
+    		dispaly:none;    		
+    	}
+    </style>
+
+  </head>
+  
+  <body>
+    <form action="" name="form1" id="form1">
+    	<input type="text" name="username" value="zhang"><br>
+    	<input type="text" name="psw" id="psw" value="9999"><br>
+    	<input type="button" id="b1" value="登录">
+    </form>
+    <div id="one"></div>
+  </body>
+</html>
