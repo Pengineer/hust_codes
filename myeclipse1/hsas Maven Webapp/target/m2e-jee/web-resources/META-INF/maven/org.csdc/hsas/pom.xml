@@ -68,7 +68,7 @@
 
 	<properties>
 		<org.springframework.version>4.1.4.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.0.5.RELEASE</org.springframework.security.version>
+		<org.springframework.security.version>5.2.10.RELEASE</org.springframework.security.version>
 		<org.apache.struts.version>2.3.20</org.apache.struts.version>
 		<org.hibernate.version>4.1.9.Final</org.hibernate.version>
 	</properties>
